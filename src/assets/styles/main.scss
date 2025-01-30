@@ -1,0 +1,10 @@
+@import "./config";
+
+body {
+  direction: rtl;
+  font-family: "Baloo Bhaijaan 2", sans-serif;
+  background-color: var(--white);
+  main {
+    min-height: calc(100vh - 100px);
+  }
+}

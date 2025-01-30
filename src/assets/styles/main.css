@@ -1,0 +1,55 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+* {
+  padding: 0;
+  margin: 0;
+  line-height: 1.4;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --main: #468077;
+}
+
+button,
+input,
+select,
+textarea {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ol {
+  padding: unset;
+}
+
+a,
+button {
+  text-decoration: none;
+  transition: var(--transition);
+  color: #000;
+}
+
+body {
+  direction: rtl;
+  font-family: "Baloo Bhaijaan 2", sans-serif;
+  background-color: var(--white);
+}
+body main {
+  min-height: calc(100vh - 100px);
+}/*# sourceMappingURL=main.css.map */
