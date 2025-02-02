@@ -1,0 +1,114 @@
+.main-footer {
+  padding: 1.25rem;
+  border-top: 1px solid var(--border);
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    h5 {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      li {
+        font-size: 14px;
+        font-weight: 400;
+        a {
+          transition: var(--main-transition);
+          color: var(--text);
+          display: block;
+          width: fit-content;
+          &:hover {
+            color: var(--main);
+          }
+        }
+      }
+    }
+  }
+
+  .news-letter {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h5 {
+      margin: 0;
+    }
+    .newsletter-form {
+      display: flex;
+      align-items: center;
+      input {
+        padding: 0.5rem;
+        border: 1px solid var(--input-stroke);
+        border-radius: 4px;
+        flex-grow: 1;
+        &::placeholder {
+          font-size: 12px;
+        }
+      }
+      button {
+        padding: 0.5rem 1rem;
+        background-color: var(--main);
+        color: var(--white);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    }
+    p {
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+
+  .copy-right {
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 0;
+    margin-top: 10px;
+    font-size: 10px;
+  }
+  .links {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+
+    a {
+      font-size: 12px;
+      text-decoration: underline;
+      transition: var(--main-transition);
+      &:hover {
+        color: var(--main);
+      }
+    }
+  }
+  .social-links {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 10px;
+    a {
+      color: var(--main);
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 14px;
+      background: var(--close-hover);
+      transition: var(--main-transition);
+      &:hover {
+        color: var(--white);
+        background: var(--main);
+      }
+    }
+  }
+}

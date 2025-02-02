@@ -1,0 +1,41 @@
+{
+  "header": {
+    "name": "Aqar",
+    "logo": "Logo",
+    "home": "Home",
+    "dailyRent": "Daily Rent",
+    "about": "About us",
+    "contact": "Contact us",
+    "english": "English",
+    "arabic": "Arabic",
+    "autoTranslation": "Auto translation",
+    "login": "Login",
+    "register": "Register",
+    "help": "Help",
+    "myAccount": "My account"
+  },
+  "footer": {
+    "support": "Help & Support",
+    "contactUs": "Contact us",
+    "help": "Help",
+    "cancelOrder": "Cancellation Policy",
+    "faqs": "FAQs",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "about": "About",
+    "listing": "Listing",
+    "login": "Login",
+    "mainSections": "Main Categories",
+    "subscripe": "Subscripe",
+    "newsletterDesc": "Subscribe to our newsletter to get the latest offers and properties",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "copyright": "All rights reserved",
+    "copyrights": "Copyright",
+    "aqar": "Aqar."
+  },
+  "form": {
+    "email": "Email",
+    "emailPlaceholder": "Enter Your Email"
+  }
+}
