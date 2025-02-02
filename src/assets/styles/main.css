@@ -51,6 +51,48 @@ button {
   color: #000;
 }
 
+@font-face {
+  font-family: "DIN Next LT W23";
+  src: url("../assets/webfonts/DINNextLTW23-ultra-light.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DIN Next LT W23";
+  src: url("../assets/webfonts/din-next-lt-w23-light.ttf.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DIN Next LT W23";
+  src: url("../assets/webfonts/din-next-lt-w23-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DIN Next LT W23";
+  src: url("../assets/webfonts/din-next-lt-w23-meduim.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DIN Next LT W23";
+  src: url("../assets/webfonts/din-next-lt-w23-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DIN Next LT W23";
+  src: url("../assets/webfonts/din-next-lt-w23-heavy.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DIN Next LT W23";
+  src: url("../assets/webfonts/din-next-lt-w23-black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
 .logo {
   position: relative;
   z-index: 10;
@@ -172,9 +214,124 @@ button {
   color: var(--main);
 }
 
+.main-footer {
+  padding: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.main-footer .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.main-footer .footer-links h5 {
+  font-size: 18px;
+  font-weight: 500;
+}
+.main-footer .footer-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.main-footer .footer-links ul li {
+  font-size: 14px;
+  font-weight: 400;
+}
+.main-footer .footer-links ul li a {
+  transition: var(--main-transition);
+  color: var(--text);
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.main-footer .footer-links ul li a:hover {
+  color: var(--main);
+}
+.main-footer .news-letter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.main-footer .news-letter h5 {
+  margin: 0;
+}
+.main-footer .news-letter .newsletter-form {
+  display: flex;
+  align-items: center;
+}
+.main-footer .news-letter .newsletter-form input {
+  padding: 0.5rem;
+  border: 1px solid var(--input-stroke);
+  border-radius: 4px;
+  flex-grow: 1;
+}
+.main-footer .news-letter .newsletter-form input::-moz-placeholder {
+  font-size: 12px;
+}
+.main-footer .news-letter .newsletter-form input::placeholder {
+  font-size: 12px;
+}
+.main-footer .news-letter .newsletter-form button {
+  padding: 0.5rem 1rem;
+  background-color: var(--main);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.main-footer .news-letter p {
+  margin: 0;
+  font-size: 12px;
+}
+.main-footer .copy-right {
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 0;
+  margin-top: 10px;
+  font-size: 10px;
+}
+.main-footer .links {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+}
+.main-footer .links a {
+  font-size: 12px;
+  text-decoration: underline;
+  transition: var(--main-transition);
+}
+.main-footer .links a:hover {
+  color: var(--main);
+}
+.main-footer .social-links {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.main-footer .social-links a {
+  color: var(--main);
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  background: var(--close-hover);
+  transition: var(--main-transition);
+}
+.main-footer .social-links a:hover {
+  color: var(--white);
+  background: var(--main);
+}
+
 body {
   direction: rtl;
   background-color: var(--white);
+  font-family: "DIN Next LT W23", sans-serif;
 }
 body main {
   min-height: calc(100vh - 100px);

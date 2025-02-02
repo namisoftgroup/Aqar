@@ -1,9 +1,12 @@
 @import "./config";
+@import "./fonts";
 @import "./header";
+@import "./footer";
 
 body {
   direction: rtl;
   background-color: var(--white);
+  font-family: "DIN Next LT W23", sans-serif;
   main {
     min-height: calc(100vh - 100px);
   }
