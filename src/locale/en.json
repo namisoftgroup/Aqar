@@ -1,0 +1,17 @@
+{
+  "header": {
+    "name": "Aqar",
+    "logo": "Logo",
+    "home": "Home",
+    "dailyRent": "Daily Rent",
+    "about": "About us",
+    "contact": "Contact us",
+    "english": "English",
+    "arabic": "Arabic",
+    "autoTranslation": "Auto translation",
+    "login": "Login",
+    "register": "Register",
+    "help": "Help",
+    "myAccount": "My account"
+  }
+}

@@ -1,5 +1,10 @@
 import { createBrowserRouter } from "react-router";
 import RootLayout from "../layout/RootLayout";
+import Home from "../routes/Home";
+import Contact from "../routes/Contact";
+import About from "../routes/About";
+import ForRent from "../routes/ForRent";
+import ForRentDetails from "../routes/ForRentDetails";
 
 export const router = createBrowserRouter([
   {
@@ -8,7 +13,28 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <h1>asdasdasdas</h1>,
+        element: <Home />,
+      },
+      {
+        path: "for-rent",
+        children: [
+          {
+            index: true,
+            element: <ForRent />,
+          },
+          {
+            path: ":id",
+            element: <ForRentDetails />,
+          },
+        ],
+      },
+      {
+        path: "about-us",
+        element: <About />,
+      },
+      {
+        path: "contact-us",
+        element: <Contact />,
       },
     ],
   },

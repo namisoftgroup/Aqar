@@ -1,0 +1,17 @@
+{
+  "header": {
+    "name": "Aqar",
+    "logo": "Logo",
+    "home": "الرئيسيه",
+    "dailyRent": "الايجار اليومي ",
+    "about": "عن المنصه",
+    "contact": "تواصل معنا",
+    "english": "انجليزي",
+    "arabic": "عربي",
+    "autoTranslation": "الترجمة التلقائية",
+    "login": "تسجيل الدخول",
+    "register": "انشاء حساب",
+    "help": "المساعده",
+    "myAccount": "حسابي"
+  }
+}
