@@ -49,5 +49,26 @@
     "email": "Email",
     "name": "Name",
     "completeYourdata": "Complete Your Data"
+  },
+  "home": {
+    "searchForYourDreamHome": "Welcome to the world of smart bookings.",
+    "searchForYourDreamHomeDesc": "Aqar is the perfect solution for booking hotels, serviced apartments, and offices with ease. Enjoy a seamless experience tailored to your needs and the best prices.",
+    "forRentUnits": "Premium units for rent",
+    "viewAll": "View all",
+    "findDreamplace": "Find your dream place to live with over 10K+ listed properties.",
+    "newWayHome": "The new way to discover your next home.",
+    "browseProperties": "Browse Properties",
+    "instantBooking": "Instant Booking",
+    "instantBookingDesc": "Your booking is guaranteed 100%",
+    "securePayment": "Secure Payment Methods",
+    "securePaymentDesc": "Multiple and secure payment methods",
+    "customerService": "Customer Service",
+    "customerServiceDesc": "We support you around the week",
+    "trustedReviews": "Trusted Reviews",
+    "trustedReviewsDesc": "Trusted reviews and comments",
+    "smartSearch": "Smart Search",
+    "smartSearchDesc": "All types of search in one place",
+    "photosVideos": "Photos & Videos",
+    "photosVideosDesc": "See what your home looks like"
   }
 }

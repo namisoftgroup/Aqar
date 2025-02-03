@@ -4,6 +4,7 @@
 @import "./footer";
 @import "./forms";
 @import "./auth";
+@import "./cards";
 
 body {
   direction: rtl;
@@ -12,6 +13,9 @@ body {
   main {
     min-height: calc(100vh - 100px);
   }
+
+  @import "./home";
+
   &.en {
     direction: ltr;
     font-family: "Outfit", sans-serif;
