@@ -37,5 +37,17 @@
   "form": {
     "email": "Email",
     "emailPlaceholder": "Enter Your Email"
+  },
+  "auth": {
+    "wellcome": "Wellcome Back !",
+    "phoneNumber": "Phone Number",
+    "enter": "Enter",
+    "confirmOtp": "send the confirmation code to check  phone number",
+    "resendCode": "Resend Code",
+    "confirm": "Confirm",
+    "next": "Next",
+    "email": "Email",
+    "name": "Name",
+    "completeYourdata": "Complete Your Data"
   }
 }

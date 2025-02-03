@@ -2,6 +2,8 @@
 @import "./fonts";
 @import "./header";
 @import "./footer";
+@import "./forms";
+@import "./auth";
 
 body {
   direction: rtl;
@@ -13,7 +15,7 @@ body {
   &.en {
     direction: ltr;
     font-family: "Outfit", sans-serif;
-    .form_field {
+    .form-field {
       input,
       select,
       textarea {

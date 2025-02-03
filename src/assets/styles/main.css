@@ -17,6 +17,7 @@
 
 :root {
   --main: #468077;
+  --blue: #2196f3;
   --btn-bg: #f7f7f7;
   --border: #dcdcdc;
   --white: #fff;
@@ -328,6 +329,235 @@ button {
   background: var(--main);
 }
 
+.form-field {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+  gap: 8px;
+  flex-wrap: wrap !important;
+}
+.form-field label {
+  color: var(--main);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.form-field label svg,
+.form-field label i {
+  stroke: var(--main);
+  width: 16px;
+  height: 16px;
+}
+.form-field label img {
+  height: 18px;
+}
+.form-field label span {
+  font-size: 12px;
+  color: var(--input-hint);
+  width: 100%;
+  margin-inline-start: 8px;
+}
+.form-field input,
+.form-field textarea,
+.form-field select {
+  color: var(--main);
+  direction: rtl;
+  height: 52px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--input-stroke);
+  font-size: 14px;
+  box-shadow: none !important;
+}
+.form-field input::-moz-placeholder, .form-field textarea::-moz-placeholder, .form-field select::-moz-placeholder {
+  font-size: 14px;
+  color: var(--input-hint);
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder,
+.form-field select::placeholder {
+  font-size: 14px;
+  color: var(--input-hint);
+}
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  color: var(--main);
+  border-color: var(--input-stroke);
+}
+.form-field textarea {
+  height: 140px;
+  padding: 16px 12px;
+}
+.form-field .input-span {
+  position: absolute;
+  color: var(--main);
+  left: 12px;
+  top: 46px;
+}
+.form-field .phone-group .PhoneInput {
+  display: flex;
+  gap: 12px;
+}
+.form-field .phone-group .PhoneInput .PhoneInputCountryIcon {
+  position: relative;
+}
+.form-field .phone-group .PhoneInput .PhoneInputCountryIconImg {
+  width: 20px;
+  position: absolute;
+  top: -33px;
+  left: 10px;
+}
+.form-field .phone-group .PhoneInput select {
+  padding: 12px 6px 12px 36px;
+}
+.form-field .phone-group .phone-code {
+  height: 52px;
+  border-radius: 4px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-submit {
+  padding: 0 42px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--main);
+  color: var(--white);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.otp-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  direction: ltr !important;
+}
+@media (max-width: 576px) {
+  .otp-container {
+    gap: 8px;
+  }
+}
+.otp-container .otp-input {
+  border-radius: 0 !important;
+  flex: 1;
+  width: inherit;
+  height: 80px !important;
+  text-align: center;
+  border-bottom: 1px solid var(--main);
+  font-size: 28px !important;
+  font-weight: 600;
+  color: var(--main) !important;
+  outline: none;
+}
+.otp-container .otp-input::-webkit-inner-spin-button {
+  display: none;
+}
+@media (max-width: 576px) {
+  .otp-container .otp-input {
+    height: 60px !important;
+  }
+}
+
+.resend-code {
+  width: 100%;
+  display: flex;
+  padding: 10px 0 0;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.resend-code .resend_link {
+  color: var(--main);
+  cursor: pointer;
+}
+.resend-code .resend_link.disabled {
+  pointer-events: none;
+}
+.resend-code .timer {
+  gap: 2px;
+  display: flex;
+  color: var(--gray);
+  margin-inline-start: auto;
+}
+
+.auth-step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+.auth-step h1 {
+  font-size: 28px;
+  text-align: center;
+}
+.auth-step h1 span {
+  display: block;
+}
+.auth-step .form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+.auth-step .form button {
+  width: 100%;
+}
+.auth-step .form .image-uplaod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  position: relative;
+  padding: 10px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+}
+.auth-step .form .image-uplaod input {
+  display: none;
+}
+.auth-step .form .image-uplaod img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.auth-step .form .image-uplaod i {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.back-button {
+  align-self: self-start;
+  margin: 0 1rem;
+}
+
 body {
   direction: rtl;
   background-color: var(--white);
@@ -340,8 +570,8 @@ body.en {
   direction: ltr;
   font-family: "Outfit", sans-serif;
 }
-body.en .form_field input,
-body.en .form_field select,
-body.en .form_field textarea {
+body.en .form-field input,
+body.en .form-field select,
+body.en .form-field textarea {
   direction: ltr;
 }/*# sourceMappingURL=main.css.map */
