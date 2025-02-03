@@ -36,5 +36,39 @@
   "form": {
     "email": "البريد الالكتروني",
     "emailPlaceholder": "ادخل بريدك الالكتروني"
+  },
+  "auth": {
+    "wellcome": "مرحبا بعودتك !",
+    "phoneNumber": "رقم الهاتف",
+    "enter": "دخول",
+    "confirmOtp": "أرسلنا رمزًا للتحقق من رقم الهاتف",
+    "resendCode": "اعد ارسال الكود",
+    "confirm": "تأكيد",
+    "next": "التالي",
+    "email": "البريد الالكتروني",
+    "name": "الاسم",
+    "completeYourdata": "استكمل بياناتك"
+  },
+  "home": {
+    "searchForYourDreamHome": "مرحبًا بك في عالم الحجوزات الذكية",
+    "searchForYourDreamHomeDesc": "عقار هو الحل المثالي لحجز الفنادق، الشقق الفندقية، والمكاتب بكل سهولة. استمتع بتجربة  احتياجاتك وأفضل الأسعار",
+    "forRentUnits": "وحدات مميزة للإيجار",
+    "forRentUnitsdes": "ابحث عن وحدة الإيجار المثالية بكل سهولة",
+    "viewAll": "عرض الكل",
+    "findDreamplace": "اعثر على مكان أحلامك للعيش فيه مع أكثر من 10 آلاف عقار مدرج.",
+    "newWayHome": "الطريقة الجديدة للعثور على منزلك الجديد.",
+    "browseProperties": "تصفح العقارات",
+    "instantBooking": "الحجز الفوري",
+    "instantBookingDesc": "حجزك مضمون بنسبة 100٪",
+    "securePayment": "طرق دفع آمنة",
+    "securePaymentDesc": "طرق دفع متعددة وآمنة",
+    "customerService": "خدمة العملاء",
+    "customerServiceDesc": "ندعمك طوال الأسبوع",
+    "trustedReviews": "تقييمات موثوقة",
+    "trustedReviewsDesc": "تقييمات وتعليقات موثوقة",
+    "smartSearch": "بحث ذكي",
+    "smartSearchDesc": "جميع أنواع البحث في مكان واحد",
+    "photosVideos": "الصور والفيديوهات",
+    "photosVideosDesc": "شاهد كيف يبدو منزلك"
   }
 }
