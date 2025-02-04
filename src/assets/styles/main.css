@@ -373,7 +373,7 @@ button {
   outline: none;
   padding: 8px 12px;
   border-radius: 12px;
-  border: 1px solid var(--input-stroke);
+  border: 1px solid var(--border);
   font-size: 14px;
   box-shadow: none !important;
 }
@@ -662,6 +662,7 @@ body .hero-section p {
 body .hero-section .search-box {
   width: 100%;
   padding: 16px;
+  margin-top: 2rem;
   border-radius: 16px;
   background: var(--white);
 }
@@ -749,6 +750,223 @@ body .why-us-section .why-us-features .feature-content {
   gap: 1rem;
   padding: 1rem 1.5rem;
   background-color: #f7f7f7;
+}
+body .filter-modal .btn-close {
+  margin: 0;
+  margin-right: auto;
+}
+body .filter-modal .btn-close.en {
+  margin-left: auto;
+}
+body .filter-modal .modal-filter-body {
+  padding: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+body .filter-modal .modal-filter-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+body .filter-modal .modal-filter-footer button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  transition: var(--main-transition);
+}
+body .filter-modal .modal-filter-footer button.btn-apply {
+  background-color: var(--main);
+  color: #fff;
+}
+body .filter-modal .modal-filter-footer button.btn-apply:hover {
+  background-color: var(--main-hover);
+}
+body .filter-modal .modal-filter-footer button.btn-cancel {
+  border: 1px solid var(--border);
+}
+body .filter-modal .modal-filter-footer button.btn-cancel:hover {
+  background-color: var(--main-hover);
+  color: var(--white);
+}
+body .filter-modal .filter-field {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: start;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+body .filter-modal .filter-field:last-child {
+  border: none;
+}
+body .filter-modal .filter-field .label {
+  font-size: 28px;
+  margin-bottom: 0.5rem;
+}
+body .filter-modal .filter-field .search-field {
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  outline: none;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--input-stroke);
+  box-shadow: none;
+  transition: var(--main-transition);
+  width: 100%;
+  background-image: url(/icons/search-black.png);
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+body .filter-modal .filter-field .search-field.en {
+  background-position: left 1rem center;
+}
+body .filter-modal .filter-field .search-field:focus {
+  border-color: var(--main);
+  background-image: none;
+}
+body .filter-modal .filter-field .calender-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar {
+  border-radius: 0 !important;
+  box-shadow: none;
+  background-color: white;
+  padding: 10px;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-day.rmdp-selected span {
+  background-color: var(--main) !important;
+  color: white !important;
+  border-radius: 50%;
+  transition: var(--main-transition) !important;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-day.rmdp-today span {
+  background-color: var(--main) !important;
+  color: white !important;
+  transition: var(--main-transition) !important;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-range {
+  background-color: var(--main) !important;
+  box-shadow: none;
+  transition: var(--main-transition) !important;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-day:not(.rmdp-disabled):hover span {
+  background-color: var(--main) !important;
+  color: white !important;
+  border-radius: 50%;
+  transition: var(--main-transition) !important;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-header {
+  background-color: white;
+  padding: 8px;
+  font-weight: bold;
+  color: var(--grey) !important;
+  transition: var(--main-transition) !important;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-header .rmdp-header-values {
+  font-weight: bold;
+  color: var(--grey) !important;
+  transition: var(--main-transition) !important;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-arrow-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0;
+  transition: var(--main-transition) !important;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-arrow-container i {
+  margin: 0;
+  border-color: var(--main);
+  transition: var(--main-transition) !important;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-arrow-container:hover {
+  background-color: var(--main) !important;
+  border-radius: 50%;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-arrow-container:hover i {
+  border-color: var(--white) !important;
+}
+body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-week .rmdp-week-day {
+  color: var(--main);
+  transition: var(--main-transition) !important;
+}
+body .filter-modal .filter-field .body {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 100%;
+}
+body .filter-modal .filter-field .body .checkbox-field div {
+  padding: 8px 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: var(--transition);
+  border-radius: 8px;
+  color: var(--black);
+  border: 1px solid var(--input-stroke);
+  background-color: #dff5f1;
+}
+body .filter-modal .filter-field .body .checkbox-field input {
+  display: none;
+}
+body .filter-modal .filter-field .body .checkbox-field input:checked + div {
+  background: var(--main);
+  color: var(--white);
+}
+body .filter-modal .filter-field .body .counter-field {
+  width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body .filter-modal .filter-field .body .counter-field h6 {
+  font-size: 14px;
+  color: var(--main);
+}
+body .filter-modal .filter-field .body .counter-field h6 span {
+  display: block;
+}
+body .filter-modal .filter-field .body .counter-field .counter-input {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+body .filter-modal .filter-field .body .counter-field .counter-input button {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main);
+  border: 1px solid var(--border);
+  background: var(--white);
+}
+body .filter-modal .filter-field .body .counter-field .counter-input input {
+  padding: 8px;
+  border-radius: 4px;
+  width: 50px;
+  height: 30px;
+  font-size: 14px;
+  color: var(--main);
+  text-align: center;
 }
 body.en {
   direction: ltr;

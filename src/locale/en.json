@@ -69,6 +69,11 @@
     "smartSearch": "Smart Search",
     "smartSearchDesc": "All types of search in one place",
     "photosVideos": "Photos & Videos",
-    "photosVideosDesc": "See what your home looks like"
+    "photosVideosDesc": "See what your home looks like",
+    "city": "City",
+    "propertyType": "Property Type",
+    "search": "Search",
+    "filter": "Filter",
+    "deleteAll": "Delete All"
   }
 }

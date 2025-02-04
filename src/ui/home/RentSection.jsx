@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router";
 import PropertyCard from "../cards/PropertyCard";
 import { useTranslation } from "react-i18next";
@@ -12,7 +11,9 @@ export default function RentSection() {
           <h2>{t("home.forRentUnits")}</h2>
           <p>{t("home.forRentUnitsdes")}</p>
         </div>
-        <Link className="">{t("home.viewAll")} </Link>
+        <Link to={"for-rent"} className="">
+          {t("home.viewAll")}{" "}
+        </Link>
       </section>
       <section className="row">
         {Array(8)

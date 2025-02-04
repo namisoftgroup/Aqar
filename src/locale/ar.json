@@ -69,6 +69,11 @@
     "smartSearch": "بحث ذكي",
     "smartSearchDesc": "جميع أنواع البحث في مكان واحد",
     "photosVideos": "الصور والفيديوهات",
-    "photosVideosDesc": "شاهد كيف يبدو منزلك"
+    "photosVideosDesc": "شاهد كيف يبدو منزلك",
+    "city": "مدينه",
+    "propertyType": "نوع العقار",
+    "search": "بحث",
+    "filter": "عوامل التصفيه",
+    "deleteAll": "مسح الكل"
   }
 }

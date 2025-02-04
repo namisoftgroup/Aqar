@@ -15,6 +15,7 @@ body {
   }
 
   @import "./home";
+  @import "./modals";
 
   &.en {
     direction: ltr;
