@@ -1,0 +1,127 @@
+.view-map {
+  left: 50%;
+  bottom: 32px;
+  position: fixed;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px;
+  padding-inline-end: 18px;
+  border-radius: 90px;
+  background: var(--main);
+  color: var(--white);
+  font-size: 16px;
+  z-index: 999;
+  .icon {
+    background: var(--white);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    @include centerFlex();
+    img {
+      height: 16px;
+    }
+  }
+}
+.map_section_view {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  .control-btn {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .control-btn:hover {
+    background-color: #f0f0f0;
+  }
+
+  .map {
+    height: 100%;
+    .unit_card {
+      width: 300px;
+    }
+  }
+}
+
+.map-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.for-rent-details {
+  margin: 3rem 0;
+  h4 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .gallary {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 4rem;
+    img {
+      border-radius: 12px;
+      width: 100%;
+    }
+    .carousel-indicators {
+      bottom: -60px;
+      button {
+        background-color: var(--whaite);
+        border: 6px solid var(--main);
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .user {
+    display: flex;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    gap: 12px;
+    flex-direction: column;
+    max-width: 320px;
+    justify-content: space-between;
+    .info {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    button {
+      background-color: var(--main);
+      color: var(--white);
+      @include centerFlex;
+      gap: 7px;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
+
+  .description {
+    margin-top: 1.5rem;
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+}

@@ -75,5 +75,16 @@
     "search": "Search",
     "filter": "Filter",
     "deleteAll": "Delete All"
+  },
+  "forRent": {
+    "viewOnMap": "View on Map",
+    "list": "View List",
+    "desc": "Description",
+    "chat": "Chat",
+    "features": "Features",
+    "price": "Price",
+    "rentPayments": "Rent Payments",
+    "book": "Book",
+    "userInfo": "Advertiser Information"
   }
 }

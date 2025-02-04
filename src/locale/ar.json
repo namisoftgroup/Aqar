@@ -75,5 +75,16 @@
     "search": "بحث",
     "filter": "عوامل التصفيه",
     "deleteAll": "مسح الكل"
+  },
+  "forRent": {
+    "viewOnMap": "عرض الخريطه",
+    "list": "عرض القائمه",
+    "desc": "الوصف",
+    "chat": "تحدث",
+    "features": "المميزات",
+    "price": "السعر",
+    "rentPayments": "دفعات الايجار",
+    "book": "احجز",
+    "userInfo": "معلومات المعلن"
   }
 }
