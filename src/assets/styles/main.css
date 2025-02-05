@@ -54,6 +54,25 @@ button {
   color: #000;
 }
 
+.stars_rate {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.stars_rate .stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.stars_rate .stars span {
+  color: var(--gray);
+  font-size: 16px;
+  margin: 0;
+}
+.stars_rate .stars img {
+  height: 14px;
+}
+
 @font-face {
   font-family: "DIN Next LT W23";
   src: url("../webfonts/DINNextLTW23-ultra-light.ttf") format("truetype");
@@ -1205,7 +1224,7 @@ body .for-rent-details .prop-data .price div {
   display: flex;
   justify-content: space-between;
 }
-body .for-rent-details .prop-data button {
+body .for-rent-details .prop-data a {
   margin-top: 8px;
   display: flex;
   align-items: center;
@@ -1219,7 +1238,7 @@ body .for-rent-details .prop-data button {
   font-size: 22px;
   transition: var(--main-transition);
 }
-body .for-rent-details .prop-data button:hover {
+body .for-rent-details .prop-data a:hover {
   background-color: var(--main-hover);
 }
 body .for-rent-details .map-container .map_section_view {

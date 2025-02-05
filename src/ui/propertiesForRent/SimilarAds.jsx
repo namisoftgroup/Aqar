@@ -3,7 +3,7 @@ import { Autoplay } from "swiper/modules";
 import PropertyCard from "../cards/PropertyCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-export default function SimilaerAds() {
+export default function SimilarAds() {
   const { t } = useTranslation();
   return (
     <section className="rates">

@@ -1,4 +1,4 @@
-import React from "react";
+import StarsRate from "../StarsRate";
 
 export default function GuestRateCard() {
   return (
@@ -10,7 +10,7 @@ export default function GuestRateCard() {
         <div className="guest-data">
           <h4>سعد قحتاني</h4>
           <p className="rate">5 فبراير 2025</p>
-          <p className="rate">rate</p>
+          <StarsRate rate={4} />
         </div>
       </div>
       <p>الفيلا مرا ممتازه و كمام الانتر نت سريع</p>

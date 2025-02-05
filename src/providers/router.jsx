@@ -5,6 +5,7 @@ import Contact from "../routes/Contact";
 import About from "../routes/About";
 import ForRent from "../routes/ForRent";
 import ForRentDetails from "../routes/ForRentDetails";
+import BookingRequest from "../routes/BookingRequest";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "contact-us",
         element: <Contact />,
+      },
+      {
+        path: "/booking",
+        element: <BookingRequest />,
       },
     ],
   },

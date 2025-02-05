@@ -4,7 +4,7 @@ import Owner from "../ui/propertiesForRent/owner";
 import Features from "../ui/propertiesForRent/Features";
 import PropertyInfo from "../ui/propertiesForRent/PropertyInfo";
 import Rates from "../ui/propertiesForRent/Rates";
-import SimilaerAds from "../ui/propertiesForRent/SimilaerAds";
+import SimilarAds from "../ui/propertiesForRent/SimilarAds";
 import MapSection from "../ui/propertiesForRent/MapSection";
 
 export default function ForRentDetails() {
@@ -41,7 +41,7 @@ export default function ForRentDetails() {
           <MapSection />
         </div>
         <Rates />
-        <SimilaerAds />
+        <SimilarAds />
       </section>
     </section>
   );

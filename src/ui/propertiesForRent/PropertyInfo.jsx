@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router";
 
 export default function PropertyInfo() {
   const { t } = useTranslation();
@@ -84,9 +85,9 @@ export default function PropertyInfo() {
           <p>120</p>
         </div>
       </div>
-      <button>
+      <Link to={"/booking"}>
         <i className="fa-solid fa-calendar"></i> {t("forRent.book")}
-      </button>
+      </Link>
     </section>
   );
 }
