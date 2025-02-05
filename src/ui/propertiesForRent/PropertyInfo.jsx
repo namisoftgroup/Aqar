@@ -3,20 +3,21 @@ import { useTranslation } from "react-i18next";
 export default function PropertyInfo() {
   const { t } = useTranslation();
   return (
-    <section>
-      <div>
-        <div>
+    <section className="prop-data">
+      <div className="prop-data-header">
+        <div className="prop-data-header-info">
           <h3>فيلا للايجار</h3>
           <p> 250,000 ريال / سنوي</p>
           <p>شارع الحمسه،حي الرياض، فيلا ١٨</p>
         </div>
-        <div>
-          <p>
+        <div className="d-flex gap-2">
+          <p className="d-flex gap-2 align-items-center">
             <i className="fa-thin fa-eye"></i>
-            1k
+            <span>1k</span>
           </p>
-          <p>
-            <i className="fa-thin fa-calendar"></i>5 يناير 2025
+          <p className="d-flex gap-2 align-items-center">
+            <i className="fa-thin fa-calendar"></i>
+            <span>5 يناير 2025</span>
           </p>
         </div>
       </div>
@@ -61,16 +62,27 @@ export default function PropertyInfo() {
           <span>5</span>
         </li>
       </ul>
-      <div>
-        <h4>{t("forRent.rentPayments")}</h4>
+      <div className="rent-payment">
+        <h3>{t("forRent.rentPayments")}</h3>
         <div>
-          <p>60,300 ريال علي دفعه واحده</p>
-          <p>60,300 ريال علي دفعه دفعتين</p>
+          <p>
+            <span>60,300</span> ريال علي دفعه واحده
+          </p>
+          <p>
+            <span>60,300</span> ريال علي دفعه دفعتين
+          </p>
         </div>
       </div>
-      <div>
-        <h4>{t("forRent.price")}</h4>
-        <p>20 ريال الليلة</p>
+      <div className="price">
+        <h3>{t("forRent.price")}</h3>
+        <div>
+          <p>20 ريال الليلة</p>
+          <p>6 ليالي</p>
+        </div>
+        <div>
+          <p>الاجمالي</p>
+          <p>120</p>
+        </div>
       </div>
       <button>
         <i className="fa-solid fa-calendar"></i> {t("forRent.book")}

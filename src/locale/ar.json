@@ -3,7 +3,7 @@
     "name": "Aqar",
     "logo": "Logo",
     "home": "الرئيسيه",
-    "dailyRent": "الايجار اليومي ",
+    "dailyRent": "الوحدات",
     "about": "عن المنصه",
     "contact": "تواصل معنا",
     "english": "انجليزي",
@@ -85,6 +85,9 @@
     "price": "السعر",
     "rentPayments": "دفعات الايجار",
     "book": "احجز",
-    "userInfo": "معلومات المعلن"
+    "userInfo": "معلومات المعلن",
+    "location": "الموقع",
+    "rates": "تقيمات الضيوف",
+    "similarAds": "اعلانات مشابهة"
   }
 }

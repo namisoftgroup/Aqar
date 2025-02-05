@@ -5,6 +5,7 @@ import Features from "../ui/propertiesForRent/Features";
 import PropertyInfo from "../ui/propertiesForRent/PropertyInfo";
 import Rates from "../ui/propertiesForRent/Rates";
 import SimilaerAds from "../ui/propertiesForRent/SimilaerAds";
+import MapSection from "../ui/propertiesForRent/MapSection";
 
 export default function ForRentDetails() {
   const { t } = useTranslation();
@@ -33,6 +34,11 @@ export default function ForRentDetails() {
           <div className="col-4">
             <PropertyInfo />
           </div>
+        </div>
+        <div className="map-container">
+          <h4>{t("forRent.location")}</h4>
+          <p>شارع الحمسه،حي الرياض،</p>
+          <MapSection />
         </div>
         <Rates />
         <SimilaerAds />

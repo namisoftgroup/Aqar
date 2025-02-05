@@ -3,7 +3,7 @@
     "name": "Aqar",
     "logo": "Logo",
     "home": "Home",
-    "dailyRent": "Daily Rent",
+    "dailyRent": "Properties",
     "about": "About us",
     "contact": "Contact us",
     "english": "English",
@@ -85,6 +85,9 @@
     "price": "Price",
     "rentPayments": "Rent Payments",
     "book": "Book",
-    "userInfo": "Advertiser Information"
+    "userInfo": "Advertiser Information",
+    "location": "Location",
+    "rates": "Guest Reviews",
+    "similarAds": "Similar Ads"
   }
 }
