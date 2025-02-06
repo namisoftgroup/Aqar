@@ -89,5 +89,27 @@
     "location": "الموقع",
     "rates": "تقيمات الضيوف",
     "similarAds": "اعلانات مشابهة"
+  },
+  "book": {
+    "priceDetails": "تفاصيل السعر",
+    "totalPrice": "اجمالي السعر ",
+    "confirm": "تأكيد و دفع",
+    "yourTrip": "رحلتك",
+    "edit": "تعديل",
+    "payment": "الدفع ب",
+    "cardNumber": "رقم الكارت ",
+    "billaAddress": "عنوان الفاتورة",
+    "street": "الشارع",
+    "city": "المدينه",
+    "state": "الولايه",
+    "ZIP": "عنوان البريد",
+    "suitOrflat": "رقم الشقه او الجناح",
+    "confirmDesc": "Please review and confirm your booking details before proceeding",
+    "cancel": "Cancel Booking",
+    "cancelDesc": "Are you sure you want to cancel this booking?",
+    "pay": "ادفع",
+    "now": "الان",
+    "howToPay": "اختر طريقه الدفع",
+    "payPart": "ادفع جزء الان, وجزء لاحقا"
   }
 }

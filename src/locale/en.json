@@ -89,5 +89,27 @@
     "location": "Location",
     "rates": "Guest Reviews",
     "similarAds": "Similar Ads"
+  },
+  "book": {
+    "priceDetails": " Price Details",
+    "totalPrice": "Total Price",
+    "confirm": "Confirm & Payment",
+    "yourTrip": "Your trip",
+    "edit": "Edit",
+    "payment": "Payment",
+    "cardNumber": "Card Number",
+    "billaAddress": "Billing Address",
+    "street": "Street",
+    "city": "city",
+    "state": "state",
+    "ZIP": "ZIP code",
+    "suitOrflat": "APT or Suit Number",
+    "confirmDesc": "Please review and confirm your booking details before proceeding",
+    "cancel": "Cancel Booking",
+    "cancelDesc": "Are you sure you want to cancel this booking?",
+    "pay": "Pay",
+    "now": "now",
+    "howToPay": "Choose How to Pay",
+    "payPart": "Pay part now , one later"
   }
 }

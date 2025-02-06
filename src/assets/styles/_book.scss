@@ -1,0 +1,173 @@
+.book-page {
+  margin: 4rem 0;
+  .book-header {
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    h2 {
+      font-size: 28px;
+      margin: 0;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .details-card {
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 120px;
+    .price-details {
+      margin-top: 1rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      h4 {
+        font-size: 22px;
+        margin-bottom: 1rem;
+      }
+      ul {
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column;
+        margin-top: 1rem;
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          span:first-child {
+            font-weight: bold;
+            color: var(--main);
+          }
+          span:last-child {
+            color: var(--grey);
+          }
+        }
+      }
+    }
+    .total {
+      padding: 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .part {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .your-trip {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+    ul {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      gap: 1rem;
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .trip-data {
+          span {
+            display: block;
+            font-size: 14px;
+            color: var(--grey);
+            &:first-child {
+              font-weight: bold;
+              font-size: 22px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+        button {
+          color: var(--main);
+        }
+      }
+    }
+  }
+
+  .chooseHowToPay {
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 0;
+
+    .radio-group {
+      padding: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
+
+      .radio-label {
+        display: flex;
+        align-items: start;
+        gap: 0.5rem;
+        cursor: pointer;
+
+        input {
+          display: none;
+        }
+
+        .custom-radio {
+          width: 18px;
+          height: 18px;
+          border: 2px solid #007bff;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+
+          &::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background: var(--main);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+        }
+
+        input:checked + .custom-radio::before {
+          opacity: 1;
+        }
+
+        &:hover .custom-radio {
+          border-color: var(--main);
+        }
+      }
+    }
+  }
+
+  .payment-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .book-form {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .billing-address {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    label {
+      font-size: 14px;
+      color: var(--grey);
+    }
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+    }
+  }
+}
