@@ -118,5 +118,23 @@
     "villaDetails": "Property Details",
     "dates": "Dates",
     "guestsNumber": "Guests Number"
+  },
+  "profile": {
+    "myProfile": "My Profile",
+    "editProfile": "Edit Profile",
+    "edit": "Edit"
+  },
+  "wallet": {
+    "myWallet": "My Wallet",
+    "balance": "Balance",
+    "transaction": "Transaction",
+    "previousTransactions": "Previous transactions",
+    "deposit": "Deposit",
+    "withdraw": "Withdraw",
+    "charge": "Charge",
+    "enterTheAmount": "Enter the amount"
+  },
+  "notifications": {
+    "notifications": "Notifications"
   }
 }

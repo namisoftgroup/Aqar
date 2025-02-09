@@ -118,5 +118,23 @@
     "villaDetails": "تفاصيل الوحده",
     "dates": "التواريخ",
     "guestsNumber": "عدد الضيوف"
+  },
+  "profile": {
+    "myProfile": "ملفي لشخصي",
+    "editProfile": "تعديل الملف الشخصي",
+    "edit": "تعديل"
+  },
+  "wallet": {
+    "myWallet": "محفظتي",
+    "balance": "الرصيد",
+    "transaction": "العمليه",
+    "previousTransactions": "المعاملات السابقه",
+    "deposit": "إيداع",
+    "withdraw": "سحب",
+    "charge": "شحن",
+    "enterTheAmount": "ادخل المبلغ"
+  },
+  "notifications": {
+    "notifications": "الاشعارات"
   }
 }

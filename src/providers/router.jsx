@@ -1,14 +1,18 @@
 import { createBrowserRouter } from "react-router";
 import RootLayout from "../layout/RootLayout";
-import Home from "../routes/Home";
-import Contact from "../routes/Contact";
 import About from "../routes/About";
-import ForRent from "../routes/ForRent";
-import ForRentDetails from "../routes/ForRentDetails";
 import BookingRequest from "../routes/BookingRequest";
-import Orders from "../routes/Bookings";
 import Bookings from "../routes/Bookings";
 import BookingsDetails from "../routes/BookingsDetails";
+import Contact from "../routes/Contact";
+import EditProfile from "../routes/EditProfile";
+import Favourites from "../routes/Favourites";
+import ForRent from "../routes/ForRent";
+import ForRentDetails from "../routes/ForRentDetails";
+import Home from "../routes/Home";
+import Wallet from "../routes/Wallet";
+import Notifications from "../routes/Notifications";
+import Chat from "../routes/Chats";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +49,26 @@ export const router = createBrowserRouter([
             element: <BookingsDetails />,
           },
         ],
+      },
+      {
+        path: "favourites",
+        element: <Favourites />,
+      },
+      {
+        path: "wallet",
+        element: <Wallet />,
+      },
+      {
+        path: "chat",
+        element: <Chat />,
+      },
+      {
+        path: "edit-profile",
+        element: <EditProfile />,
+      },
+      {
+        path: "notifications",
+        element: <Notifications />,
       },
       {
         path: "about-us",

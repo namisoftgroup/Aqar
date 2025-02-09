@@ -18,6 +18,9 @@ body {
   @import "./modals";
   @import "./forRent";
   @import "./book";
+  @import "./wallet";
+  @import "./notifications";
+  @import "./chat";
 
   &.en {
     direction: ltr;

@@ -1,10 +1,9 @@
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import ProgressBar from "../ui/ProgressBar";
 import Gallary from "../ui/propertiesForRent/Gallary";
 import MapSection from "../ui/propertiesForRent/MapSection";
 import Owner from "../ui/propertiesForRent/owner";
-import { Link } from "react-router";
-import ProgressBar from "../ui/ProgressBar";
-import { useSelector } from "react-redux";
 import { BOOKING_STATUS_AR, BOOKING_STATUS_EN } from "../utils/constants";
 
 export default function BookingsDetails() {
