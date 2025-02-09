@@ -110,6 +110,9 @@
     "pay": "Pay",
     "now": "now",
     "howToPay": "Choose How to Pay",
-    "payPart": "Pay part now , one later"
+    "payPart": "Pay part now , one later",
+    "saveChanges": "Save Changes",
+    "cancelEdit": "Cancel",
+    "more": "More"
   }
 }

@@ -94,3 +94,78 @@
     margin-top: 1rem;
   }
 }
+
+.card {
+  border-radius: 12px;
+  .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .card-body {
+    padding: 1rem;
+    .card-title {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .card-text {
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--main);
+      margin-bottom: 8px;
+    }
+    .text-muted {
+      color: var(--black);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+  }
+  .status-bar {
+    padding: 8px !important;
+    .progress-bar {
+      &.inReview {
+        background-color: #14c4e7;
+      }
+      &.cancelled {
+        background-color: #e71414;
+      }
+      &.confirmed {
+        background-color: #09a629;
+      }
+      &.completed {
+        background-color: #000000;
+      }
+    }
+  }
+  .booding-card-footer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem 1rem;
+    margin-top: 8px;
+    font-size: 14px;
+    span {
+      &.inReview {
+        color: #14c4e7;
+      }
+      &.cancelled {
+        color: #e71414;
+      }
+      &.confirmed {
+        color: #09a629;
+      }
+      &.completed {
+        color: #000000;
+      }
+    }
+    a {
+      transition: var(--main-transition);
+      margin: 0;
+      &:hover {
+        color: var(--main);
+      }
+    }
+  }
+}

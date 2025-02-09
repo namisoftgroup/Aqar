@@ -6,6 +6,9 @@ import About from "../routes/About";
 import ForRent from "../routes/ForRent";
 import ForRentDetails from "../routes/ForRentDetails";
 import BookingRequest from "../routes/BookingRequest";
+import Orders from "../routes/Bookings";
+import Bookings from "../routes/Bookings";
+import BookingsDetails from "../routes/BookingsDetails";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +29,20 @@ export const router = createBrowserRouter([
           {
             path: ":id",
             element: <ForRentDetails />,
+          },
+        ],
+      },
+
+      {
+        path: "bookings",
+        children: [
+          {
+            index: true,
+            element: <Bookings />,
+          },
+          {
+            path: ":id",
+            element: <BookingsDetails />,
           },
         ],
       },
