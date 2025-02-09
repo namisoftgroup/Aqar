@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
 import { BOOKING_STATUS_AR, BOOKING_STATUS_EN } from "../../utils/constants";
+import ProgressBar from "../ProgressBar";
 
 export default function MyBookingCard() {
   const { t } = useTranslation();
@@ -18,35 +19,14 @@ export default function MyBookingCard() {
           <span className="text-muted">12-12-2025</span>
         </p>
       </div>
-      <div className="status-bar">
-        <div
-          className="progress "
-          style={{
-            height: "6px",
-            borderRadius: "8px",
-          }}
-          role="progressbar"
-          aria-label="Basic example"
-          aria-valuenow="0"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          {" "}
-          <div
-            className="progress-bar  inReview"
-            style={{ width: "100%" }}
-          ></div>
-        </div>
-      </div>
+      <ProgressBar status="cancelled" />
       <div className="booding-card-footer">
-        <span className="inReview">
+        <span className="booking-status-label cancelled">
           {lang === "ar"
-            ? BOOKING_STATUS_AR.inReview
-            : BOOKING_STATUS_EN.inReview}
+            ? BOOKING_STATUS_AR.cancelled
+            : BOOKING_STATUS_EN.cancelled}
         </span>
-        <Link to={`2`} className="text-decoration-none ">
-          {t("book.more")}
-        </Link>
+        <Link to={`2`}>{t("book.more")}</Link>
       </div>
     </div>
   );

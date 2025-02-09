@@ -95,3 +95,35 @@ button {
     }
   }
 }
+
+.status-bar {
+  padding: 8px !important;
+  .progress-bar {
+    &.inReview {
+      background-color: #14c4e7;
+    }
+    &.cancelled {
+      background-color: #e71414;
+    }
+    &.confirmed {
+      background-color: #09a629;
+    }
+    &.completed {
+      background-color: #000000;
+    }
+  }
+}
+.booking-status-label {
+  &.inReview {
+    color: #14c4e7;
+  }
+  &.cancelled {
+    color: #e71414;
+  }
+  &.confirmed {
+    color: #09a629;
+  }
+  &.completed {
+    color: #000000;
+  }
+}

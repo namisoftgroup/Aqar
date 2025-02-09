@@ -121,23 +121,6 @@
       margin-bottom: 8px;
     }
   }
-  .status-bar {
-    padding: 8px !important;
-    .progress-bar {
-      &.inReview {
-        background-color: #14c4e7;
-      }
-      &.cancelled {
-        background-color: #e71414;
-      }
-      &.confirmed {
-        background-color: #09a629;
-      }
-      &.completed {
-        background-color: #000000;
-      }
-    }
-  }
   .booding-card-footer {
     display: flex;
     gap: 8px;
@@ -146,20 +129,7 @@
     padding: 0 1rem 1rem;
     margin-top: 8px;
     font-size: 14px;
-    span {
-      &.inReview {
-        color: #14c4e7;
-      }
-      &.cancelled {
-        color: #e71414;
-      }
-      &.confirmed {
-        color: #09a629;
-      }
-      &.completed {
-        color: #000000;
-      }
-    }
+    
     a {
       transition: var(--main-transition);
       margin: 0;

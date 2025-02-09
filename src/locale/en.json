@@ -113,6 +113,10 @@
     "payPart": "Pay part now , one later",
     "saveChanges": "Save Changes",
     "cancelEdit": "Cancel",
-    "more": "More"
+    "more": "More",
+    "bookingStatus": "Booking Status",
+    "villaDetails": "Property Details",
+    "dates": "Dates",
+    "guestsNumber": "Guests Number"
   }
 }

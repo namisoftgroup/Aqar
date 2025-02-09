@@ -171,3 +171,28 @@
     }
   }
 }
+
+.order-prop-details {
+  h3 {
+    font-size: 22px;
+    margin-bottom: 1rem;
+  }
+  p {
+    margin-bottom: 8px;
+    &:first-of-type {
+      color: var(--main);
+      font-weight: 500;
+    }
+  }
+  .order-status {
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      &:first-child {
+        font-weight: 500;
+      }
+    }
+  }
+}

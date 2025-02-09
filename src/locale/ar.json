@@ -113,6 +113,10 @@
     "payPart": "ادفع جزء الان, وجزء لاحقا",
     "saveChanges": "حفظ التغيرات",
     "cancelEdit": "الغاء",
-    "more": "المزيد"
+    "more": "المزيد",
+    "bookingStatus": "حاله الطلب",
+    "villaDetails": "تفاصيل الوحده",
+    "dates": "التواريخ",
+    "guestsNumber": "عدد الضيوف"
   }
 }

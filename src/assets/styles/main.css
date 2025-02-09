@@ -73,6 +73,35 @@ button {
   height: 14px;
 }
 
+.status-bar {
+  padding: 8px !important;
+}
+.status-bar .progress-bar.inReview {
+  background-color: #14c4e7;
+}
+.status-bar .progress-bar.cancelled {
+  background-color: #e71414;
+}
+.status-bar .progress-bar.confirmed {
+  background-color: #09a629;
+}
+.status-bar .progress-bar.completed {
+  background-color: #000000;
+}
+
+.booking-status-label.inReview {
+  color: #14c4e7;
+}
+.booking-status-label.cancelled {
+  color: #e71414;
+}
+.booking-status-label.confirmed {
+  color: #09a629;
+}
+.booking-status-label.completed {
+  color: #000000;
+}
+
 @font-face {
   font-family: "DIN Next LT W23";
   src: url("../webfonts/DINNextLTW23-ultra-light.ttf") format("truetype");
@@ -707,21 +736,6 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 14px;
   margin-bottom: 8px;
 }
-.card .status-bar {
-  padding: 8px !important;
-}
-.card .status-bar .progress-bar.inReview {
-  background-color: #14c4e7;
-}
-.card .status-bar .progress-bar.cancelled {
-  background-color: #e71414;
-}
-.card .status-bar .progress-bar.confirmed {
-  background-color: #09a629;
-}
-.card .status-bar .progress-bar.completed {
-  background-color: #000000;
-}
 .card .booding-card-footer {
   display: flex;
   gap: 8px;
@@ -730,18 +744,6 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 0 1rem 1rem;
   margin-top: 8px;
   font-size: 14px;
-}
-.card .booding-card-footer span.inReview {
-  color: #14c4e7;
-}
-.card .booding-card-footer span.cancelled {
-  color: #e71414;
-}
-.card .booding-card-footer span.confirmed {
-  color: #09a629;
-}
-.card .booding-card-footer span.completed {
-  color: #000000;
 }
 .card .booding-card-footer a {
   transition: var(--main-transition);
@@ -1254,6 +1256,26 @@ body .for-rent-details .prop-data .prop-data-header .prop-data-header-info p {
 body .for-rent-details .prop-data .prop-data-header .prop-data-header-info p p:first-of-type {
   color: var(--main);
 }
+body .for-rent-details .prop-data .your-trip {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+body .for-rent-details .prop-data .your-trip .date,
+body .for-rent-details .prop-data .your-trip .guest {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+}
+body .for-rent-details .prop-data .your-trip .date span,
+body .for-rent-details .prop-data .your-trip .guest span {
+  font-weight: 500;
+  margin: 8px 0;
+}
+body .for-rent-details .prop-data .your-trip .date span:last-child,
+body .for-rent-details .prop-data .your-trip .guest span:last-child {
+  color: var(--main);
+}
 body .for-rent-details .prop-data ul {
   display: flex;
   flex-direction: column;
@@ -1492,6 +1514,26 @@ body .book-page .billing-address input {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid var(--border);
+}
+body .order-prop-details h3 {
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+body .order-prop-details p {
+  margin-bottom: 8px;
+}
+body .order-prop-details p:first-of-type {
+  color: var(--main);
+  font-weight: 500;
+}
+body .order-prop-details .order-status {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body .order-prop-details .order-status span:first-child {
+  font-weight: 500;
 }
 body.en {
   direction: ltr;
