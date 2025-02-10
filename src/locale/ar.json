@@ -136,5 +136,10 @@
   },
   "notifications": {
     "notifications": "الاشعارات"
+  },
+  "chat": {
+    "chat": "الرسائل",
+    "writeHere": "اكتب هنا",
+    "send": "Send"
   }
 }

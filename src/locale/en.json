@@ -136,5 +136,10 @@
   },
   "notifications": {
     "notifications": "Notifications"
+  },
+  "chat": {
+    "chat": "Chat",
+    "writeHere": "Write Here",
+    "send": "Send"
   }
 }
