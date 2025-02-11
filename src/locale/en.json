@@ -4,8 +4,15 @@
     "logo": "Logo",
     "home": "Home",
     "dailyRent": "Properties",
+    "fav": "Favourites",
+    "myBookings": "My bookings",
+    "wallet": "Wallet",
+    "account": "Account settings",
     "about": "About us",
     "contact": "Contact us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms and Conditions",
+    "rateApp": "Rate App",
     "english": "English",
     "arabic": "Arabic",
     "autoTranslation": "Auto translation",
@@ -122,7 +129,10 @@
   "profile": {
     "myProfile": "My Profile",
     "editProfile": "Edit Profile",
-    "edit": "Edit"
+    "edit": "Edit",
+    "hi": "Hi",
+    "yourBalance": "Your wallet balance",
+    "yourBookings": "Your booking number"
   },
   "wallet": {
     "myWallet": "My Wallet",
@@ -141,5 +151,19 @@
     "chat": "Chat",
     "writeHere": "Write Here",
     "send": "Send"
+  },
+  "ads": {
+    "city": "Choose City",
+    "area": "Choose Area",
+    "propertyType": "Choose Category",
+    "per": "per",
+    "monthWeekDay": "Month , Week , Day",
+    "propertyTitle": "Property Title",
+    "propTitlePlaceholder": "Example : ",
+    "price": "Price",
+    "description": "Description",
+    "descriptionPlaceholder": "Add some information about the property",
+    "address": "Property Adress",
+    "addYourProperty": "Add your property"
   }
 }

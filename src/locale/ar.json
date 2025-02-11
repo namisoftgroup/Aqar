@@ -4,8 +4,15 @@
     "logo": "Logo",
     "home": "الرئيسيه",
     "dailyRent": "الوحدات",
+    "fav": "المفضله",
+    "myBookings": "حجوزاتي",
+    "wallet": "المحفظه",
+    "account": "اعدادت الحساب",
     "about": "عن المنصه",
     "contact": "تواصل معنا",
+    "pricavy": "سياسات الخصوصيه",
+    "terms": "الشروط والاحكام",
+    "rateApp": "تقييم التطبيق",
     "english": "انجليزي",
     "arabic": "عربي",
     "autoTranslation": "الترجمة التلقائية",
@@ -122,7 +129,10 @@
   "profile": {
     "myProfile": "ملفي لشخصي",
     "editProfile": "تعديل الملف الشخصي",
-    "edit": "تعديل"
+    "edit": "تعديل",
+    "hi": "اهلا",
+    "yourBalance": "رصيد محفظتك",
+    "yourBookings": "عدد حجوزاتك"
   },
   "wallet": {
     "myWallet": "محفظتي",
@@ -141,5 +151,19 @@
     "chat": "الرسائل",
     "writeHere": "اكتب هنا",
     "send": "Send"
+  },
+  "ads": {
+    "city": "اختر المدينه",
+    "area": "اختر المنطقه",
+    "propertyType": "اختر النوع",
+    "per": "خلال",
+    "monthWeekDay": "شهر , اسبوع , يوم",
+    "propertyTitle": "عنوان العقار",
+    "propTitlePlaceholder": "مثال:فيلا مميزه في الرياض",
+    "price": "السعر",
+    "description": "الوصف",
+    "descriptionPlaceholder": "اضف بعض المعلومات عن العقار",
+    "address": "عنوان العقار",
+    "addYourProperty": "اضف عقارك"
   }
 }

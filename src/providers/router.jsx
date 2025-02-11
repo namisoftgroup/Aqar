@@ -15,7 +15,7 @@ import Notifications from "../routes/Notifications";
 import Chat from "../routes/Chats";
 import ProtectionProvider from "./ProtectionProvider";
 import { Suspense } from "react";
-import Ads from "../routes/Ads";
+import Profile from "../routes/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -74,13 +74,14 @@ export const router = createBrowserRouter([
               },
             ],
           },
-          {
-            path: "add-property",
-            element: <Ads />,
-          },
+
           {
             path: "favourites",
             element: <Favourites />,
+          },
+          {
+            path: "profile",
+            element: <Profile />,
           },
           {
             path: "wallet",

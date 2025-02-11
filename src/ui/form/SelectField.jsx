@@ -1,14 +1,31 @@
-export default function SelectField({ options, hiddenOption, props }) {
+import { Form } from "react-bootstrap";
+
+export default function SelectField({
+  label,
+  hint,
+  options,
+  hiddenOption,
+  ...props
+}) {
   return (
-    <select className="form-select" {...props}>
-      <option disabled value={hiddenOption?.value}>
-        {hiddenOption?.label}
-      </option>
-      {options?.map((option, index) => (
-        <option key={index} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
+    <div className="form-field">
+      {label && (
+        <label htmlFor={props.id}>
+          {label} {hint && <span>({hint})</span>}
+        </label>
+      )}
+      <Form.Select {...props}>
+        {hiddenOption && (
+          <option value={hiddenOption.value} disabled>
+            {hiddenOption.label}
+          </option>
+        )}
+        {options?.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </Form.Select>
+    </div>
   );
 }
