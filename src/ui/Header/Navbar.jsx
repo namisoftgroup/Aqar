@@ -4,7 +4,7 @@ import { NavLink } from "react-router";
 export default function Navbar() {
   const { t } = useTranslation();
   return (
-    <nav>
+    <nav className=" d-none d-md-flex">
       <ul className="nav-links">
         <li className="nav-link">
           <NavLink to="/">{t("header.home")}</NavLink>

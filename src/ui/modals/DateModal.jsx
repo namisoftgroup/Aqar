@@ -1,9 +1,11 @@
 import { Modal } from "react-bootstrap";
 import FilterCalender from "../home/FilterCalender";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 export default function DateModal({ showModal, setShowModal }) {
   const { t } = useTranslation();
+  const lang = useSelector((state) => state.language.lang);
   return (
     <Modal
       className="filter-modal"
@@ -11,7 +13,7 @@ export default function DateModal({ showModal, setShowModal }) {
       size="md"
       onHide={() => setShowModal(false)}
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton className={`${lang === "ar" ? "ar" : ""}`}>
         <Modal.Title>
           {" "}
           <label className="label"> كم عدد الليالي ؟</label>
