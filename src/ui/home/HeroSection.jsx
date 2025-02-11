@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import FilterBox from "./FilterBox";
 
 export default function HeroSection() {
   const { t } = useTranslation();
@@ -10,6 +11,7 @@ export default function HeroSection() {
           <div className="col-12 p-2 mb-3">
             <h1>{t("home.searchForYourDreamHome")}</h1>
             <p>{t("home.searchForYourDreamHomeDesc")}</p>
+            <FilterBox />
           </div>
           <div className="col-sm-6 p-2"></div>
         </div>

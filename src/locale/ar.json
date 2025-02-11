@@ -3,7 +3,7 @@
     "name": "Aqar",
     "logo": "Logo",
     "home": "الرئيسيه",
-    "dailyRent": "الايجار اليومي ",
+    "dailyRent": "الوحدات",
     "about": "عن المنصه",
     "contact": "تواصل معنا",
     "english": "انجليزي",
@@ -69,6 +69,77 @@
     "smartSearch": "بحث ذكي",
     "smartSearchDesc": "جميع أنواع البحث في مكان واحد",
     "photosVideos": "الصور والفيديوهات",
-    "photosVideosDesc": "شاهد كيف يبدو منزلك"
+    "photosVideosDesc": "شاهد كيف يبدو منزلك",
+    "city": "مدينه",
+    "propertyType": "نوع العقار",
+    "search": "بحث",
+    "filter": "عوامل التصفيه",
+    "deleteAll": "مسح الكل"
+  },
+  "forRent": {
+    "viewOnMap": "عرض الخريطه",
+    "list": "عرض القائمه",
+    "desc": "الوصف",
+    "chat": "تحدث",
+    "features": "المميزات",
+    "price": "السعر",
+    "rentPayments": "دفعات الايجار",
+    "book": "احجز",
+    "userInfo": "معلومات المعلن",
+    "location": "الموقع",
+    "rates": "تقيمات الضيوف",
+    "similarAds": "اعلانات مشابهة"
+  },
+  "book": {
+    "priceDetails": "تفاصيل السعر",
+    "totalPrice": "اجمالي السعر ",
+    "confirm": "تأكيد و دفع",
+    "yourTrip": "رحلتك",
+    "edit": "تعديل",
+    "payment": "الدفع ب",
+    "cardNumber": "رقم الكارت ",
+    "billaAddress": "عنوان الفاتورة",
+    "street": "الشارع",
+    "city": "المدينه",
+    "state": "الولايه",
+    "ZIP": "عنوان البريد",
+    "suitOrflat": "رقم الشقه او الجناح",
+    "confirmDesc": "Please review and confirm your booking details before proceeding",
+    "cancel": "Cancel Booking",
+    "cancelDesc": "Are you sure you want to cancel this booking?",
+    "pay": "ادفع",
+    "now": "الان",
+    "howToPay": "اختر طريقه الدفع",
+    "payPart": "ادفع جزء الان, وجزء لاحقا",
+    "saveChanges": "حفظ التغيرات",
+    "cancelEdit": "الغاء",
+    "more": "المزيد",
+    "bookingStatus": "حاله الطلب",
+    "villaDetails": "تفاصيل الوحده",
+    "dates": "التواريخ",
+    "guestsNumber": "عدد الضيوف"
+  },
+  "profile": {
+    "myProfile": "ملفي لشخصي",
+    "editProfile": "تعديل الملف الشخصي",
+    "edit": "تعديل"
+  },
+  "wallet": {
+    "myWallet": "محفظتي",
+    "balance": "الرصيد",
+    "transaction": "العمليه",
+    "previousTransactions": "المعاملات السابقه",
+    "deposit": "إيداع",
+    "withdraw": "سحب",
+    "charge": "شحن",
+    "enterTheAmount": "ادخل المبلغ"
+  },
+  "notifications": {
+    "notifications": "الاشعارات"
+  },
+  "chat": {
+    "chat": "الرسائل",
+    "writeHere": "اكتب هنا",
+    "send": "Send"
   }
 }

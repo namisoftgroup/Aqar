@@ -12,7 +12,7 @@ import "./assets/styles/all.min.css";
 
 // bootstrap Styles
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import "swiper/css";
 // Custom styles
 import "./assets/styles/main.css";
 

@@ -3,7 +3,7 @@
     "name": "Aqar",
     "logo": "Logo",
     "home": "Home",
-    "dailyRent": "Daily Rent",
+    "dailyRent": "Properties",
     "about": "About us",
     "contact": "Contact us",
     "english": "English",
@@ -69,6 +69,77 @@
     "smartSearch": "Smart Search",
     "smartSearchDesc": "All types of search in one place",
     "photosVideos": "Photos & Videos",
-    "photosVideosDesc": "See what your home looks like"
+    "photosVideosDesc": "See what your home looks like",
+    "city": "City",
+    "propertyType": "Property Type",
+    "search": "Search",
+    "filter": "Filter",
+    "deleteAll": "Delete All"
+  },
+  "forRent": {
+    "viewOnMap": "View on Map",
+    "list": "View List",
+    "desc": "Description",
+    "chat": "Chat",
+    "features": "Features",
+    "price": "Price",
+    "rentPayments": "Rent Payments",
+    "book": "Book",
+    "userInfo": "Advertiser Information",
+    "location": "Location",
+    "rates": "Guest Reviews",
+    "similarAds": "Similar Ads"
+  },
+  "book": {
+    "priceDetails": " Price Details",
+    "totalPrice": "Total Price",
+    "confirm": "Confirm & Payment",
+    "yourTrip": "Your trip",
+    "edit": "Edit",
+    "payment": "Payment",
+    "cardNumber": "Card Number",
+    "billaAddress": "Billing Address",
+    "street": "Street",
+    "city": "city",
+    "state": "state",
+    "ZIP": "ZIP code",
+    "suitOrflat": "APT or Suit Number",
+    "confirmDesc": "Please review and confirm your booking details before proceeding",
+    "cancel": "Cancel Booking",
+    "cancelDesc": "Are you sure you want to cancel this booking?",
+    "pay": "Pay",
+    "now": "now",
+    "howToPay": "Choose How to Pay",
+    "payPart": "Pay part now , one later",
+    "saveChanges": "Save Changes",
+    "cancelEdit": "Cancel",
+    "more": "More",
+    "bookingStatus": "Booking Status",
+    "villaDetails": "Property Details",
+    "dates": "Dates",
+    "guestsNumber": "Guests Number"
+  },
+  "profile": {
+    "myProfile": "My Profile",
+    "editProfile": "Edit Profile",
+    "edit": "Edit"
+  },
+  "wallet": {
+    "myWallet": "My Wallet",
+    "balance": "Balance",
+    "transaction": "Transaction",
+    "previousTransactions": "Previous transactions",
+    "deposit": "Deposit",
+    "withdraw": "Withdraw",
+    "charge": "Charge",
+    "enterTheAmount": "Enter the amount"
+  },
+  "notifications": {
+    "notifications": "Notifications"
+  },
+  "chat": {
+    "chat": "Chat",
+    "writeHere": "Write Here",
+    "send": "Send"
   }
 }

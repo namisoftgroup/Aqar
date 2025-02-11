@@ -15,6 +15,13 @@ body {
   }
 
   @import "./home";
+  @import "./modals";
+  @import "./forRent";
+  @import "./book";
+  @import "./wallet";
+  @import "./notifications";
+  @import "./chat";
+  @import "./ads";
 
   &.en {
     direction: ltr;

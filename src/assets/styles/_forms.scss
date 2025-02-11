@@ -39,9 +39,10 @@
     outline: none;
     padding: 8px 12px;
     border-radius: 12px;
-    border: 1px solid var(--input-stroke);
+    border: 1px solid var(--border);
     font-size: 14px;
     box-shadow: none !important;
+
     &::placeholder {
       font-size: 14px;
       color: var(--input-hint);

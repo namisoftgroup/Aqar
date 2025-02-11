@@ -1,0 +1,273 @@
+.view-map {
+  left: 50%;
+  bottom: 32px;
+  position: fixed;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px;
+  padding-inline-end: 18px;
+  border-radius: 90px;
+  background: var(--main);
+  color: var(--white);
+  font-size: 16px;
+  z-index: 999;
+  .icon {
+    background: var(--white);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    @include centerFlex();
+    img {
+      height: 16px;
+    }
+  }
+}
+.map_section_view {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  .control-btn {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .control-btn:hover {
+    background-color: #f0f0f0;
+  }
+
+  .map {
+    height: 100%;
+    .unit_card {
+      width: 300px;
+    }
+  }
+}
+
+.map-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.for-rent-details {
+  margin: 3rem 0;
+  h4 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .gallary {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 4rem;
+    img {
+      border-radius: 12px;
+      width: 100%;
+    }
+    .carousel-indicators {
+      bottom: -60px;
+      button {
+        background-color: var(--whaite);
+        border: 6px solid var(--main);
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .user {
+    display: flex;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    gap: 12px;
+    flex-direction: column;
+    max-width: 320px;
+    justify-content: space-between;
+    .info {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    button {
+      background-color: var(--main);
+      color: var(--white);
+      @include centerFlex;
+      gap: 7px;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
+
+  .description {
+    margin-top: 1.5rem;
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--black);
+    }
+  }
+
+  .prop-features {
+    .features-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 16px;
+        color: var(--black);
+        img {
+          width: 16px;
+          height: 16px;
+          background-color: #b6e1c8;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  .prop-data {
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    h3 {
+      font-size: 18px;
+    }
+    .prop-data-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      .prop-data-header-info {
+        p {
+          font-size: 14px;
+          margin-bottom: 6px;
+          // color: var(--grey);
+          p:first-of-type {
+            color: var(--main);
+          }
+        }
+      }
+    }
+    .your-trip {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      .date,
+      .guest {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        font-size: 14px;
+        span {
+          font-weight: 500;
+          margin: 8px 0;
+          &:last-child {
+            color: var(--main);
+          }
+        }
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        span:first-child {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        span:last-child {
+          color: var(--main);
+        }
+      }
+    }
+    .rent-payment {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      p {
+        margin-bottom: 8px;
+        span {
+          color: var(--main);
+        }
+      }
+    }
+    .price {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      p {
+        font-size: 18px;
+        font-weight: 500;
+      }
+      div {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    a {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      padding: 1rem 1.5rem;
+      width: 100%;
+      border-radius: 8px;
+      color: var(--white);
+      background-color: var(--main);
+      font-size: 22px;
+      transition: var(--main-transition);
+      &:hover {
+        background-color: var(--main-hover);
+      }
+    }
+  }
+  .map-container {
+    .map_section_view {
+      height: auto;
+      .map {
+        width: 100%;
+        margin-top: 1rem;
+        height: 400px;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+    }
+
+    p {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--grey);
+    }
+  }
+  .rates {
+    margin-top: 2rem;
+  }
+}
