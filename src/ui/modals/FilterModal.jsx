@@ -2,9 +2,11 @@ import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import FilterCalender from "../home/FilterCalender";
 import FilterGuests from "../home/FilterGuests";
+import { useSelector } from "react-redux";
 
 export default function FilterModal({ showModal, setShowModal }) {
   const { t } = useTranslation();
+  const { lang } = useSelector((state) => state.language);
   return (
     <Modal
       className="filter-modal"
@@ -12,7 +14,7 @@ export default function FilterModal({ showModal, setShowModal }) {
       size="lg"
       onHide={() => setShowModal(false)}
     >
-      <Modal.Header closeButton className="">
+      <Modal.Header closeButton className={`${lang === "ar" ? "ar" : ""}`}>
         {t("home.filter")}
       </Modal.Header>
       <Modal.Body className="modal-filter-body">

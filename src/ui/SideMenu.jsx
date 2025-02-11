@@ -71,7 +71,7 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
             </Link>
           </li>
           <li>
-            <Link>
+            <Link to="/wallet">
               <i className="fa-light fa-wallet"></i>
               <span>{t("header.wallet")}</span>
             </Link>
@@ -84,7 +84,7 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
           </li>
 
           <li>
-            <Link>
+            <Link to="/contact-us">
               <i className="fa-light fa-envelope"></i>
               <span>{t("header.contact")}</span>
             </Link>

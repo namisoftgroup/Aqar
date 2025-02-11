@@ -1,9 +1,11 @@
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import FilterGuests from "../home/FilterGuests";
+import { useSelector } from "react-redux";
 
 export default function GuestNumberModal({ showModal, setShowModal }) {
   const { t } = useTranslation();
+  const lang = useSelector((state) => state.language.lang);
   return (
     <Modal
       className="filter-modal"
@@ -11,7 +13,7 @@ export default function GuestNumberModal({ showModal, setShowModal }) {
       size="md"
       onHide={() => setShowModal(false)}
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton className={`${lang === "ar" ? "ar" : ""}`}>
         <Modal.Title>
           <label className="label"> كم عدد الضيوف ؟</label>
         </Modal.Title>
