@@ -10,16 +10,18 @@
     "account": "اعدادت الحساب",
     "about": "عن المنصه",
     "contact": "تواصل معنا",
-    "pricavy": "سياسات الخصوصيه",
+    "privacy": "سياسات الخصوصيه",
     "terms": "الشروط والاحكام",
     "rateApp": "تقييم التطبيق",
     "english": "انجليزي",
     "arabic": "عربي",
     "autoTranslation": "الترجمة التلقائية",
     "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
     "register": "انشاء حساب",
     "help": "المساعده",
-    "myAccount": "حسابي"
+    "myAccount": "حسابي",
+    "showProfile": "عرض الملف الشخصي"
   },
   "footer": {
     "support": "المساعده و الدعم",
@@ -132,7 +134,10 @@
     "edit": "تعديل",
     "hi": "اهلا",
     "yourBalance": "رصيد محفظتك",
-    "yourBookings": "عدد حجوزاتك"
+    "yourBookings": "عدد حجوزاتك",
+    "deleteAccount": "مسح الحساب",
+
+    "deleteAccountmessage": "هل انت متأكد من أنك تريد مسح لحساب"
   },
   "wallet": {
     "myWallet": "محفظتي",
@@ -165,5 +170,7 @@
     "descriptionPlaceholder": "اضف بعض المعلومات عن العقار",
     "address": "عنوان العقار",
     "addYourProperty": "اضف عقارك"
-  }
+  },
+  "cancel": "الغاء",
+  "confirm": "تأكيد"
 }

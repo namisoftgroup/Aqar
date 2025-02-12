@@ -1,15 +1,31 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import InputField from "../ui/form/InputField";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import SubmitButton from "../ui/form/SubmitButton";
+import axiosInstance from "../utils/axios";
+import { setUser } from "../redux/slices/userSlice";
+import { useNavigate } from "react-router";
+import { toast } from "sonner";
 
 export default function EditProfile() {
-  const [formData, setFormData] = useState();
-  const lang = useSelector((state) => state.language.lang);
+  const [formData, setFormData] = useState({});
+  // const lang = useSelector((state) => state.language.lang);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loading, setIsLoading] = useState();
   const { t } = useTranslation();
   const imgView = useRef(null);
+  const user = useSelector((state) => state.user.user);
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        name: user.name,
+        email: user.email,
+        image: user.image,
+      });
+    }
+  }, [user]);
 
   function handleChange(e) {
     setFormData((prev) => ({
@@ -22,9 +38,24 @@ export default function EditProfile() {
     imgView.current.src = URL.createObjectURL(e.target.files[0]);
     setFormData({ ...formData, [e.target.name]: e.target.files[0] });
   };
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
+    setIsLoading(true);
+    const reqBody = formData;
+    try {
+      const res = await axiosInstance.post("user/update_profile", reqBody);
+      if (res.data.code === 200) {
+        dispatch(setUser(res.data.data));
+        navigate("/profile");
+        toast.success("Profile updated successfully");
+      } else {
+        toast.error(" Couldn't update profile");
+      }
+    } catch (e) {
+      console.error(e.message);
+    } finally {
+      setIsLoading(false);
+    }
   }
   return (
     <section className="container my-5">
@@ -34,7 +65,7 @@ export default function EditProfile() {
           <label htmlFor="image" className="image-uplaod">
             <img
               ref={imgView}
-              src="images/registerImage.png"
+              src={formData.image ? formData.image : "images/registerImage.png"}
               alt="your avatar"
             />
             <input
@@ -47,6 +78,7 @@ export default function EditProfile() {
           </label>
           <InputField
             onChange={handleChange}
+            value={formData?.name}
             requried="true"
             type="text"
             name="name"
@@ -55,6 +87,7 @@ export default function EditProfile() {
           <InputField
             onChange={handleChange}
             requried="true"
+            value={formData?.email}
             type="email"
             name="email"
             placeholder={t("auth.email")}

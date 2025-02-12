@@ -17,9 +17,11 @@
     "arabic": "Arabic",
     "autoTranslation": "Auto translation",
     "login": "Login",
+    "logout": "Logout",
     "register": "Register",
     "help": "Help",
-    "myAccount": "My account"
+    "myAccount": "My account",
+    "showProfile": "Show profile"
   },
   "footer": {
     "support": "Help & Support",
@@ -132,7 +134,9 @@
     "edit": "Edit",
     "hi": "Hi",
     "yourBalance": "Your wallet balance",
-    "yourBookings": "Your booking number"
+    "yourBookings": "Your booking number",
+    "deleteAccount": "Delete Account",
+    "deleteAccountmessage": "Are you sure you want to delete your account?"
   },
   "wallet": {
     "myWallet": "My Wallet",
@@ -165,5 +169,6 @@
     "descriptionPlaceholder": "Add some information about the property",
     "address": "Property Adress",
     "addYourProperty": "Add your property"
-  }
+  },
+  "cancel":"Cancel"
 }

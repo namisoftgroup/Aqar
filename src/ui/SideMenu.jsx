@@ -2,11 +2,14 @@ import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
+import useAuth from "../hooks/helper/useAuth";
 
 export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
   const lang = useSelector((state) => state.language.lang);
   const { t } = useTranslation();
   const sideMenuRef = useRef(null);
+  const { isAuthed } = useAuth();
+  const user = useSelector((state) => state.user.user);
   const handleClickOutside = (event) => {
     if (
       sideMenuRef.current &&
@@ -29,15 +32,17 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
         openMenu === true ? "show" : ""
       } `}
     >
-      <div className="user">
-        <img src={"/images/avatar.png"} />
-        <div className="user-info">
-          <h1>محمد احمد</h1>
-          <Link to="/profile" onClick={() => setOpenMenu(false)}>
-            عرض الملف الشخصي
-          </Link>
+      {isAuthed && (
+        <div className="user">
+          <img src={user.image} />
+          <div className="user-info">
+            <h1>{user?.name}</h1>
+            <Link to="/profile" onClick={() => setOpenMenu(false)}>
+              {t("header.showProfile")}{" "}
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
       <div className="account-setting">
         <ul onClick={() => setOpenMenu(false)}>
           <li>
@@ -58,30 +63,34 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
               <span>{t("header.dailyRent")}</span>
             </Link>
           </li>
-          <li>
-            <Link to="/favourites">
-              <i className="fa-sharp fa-light fa-heart"></i>
-              <span>{t("header.fav")}</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/bookings">
-              <i className="fa-light fa-book"></i>
-              <span>{t("header.myBookings")}</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/wallet">
-              <i className="fa-light fa-wallet"></i>
-              <span>{t("header.wallet")}</span>
-            </Link>
-          </li>
-          <li>
-            <Link>
-              <i className="fa-light fa-gear"></i>
-              <span>{t("header.account")}</span>
-            </Link>
-          </li>
+          {isAuthed && (
+            <>
+              <li>
+                <Link to="/favourites">
+                  <i className="fa-sharp fa-light fa-heart"></i>
+                  <span>{t("header.fav")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/bookings">
+                  <i className="fa-light fa-book"></i>
+                  <span>{t("header.myBookings")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/wallet">
+                  <i className="fa-light fa-wallet"></i>
+                  <span>{t("header.wallet")}</span>
+                </Link>
+              </li>
+              <li>
+                <Link>
+                  <i className="fa-light fa-gear"></i>
+                  <span>{t("header.account")}</span>
+                </Link>
+              </li>{" "}
+            </>
+          )}
 
           <li>
             <Link to="/contact-us">
@@ -115,10 +124,10 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
           </li>
         </ul>
       </div>
-      <button>
+      {/* <button>
         <i className="fa-light fa-power-off"></i>
         <span>تسجيل الخروج</span>
-      </button>
+      </button> */}
     </div>
   );
 }

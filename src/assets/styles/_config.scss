@@ -131,3 +131,22 @@ button {
     color: #000000;
   }
 }
+
+/* Data loader styles  */
+.tableLoader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.tableLoader .loader--style8 {
+  width: 80px;
+  height: 80px;
+}
+
+.tableLoader svg path,
+.tableLoader svg rect {
+  fill: var(--main-color);
+}

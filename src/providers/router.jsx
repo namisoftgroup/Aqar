@@ -16,6 +16,7 @@ import Chat from "../routes/Chats";
 import ProtectionProvider from "./ProtectionProvider";
 import { Suspense } from "react";
 import Profile from "../routes/Profile";
+import DataLoader from "../ui/DataLoader";
 
 export const router = createBrowserRouter([
   {
@@ -55,7 +56,7 @@ export const router = createBrowserRouter([
         path: "",
         element: (
           <ProtectionProvider>
-            <Suspense fallback={<div>Loading..........</div>}>
+            <Suspense fallback={<DataLoader />}>
               <Outlet />
             </Suspense>
           </ProtectionProvider>

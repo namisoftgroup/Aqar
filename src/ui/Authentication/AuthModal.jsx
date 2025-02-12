@@ -16,13 +16,18 @@ export default function AuthModal() {
     name: "",
     email: "",
   });
+  const [phone, setPhone] = useState();
   const [otp, setOtp] = useState({
+    hashed_code: "",
     code: "",
+    phone: "",
   });
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return <AuthStep1 formData={formData} setFormData={setFormData} />;
+        return (
+          <AuthStep1 formData={phone} setFormData={setPhone} setOtp={setOtp} />
+        );
       case 2:
         return <AuthStep2 otp={otp} setOtp={setOtp} formData={formData} />;
       case 3:

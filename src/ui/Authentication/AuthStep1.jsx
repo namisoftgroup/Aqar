@@ -4,8 +4,9 @@ import SubmitButton from "../form/SubmitButton";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setStep } from "../../redux/slices/authModalSlice";
+import { sendOtpCode } from "../../apiServices/auth";
 
-export default function AuthStep1({ formData, setFormData }) {
+export default function AuthStep1({ formData, setFormData, setOtp }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [loading, setIsLoading] = useState(false);
@@ -13,10 +14,27 @@ export default function AuthStep1({ formData, setFormData }) {
     setFormData((prevFormData) => ({ ...prevFormData, phone: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
-    dispatch(setStep(2));
+    setIsLoading(true);
+    const reqBody = formData;
+    try {
+      const data = await sendOtpCode(reqBody);
+      console.log(data);
+
+      if (data.code === 200)
+        setOtp((prev) => ({
+          ...prev,
+          hashed_code: data.data,
+          phone: formData.phone,
+        }));
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+      setFormData({ phone: "" });
+      dispatch(setStep(2));
+    }
   }
 
   return (

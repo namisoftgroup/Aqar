@@ -92,8 +92,15 @@
       border-radius: 32px;
       font-size: 14px;
       font-weight: 500;
-      img {
-        height: 28px;
+
+      .user-img-wrapper {
+        width: 28;
+        height: 28;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+          height: 28px;
+        }
       }
       &:hover,
       &.show {
@@ -112,6 +119,7 @@
       transition: all 150ms ease-in-out;
       font-size: 14px;
       font-weight: 500;
+
       &:hover {
         background: var(--btn-bg);
       }
@@ -127,7 +135,6 @@
   position: fixed;
   top: 100px;
   right: -100%;
-
   min-width: 300px;
   background-color: var(--white);
   display: flex;

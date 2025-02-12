@@ -1,36 +1,32 @@
-// import { useNavigate } from "react-router-dom";
-// import { useEffect } from "react";
-// import AuthModal from "./../ui/modals/AuthModal";
-// import useAuth from "./../hooks/helpers/useAuth";
-// import { useDispatch } from "react-redux";
-// import { openModal } from "../redux/slices/authModalSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import useAuth from "../hooks/helper/useAuth";
+import { useEffect } from "react";
+import { openAuthModal } from "../redux/slices/authModalSlice";
+import AuthModal from "../ui/Authentication/AuthModal";
 
-// function ProtectionProvider({ children }) {
-//   const navigate = useNavigate();
-//   const dispatch = useDispatch();
-//   const { loading, isAuthed } = useAuth();
+function ProtectionProvider({ children }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, isAuthed } = useAuth();
 
-//   useEffect(() => {
-//     if (!loading && !isAuthed) {
-//       navigate("/");
-//       dispatch(openModal());
-//     }
-//   }, [dispatch, isAuthed, loading, navigate]);
+  useEffect(() => {
+    if (!loading && !isAuthed) {
+      navigate("/");
+      dispatch(openAuthModal());
+    }
+  }, [dispatch, isAuthed, loading, navigate]);
 
-//   if (loading) {
-//     return null;
-//   }
+  if (loading) {
+    return null;
+  }
 
-//   return (
-//     <>
-//       {isAuthed ? children : null}
-//       <AuthModal />
-//     </>
-//   );
-// }
-
-// export default ProtectionProvider;
-
-export default function ProtectionProvider({ children }) {
-  return <>{children}</>;
+  return (
+    <>
+      {isAuthed ? children : null}
+      <AuthModal />
+    </>
+  );
 }
+
+export default ProtectionProvider;
