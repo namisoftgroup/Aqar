@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
 import DeleteAccountModal from "../ui/modals/DeleteAccountModal";
-import DataLoader from "../ui/DataLoader";
 
 export default function Profile() {
   const { t } = useTranslation();

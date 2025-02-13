@@ -13,7 +13,7 @@ export default function UserDropDown() {
   const dispatch = useDispatch();
   const { isAuthed } = useAuth();
   const user = useSelector((state) => state.user.user);
-  const handleLogout = useLogout();
+  const { logout, isLoading } = useLogout();
 
   return (
     <>
@@ -29,15 +29,24 @@ export default function UserDropDown() {
         </Dropdown.Toggle>
         <Dropdown.Menu>
           {isAuthed ? (
-            <Dropdown.Item onClick={handleLogout}>
+            <Dropdown.Item as="button" disabled={isLoading} onClick={logout}>
+              {isLoading && (
+                <i className="fa-duotone fa-regular fa-circle-notch fa-spin"></i>
+              )}
               {t("header.logout")}
             </Dropdown.Item>
           ) : (
             <>
-              <Dropdown.Item onClick={() => dispatch(openAuthModal())}>
+              <Dropdown.Item
+                as="button"
+                onClick={() => dispatch(openAuthModal())}
+              >
                 {t("header.login")}
               </Dropdown.Item>
-              <Dropdown.Item onClick={() => dispatch(openAuthModal())}>
+              <Dropdown.Item
+                as="button"
+                onClick={() => dispatch(openAuthModal())}
+              >
                 {t("header.register")}
               </Dropdown.Item>{" "}
             </>

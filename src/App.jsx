@@ -10,7 +10,6 @@ import { Toaster } from "sonner";
 function App() {
   const { lang } = useSelector((state) => state.language);
   const { loading } = useAuth();
-
   useEffect(() => {
     localStorage.setItem("lang", lang);
     const body = document.querySelector("body");
@@ -22,7 +21,6 @@ function App() {
     <DataLoader />
   ) : (
     <>
-      {" "}
       <Toaster
         toastOptions={{
           style: {

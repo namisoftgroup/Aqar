@@ -16,7 +16,6 @@ export default function AuthModal() {
     name: "",
     email: "",
   });
-  const [phone, setPhone] = useState();
   const [otp, setOtp] = useState({
     hashed_code: "",
     code: "",
@@ -26,7 +25,11 @@ export default function AuthModal() {
     switch (currentStep) {
       case 1:
         return (
-          <AuthStep1 formData={phone} setFormData={setPhone} setOtp={setOtp} />
+          <AuthStep1
+            formData={formData}
+            setFormData={setFormData}
+            setOtp={setOtp}
+          />
         );
       case 2:
         return <AuthStep2 otp={otp} setOtp={setOtp} formData={formData} />;
@@ -51,7 +54,7 @@ export default function AuthModal() {
       <Modal.Header className="border-0" closeButton></Modal.Header>
       <Modal.Body>
         <section className="row">
-          <div className="col-6 w-full">
+          <div className="col-lg-6 d-none d-lg-flex w-full">
             <img
               className="w-100"
               src={`${
@@ -63,7 +66,7 @@ export default function AuthModal() {
               }`}
             />
           </div>
-          {renderStep()}
+          <section className="col-lg-6 auth-step">{renderStep()}</section>
         </section>
       </Modal.Body>
     </Modal>

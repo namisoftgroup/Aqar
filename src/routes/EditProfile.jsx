@@ -10,13 +10,14 @@ import { toast } from "sonner";
 
 export default function EditProfile() {
   const [formData, setFormData] = useState({});
-  // const lang = useSelector((state) => state.language.lang);
+  const lang = useSelector((state) => state.language.lang);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loading, setIsLoading] = useState();
   const { t } = useTranslation();
   const imgView = useRef(null);
   const user = useSelector((state) => state.user.user);
+
   useEffect(() => {
     if (user) {
       setFormData({
@@ -35,8 +36,9 @@ export default function EditProfile() {
   }
 
   const handleUpload = (e) => {
-    imgView.current.src = URL.createObjectURL(e.target.files[0]);
-    setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+    const imageUrl = URL.createObjectURL(e.target.files[0]);
+    imgView.current.src = imageUrl;
+    setFormData({ ...formData, [e.target.name]: imageUrl });
   };
   async function handleSubmit(e) {
     e.preventDefault();
@@ -57,6 +59,7 @@ export default function EditProfile() {
       setIsLoading(false);
     }
   }
+
   return (
     <section className="container my-5">
       <section className="auth-step w-50 mx-auto">
@@ -65,7 +68,7 @@ export default function EditProfile() {
           <label htmlFor="image" className="image-uplaod">
             <img
               ref={imgView}
-              src={formData.image ? formData.image : "images/registerImage.png"}
+              src={user.image ? user.image : "images/registerImage.png"}
               alt="your avatar"
             />
             <input
@@ -78,7 +81,7 @@ export default function EditProfile() {
           </label>
           <InputField
             onChange={handleChange}
-            value={formData?.name}
+            value={user?.name}
             requried="true"
             type="text"
             name="name"
@@ -87,7 +90,7 @@ export default function EditProfile() {
           <InputField
             onChange={handleChange}
             requried="true"
-            value={formData?.email}
+            value={user?.email}
             type="email"
             name="email"
             placeholder={t("auth.email")}

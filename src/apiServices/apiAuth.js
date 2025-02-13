@@ -1,8 +1,10 @@
 import axiosInstance from "../utils/axios";
 
-export async function sendOtpCode(reqBody) {
+export async function sendOtpCode({phone}) {
   try {
-    const res = await axiosInstance.post("user/send_otp_code", reqBody);
+    const res = await axiosInstance.post("user/send_otp_code", {
+      phone,
+    });
     const data = res.data;
     return data;
   } catch (e) {
@@ -16,6 +18,15 @@ export async function checkCode(reqBody) {
     return data;
   } catch (e) {
     console.log(e.response?.data?.message || "Error checking code");
+  }
+}
+
+export async function logout(token) {
+  try {
+    const res = await axiosInstance.post("user/logout", { token });
+    return res.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
 }
 
