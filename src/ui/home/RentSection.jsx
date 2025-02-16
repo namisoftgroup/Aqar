@@ -1,9 +1,16 @@
 import { Link } from "react-router";
 import PropertyCard from "../cards/PropertyCard";
 import { useTranslation } from "react-i18next";
+import { useGetAds } from "../../hooks/ads/useGetAds";
+import DataLoader from "../DataLoader";
+import EmptyData from "../EmptyData";
 
 export default function RentSection() {
   const { t } = useTranslation();
+  const { ads, isLoading } = useGetAds();
+  if (isLoading) {
+    return <DataLoader />;
+  }
   return (
     <section className="rent-section">
       <section className="section-header ">
@@ -16,13 +23,15 @@ export default function RentSection() {
         </Link>
       </section>
       <section className="row">
-        {Array(8)
-          .fill()
-          .map((_, i) => (
-            <div key={i} className="col-xxl-3 col-lg-4 col-md-6 col-12 p-2">
-              <PropertyCard />
+        {ads && ads.length > 0 ? (
+          ads.map((ad) => (
+            <div key={ad.id} className="col-xxl-3 col-lg-4 col-md-6 col-12 p-2">
+              <PropertyCard ad={ad} />
             </div>
-          ))}
+          ))
+        ) : (
+          <EmptyData text={t("forRent.noDatafound")} />
+        )}
       </section>
     </section>
   );

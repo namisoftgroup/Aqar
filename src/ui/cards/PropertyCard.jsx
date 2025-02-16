@@ -1,20 +1,27 @@
 import { Link } from "react-router";
 
-export default function PropertyCard() {
+export default function PropertyCard({ ad }) {
   return (
-    <Link to={"1"}>
+    <Link to={`${ad.id}`}>
       <div className="properties">
         <div className="image_card">
-          <img src="/images/proparty.png" />
+          <img src={ad.image} />
           <button>
-            <i className="fa-light fa-heart"></i>
+            {ad.isFavorite ? (
+              <i className="fa-solid fa-heart"></i>
+            ) : (
+              <i className="fa-light fa-heart"></i>
+            )}
           </button>
         </div>
         <div className="card_info">
-          <h2>فيلا للأيجار</h2>
+          <h2> {ad.title}</h2>
           <section className="info">
             <p>
-              <span> 250,000 ريال / سنوي</span>
+              <span>
+                {" "}
+                {ad.price} ريال / {ad.per}
+              </span>
             </p>
             <div className="flat-details">
               <span>
@@ -32,7 +39,7 @@ export default function PropertyCard() {
             </div>
 
             <p>
-              <span>شارع الحمسه،حي الرياض، فيلا ١٨</span>
+              <span> {ad.address} </span>
             </p>
           </section>
         </div>

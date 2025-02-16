@@ -58,6 +58,10 @@ button {
   color: #000;
 }
 
+input[type=checkbox] {
+  accent-color: var(--main);
+}
+
 .stars_rate {
   display: flex;
   align-items: center;
@@ -123,6 +127,16 @@ button {
 .tableLoader svg path,
 .tableLoader svg rect {
   fill: var(--main-color);
+}
+
+.empty-data {
+  font-size: 40px;
+  color: var(--main);
+  font-weight: 500;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @font-face {
@@ -751,6 +765,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: transparent;
   position: relative;
   max-width: 140px;
+  width: 140px;
 }
 .properties .image_card img {
   width: 100%;
@@ -797,6 +812,10 @@ input[type=number]::-webkit-outer-spin-button {
   gap: 8px;
   font-size: 14px;
   color: var(--dark);
+}
+.properties .card_info .info .flat-details span {
+  display: flex;
+  gap: 2px;
 }
 .properties .card_info .info p {
   font-size: 14px;
@@ -915,18 +934,18 @@ body .hero-section p {
   text-align: center;
   color: #fff;
 }
-body .hero-section .search-box {
+body .search-box {
   width: 100%;
   padding: 16px;
   margin-top: 2rem;
   border-radius: 16px;
   background: var(--white);
 }
-body .hero-section .search-box .search-form {
+body .search-box .search-form {
   display: flex;
   gap: 12px;
 }
-body .hero-section .search-box .search-form .filter-btn {
+body .search-box .search-form .filter-btn {
   height: 52px;
   min-width: 52px;
   border-radius: 12px;
@@ -1055,7 +1074,7 @@ body .filter-modal .filter-field:last-child {
   border: none;
 }
 body .filter-modal .filter-field .label {
-  font-size: 28px;
+  font-size: 22px;
   margin-bottom: 0.5rem;
 }
 body .filter-modal .filter-field .search-field {
@@ -1075,82 +1094,13 @@ body .filter-modal .filter-field .search-field {
 body .filter-modal .filter-field .search-field.en {
   background-position: left 1rem center;
 }
-body .filter-modal .filter-field .search-field:focus {
+body .filter-modal .filter-field .search-field:not(:-moz-placeholder-shown) {
   border-color: var(--main);
   background-image: none;
 }
-body .filter-modal .filter-field .calender-container {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-direction: column;
-  width: 100%;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar {
-  border-radius: 0 !important;
-  box-shadow: none;
-  background-color: white;
-  padding: 10px;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-day.rmdp-selected span {
-  background-color: var(--main) !important;
-  color: white !important;
-  border-radius: 50%;
-  transition: var(--main-transition) !important;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-day.rmdp-today span {
-  background-color: var(--main) !important;
-  color: white !important;
-  transition: var(--main-transition) !important;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-range {
-  background-color: var(--main) !important;
-  box-shadow: none;
-  transition: var(--main-transition) !important;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-day:not(.rmdp-disabled):hover span {
-  background-color: var(--main) !important;
-  color: white !important;
-  border-radius: 50%;
-  transition: var(--main-transition) !important;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-header {
-  background-color: white;
-  padding: 8px;
-  font-weight: bold;
-  color: var(--grey) !important;
-  transition: var(--main-transition) !important;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-header .rmdp-header-values {
-  font-weight: bold;
-  color: var(--grey) !important;
-  transition: var(--main-transition) !important;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-arrow-container {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0;
-  transition: var(--main-transition) !important;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-arrow-container i {
-  margin: 0;
+body .filter-modal .filter-field .search-field:focus, body .filter-modal .filter-field .search-field:not(:placeholder-shown) {
   border-color: var(--main);
-  transition: var(--main-transition) !important;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-arrow-container:hover {
-  background-color: var(--main) !important;
-  border-radius: 50%;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-arrow-container:hover i {
-  border-color: var(--white) !important;
-}
-body .filter-modal .filter-field .calender-container .custom-calendar .rmdp-week .rmdp-week-day {
-  color: var(--main);
-  transition: var(--main-transition) !important;
+  background-image: none;
 }
 body .filter-modal .filter-field .body {
   display: flex;
@@ -1195,6 +1145,20 @@ body .filter-modal .filter-field .body .counter-field h6 {
 body .filter-modal .filter-field .body .counter-field h6 span {
   display: block;
 }
+body .filter-modal .filter-field .body .counter-field label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  justify-content: end;
+}
+body .filter-modal .filter-field .body .counter-field label .pets-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-size: 14px;
+  color: var(--main);
+}
 body .filter-modal .filter-field .body .counter-field .counter-input {
   display: flex;
   align-items: center;
@@ -1220,6 +1184,79 @@ body .filter-modal .filter-field .body .counter-field .counter-input input {
   font-size: 14px;
   color: var(--main);
   text-align: center;
+}
+body .calender-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+body .calender-container .custom-calendar {
+  border-radius: 0 !important;
+  box-shadow: none;
+  background-color: white;
+  padding: 10px;
+}
+body .calender-container .custom-calendar .rmdp-day.rmdp-selected span {
+  background-color: var(--main) !important;
+  color: white !important;
+  border-radius: 50%;
+  transition: var(--main-transition) !important;
+}
+body .calender-container .custom-calendar .rmdp-day.rmdp-today span {
+  background-color: var(--main) !important;
+  color: white !important;
+  transition: var(--main-transition) !important;
+}
+body .calender-container .custom-calendar .rmdp-range {
+  background-color: var(--main) !important;
+  box-shadow: none;
+  transition: var(--main-transition) !important;
+}
+body .calender-container .custom-calendar .rmdp-day:not(.rmdp-disabled):hover span {
+  background-color: var(--main) !important;
+  color: white !important;
+  border-radius: 50%;
+  transition: var(--main-transition) !important;
+}
+body .calender-container .custom-calendar .rmdp-header {
+  background-color: white;
+  padding: 8px;
+  font-weight: bold;
+  color: var(--grey) !important;
+  transition: var(--main-transition) !important;
+}
+body .calender-container .custom-calendar .rmdp-header .rmdp-header-values {
+  font-weight: bold;
+  color: var(--grey) !important;
+  transition: var(--main-transition) !important;
+}
+body .calender-container .custom-calendar .rmdp-arrow-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0;
+  transition: var(--main-transition) !important;
+}
+body .calender-container .custom-calendar .rmdp-arrow-container i {
+  margin: 0;
+  border-color: var(--main);
+  transition: var(--main-transition) !important;
+}
+body .calender-container .custom-calendar .rmdp-arrow-container:hover {
+  background-color: var(--main) !important;
+  border-radius: 50%;
+}
+body .calender-container .custom-calendar .rmdp-arrow-container:hover i {
+  border-color: var(--white) !important;
+}
+body .calender-container .custom-calendar .rmdp-week .rmdp-week-day {
+  color: var(--main);
+  transition: var(--main-transition) !important;
 }
 body .charge-modal form {
   display: flex;
@@ -1331,6 +1368,11 @@ body .for-rent-details .user .info {
   display: flex;
   gap: 12px;
   align-items: center;
+}
+body .for-rent-details .user .info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 body .for-rent-details .user button {
   background-color: var(--main);

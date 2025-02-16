@@ -83,7 +83,8 @@
     "propertyType": "Property Type",
     "search": "Search",
     "filter": "Filter",
-    "deleteAll": "Delete All"
+    "deleteAll": "Delete All",
+    "Area": "Area"
   },
   "forRent": {
     "viewOnMap": "View on Map",
@@ -97,7 +98,8 @@
     "userInfo": "Advertiser Information",
     "location": "Location",
     "rates": "Guest Reviews",
-    "similarAds": "Similar Ads"
+    "similarAds": "Similar Ads",
+    "noDatafound":" we are sorry, no Data Match Your Cariteria"
   },
   "book": {
     "priceDetails": " Price Details",
@@ -170,5 +172,5 @@
     "address": "Property Adress",
     "addYourProperty": "Add your property"
   },
-  "cancel":"Cancel"
+  "cancel": "Cancel"
 }

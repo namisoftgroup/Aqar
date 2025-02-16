@@ -83,7 +83,8 @@
     "propertyType": "نوع العقار",
     "search": "بحث",
     "filter": "عوامل التصفيه",
-    "deleteAll": "مسح الكل"
+    "deleteAll": "مسح الكل",
+    "area": "المنطقه"
   },
   "forRent": {
     "viewOnMap": "عرض الخريطه",
@@ -97,7 +98,8 @@
     "userInfo": "معلومات المعلن",
     "location": "الموقع",
     "rates": "تقيمات الضيوف",
-    "similarAds": "اعلانات مشابهة"
+    "similarAds": "اعلانات مشابهة",
+    "noDatafound": "نأسف لا توجد وحدات تناسب معاييرك"
   },
   "book": {
     "priceDetails": "تفاصيل السعر",

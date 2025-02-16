@@ -1,24 +1,41 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
+import { formateDateDetails } from "../../utils/helper";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
-export default function PropertyInfo() {
+export default function PropertyInfo({ adDetails, nights }) {
   const { t } = useTranslation();
+  const lang = useSelector((state) => state.language.lang);
+  const [total, seTotal] = useState();
+  useEffect(() => {
+    seTotal(nights * adDetails.price);
+  }, [nights, adDetails.price]);
+
   return (
     <section className="prop-data">
       <div className="prop-data-header">
         <div className="prop-data-header-info">
-          <h3>فيلا للايجار</h3>
-          <p> 250,000 ريال / سنوي</p>
-          <p>شارع الحمسه،حي الرياض، فيلا ١٨</p>
+          <h3>{adDetails.title}</h3>
+          <p>
+            {" "}
+            {adDetails.price} ريال / {adDetails.per}
+          </p>
+          <p> {adDetails.address} </p>
         </div>
         <div className="d-flex gap-2">
           <p className="d-flex gap-2 align-items-center">
             <i className="fa-thin fa-eye"></i>
-            <span>1k</span>
+            <span>{adDetails.views_count}</span>
           </p>
           <p className="d-flex gap-2 align-items-center">
             <i className="fa-thin fa-calendar"></i>
-            <span>5 يناير 2025</span>
+            <span>
+              {formateDateDetails(
+                adDetails.updated_at,
+                lang === "ar" ? "ar-EG" : "en-US"
+              )}
+            </span>
           </p>
         </div>
       </div>
@@ -66,23 +83,24 @@ export default function PropertyInfo() {
       <div className="rent-payment">
         <h3>{t("forRent.rentPayments")}</h3>
         <div>
-          <p>
-            <span>60,300</span> ريال علي دفعه واحده
-          </p>
-          <p>
-            <span>60,300</span> ريال علي دفعه دفعتين
-          </p>
+          {adDetails.payments.map((payment) => (
+            <p key={payment.id}>
+              <span>{payment.price}</span> ريال {payment.description}
+            </p>
+          ))}
         </div>
       </div>
       <div className="price">
         <h3>{t("forRent.price")}</h3>
         <div>
-          <p>20 ريال الليلة</p>
-          <p>6 ليالي</p>
+          <p>
+            ريال {adDetails.per} {adDetails.price}
+          </p>
+          <p>{nights} ليالي</p>
         </div>
         <div>
           <p>الاجمالي</p>
-          <p>120</p>
+          <p>{total}</p>
         </div>
       </div>
       <Link to={"/booking"}>
