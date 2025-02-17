@@ -99,7 +99,11 @@
     "location": "Location",
     "rates": "Guest Reviews",
     "similarAds": "Similar Ads",
-    "noDatafound":" we are sorry, no Data Match Your Cariteria"
+    "noDatafound": " we are sorry, no Data Match Your Cariteria",
+    "nights": "nights",
+    "cleanPrice": "clean Price",
+    "totalPrice": "total Price",
+    "chooseData": "Choose Dates"
   },
   "book": {
     "priceDetails": " Price Details",
@@ -128,7 +132,9 @@
     "bookingStatus": "Booking Status",
     "villaDetails": "Property Details",
     "dates": "Dates",
-    "guestsNumber": "Guests Number"
+    "guestsNumber": "Guests Number",
+    "wallet": "Wallet",
+    "online": "online"
   },
   "profile": {
     "myProfile": "My Profile",
@@ -171,6 +177,16 @@
     "descriptionPlaceholder": "Add some information about the property",
     "address": "Property Adress",
     "addYourProperty": "Add your property"
+  },
+  "filter": {
+    "adults": "Adults",
+    "age": "age +13",
+    "children": "Children",
+    "childrenAge": "Ages from 2 to 12 years ",
+    "babbies": "Babbies",
+    "babbiesAge": "less than 2 years",
+    "pets": "Pets",
+    "petsDes": "Will you be bringing pets?"
   },
   "cancel": "Cancel"
 }

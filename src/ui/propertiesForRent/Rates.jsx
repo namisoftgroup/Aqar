@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import GuestRateCard from "../cards/GuestRateCard";
 import { Autoplay } from "swiper/modules";
 
-export default function Rates() {
+export default function Rates({ adRates }) {
   const { t } = useTranslation();
   return (
     <section className="rates">
@@ -30,13 +30,11 @@ export default function Rates() {
           },
         }}
       >
-        {Array(8)
-          .fill()
-          .map((_, i) => (
-            <SwiperSlide key={i} style={{ height: "auto" }}>
-              <GuestRateCard />
-            </SwiperSlide>
-          ))}
+        {adRates.map((rate) => (
+          <SwiperSlide key={rate.key} style={{ height: "auto" }}>
+            <GuestRateCard rate={rate} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

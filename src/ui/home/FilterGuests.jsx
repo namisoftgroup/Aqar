@@ -46,7 +46,7 @@ export default function FilterGuests() {
         <div className="counter-field">
           <h6>
             <span>{t("filter.children")}</span>
-            <span> {t("filter.childrenAges")} </span>
+            <span> {t("filter.childrenAge")} </span>
           </h6>
           <div className="counter-input">
             <button onClick={(e) => handleDecrease(e, "children_number")}>
@@ -65,8 +65,8 @@ export default function FilterGuests() {
         </div>
         <div className="counter-field">
           <h6>
-            <span>{t("filter.babys")}</span>
-            <span>{t("filter.babysAge")}</span>
+            <span>{t("filter.babbies")}</span>
+            <span>{t("filter.babbiesAge")}</span>
           </h6>
           <div className="counter-input">
             <button onClick={(e) => handleDecrease(e, "baby_number")}>
@@ -83,15 +83,16 @@ export default function FilterGuests() {
         </div>
         <div className="counter-field">
           <label>
-            <div className="pets-label">
-              <span> {t("filter.pets")}</span>
-              <span> {t("filter.petsDesc")}</span>
+            <p className="pets-label"> {t("filter.pets")}</p>
+
+            <div className="pets-input">
+              <span> {t("filter.petsDes")}</span>
+              <input
+                onChange={handleChange}
+                type="checkbox"
+                value={formData.with_pits === "" ? 0 : formData.with_pits}
+              />
             </div>
-            <input
-              onChange={handleChange}
-              type="checkbox"
-              value={formData.with_pits === "" ? 0 : formData.with_pits}
-            />
           </label>
           {/* <button onClick={() => handleIncrease("with_pits")}>
               <i className="fa-regular fa-plus"></i>

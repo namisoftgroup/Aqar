@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 
 export default function Owner({ owner }) {
   const { t } = useTranslation();
-  console.log(owner);
 
   return (
     <div className="user">

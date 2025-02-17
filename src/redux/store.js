@@ -3,6 +3,7 @@ import languageSlice from "./slices/languageSlice";
 import authModalSlice from "./slices/authModalSlice";
 import userSlice from "./slices/userSlice";
 import filterSlice from "./slices/filterSlice";
+import bookingSlice from "./slices/bookingSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     authModal: authModalSlice,
     user: userSlice,
     filter: filterSlice,
+    booking: bookingSlice,
   },
 });

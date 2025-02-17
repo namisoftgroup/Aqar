@@ -12,11 +12,11 @@ export default function ChooseHowToPay({ selected, setSelected }) {
             type="radio"
             name="radio"
             value="all"
-            checked={selected === "all"}
-            onChange={() => setSelected("all")}
+            checked={selected === "wallet"}
+            onChange={() => setSelected("wallet")}
           />
           <span className="custom-radio"></span>
-          {t("book.pay")} 20000 {t("book.now")}
+          {t("book.wallet")}
         </label>
 
         <label className="radio-label">
@@ -24,12 +24,11 @@ export default function ChooseHowToPay({ selected, setSelected }) {
             type="radio"
             name="radio"
             value="part"
-            checked={selected === "part"}
-            onChange={() => setSelected("part")}
+            checked={selected === "online"}
+            onChange={() => setSelected("online")}
           />
           <span className="custom-radio"></span>
-          {t("book.payPart")} <br /> 130 due to today , 99 on Apr 24, 2025 .No
-          extra Fees
+          {t("book.online")} <br />
         </label>
       </form>
     </section>

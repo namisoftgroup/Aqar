@@ -48,10 +48,7 @@ export const router = createBrowserRouter([
         path: "contact-us",
         element: <Contact />,
       },
-      {
-        path: "/booking",
-        element: <BookingRequest />,
-      },
+
       {
         path: "",
         element: (
@@ -75,7 +72,10 @@ export const router = createBrowserRouter([
               },
             ],
           },
-
+          {
+            path: "/booking/:id",
+            element: <BookingRequest />,
+          },
           {
             path: "favourites",
             element: <Favourites />,

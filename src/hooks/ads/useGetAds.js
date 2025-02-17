@@ -30,20 +30,6 @@ export function useGetAds() {
   const { data: ads, isLoading } = useQuery({
     queryKey: ["ads", reqBody],
     queryFn: () => getAds(reqBody),
-    staleTime: 0,
-    keepPreviousData: true,
-    enabled:
-      !!search ||
-      !!category_id ||
-      !!city_id ||
-      !!area_id ||
-      !!from_data ||
-      !!to_data ||
-      !!adult_number ||
-      !!children_number ||
-      !!baby_number ||
-      !!with_pits,
-    retry: false,
   });
   return { ads, isLoading };
 }

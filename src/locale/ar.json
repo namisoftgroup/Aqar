@@ -99,7 +99,11 @@
     "location": "الموقع",
     "rates": "تقيمات الضيوف",
     "similarAds": "اعلانات مشابهة",
-    "noDatafound": "نأسف لا توجد وحدات تناسب معاييرك"
+    "noDatafound": "نأسف لا توجد وحدات تناسب معاييرك",
+    "nights": "ليالي",
+    "cleanPrice": "سعر التنظيف",
+    "totalPrice": "السعر الاجمالي",
+    "chooseData": "اختر التاريخ"
   },
   "book": {
     "priceDetails": "تفاصيل السعر",
@@ -128,7 +132,9 @@
     "bookingStatus": "حاله الطلب",
     "villaDetails": "تفاصيل الوحده",
     "dates": "التواريخ",
-    "guestsNumber": "عدد الضيوف"
+    "guestsNumber": "عدد الضيوف",
+    "wallet": "المحفظه",
+    "online": "اونلاين"
   },
   "profile": {
     "myProfile": "ملفي لشخصي",
@@ -172,6 +178,16 @@
     "descriptionPlaceholder": "اضف بعض المعلومات عن العقار",
     "address": "عنوان العقار",
     "addYourProperty": "اضف عقارك"
+  },
+  "filter": {
+    "adults": "بالغون",
+    "age": "عمر +13",
+    "children": "اطفال",
+    "childrenAge": "عمر من 2 الي 3 سنين ",
+    "babbies": "رضع",
+    "babbiesAge": "اقل من 2",
+    "pets": "حيوانات اليفه",
+    "petsDes": "هل ستحضر حيوانات اليفه"
   },
   "cancel": "الغاء",
   "confirm": "تأكيد"

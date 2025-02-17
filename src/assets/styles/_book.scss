@@ -91,6 +91,19 @@
       }
     }
   }
+  .book-btn {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background-color: var(--main);
+    color: var(--white);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    &:hover {
+      background-color: var(--main-hover);
+    }
+  }
 
   .chooseHowToPay {
     border-bottom: 1px solid var(--border);

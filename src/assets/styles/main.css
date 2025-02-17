@@ -1147,17 +1147,23 @@ body .filter-modal .filter-field .body .counter-field h6 span {
 }
 body .filter-modal .filter-field .body .counter-field label {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 8px;
   font-weight: 500;
   justify-content: end;
 }
 body .filter-modal .filter-field .body .counter-field label .pets-label {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
   font-size: 14px;
   color: var(--main);
+  margin: 0;
+}
+body .filter-modal .filter-field .body .counter-field label .pets-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--main);
+  margin: 0;
 }
 body .filter-modal .filter-field .body .counter-field .counter-input {
   display: flex;
@@ -1200,6 +1206,7 @@ body .calender-container .custom-calendar {
   box-shadow: none;
   background-color: white;
   padding: 10px;
+  z-index: 0 !important;
 }
 body .calender-container .custom-calendar .rmdp-day.rmdp-selected span {
   background-color: var(--main) !important;
@@ -1208,8 +1215,8 @@ body .calender-container .custom-calendar .rmdp-day.rmdp-selected span {
   transition: var(--main-transition) !important;
 }
 body .calender-container .custom-calendar .rmdp-day.rmdp-today span {
-  background-color: var(--main) !important;
-  color: white !important;
+  background-color: white !important;
+  color: black !important;
   transition: var(--main-transition) !important;
 }
 body .calender-container .custom-calendar .rmdp-range {
@@ -1511,6 +1518,9 @@ body .for-rent-details .prop-data a {
 body .for-rent-details .prop-data a:hover {
   background-color: var(--main-hover);
 }
+body .for-rent-details .map-container {
+  margin-top: 1rem;
+}
 body .for-rent-details .map-container .map_section_view {
   height: auto;
 }
@@ -1620,6 +1630,19 @@ body .book-page .your-trip ul li .trip-data span:first-child {
 }
 body .book-page .your-trip ul li button {
   color: var(--main);
+}
+body .book-page .book-btn {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background-color: var(--main);
+  color: var(--white);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+body .book-page .book-btn:hover {
+  background-color: var(--main-hover);
 }
 body .book-page .chooseHowToPay {
   border-bottom: 1px solid var(--border);

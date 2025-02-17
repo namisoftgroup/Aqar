@@ -58,7 +58,7 @@ export default function FilterModal({ showModal, setShowModal }) {
             <label className="label"> كم عدد الضيوف ؟</label>
             <FilterGuests />
           </div>
-          <div className="filter-field">
+          {/* <div className="filter-field">
             <label className="label">مطلبات الايجار ؟ </label>
             <div className="body  ">
               {" "}
@@ -99,7 +99,7 @@ export default function FilterModal({ showModal, setShowModal }) {
                 </div>
               </label>
             </div>
-          </div>
+          </div> */}
         </form>
       </Modal.Body>
       <Modal.Footer className="modal-filter-footer">
