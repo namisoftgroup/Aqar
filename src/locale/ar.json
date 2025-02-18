@@ -8,18 +8,21 @@
     "myBookings": "حجوزاتي",
     "wallet": "المحفظه",
     "account": "اعدادت الحساب",
+    "notifications": "الاشعارات",
     "about": "عن المنصه",
     "contact": "تواصل معنا",
-    "pricavy": "سياسات الخصوصيه",
+    "privacy": "سياسات الخصوصيه",
     "terms": "الشروط والاحكام",
     "rateApp": "تقييم التطبيق",
     "english": "انجليزي",
     "arabic": "عربي",
     "autoTranslation": "الترجمة التلقائية",
     "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
     "register": "انشاء حساب",
     "help": "المساعده",
-    "myAccount": "حسابي"
+    "myAccount": "حسابي",
+    "showProfile": "عرض الملف الشخصي"
   },
   "footer": {
     "support": "المساعده و الدعم",
@@ -81,7 +84,8 @@
     "propertyType": "نوع العقار",
     "search": "بحث",
     "filter": "عوامل التصفيه",
-    "deleteAll": "مسح الكل"
+    "deleteAll": "مسح الكل",
+    "area": "المنطقه"
   },
   "forRent": {
     "viewOnMap": "عرض الخريطه",
@@ -95,7 +99,12 @@
     "userInfo": "معلومات المعلن",
     "location": "الموقع",
     "rates": "تقيمات الضيوف",
-    "similarAds": "اعلانات مشابهة"
+    "similarAds": "اعلانات مشابهة",
+    "noDatafound": "نأسف لا توجد وحدات تناسب معاييرك",
+    "nights": "ليالي",
+    "cleanPrice": "سعر التنظيف",
+    "totalPrice": "السعر الاجمالي",
+    "chooseData": "اختر التاريخ"
   },
   "book": {
     "priceDetails": "تفاصيل السعر",
@@ -124,7 +133,10 @@
     "bookingStatus": "حاله الطلب",
     "villaDetails": "تفاصيل الوحده",
     "dates": "التواريخ",
-    "guestsNumber": "عدد الضيوف"
+    "guestsNumber": "عدد الضيوف",
+    "wallet": "المحفظه",
+    "online": "اونلاين",
+    "date": "تاريخ :"
   },
   "profile": {
     "myProfile": "ملفي لشخصي",
@@ -132,7 +144,10 @@
     "edit": "تعديل",
     "hi": "اهلا",
     "yourBalance": "رصيد محفظتك",
-    "yourBookings": "عدد حجوزاتك"
+    "yourBookings": "عدد حجوزاتك",
+    "deleteAccount": "مسح الحساب",
+
+    "deleteAccountmessage": "هل انت متأكد من أنك تريد مسح لحساب"
   },
   "wallet": {
     "myWallet": "محفظتي",
@@ -165,5 +180,23 @@
     "descriptionPlaceholder": "اضف بعض المعلومات عن العقار",
     "address": "عنوان العقار",
     "addYourProperty": "اضف عقارك"
-  }
+  },
+  "filter": {
+    "adults": "بالغون",
+    "age": "عمر +13",
+    "children": "اطفال",
+    "childrenAge": "عمر من 2 الي 3 سنين ",
+    "babbies": "رضع",
+    "babbiesAge": "اقل من 2",
+    "pets": "حيوانات اليفه",
+    "petsDes": "هل ستحضر حيوانات اليفه"
+  },
+  "rate": {
+    "rate": "تقييم",
+    "yourReview": "مراجعتك",
+    "submit": "إرسال",
+    "addReview": "إضافة مراجعة وتقييم"
+  },
+  "cancel": "الغاء",
+  "confirm": "تأكيد"
 }

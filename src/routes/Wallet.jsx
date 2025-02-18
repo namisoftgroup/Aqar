@@ -2,10 +2,21 @@ import { useTranslation } from "react-i18next";
 import TransactionsTable from "../ui/wallet/TransactionsTable";
 import { useState } from "react";
 import ChargeModal from "../ui/modals/ChargeModal";
+import { useGetWalletOperations } from "../hooks/wallet/useGetWalletOperations";
+import DataLoader from "../ui/DataLoader";
+import EmptyData from "../ui/EmptyData";
+import { useSelector } from "react-redux";
 
 export default function Wallet() {
   const { t } = useTranslation();
   const [ShowChargeModal, setShowChargeModal] = useState();
+  const { walletOperations, isLoading } = useGetWalletOperations();
+  const { user } = useSelector((state) => state.user);
+
+  if (isLoading) return <DataLoader />;
+
+  if (!walletOperations && walletOperations.length === 0)
+    return <EmptyData text={"There is no prevous operations"} />;
   return (
     <>
       <section className="container my-5">
@@ -17,7 +28,8 @@ export default function Wallet() {
                 <div className="balance">
                   <img src="/images/balance.png" alt="balance-background" />
                   <p>
-                    2,500<span> ر.س </span>
+                    {user.wallet}
+                    <span> ر.س </span>
                   </p>
                 </div>
 
@@ -32,7 +44,7 @@ export default function Wallet() {
             <div className="col-lg-8">
               <div className="transactions-table">
                 <h3>{t("wallet.previousTransactions")}</h3>
-                <TransactionsTable />
+                <TransactionsTable walletOperations={walletOperations} />
               </div>
             </div>
           </div>

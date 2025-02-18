@@ -16,6 +16,7 @@ import Chat from "../routes/Chats";
 import ProtectionProvider from "./ProtectionProvider";
 import { Suspense } from "react";
 import Profile from "../routes/Profile";
+import DataLoader from "../ui/DataLoader";
 
 export const router = createBrowserRouter([
   {
@@ -28,17 +29,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "for-rent",
-        children: [
-          {
-            index: true,
-            element: <ForRent />,
-          },
-          {
-            path: ":id",
-            element: <ForRentDetails />,
-          },
-        ],
+        element: <ForRent />,
       },
+      {
+        path: "for-rent/:id",
+        element: <ForRentDetails />,
+      },
+
       {
         path: "about-us",
         element: <About />,
@@ -47,15 +44,12 @@ export const router = createBrowserRouter([
         path: "contact-us",
         element: <Contact />,
       },
-      {
-        path: "/booking",
-        element: <BookingRequest />,
-      },
+
       {
         path: "",
         element: (
           <ProtectionProvider>
-            <Suspense fallback={<div>Loading..........</div>}>
+            <Suspense fallback={<DataLoader />}>
               <Outlet />
             </Suspense>
           </ProtectionProvider>
@@ -74,7 +68,10 @@ export const router = createBrowserRouter([
               },
             ],
           },
-
+          {
+            path: "/booking/:id",
+            element: <BookingRequest />,
+          },
           {
             path: "favourites",
             element: <Favourites />,

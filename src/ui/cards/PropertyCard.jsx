@@ -1,20 +1,45 @@
 import { Link } from "react-router";
+import { useAddToFavorites } from "../../hooks/favorites/useAddToFavorites";
+import { PER_AR, PER_EN } from "../../utils/constants";
+import { useSelector } from "react-redux";
+import { useDeleteFromFavorites } from "../../hooks/favorites/useDeleteFromFavorites";
 
-export default function PropertyCard() {
+export default function PropertyCard({ ad }) {
+  const { addToFavorites, isPending } = useAddToFavorites();
+  const { deleteFromFavorites, isPending: isDeleteing } =
+    useDeleteFromFavorites();
+  const lang = useSelector((state) => state.language.lang);
+  function handleAddToFavorites() {
+    addToFavorites(ad.id);
+  }
+  function handleDeleteFromFavorites() {
+    deleteFromFavorites(ad.id);
+  }
+
   return (
-    <Link to={"1"}>
-      <div className="properties">
-        <div className="image_card">
-          <img src="/images/proparty.png" />
-          <button>
-            <i className="fa-light fa-heart"></i>
-          </button>
+    <div className="properties">
+      <div className="image_card">
+        <img src={ad.image} />
+        <div className="fav-btn">
+          {ad.is_favorite ? (
+            <i
+              onClick={handleDeleteFromFavorites}
+              className="fa-solid fa-heart"
+            ></i>
+          ) : (
+            <i onClick={handleAddToFavorites} className="fa-light fa-heart"></i>
+          )}
         </div>
+      </div>{" "}
+      <Link to={`/for-rent/${ad.id}`}>
         <div className="card_info">
-          <h2>فيلا للأيجار</h2>
+          <h2> {ad.title}</h2>
           <section className="info">
             <p>
-              <span> 250,000 ريال / سنوي</span>
+              <span>
+                {ad.price} ريال /{" "}
+                {lang === "ar" ? PER_AR[ad.per] : PER_EN[ad.per]}
+              </span>
             </p>
             <div className="flat-details">
               <span>
@@ -32,11 +57,11 @@ export default function PropertyCard() {
             </div>
 
             <p>
-              <span>شارع الحمسه،حي الرياض، فيلا ١٨</span>
+              <span> {ad.address} </span>
             </p>
           </section>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

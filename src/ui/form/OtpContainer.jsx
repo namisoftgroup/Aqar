@@ -65,7 +65,7 @@ const OtpContainer = ({ formData, setFormData }) => {
 
   return (
     <div className="otp-container" onPaste={handlePaste}>
-      {Array(5)
+      {Array(6)
         .fill(0)
         .map((_, index) => (
           <input

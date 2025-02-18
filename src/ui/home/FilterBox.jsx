@@ -3,41 +3,73 @@ import SelectField from "../form/SelectField";
 import { useTranslation } from "react-i18next";
 import SubmitButton from "../form/SubmitButton";
 import FilterModal from "../modals/FilterModal";
+import { useGetCities } from "../../hooks/useCities";
+import { useGetAreas } from "../../hooks/useAreas";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilter } from "../../redux/slices/filterSlice";
+import { useGetCategories } from "../../hooks/categories/useCategories";
+import { useSearchParams } from "react-router";
+import { handleApplyFilters } from "../../utils/helper";
 
 export default function FilterBox() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+  const [targetCity, setTargetCity] = useState();
+  const { cities } = useGetCities();
+  const { categories } = useGetCategories();
+  const { areas } = useGetAreas(targetCity, Boolean(targetCity));
+  const [, setSearchParams] = useSearchParams();
+  const formData = useSelector((state) => state.filter);
+
+  function handleCityChange(e) {
+    setTargetCity(e.target.value);
+    dispatch(setFilter({ city_id: e.target.value }));
+  }
+
+  function handleAreaChange(e) {
+    const { name, value } = e.target;
+    dispatch(setFilter({ [name]: value }));
+  }
+  function handleCategoryChange(e) {
+    dispatch(setFilter({ category_id: e.target.value }));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleApplyFilters(setSearchParams, formData);
+  }
+
   return (
     <div className="search-box">
-      <form className="search-form">
+      <form onSubmit={handleSubmit} className="search-form">
         <SelectField
-          value=""
-          id="property-type"
-          name="property-type"
+          value={targetCity}
+          id="city"
+          name="city"
           hiddenOption={{ value: "", label: t("home.city") }}
-          options={[
-            { value: "riyadh", label: "الرياض" },
-            { value: "jeddah", label: "جدة" },
-            { value: "dammam", label: "الدمام" },
-            { value: "makkah", label: "مكة المكرمة" },
-            { value: "madinah", label: "المدينة المنورة" },
-            { value: "khobar", label: "الخبر" },
-            { value: "taif", label: "الطائف" },
-            { value: "abha", label: "أبها" },
-          ]}
+          onChange={handleCityChange}
+          options={cities}
+        />
+
+        <SelectField
+          value={formData.area_id}
+          id="area"
+          name="area_id"
+          hiddenOption={{ value: "", label: t("home.area") }}
+          options={areas}
+          onChange={handleAreaChange}
         />
         <SelectField
-          value=""
-          id="property-type"
-          name="property-type"
+          value={formData.category_id}
+          id="area"
+          name="area_id"
           hiddenOption={{ value: "", label: t("home.propertyType") }}
-          options={[
-            { value: "studio", label: "إستودبو" },
-            { value: "apartment", label: "شقة" },
-            { value: "house", label: "فيلا" },
-          ]}
+          options={categories}
+          onChange={handleCategoryChange}
         />
-        <SubmitButton text={t("home.search")} img="/icons/search.svg" />
+
+        <SubmitButton className="p-3" img="/icons/search.svg" />
         <button
           className="filter-btn"
           onClick={(e) => {

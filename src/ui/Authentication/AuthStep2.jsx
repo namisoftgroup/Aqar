@@ -1,26 +1,27 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import { useCheckCode } from "../../hooks/auth/useCheckCode";
+import { setStep } from "../../redux/slices/authModalSlice";
 import OtpContainer from "../form/OtpContainer";
 import SubmitButton from "../form/SubmitButton";
 import ResendCode from "./ResendCode";
-import { setStep } from "../../redux/slices/authModalSlice";
 
 export default function AuthStep2({ otp, setOtp, formData }) {
   const { t } = useTranslation();
   const currentStep = useSelector((state) => state.authModal.currentStep);
   const lang = useSelector((state) => state.language.lang);
-  const [loading, setIsLoading] = useState();
   const dispatch = useDispatch();
+  const { checkCode, isPending } = useCheckCode();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(otp);
-    dispatch(setStep(3));
+
+    const reqBody = { ...otp, login: 1 };
+    checkCode(reqBody);
   }
 
   return (
-    <section className="col-6 d-flex justify-content-between flex-column  ">
+    <section className=" d-flex justify-content-between flex-column  ">
       <button
         className={`back-button  ${lang === "en" ? "en" : ""} `}
         onClick={() => dispatch(setStep(currentStep - 1))}
@@ -44,7 +45,7 @@ export default function AuthStep2({ otp, setOtp, formData }) {
             setFormData={setOtp}
           />
           <ResendCode />
-          <SubmitButton text={t("auth.confirm")} loading={loading} />
+          <SubmitButton text={t("auth.confirm")} loading={isPending} />
         </form>
       </section>
     </section>

@@ -54,7 +54,7 @@
       border: none;
     }
     .label {
-      font-size: 28px;
+      font-size: 22px;
       margin-bottom: 0.5rem;
     }
     .search-field {
@@ -73,104 +73,10 @@
       &.en {
         background-position: left 1rem center;
       }
-      &:focus {
+      &:focus,
+      &:not(:placeholder-shown) {
         border-color: var(--main);
         background-image: none;
-      }
-    }
-
-    .calender-container {
-      display: flex;
-      justify-content: center;
-      align-items: start;
-      flex-direction: column;
-      width: 100%;
-      padding: 1rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-
-      // Custom Calendar Styling
-      .custom-calendar {
-        border-radius: 0 !important;
-        box-shadow: none;
-        background-color: white;
-        padding: 10px;
-
-        // Selected Date Style
-        .rmdp-day.rmdp-selected span {
-          background-color: var(--main) !important;
-          color: white !important;
-          border-radius: 50%;
-          transition: var(--main-transition) !important;
-        }
-
-        .rmdp-day.rmdp-today span {
-          background-color: var(--main) !important;
-          color: white !important;
-          transition: var(--main-transition) !important;
-        }
-
-        // Middle Dates in Range
-        .rmdp-range {
-          background-color: var(--main) !important;
-          box-shadow: none;
-          transition: var(--main-transition) !important;
-        }
-
-        // Hover Effect
-        .rmdp-day:not(.rmdp-disabled):hover span {
-          background-color: var(--main) !important;
-          color: white !important;
-          border-radius: 50%;
-          transition: var(--main-transition) !important;
-        }
-
-        // Header Style
-        .rmdp-header {
-          background-color: white;
-          padding: 8px;
-          font-weight: bold;
-          color: var(--grey) !important;
-          transition: var(--main-transition) !important;
-
-          .rmdp-header-values {
-            font-weight: bold;
-            color: var(--grey) !important;
-            transition: var(--main-transition) !important;
-          }
-        }
-
-        // Customize Navigation Buttons
-        .rmdp-arrow-container {
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          margin: 0;
-          transition: var(--main-transition) !important;
-
-          i {
-            margin: 0;
-            border-color: var(--main);
-            transition: var(--main-transition) !important;
-          }
-
-          &:hover {
-            background-color: var(--main) !important;
-            border-radius: 50%;
-          }
-
-          &:hover i {
-            border-color: var(--white) !important;
-          }
-        }
-
-        // Weekdays Styling
-        .rmdp-week {
-          .rmdp-week-day {
-            color: var(--main);
-            transition: var(--main-transition) !important;
-          }
-        }
       }
     }
 
@@ -213,6 +119,27 @@
             display: block;
           }
         }
+        label {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          font-weight: 500;
+          justify-content: end;
+          .pets-label {
+            font-size: 14px;
+            color: var(--main);
+            margin: 0;
+          }
+          .pets-input {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--main);
+            margin: 0;
+          }
+        }
+
         .counter-input {
           display: flex;
           align-items: center;
@@ -237,6 +164,102 @@
             text-align: center;
           }
         }
+      }
+    }
+  }
+}
+
+.calender-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  // Custom Calendar Styling
+  .custom-calendar {
+    border-radius: 0 !important;
+    box-shadow: none;
+    background-color: white;
+    padding: 10px;
+    z-index: 0 !important;
+
+    // Selected Date Style
+    .rmdp-day.rmdp-selected span {
+      background-color: var(--main) !important;
+      color: white !important;
+      border-radius: 50%;
+      transition: var(--main-transition) !important;
+    }
+
+    .rmdp-day.rmdp-today span {
+      background-color: white !important;
+      color: black !important;
+      transition: var(--main-transition) !important;
+    }
+
+    // Middle Dates in Range
+    .rmdp-range {
+      background-color: var(--main) !important;
+      box-shadow: none;
+      transition: var(--main-transition) !important;
+    }
+
+    // Hover Effect
+    .rmdp-day:not(.rmdp-disabled):hover span {
+      background-color: var(--main) !important;
+      color: white !important;
+      border-radius: 50%;
+      transition: var(--main-transition) !important;
+    }
+
+    // Header Style
+    .rmdp-header {
+      background-color: white;
+      padding: 8px;
+      font-weight: bold;
+      color: var(--grey) !important;
+      transition: var(--main-transition) !important;
+
+      .rmdp-header-values {
+        font-weight: bold;
+        color: var(--grey) !important;
+        transition: var(--main-transition) !important;
+      }
+    }
+
+    // Customize Navigation Buttons
+    .rmdp-arrow-container {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 0;
+      transition: var(--main-transition) !important;
+
+      i {
+        margin: 0;
+        border-color: var(--main);
+        transition: var(--main-transition) !important;
+      }
+
+      &:hover {
+        background-color: var(--main) !important;
+        border-radius: 50%;
+      }
+
+      &:hover i {
+        border-color: var(--white) !important;
+      }
+    }
+
+    // Weekdays Styling
+    .rmdp-week {
+      .rmdp-week-day {
+        color: var(--main);
+        transition: var(--main-transition) !important;
       }
     }
   }

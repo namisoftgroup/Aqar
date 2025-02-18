@@ -9,13 +9,14 @@
     background-color: transparent;
     position: relative;
     max-width: 140px;
+    width: 140px;
     img {
       width: 100%;
       object-fit: cover;
       aspect-ratio: 1/1;
       border-radius: 8px;
     }
-    button {
+    .fav-btn {
       @include clearInput;
       background-color: transparent;
       position: absolute;
@@ -24,6 +25,7 @@
       transform: translate(-50%, 50%);
       width: 20px;
       height: 20px;
+      cursor: pointer;
       i {
         font-size: 20px;
         color: var(--main);
@@ -50,6 +52,10 @@
         gap: 8px;
         font-size: 14px;
         color: var(--dark);
+        span {
+          display: flex;
+          gap: 2px;
+        }
       }
       p {
         font-size: 14px;
@@ -129,7 +135,7 @@
     padding: 0 1rem 1rem;
     margin-top: 8px;
     font-size: 14px;
-    
+
     a {
       transition: var(--main-transition);
       margin: 0;

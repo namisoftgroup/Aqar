@@ -1,12 +1,15 @@
-import { RouterProvider } from "react-router";
-import { router } from "./providers/router";
 import { useEffect } from "react";
-import i18n from "./utils/i18n";
 import { useSelector } from "react-redux";
+import { RouterProvider } from "react-router";
+import useAuth from "./hooks/helper/useAuth";
+import { router } from "./providers/router";
+import DataLoader from "./ui/DataLoader";
+import i18n from "./utils/i18n";
+import { Toaster } from "sonner";
 
 function App() {
   const { lang } = useSelector((state) => state.language);
-
+  const { loading } = useAuth();
   useEffect(() => {
     localStorage.setItem("lang", lang);
     const body = document.querySelector("body");
@@ -14,7 +17,22 @@ function App() {
     i18n.changeLanguage(lang);
   }, [lang]);
 
-  return <RouterProvider router={router} />;
+  return loading ? (
+    <DataLoader />
+  ) : (
+    <>
+      <Toaster
+        toastOptions={{
+          style: {
+            padding: "1rem",
+          },
+        }}
+        position="top-center"
+        richColors
+      />
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;

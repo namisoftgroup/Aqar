@@ -8,6 +8,7 @@
     "myBookings": "My bookings",
     "wallet": "Wallet",
     "account": "Account settings",
+    "notifications": "Notifications",
     "about": "About us",
     "contact": "Contact us",
     "privacy": "Privacy Policy",
@@ -17,9 +18,11 @@
     "arabic": "Arabic",
     "autoTranslation": "Auto translation",
     "login": "Login",
+    "logout": "Logout",
     "register": "Register",
     "help": "Help",
-    "myAccount": "My account"
+    "myAccount": "My account",
+    "showProfile": "Show profile"
   },
   "footer": {
     "support": "Help & Support",
@@ -81,7 +84,8 @@
     "propertyType": "Property Type",
     "search": "Search",
     "filter": "Filter",
-    "deleteAll": "Delete All"
+    "deleteAll": "Delete All",
+    "Area": "Area"
   },
   "forRent": {
     "viewOnMap": "View on Map",
@@ -95,7 +99,12 @@
     "userInfo": "Advertiser Information",
     "location": "Location",
     "rates": "Guest Reviews",
-    "similarAds": "Similar Ads"
+    "similarAds": "Similar Ads",
+    "noDatafound": " we are sorry, no Data Match Your Cariteria",
+    "nights": "nights",
+    "cleanPrice": "clean Price",
+    "totalPrice": "total Price",
+    "chooseData": "Choose Dates"
   },
   "book": {
     "priceDetails": " Price Details",
@@ -124,7 +133,10 @@
     "bookingStatus": "Booking Status",
     "villaDetails": "Property Details",
     "dates": "Dates",
-    "guestsNumber": "Guests Number"
+    "guestsNumber": "Guests Number",
+    "wallet": "Wallet",
+    "online": "online",
+    "date": "Date:"
   },
   "profile": {
     "myProfile": "My Profile",
@@ -132,7 +144,9 @@
     "edit": "Edit",
     "hi": "Hi",
     "yourBalance": "Your wallet balance",
-    "yourBookings": "Your booking number"
+    "yourBookings": "Your booking number",
+    "deleteAccount": "Delete Account",
+    "deleteAccountmessage": "Are you sure you want to delete your account?"
   },
   "wallet": {
     "myWallet": "My Wallet",
@@ -165,5 +179,25 @@
     "descriptionPlaceholder": "Add some information about the property",
     "address": "Property Adress",
     "addYourProperty": "Add your property"
-  }
+  },
+  "filter": {
+    "adults": "Adults",
+    "age": "age +13",
+    "children": "Children",
+    "childrenAge": "Ages from 2 to 12 years ",
+    "babbies": "Babbies",
+    "babbiesAge": "less than 2 years",
+    "pets": "Pets",
+    "petsDes": "Will you be bringing pets?"
+  },
+  "rate": {
+    "rate": "Rate",
+    "yourReview": "Your Review",
+    "submit": "Submit",
+    "addReview": "Add Review and Rating"
+  },
+  "cancel": "Cancel",
+  "adults": "Adults",
+  "children": "Children",
+  "babbies": "Babbies"
 }

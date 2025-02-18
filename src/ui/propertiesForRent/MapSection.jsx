@@ -8,8 +8,9 @@ import {
 import { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import PropertyCard from "./../cards/PropertyCard";
+import { useGetAds } from "../../hooks/ads/useGetAds";
 
-export default function MapSection() {
+export default function MapSection({ properties }) {
   const { t } = useTranslation();
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -22,20 +23,20 @@ export default function MapSection() {
   const [userLocation, setUserLocation] = useState(null);
   const [activeMarker, setActiveMarker] = useState(null);
 
-  const properties = [
-    { position: { lat: 21.285407, lng: 39.237551 }, price: "100" },
-    { position: { lat: 21.4245, lng: 39.8262 }, price: "200" },
-    { position: { lat: 21.4224, lng: 39.8256 }, price: "150" },
-    { position: { lat: 21.3891, lng: 39.8579 }, price: "300" },
-    { position: { lat: 21.3178, lng: 39.2192 }, price: "120" },
-    { position: { lat: 21.5128, lng: 39.2194 }, price: "250" },
-    { position: { lat: 21.5438, lng: 39.1722 }, price: "170" },
-    { position: { lat: 21.2938, lng: 39.1922 }, price: "80" },
-    { position: { lat: 21.4138, lng: 39.0922 }, price: "110" },
-    { position: { lat: 21.4638, lng: 39.0822 }, price: "140" },
-    { position: { lat: 21.2138, lng: 39.1822 }, price: "90" },
-    { position: { lat: 21.413, lng: 39.182 }, price: "180" },
-  ];
+  // const properties = [
+  //   { position: { lat: 21.285407, lng: 39.237551 }, price: "100" },
+  //   { position: { lat: 21.4245, lng: 39.8262 }, price: "200" },
+  //   { position: { lat: 21.4224, lng: 39.8256 }, price: "150" },
+  //   { position: { lat: 21.3891, lng: 39.8579 }, price: "300" },
+  //   { position: { lat: 21.3178, lng: 39.2192 }, price: "120" },
+  //   { position: { lat: 21.5128, lng: 39.2194 }, price: "250" },
+  //   { position: { lat: 21.5438, lng: 39.1722 }, price: "170" },
+  //   { position: { lat: 21.2938, lng: 39.1922 }, price: "80" },
+  //   { position: { lat: 21.4138, lng: 39.0922 }, price: "110" },
+  //   { position: { lat: 21.4638, lng: 39.0822 }, price: "140" },
+  //   { position: { lat: 21.2138, lng: 39.1822 }, price: "90" },
+  //   { position: { lat: 21.413, lng: 39.182 }, price: "180" },
+  // ];
 
   const handleZoomIn = () => setZoom((prev) => Math.min(prev + 1, 21));
   const handleZoomOut = () => setZoom((prev) => Math.max(prev - 1, 0));
@@ -141,13 +142,6 @@ export default function MapSection() {
           </div>
         )}
       </div>
-      {/* 
-      <button className="view_map" onClick={() => setViewMap(false)}>
-        <div className="icon">
-          <img src="/icons/listing.svg" alt="map" className="to_dark" />
-        </div>
-        {t("viewListing")}
-      </button> */}
     </section>
   );
 }

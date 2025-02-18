@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
+import { formateDateDetails } from "../../utils/helper";
 import StarsRate from "../StarsRate";
 
-export default function GuestRateCard() {
+export default function GuestRateCard({ rate }) {
+  const lang = useSelector((state) => state.language.lang);
+
   return (
     <section className="guest-rates-card">
       <div className="guest-info">
@@ -8,12 +12,17 @@ export default function GuestRateCard() {
           <img src="/images/avatar.png" alt="User" />
         </div>
         <div className="guest-data">
-          <h4>سعد قحتاني</h4>
-          <p className="rate">5 فبراير 2025</p>
-          <StarsRate rate={4} />
+          <h4> {rate.user.name} </h4>
+          <p className="rate">
+            {formateDateDetails(
+              rate.created_at,
+              lang === "ar" ? "ar-EG" : "en-US"
+            )}
+          </p>
+          <StarsRate rate={rate.rate} />
         </div>
       </div>
-      <p>الفيلا مرا ممتازه و كمام الانتر نت سريع</p>
+      <p> </p>
     </section>
   );
 }

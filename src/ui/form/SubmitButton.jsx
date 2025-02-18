@@ -12,7 +12,7 @@ export default function SubmitButton({
       style={{ opacity: loading ? 0.7 : 1 }}
     >
       {loading ? (
-        <i className="fa-duotone fa-regular fa-circle-notch fa-spin"></i>
+        <i className="fa-solid fa-spinner fa-spin"></i>
       ) : (
         <>
           {img && <img className="to_white" src={img} alt={text} />}

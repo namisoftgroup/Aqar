@@ -81,6 +81,10 @@ button {
   transition: var(--transition);
   color: #000;
 }
+input[type="checkbox"] {
+  accent-color: var(--main);
+}
+
 .stars_rate {
   display: flex;
   align-items: center;
@@ -130,4 +134,33 @@ button {
   &.completed {
     color: #000000;
   }
+}
+
+/* Data loader styles  */
+.tableLoader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.tableLoader .loader--style8 {
+  width: 80px;
+  height: 80px;
+}
+
+.tableLoader svg path,
+.tableLoader svg rect {
+  fill: var(--main-color);
+}
+
+.empty-data {
+  font-size: 40px;
+  color: var(--main);
+  font-weight: 500;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

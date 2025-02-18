@@ -16,13 +16,11 @@ export default function SelectField({
       )}
       <Form.Select {...props}>
         {hiddenOption && (
-          <option value={hiddenOption.value} disabled>
-            {hiddenOption.label}
-          </option>
+          <option value={hiddenOption.value}>{hiddenOption.label}</option>
         )}
         {options?.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
+          <option key={option.id} value={option.id}>
+            {option.name}
           </option>
         ))}
       </Form.Select>

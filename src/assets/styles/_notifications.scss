@@ -30,13 +30,15 @@
         gap: 16px;
 
         .notification-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 42px;
-          height: 42px;
-          background-color: #f1f1f1;
-          border-radius: 50%;
+          img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background-color: #f1f1f1;
+            border-radius: 50%;
+          }
         }
 
         .notification-details {
