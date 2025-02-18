@@ -16,7 +16,7 @@
       aspect-ratio: 1/1;
       border-radius: 8px;
     }
-    button {
+    .fav-btn {
       @include clearInput;
       background-color: transparent;
       position: absolute;
@@ -25,6 +25,7 @@
       transform: translate(-50%, 50%);
       width: 20px;
       height: 20px;
+      cursor: pointer;
       i {
         font-size: 20px;
         color: var(--main);

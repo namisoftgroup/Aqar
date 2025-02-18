@@ -11,10 +11,13 @@ export default function FilterCalender() {
   const formData = useSelector((state) => state.filter);
   const lang = useSelector((state) => state.language.lang);
   const dispatch = useDispatch();
-  const [value, setValue] = useState([]);
   const [nights, setNights] = useState(0);
   const [dateRange, setDateRange] = useState({ from: "", to: "" });
-
+  const storedDates =
+    formData.from_date && formData.to_date
+      ? [new Date(formData.from_date), new Date(formData.to_date)]
+      : [];
+  const [value, setValue] = useState(storedDates);
   useEffect(() => {
     if (value.length === 2) {
       const fromDate = formatDate(value[0]);
@@ -33,7 +36,6 @@ export default function FilterCalender() {
 
   function handleChange(selectedDates) {
     setValue(selectedDates);
-    console.log(formData);
   }
 
   return (

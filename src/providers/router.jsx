@@ -29,17 +29,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "for-rent",
-        children: [
-          {
-            index: true,
-            element: <ForRent />,
-          },
-          {
-            path: ":id",
-            element: <ForRentDetails />,
-          },
-        ],
+        element: <ForRent />,
       },
+      {
+        path: "for-rent/:id",
+        element: <ForRentDetails />,
+      },
+
       {
         path: "about-us",
         element: <About />,

@@ -11,7 +11,7 @@ export default function AuthStep1({ formData, setFormData, setOtp }) {
   function handleChange(e) {
     setFormData((prevData) => ({ ...prevData, phone: e.target.value }));
   }
-  const { sendOtp, isLoading } = useSendOtp();
+  const { sendOtp, isPending } = useSendOtp();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -42,7 +42,7 @@ export default function AuthStep1({ formData, setFormData, setOtp }) {
           type="number"
           placeholder={t("auth.phoneNumber")}
         />
-        <SubmitButton text={t("auth.enter")} loading={isLoading} />
+        <SubmitButton text={t("auth.enter")} loading={isPending} />
       </form>
     </>
   );

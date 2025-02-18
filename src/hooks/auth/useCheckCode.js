@@ -15,25 +15,18 @@ export function useCheckCode() {
     document.cookie = `${name}=${value}; expires=${expires}; path=/; secure; samesite=strict`;
   };
 
-  const { mutate: checkCode, isLoading } = useMutation({
+  const { mutate: checkCode, isPending } = useMutation({
     mutationFn: ({ code, phone, hashed_code, login }) =>
       apiCheckCode({ code, phone, hashed_code, login }),
     onSuccess: (data) => {
       dispatch(setUser(data.data));
-      console.log(data.data);
-
       queryClient.setQueryData(["profile"], data.data);
-      setCookie("id", data.data.id, 365); // Set cookie for 1 year
-      setCookie("token", data.data.token, 365); // Set cookie for 1 year
+      setCookie("id", data.data.id, 365);
+      setCookie("token", data.data.token, 365);
 
       axiosInstance.defaults.headers.common[
         "Authorization"
       ] = `${data.data.token}`;
-
-      console.log(
-        "Axios Authorization Header:",
-        axiosInstance.defaults.headers.common["Authorization"]
-      );
 
       toast.success("Login success");
 
@@ -49,5 +42,5 @@ export function useCheckCode() {
     },
   });
 
-  return { checkCode, isLoading };
+  return { checkCode, isPending };
 }

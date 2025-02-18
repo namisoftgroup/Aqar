@@ -8,6 +8,7 @@
     "myBookings": "حجوزاتي",
     "wallet": "المحفظه",
     "account": "اعدادت الحساب",
+    "notifications": "الاشعارات",
     "about": "عن المنصه",
     "contact": "تواصل معنا",
     "privacy": "سياسات الخصوصيه",
@@ -134,7 +135,8 @@
     "dates": "التواريخ",
     "guestsNumber": "عدد الضيوف",
     "wallet": "المحفظه",
-    "online": "اونلاين"
+    "online": "اونلاين",
+    "date": "تاريخ :"
   },
   "profile": {
     "myProfile": "ملفي لشخصي",
@@ -188,6 +190,12 @@
     "babbiesAge": "اقل من 2",
     "pets": "حيوانات اليفه",
     "petsDes": "هل ستحضر حيوانات اليفه"
+  },
+  "rate": {
+    "rate": "تقييم",
+    "yourReview": "مراجعتك",
+    "submit": "إرسال",
+    "addReview": "إضافة مراجعة وتقييم"
   },
   "cancel": "الغاء",
   "confirm": "تأكيد"

@@ -68,6 +68,9 @@
 .why-us-section {
   padding: 2rem 3rem;
   min-height: 700px;
+  @media (max-width: 576px) {
+    padding: 8px;
+  }
   .why-us-intro {
     display: flex;
     flex-direction: column;
@@ -77,8 +80,14 @@
     background-image: url(/images/property_slide.png);
     background-repeat: no-repeat;
     background-size: cover;
+    @media (max-width: 576px) {
+      padding: 16px 20px;
+    }
     h2 {
       font-size: 28px;
+      @media (max-width: 576px) {
+        font-size: 20px;
+      }
     }
     p {
       font-size: 16px;
@@ -109,6 +118,7 @@
       gap: 1rem;
       padding: 1rem 1.5rem;
       background-color: #f7f7f7;
+      height: 100%;
     }
   }
 }

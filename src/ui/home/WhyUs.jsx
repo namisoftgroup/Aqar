@@ -49,7 +49,7 @@ export default function WhyUs() {
         <section className="col-lg-7 why-us-features">
           <div className="row g-3 feature-grid">
             {features.map((feature, index) => (
-              <div className="col-6 feature-item" key={index}>
+              <div className="col-sm-6" key={index}>
                 <div className="feature-content">
                   <img
                     src={feature.icon}

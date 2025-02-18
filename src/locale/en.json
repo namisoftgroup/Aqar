@@ -8,6 +8,7 @@
     "myBookings": "My bookings",
     "wallet": "Wallet",
     "account": "Account settings",
+    "notifications": "Notifications",
     "about": "About us",
     "contact": "Contact us",
     "privacy": "Privacy Policy",
@@ -134,7 +135,8 @@
     "dates": "Dates",
     "guestsNumber": "Guests Number",
     "wallet": "Wallet",
-    "online": "online"
+    "online": "online",
+    "date": "Date:"
   },
   "profile": {
     "myProfile": "My Profile",
@@ -188,5 +190,14 @@
     "pets": "Pets",
     "petsDes": "Will you be bringing pets?"
   },
-  "cancel": "Cancel"
+  "rate": {
+    "rate": "Rate",
+    "yourReview": "Your Review",
+    "submit": "Submit",
+    "addReview": "Add Review and Rating"
+  },
+  "cancel": "Cancel",
+  "adults": "Adults",
+  "children": "Children",
+  "babbies": "Babbies"
 }

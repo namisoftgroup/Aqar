@@ -13,6 +13,7 @@ export default function Header() {
         <button onClick={() => setOpenMenu((open) => !open)}>
           <i ref={menuToggleButton} className="fa-solid fa-bars"></i>
         </button>
+        <div className={`overlay  ${openMenu ? "show" : ""}`}></div>
         <SideMenu
           toggleRef={menuToggleButton}
           openMenu={openMenu}

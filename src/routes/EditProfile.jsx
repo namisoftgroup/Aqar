@@ -81,7 +81,7 @@ export default function EditProfile() {
           </label>
           <InputField
             onChange={handleChange}
-            value={user?.name}
+            value={formData?.name}
             requried="true"
             type="text"
             name="name"
@@ -90,7 +90,7 @@ export default function EditProfile() {
           <InputField
             onChange={handleChange}
             requried="true"
-            value={user?.email}
+            value={formData?.email}
             type="email"
             name="email"
             placeholder={t("auth.email")}

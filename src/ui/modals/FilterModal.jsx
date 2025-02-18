@@ -15,13 +15,32 @@ export default function FilterModal({ showModal, setShowModal }) {
   const navigate = useNavigate();
   function handleSearch(e) {
     dispatch(setFilter({ search: e.target.value }));
-    console.log(formData);
   }
   const [, setSearchParms] = useSearchParams();
   function handleSumit(e) {
     e.preventDefault();
     navigate("/for-rent");
     handleApplyFilters(setSearchParms, formData);
+    setShowModal(false);
+  }
+
+  function resetFilters() {
+    dispatch(
+      setFilter({
+        search: "",
+        category_id: "",
+        city_id: "",
+        user_id: "",
+        adult_number: "",
+        children_number: "",
+        baby_number: "",
+        with_pits: "",
+        area_id: "",
+        from_date: "",
+        to_date: "",
+      })
+    );
+    setSearchParms("");
     setShowModal(false);
   }
   return (
@@ -106,7 +125,9 @@ export default function FilterModal({ showModal, setShowModal }) {
         <button onClick={handleSumit} className="btn-apply">
           {t("home.search")}
         </button>
-        <button className="btn-cancel">{t("home.deleteAll")}</button>
+        <button onClick={resetFilters} className="btn-cancel">
+          {t("home.deleteAll")}
+        </button>
       </Modal.Footer>
     </Modal>
   );

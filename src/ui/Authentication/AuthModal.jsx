@@ -21,6 +21,8 @@ export default function AuthModal() {
     code: "",
     phone: "",
   });
+ 
+
   const renderStep = () => {
     switch (currentStep) {
       case 1:

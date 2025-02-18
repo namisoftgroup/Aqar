@@ -33,7 +33,6 @@ export default function AuthStep3() {
     imgView.current.src = imageUrl;
     setFormData({ ...formData, [e.target.name]: imageUrl });
   };
-  console.log(formData);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -44,6 +43,7 @@ export default function AuthStep3() {
       if (res.data.code === 200) {
         dispatch(setUser(res.data.data));
         toast.success("Profile updated successfully");
+        
       } else {
         toast.error(res.data.message);
       }

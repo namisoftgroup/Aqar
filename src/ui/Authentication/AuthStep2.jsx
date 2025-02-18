@@ -1,23 +1,17 @@
-import { useState } from "react";
-import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "sonner";
-import { checkCode } from "../../apiServices/apiAuth";
-import { closeAuthModal, setStep } from "../../redux/slices/authModalSlice";
-import { setUser } from "../../redux/slices/userSlice";
-import axiosInstance from "../../utils/axios";
+import { useCheckCode } from "../../hooks/auth/useCheckCode";
+import { setStep } from "../../redux/slices/authModalSlice";
 import OtpContainer from "../form/OtpContainer";
 import SubmitButton from "../form/SubmitButton";
 import ResendCode from "./ResendCode";
-import { useCheckCode } from "../../hooks/auth/useCheckCode";
 
 export default function AuthStep2({ otp, setOtp, formData }) {
   const { t } = useTranslation();
   const currentStep = useSelector((state) => state.authModal.currentStep);
   const lang = useSelector((state) => state.language.lang);
   const dispatch = useDispatch();
-  const { checkCode, isLoading } = useCheckCode();
+  const { checkCode, isPending } = useCheckCode();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -51,7 +45,7 @@ export default function AuthStep2({ otp, setOtp, formData }) {
             setFormData={setOtp}
           />
           <ResendCode />
-          <SubmitButton text={t("auth.confirm")} loading={isLoading} />
+          <SubmitButton text={t("auth.confirm")} loading={isPending} />
         </form>
       </section>
     </section>

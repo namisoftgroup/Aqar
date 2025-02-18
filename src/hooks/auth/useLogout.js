@@ -14,7 +14,7 @@ export function useLogout() {
   const token = cookies?.token;
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const { mutate: logout, isLoading } = useMutation({
+  const { mutate: logout, isPending } = useMutation({
     mutationFn: () => apiLogout(token),
     onSuccess: () => {
       dispatch(setUser({}));
@@ -31,5 +31,5 @@ export function useLogout() {
     },
   });
 
-  return { logout, isLoading };
+  return { logout, isPending };
 }

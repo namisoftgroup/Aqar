@@ -1,26 +1,23 @@
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { formateDateDetails } from "../../utils/helper";
 
-const transactions = [
-  { id: 1, type: "deposit", amount: "30 رس", date: "6 أكتوبر" },
-  { id: 2, type: "withdraw", amount: "30 رس", date: "6 أكتوبر" },
-];
-
-export default function TransactionsTable() {
+export default function TransactionsTable({ walletOperations }) {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.language.lang);
+  const locale = lang === "ar" ? "ar-EG" : "en-US";
   return (
     <div className="transactions-container">
       <table className={`transactions-table ${lang === "en" ? "en" : ""}`}>
         <thead>
           <tr>
             <th>{t("wallet.transaction")}</th>
-            <th>التاريخ</th>
-            <th>المبلغ</th>
+            <th>{t("wallet.date")}</th>
+            <th>{t("wallet.price")}</th>
           </tr>
         </thead>
         <tbody>
-          {transactions.map((tx) => (
+          {walletOperations.map((tx) => (
             <tr key={tx.id}>
               <td className="transaction-type">
                 {tx.type === "deposit" ? (
@@ -34,7 +31,7 @@ export default function TransactionsTable() {
                 )}
                 <span>{tx.type === "deposit" ? "إيداع" : "خصم"}</span>
               </td>
-              <td>{tx.date}</td>
+              <td>{formateDateDetails(new Date(tx.created_at), locale)}</td>
               <td className="transaction-amount">{tx.amount}</td>
             </tr>
           ))}

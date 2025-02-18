@@ -20,3 +20,23 @@ export async function getBookings() {
     throw new Error("Error booking ad");
   }
 }
+export async function getBookingDeatils(id) {
+  try {
+    const res = await axiosInstance.post("user/get_booking_details", { id });
+    const data = res.data.data;
+    return data;
+  } catch (e) {
+    console.log(e.message);
+    throw new Error("Error booking ad");
+  }
+}
+export async function addBookingRate(reqBody) {
+  try {
+    const res = await axiosInstance.post("user/create_rate", reqBody);
+    const data = res.data;
+    return data;
+  } catch (e) {
+    console.log(e.message);
+    throw new Error("Error booking ad");
+  }
+}

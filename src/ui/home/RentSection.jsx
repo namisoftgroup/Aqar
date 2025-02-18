@@ -8,6 +8,7 @@ import EmptyData from "../EmptyData";
 export default function RentSection() {
   const { t } = useTranslation();
   const { ads, isLoading } = useGetAds();
+  
   if (isLoading) {
     return <DataLoader />;
   }

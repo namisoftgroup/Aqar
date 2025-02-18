@@ -6,9 +6,8 @@
   gap: 1rem;
 
   img {
-    width: 60px;
+    width: 63px;
     height: 60px;
-    border-radius: 50%;
   }
 
   .logo-text {
@@ -56,7 +55,7 @@
 
   .header-settings {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     align-items: center;
     .rounded-btn {
       width: 40px;
@@ -161,6 +160,7 @@
       right: auto;
     }
   }
+
   .user {
     display: flex;
     align-items: center;
@@ -231,5 +231,24 @@
       background: var(--btn-bg) !important;
       color: var(--white);
     }
+  }
+}
+.overlay {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 100px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+  opacity: 0;
+  transition: var(--main-transition);
+  &.show {
+    opacity: 1;
+    display: flex;
   }
 }

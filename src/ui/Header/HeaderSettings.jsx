@@ -8,7 +8,7 @@ export default function HeaderSettings() {
   return (
     <section className="header-settings">
       {isAuthed && (
-        <Link to="/notifications" className="rounded-btn">
+        <Link to="/notifications" className="rounded-btn d-none d-sm-flex">
           <i className="fa-light fa-bell"></i>
         </Link>
       )}

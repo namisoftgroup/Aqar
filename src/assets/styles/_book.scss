@@ -186,6 +186,7 @@
 }
 
 .order-prop-details {
+  width: 100%;
   h3 {
     font-size: 22px;
     margin-bottom: 1rem;
@@ -205,6 +206,46 @@
     span {
       &:first-child {
         font-weight: 500;
+      }
+    }
+  }
+}
+
+.form {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  h4 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .stars {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    li {
+      color: #d9d9d9;
+      &.star {
+        color: #ffd500;
+      }
+    }
+    .star-rating-service {
+      display: flex;
+      flex-direction: row-reverse;
+      align-self: self-start;
+      gap: 12px;
+      label {
+        cursor: pointer;
+        color: #d9d9d9;
+        &.active {
+          color: gold;
+        }
+      }
+      input {
+        appearance: none;
+        display: none;
       }
     }
   }

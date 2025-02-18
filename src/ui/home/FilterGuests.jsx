@@ -20,7 +20,8 @@ export default function FilterGuests() {
     );
   }
   function handleChange(e) {
-    dispatch(setFilter({ "with-pits": e.target.value }));
+    e.target.checked;
+    dispatch(setFilter({ with_pits: Number(e.target.checked) }));
   }
   return (
     <div>
@@ -90,13 +91,10 @@ export default function FilterGuests() {
               <input
                 onChange={handleChange}
                 type="checkbox"
-                value={formData.with_pits === "" ? 0 : formData.with_pits}
+                checked={formData.with_pits === 0 ? 0 : formData.with_pits}
               />
             </div>
           </label>
-          {/* <button onClick={() => handleIncrease("with_pits")}>
-              <i className="fa-regular fa-plus"></i>
-            </button> */}
         </div>
       </div>
     </div>
