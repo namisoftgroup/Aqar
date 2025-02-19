@@ -1,13 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router";
+import { useSelector } from "react-redux";
+import { useCreateMessage } from "../../hooks/chats/useCreateMessage";
+import MessageBubble from "./MessageBubble";
+import RecordingControls from "./RecordingControls";
 
 export default function ChatRoom({ chat }) {
-  const [loading, setLoading] = useState(false);
+  const user = useSelector((state) => state.user.user);
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState({
-    // from_id: user?.id,
-    // chat_id: chat?.id,
+    from_id: user?.id,
+    chat_id: chat?.id,
     message: "",
     type: "",
   });
@@ -17,25 +20,23 @@ export default function ChatRoom({ chat }) {
   const formRef = useRef(null);
   const chatContainerRef = useRef(null);
   const recordingIntervalRef = useRef(null);
-
   const { t } = useTranslation();
-  //   const { user } = useSelector((state) => state.authedUser);
   const [fileName, setFileName] = useState("");
-
+  const { createMessage, isPending } = useCreateMessage();
   useEffect(() => {
     if (chat) {
       setMessages(chat?.messages.slice() || []);
     }
   }, [chat]);
-
   // Scroll to the bottom of the chat container when messages change
   useEffect(() => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
-    }
+    requestAnimationFrame(() => {
+      chatContainerRef.current?.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    });
   }, [messages]);
-
   // Clear recording interval on component unmount
   useEffect(() => {
     return () => {
@@ -44,68 +45,58 @@ export default function ChatRoom({ chat }) {
       }
     };
   }, []);
+  const handleSendMessage = useCallback(
+    async (e) => {
+      e.preventDefault();
+      if (!message.type || (message.type === "text" && !message.message.trim()))
+        return;
+      const newMessage = {
+        ...message,
+        message:
+          message.type === "text" ? message.message : message.message.name,
+      };
 
-  // Send message
-  const handleSendMessage = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    if (message?.type === "") {
-      return;
-    }
-
-    setMessages((prevMessages) => {
-      return [
+      setMessages((prevMessages) => [
         ...prevMessages,
-        {
-          ...message,
-          message:
-            message.type !== "text"
-              ? URL.createObjectURL(message.message)
-              : message.message,
-          id: Date.now(),
-          created_at: Date.now(),
+        { ...newMessage, created_at: new Date() },
+      ]);
+      console.log(messages);
+
+      const formData = new FormData();
+      formData.append("from_id", user?.id);
+      formData.append("chat_id", chat?.id);
+      formData.append("type", message.type);
+      formData.append("message", message.message);
+      createMessage(formData, {
+        onSettled: () => {
+          formRef.current.reset();
+          setMessage({
+            from_id: user?.id,
+            chat_id: chat?.id,
+            message: "",
+            type: "",
+          });
         },
-      ];
-    });
-    console.log(messages);
-
-    formRef.current.reset();
-    setMessage({
-      //   from_id: user?.id,
-      chat_id: chat?.id,
-      message: "",
-      type: "",
-    });
-
-    try {
-      //   await createMessage(message);
-    } catch (error) {
-      console.error("Error sending message:", error);
-    } finally {
+      });
       setRecordingTime(0);
-      setLoading(false);
-    }
-  };
-
+    },
+    [message, user?.id, chat?.id]
+  );
   // Start recording
   const startRecording = async () => {
     setIsRecording(true);
     setRecordingTime(0);
     const audioChunks = [];
-
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const mediaRecorderInstance = new MediaRecorder(stream, {
         mimeType: "audio/webm",
       });
-
       mediaRecorderInstance.ondataavailable = (event) => {
         if (event.data.size > 0) {
           audioChunks.push(event.data);
         }
       };
-
       mediaRecorderInstance.onstop = async () => {
         const audioBlob = new Blob(audioChunks, { type: "audio/m4a" });
 
@@ -118,11 +109,9 @@ export default function ChatRoom({ chat }) {
         mediaRecorderInstance.stream.getTracks().forEach((track) => {
           track.stop();
         });
-
         setIsRecording(false);
         clearInterval(recordingIntervalRef.current);
       };
-
       mediaRecorderInstance.start();
       setMediaRecorder(mediaRecorderInstance);
       startRecordingTimer();
@@ -131,7 +120,6 @@ export default function ChatRoom({ chat }) {
       setIsRecording(false);
     }
   };
-
   // Stop recording
   const stopRecording = () => {
     if (mediaRecorder && mediaRecorder.state !== "inactive") {
@@ -139,49 +127,22 @@ export default function ChatRoom({ chat }) {
     }
     clearInterval(recordingIntervalRef.current);
   };
-
   // Start recording timer
   const startRecordingTimer = () => {
     recordingIntervalRef.current = setInterval(() => {
       setRecordingTime((prevTime) => prevTime + 1);
     }, 1000);
   };
-
-  // Format recording time
-  const formatRecordingTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
-  };
-
-  // Extract file name from URL
-  const extractTextAfterMessages = (url) => {
-    const regex = /_messages\.(.*)/;
-    const match = url.match(regex);
-    return match ? match[1] : fileName;
-  };
-  const formatMessageTime = (timestamp) => {
-    const date = new Date(timestamp);
-    let hours = date.getHours();
-    const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    const minutesStr = minutes < 10 ? "0" + minutes : minutes;
-    const timeStr = `${hours}:${minutesStr} ${ampm}`;
-    return timeStr;
-  };
-
   return (
     <>
       <div className="chat-window">
         <div className="chat-header">
           <div className="chat-user">
-            <span className="user-initial">M</span>
+            <img className="user-initial" src={chat.owner.image} />
             <div>
-              <div className="chat-user-name">Mohamed</div>
+              <div className="chat-user-name">{chat.owner.name}</div>
               <div className="chat-location">
-                بيت للبيع في حي طويق, مدينة الخرج, منطقة الرياض
+                {chat?.ad?.title}, {chat?.ad?.address}
               </div>
             </div>
           </div>
@@ -189,42 +150,7 @@ export default function ChatRoom({ chat }) {
       </div>
       <div className="chat-body scrollbar-styles" ref={chatContainerRef}>
         {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`chat-bubble ${message.sender === "Me" ? "me" : ""}`}
-          >
-            {message.type === "text" && (
-              <span className="chat-text">{message.message}</span>
-            )}{" "}
-            {message.type === "audio" && (
-              <audio controls src={message.message} />
-            )}
-            {message?.type === "image" && (
-              <img
-                style={{
-                  aspectRatio: 1 / 1,
-                  width: "300px",
-                  objectFit: "contain",
-                }}
-                src={message?.message}
-                alt=""
-              />
-            )}{" "}
-            {message?.type === "file" && (
-              <Link to={message?.message} target="_blank">
-                <div className="doc_message">
-                  <p>{extractTextAfterMessages(message?.message)}</p>
-                  <div className="icon">
-                    <i className="fa-regular fa-file"></i>
-                  </div>
-                </div>
-              </Link>
-            )}
-            <span className="chat-time">
-              {" "}
-              {formatMessageTime(message?.created_at)}
-            </span>
-          </div>
+          <MessageBubble key={index} message={message} fileName={fileName} />
         ))}
       </div>
       <div className="chat-footer">
@@ -242,6 +168,7 @@ export default function ChatRoom({ chat }) {
                     type: "text",
                   })
                 }
+                disabled={isPending || isRecording}
               />
             ) : (
               <div className="file_place">
@@ -262,7 +189,6 @@ export default function ChatRoom({ chat }) {
                 )}
               </div>
             )}
-
             <label className="files-input">
               <i className="fa-regular fa-paperclip"></i>
               <input
@@ -284,23 +210,14 @@ export default function ChatRoom({ chat }) {
                 id="img-upload"
               />
             </label>
-            {isRecording ? (
-              <label className="files-input" onClick={stopRecording}>
-                <i className="fa-solid fa-microphone-slash"></i>
-                <input type="" />
-              </label>
-            ) : (
-              <label className="files-input" onClick={startRecording}>
-                <i className="fa-solid fa-microphone"></i>
-                <input type="" />
-              </label>
-            )}
-            {recordingTime > 0 && (
-              <span>{formatRecordingTime(recordingTime)}</span>
-            )}
+            <RecordingControls
+              isRecording={isRecording}
+              startRecording={startRecording}
+              stopRecording={stopRecording}
+              recordingTime={recordingTime}
+            />
           </div>
-
-          <button type="submit" disabled={message.type === "" && loading}>
+          <button type="submit" disabled={message.type === "" && isPending}>
             <i className="fa-regular fa-paper-plane-top"></i>
           </button>
         </form>

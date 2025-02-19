@@ -139,6 +139,110 @@ input[type=checkbox] {
   justify-content: center;
 }
 
+.lottie_player_holder {
+  padding: 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination_component {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  justify-content: center;
+}
+.pagination_component img {
+  opacity: 50%;
+  transition: opacity 0.2s;
+}
+.pagination_component button:hover img {
+  opacity: 100%;
+}
+.pagination_component button.disabled:hover {
+  cursor: default;
+}
+.pagination_component button.disabled:hover img {
+  opacity: 50%;
+}
+.pagination_component .reverse img {
+  transform: rotate(180deg);
+}
+.pagination_component p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.pagination_component p span {
+  color: var(--dark-color);
+  font-weight: 600;
+}
+
+.numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+.numbers button {
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  font-size: 15px;
+  color: var(--dark);
+  font-weight: 500;
+  transition: var(--main-transition);
+  color: var(--text);
+}
+.numbers button:hover {
+  background: var(--main-hover);
+  color: var(--white);
+}
+.numbers button.active {
+  background: var(--main);
+  color: var(--white);
+}
+
+.paginator_btns {
+  display: flex;
+  align-items: center;
+}
+.paginator_btns.rotate button {
+  transform: rotate(180deg);
+}
+.paginator_btns button {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.paginator_btns button i {
+  color: var(--text);
+  font-size: 18px;
+}
+.paginator_btns button.disabled {
+  opacity: 50%;
+  pointer-events: none;
+}
+.paginator_btns button:hover {
+  background: var(--main-hover);
+}
+.paginator_btns button:hover i {
+  color: var(--dark);
+}
+
 @font-face {
   font-family: "DIN Next LT W23";
   src: url("../webfonts/DINNextLTW23-ultra-light.ttf") format("truetype");

@@ -76,3 +76,34 @@ export function formateDateDetails(date, locale) {
   const day = String(d.getDate()).padStart(2, "0");
   return `${day} ${month} ${year}`;
 }
+
+export function truncateText(text, charNumber = 80) {
+  return text.length > charNumber
+    ? text.substr(0, charNumber - 3) + "..."
+    : text;
+}
+
+export const formatMessageTime = (timestamp) => {
+  const date = new Date(timestamp);
+  let hours = date.getHours();
+  const minutes = date.getMinutes();
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  const minutesStr = minutes < 10 ? "0" + minutes : minutes;
+  const timeStr = `${hours}:${minutesStr} ${ampm}`;
+  return timeStr;
+};
+
+// Format recording time
+export const formatRecordingTime = (time) => {
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+  return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+};
+// Extract file name from URL
+export const extractTextAfterMessages = (url, fileName) => {
+  const regex = /_messages\.(.*)/;
+  const match = url.match(regex);
+  return match ? match[1] : fileName;
+};

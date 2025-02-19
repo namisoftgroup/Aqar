@@ -30,3 +30,4 @@ export const PER_EN = {
   month: "month",
   year: "year",
 };
+export const PAGE_SIZE = 10;

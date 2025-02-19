@@ -85,13 +85,19 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/chat">
+                    <i className="fa-light fa-message"></i>
+                    <span>{t("header.chat")}</span>
+                  </Link>
+                </li>
+                <li>
                   <Link>
                     <i className="fa-light fa-gear"></i>
                     <span>{t("header.account")}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to ="/notifications" className="d-flex  d-sm-none">
+                  <Link to="/notifications" className="d-flex  d-sm-none">
                     <i className="fa-light fa-bell"></i>
                     <span>{t("header.notifications")}</span>
                   </Link>
@@ -131,7 +137,6 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
             </li>
           </ul>
         </div>
-    
       </div>
     </>
   );

@@ -2,9 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
 import { getAds } from "../../apiServices/apiAds";
 
-export function useGetAds() {
+export function useGetAds(refetchPage) {
   const [searchParams] = useSearchParams();
 
+  const page = refetchPage
+    ? refetchPage
+    : Number(searchParams.get("page")) || 1;
   const search = searchParams.get("search");
   const category_id = searchParams.get("category_id");
   const city_id = searchParams.get("city_id");
@@ -16,6 +19,7 @@ export function useGetAds() {
   const baby_number = searchParams.get("baby_number");
   const with_pits = searchParams.get("with_pits");
   const reqBody = {
+    page,
     search,
     category_id,
     city_id,
