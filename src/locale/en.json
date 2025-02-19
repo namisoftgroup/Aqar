@@ -197,8 +197,10 @@
     "submit": "Submit",
     "addReview": "Add Review and Rating"
   },
+  "error": {
+    "pageNotFound": "Page not found",
+    "goHome": "Go to homepage"
+  },
   "cancel": "Cancel",
-  "adults": "Adults",
-  "children": "Children",
-  "babbies": "Babbies"
+  "adults": "Adults"
 }

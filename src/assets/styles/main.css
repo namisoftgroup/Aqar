@@ -243,6 +243,53 @@ input[type=checkbox] {
   color: var(--dark);
 }
 
+.cart-section {
+  margin-bottom: 60px;
+}
+.cart-section .error-section {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.cart-section .error-section img {
+  height: 300px;
+  margin-bottom: 24px;
+}
+.cart-section .error-section h2 {
+  margin: 0;
+  text-align: center;
+  text-wrap: balance;
+  font-size: 48px;
+  font-weight: 800;
+  color: #cecece;
+}
+.cart-section .error-section a {
+  min-width: 200px;
+  margin-top: 36px;
+  border: 1px solid var(--main);
+  color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  transition: var(--main-transition);
+  border-radius: 12px;
+  gap: 8px;
+  background: none;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+.cart-section .error-section a i {
+  font-size: 16px;
+}
+.cart-section .error-section a:hover {
+  background: var(--main);
+  color: #fff;
+}
+
 @font-face {
   font-family: "DIN Next LT W23";
   src: url("../webfonts/DINNextLTW23-ultra-light.ttf") format("truetype");

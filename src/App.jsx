@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RouterProvider } from "react-router";
+import { Toaster } from "sonner";
 import useAuth from "./hooks/helper/useAuth";
 import { router } from "./providers/router";
 import DataLoader from "./ui/DataLoader";
 import i18n from "./utils/i18n";
-import { Toaster } from "sonner";
 
 function App() {
   const { lang } = useSelector((state) => state.language);

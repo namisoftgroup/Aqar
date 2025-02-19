@@ -24,8 +24,8 @@ export default function RentSection() {
         </Link>
       </section>
       <section className="row">
-        {ads && ads.length > 0 ? (
-          ads.map((ad) => (
+        {ads.data && ads.data.length > 0 ? (
+          ads.data.map((ad) => (
             <div key={ad.id} className="col-xxl-3 col-lg-4 col-md-6 col-12 p-2">
               <PropertyCard ad={ad} />
             </div>

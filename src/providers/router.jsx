@@ -1,27 +1,29 @@
+import { Suspense } from "react";
 import { createBrowserRouter, Outlet } from "react-router";
 import RootLayout from "../layout/RootLayout";
-import About from "../routes/About";
 import BookingRequest from "../routes/BookingRequest";
 import Bookings from "../routes/Bookings";
 import BookingsDetails from "../routes/BookingsDetails";
+import Chat from "../routes/Chats";
 import Contact from "../routes/Contact";
 import EditProfile from "../routes/EditProfile";
 import Favourites from "../routes/Favourites";
 import ForRent from "../routes/ForRent";
 import ForRentDetails from "../routes/ForRentDetails";
 import Home from "../routes/Home";
-import Wallet from "../routes/Wallet";
 import Notifications from "../routes/Notifications";
-import Chat from "../routes/Chats";
-import ProtectionProvider from "./ProtectionProvider";
-import { Suspense } from "react";
+import PreVeiwPage from "../routes/PreViewPage";
 import Profile from "../routes/Profile";
+import Wallet from "../routes/Wallet";
 import DataLoader from "../ui/DataLoader";
+import ErrorPage from "../ui/ErrorPage";
+import ProtectionProvider from "./ProtectionProvider";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -38,11 +40,19 @@ export const router = createBrowserRouter([
 
       {
         path: "about-us",
-        element: <About />,
+        element: <PreVeiwPage pageType={"about"} />,
+      },
+      {
+        path: "terms",
+        element: <PreVeiwPage pageType={"terms"} />,
       },
       {
         path: "contact-us",
         element: <Contact />,
+      },
+      {
+        path: "privacy",
+        element: <PreVeiwPage pageType={"privacy"} />,
       },
 
       {

@@ -18,7 +18,7 @@ export default function ForRent() {
       <FilterBox />
       {viewMap ? (
         <MapSection
-          properties={ads.map((ad) => ({
+          properties={ads?.data?.map((ad) => ({
             position: { lat: ad.lat, lng: ad.lang },
             price: ad.price,
           }))}

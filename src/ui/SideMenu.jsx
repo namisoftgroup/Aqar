@@ -112,25 +112,25 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to="/about-us">
                 <i className="fa-light fa-messages-question"></i>
                 <span>{t("header.about")}</span>
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to="/privacy">
                 <i className=" fa-light fa-shield"></i>
                 <span>{t("header.privacy")} </span>
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to="/terms">
                 <i className="fa-sharp fa-light fa-memo-circle-info"></i>
                 <span>{t("header.terms")}</span>
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to="/rate-app">
                 <i className="fa-light fa-envelope"></i>
                 <span>{t("header.rateApp")}</span>
               </Link>

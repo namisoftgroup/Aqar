@@ -11,7 +11,7 @@ export default function MyBookingCard({ booking }) {
   const locale = lang === "ar" ? "ar-EG" : "en-US";
   return (
     <div className="card">
-      <img src="/images/house-1.jpg" alt="Booking" className="card-img-top" />
+      <img src={booking?.ad.image} alt="Booking" className="card-img-top" />
       <div className="card-body">
         <h4 className="card-title ">{booking.title}</h4>
         <p className="card-text">{booking.price} ريال / سنوي</p>
