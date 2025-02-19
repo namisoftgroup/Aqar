@@ -5,6 +5,7 @@ export default function SelectField({
   hint,
   options,
   hiddenOption,
+  loading,
   ...props
 }) {
   return (
@@ -18,11 +19,15 @@ export default function SelectField({
         {hiddenOption && (
           <option value={hiddenOption.value}>{hiddenOption.label}</option>
         )}
-        {options?.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.name}
-          </option>
-        ))}
+        {!loading ? (
+          options?.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.name}
+            </option>
+          ))
+        ) : (
+          <i className="fa-solid fa-spinner fa-spin"></i>
+        )}
       </Form.Select>
     </div>
   );

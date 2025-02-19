@@ -6,6 +6,7 @@ import FilterBox from "../ui/home/FilterBox";
 import { useGetAds } from "../hooks/ads/useGetAds";
 import DataLoader from "../ui/DataLoader";
 import EmptyData from "../ui/EmptyData";
+import CustomPagination from "../ui/CustomPagination";
 
 export default function ForRent() {
   const [viewMap, setViewMap] = useState(false);
@@ -14,11 +15,10 @@ export default function ForRent() {
 
   return (
     <>
-      {" "}
       <FilterBox />
       {viewMap ? (
         <MapSection
-          properties={ads.map((ad) => ({
+          properties={ads?.data?.map((ad) => ({
             position: { lat: ad.lat, lng: ad.lang },
             price: ad.price,
           }))}
@@ -28,12 +28,20 @@ export default function ForRent() {
       ) : (
         <section className="container py-5">
           <div className="row g-3">
-            {ads && ads.length > 0 ? (
-              ads.map((ad, index) => (
-                <div key={index} className="col-12 col-md-6 col-lg-4 col-xxl-3">
-                  <PropertyCard ad={ad} />
-                </div>
-              ))
+            {ads.data && ads.data.length > 0 ? (
+              <>
+                {ads.data.map((ad, index) => (
+                  <div
+                    key={index}
+                    className="col-12 col-md-6 col-lg-4 col-xxl-3"
+                  >
+                    <PropertyCard ad={ad} />
+                  </div>
+                ))}
+                {ads && ads?.total > 10 && (
+                  <CustomPagination count={ads?.total} pageSize={10} />
+                )}
+              </>
             ) : (
               <EmptyData text={t("forRent.noDatafound")} />
             )}

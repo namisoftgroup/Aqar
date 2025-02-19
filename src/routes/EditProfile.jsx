@@ -1,23 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import InputField from "../ui/form/InputField";
-import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { useUpdateProfile } from "../hooks/profile/useUpdateProfile";
+import InputField from "../ui/form/InputField";
 import SubmitButton from "../ui/form/SubmitButton";
-import axiosInstance from "../utils/axios";
-import { setUser } from "../redux/slices/userSlice";
-import { useNavigate } from "react-router";
-import { toast } from "sonner";
 
 export default function EditProfile() {
   const [formData, setFormData] = useState({});
-  const lang = useSelector((state) => state.language.lang);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [loading, setIsLoading] = useState();
   const { t } = useTranslation();
   const imgView = useRef(null);
   const user = useSelector((state) => state.user.user);
-
+  const { editProfile, isPending } = useUpdateProfile();
   useEffect(() => {
     if (user) {
       setFormData({
@@ -36,28 +29,25 @@ export default function EditProfile() {
   }
 
   const handleUpload = (e) => {
-    const imageUrl = URL.createObjectURL(e.target.files[0]);
+    const file = e.target.files[0];
+    if (!file) return;
+    const imageUrl = URL.createObjectURL(file);
     imgView.current.src = imageUrl;
-    setFormData({ ...formData, [e.target.name]: imageUrl });
+    setFormData((prev) => ({
+      ...prev,
+      image: file,
+    }));
   };
+
   async function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
-    const reqBody = formData;
-    try {
-      const res = await axiosInstance.post("user/update_profile", reqBody);
-      if (res.data.code === 200) {
-        dispatch(setUser(res.data.data));
-        navigate("/profile");
-        toast.success("Profile updated successfully");
-      } else {
-        toast.error(" Couldn't update profile");
-      }
-    } catch (e) {
-      console.error(e.message);
-    } finally {
-      setIsLoading(false);
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("email", formData.email);
+    if (formData.image) {
+      formDataToSend.append("image", formData.image);
     }
+    editProfile(formDataToSend);
   }
 
   return (
@@ -99,7 +89,7 @@ export default function EditProfile() {
           <SubmitButton
             style={{ width: "fit-content" }}
             text={t("profile.edit")}
-            loading={loading}
+            loading={isPending}
           />
         </form>
       </section>

@@ -8,7 +8,7 @@ import { useGetAreas } from "../../hooks/useAreas";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../redux/slices/filterSlice";
 import { useGetCategories } from "../../hooks/categories/useCategories";
-import { useSearchParams } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { handleApplyFilters } from "../../utils/helper";
 
 export default function FilterBox() {
@@ -18,10 +18,13 @@ export default function FilterBox() {
   const [targetCity, setTargetCity] = useState();
   const { cities } = useGetCities();
   const { categories } = useGetCategories();
-  const { areas } = useGetAreas(targetCity, Boolean(targetCity));
+  const { areas, isLoading: isAreaLoading } = useGetAreas(
+    targetCity,
+    Boolean(targetCity)
+  );
   const [, setSearchParams] = useSearchParams();
   const formData = useSelector((state) => state.filter);
-
+  const navigate = useNavigate();
   function handleCityChange(e) {
     setTargetCity(e.target.value);
     dispatch(setFilter({ city_id: e.target.value }));
@@ -37,6 +40,7 @@ export default function FilterBox() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    navigate("/for-rent");
     handleApplyFilters(setSearchParams, formData);
   }
 
@@ -59,6 +63,7 @@ export default function FilterBox() {
           hiddenOption={{ value: "", label: t("home.area") }}
           options={areas}
           onChange={handleAreaChange}
+          loading={isAreaLoading}
         />
         <SelectField
           value={formData.category_id}

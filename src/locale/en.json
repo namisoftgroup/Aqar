@@ -9,6 +9,7 @@
     "wallet": "Wallet",
     "account": "Account settings",
     "notifications": "Notifications",
+    "chat": "Chats",
     "about": "About us",
     "contact": "Contact us",
     "privacy": "Privacy Policy",
@@ -196,8 +197,10 @@
     "submit": "Submit",
     "addReview": "Add Review and Rating"
   },
+  "error": {
+    "pageNotFound": "Page not found",
+    "goHome": "Go to homepage"
+  },
   "cancel": "Cancel",
-  "adults": "Adults",
-  "children": "Children",
-  "babbies": "Babbies"
+  "adults": "Adults"
 }

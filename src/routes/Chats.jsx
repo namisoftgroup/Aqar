@@ -1,88 +1,121 @@
 import { useTranslation } from "react-i18next";
 import ChatRoom from "../ui/Chats/ChatRoom";
+import { useEffect, useState } from "react";
+import { useGetChats } from "../hooks/chats/useGetChats";
+import DataLoader from "../ui/DataLoader";
+import { truncateText } from "../utils/helper";
+import { useGetChatDetails } from "../hooks/chats/useGetChatDetails";
+import Lottie from "react-lottie";
+import chatLottie from "../assets/lotties/chat.json";
 
-const Chats = [
-  {
-    id: 1,
-    name: "Mohamed",
-    location: "Naser City - 2024",
-    date: "10/28/24",
-    message: "مرحبا",
-    img: "/images/avatar.png",
-  },
-  {
-    id: 2,
-    name: "Saad",
-    location: "Airbnb - 2024",
-    date: "10/28/24",
-    message: "أهلاً",
-    img: "/images/avatar.png",
-  },
-  {
-    id: 3,
-    name: "Hade",
-    location: "Madinet Al-Amal - 2024",
-    date: "10/28/24",
-    message: "290",
-    img: "/images/avatar.png",
-  },
-  {
-    id: 4,
-    name: "Shehab",
-    location: "Al Manteqah al Sadessa - 2024",
-    date: "10/28/24",
-    message: "كيف حالك؟",
-    img: "/images/avatar.png",
-  },
-  {
-    id: 5,
-    name: "Ahmed",
-    location: "شارع النيل - 2024",
-    date: "10/28/24",
-    message: "مرحبا",
-    img: "/images/avatar.png",
-  },
-];
 export default function Chat() {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: chatLottie,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   const { t } = useTranslation();
+  const [targetChat, setTargetChat] = useState(null);
+  const { chats, isLoading } = useGetChats();
+  const { chatDetails, isLoading: isChatLoading } = useGetChatDetails({
+    ad_id: sessionStorage.getItem("ad_id"),
+    owner_id: sessionStorage.getItem("owner_id"),
+    user_id: sessionStorage.getItem("user_id"),
+    orderBy: "asc",
+  });
+
+  useEffect(() => {
+    if (chatDetails?.id) {
+      setTargetChat(chatDetails);
+    } else {
+      setTargetChat(null);
+    }
+  }, [chatDetails]);
+
+  if (isLoading) return <DataLoader />;
+
+  const renderLastMessage = (msg) => {
+    if (msg.last_message.type === "audio") {
+      return (
+        <>
+          <i className="fa-light fa-microphone"></i> {msg.last_message.duration}{" "}
+        </>
+      );
+    } else if (msg.last_message.type === "text") {
+      return truncateText(msg.last_message.message);
+    }
+    return null;
+  };
+
   return (
     <section className="chat-container">
       <div className="container">
         <div className="chat-wrapper">
           <div className="row">
             <div className="col-md-4 p-0">
-              <h5 className="messages-title">الرسائل</h5>
+              <h5 className="messages-title">{t("chat.messages")}</h5>
               <div className="messages-list scrollbar-styles">
                 <ul>
-                  {Chats.map((msg) => (
-                    <li key={msg.id} className="message-item">
+                  {chats.map((msg) => (
+                    <li
+                      key={msg.id}
+                      className="message-item"
+                      onClick={() => {
+                        sessionStorage.setItem("ad_id", msg?.ad_id);
+                        sessionStorage.setItem("user_id", msg?.user_id);
+                        sessionStorage.setItem("owner_id", msg?.owner_id);
+                        setTargetChat(msg);
+                      }}
+                    >
                       <div className="message-content">
                         <div className="message-data">
                           <img
-                            src={msg.img}
-                            alt={msg.name}
+                            src={msg.owner?.image}
+                            alt={msg.owner?.name}
                             className="user-img"
                           />
                           <div>
-                            <div className="message-name">{msg.name}</div>
-                            <div className="message-text">{msg.message}</div>
+                            <div className="message-name">
+                              {msg.owner?.name}
+                            </div>
+                            <div className="message-text">
+                              {renderLastMessage(msg)}
+                            </div>
                           </div>
                         </div>
                         <div className="message-date">{msg.date}</div>
                       </div>
-                      <div className="message-property-data">
-                        <p className="">
-                          بيت للبيع في حي طويق, مدينة الخرج, منطقة الرياض{" "}
-                        </p>
-                        <img className="" src="/images/house-1.jpg" />
-                      </div>
+                      {msg?.ad && (
+                        <div className="message-property-data">
+                          <p className="">
+                            {msg?.ad?.title} , {msg?.ad?.address}
+                          </p>
+                          <img className="" src={msg?.ad?.image} />
+                        </div>
+                      )}
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
             <div className="col-md-8 pe-0">
-              <ChatRoom />
+              {targetChat ? (
+                <>
+                  {isChatLoading ? (
+                    <DataLoader />
+                  ) : (
+                    <ChatRoom chat={chatDetails} />
+                  )}
+                </>
+              ) : (
+                <div className="lottie_player_holder">
+                  <Lottie options={defaultOptions} height={250} width={250} />
+                </div>
+              )}
             </div>
           </div>
         </div>

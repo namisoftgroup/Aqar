@@ -85,13 +85,19 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/chat">
+                    <i className="fa-light fa-message"></i>
+                    <span>{t("header.chat")}</span>
+                  </Link>
+                </li>
+                <li>
                   <Link>
                     <i className="fa-light fa-gear"></i>
                     <span>{t("header.account")}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to ="/notifications" className="d-flex  d-sm-none">
+                  <Link to="/notifications" className="d-flex  d-sm-none">
                     <i className="fa-light fa-bell"></i>
                     <span>{t("header.notifications")}</span>
                   </Link>
@@ -106,32 +112,31 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to="/about-us">
                 <i className="fa-light fa-messages-question"></i>
                 <span>{t("header.about")}</span>
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to="/privacy">
                 <i className=" fa-light fa-shield"></i>
                 <span>{t("header.privacy")} </span>
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to="/terms">
                 <i className="fa-sharp fa-light fa-memo-circle-info"></i>
                 <span>{t("header.terms")}</span>
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to="/rate-app">
                 <i className="fa-light fa-envelope"></i>
                 <span>{t("header.rateApp")}</span>
               </Link>
             </li>
           </ul>
         </div>
-    
       </div>
     </>
   );

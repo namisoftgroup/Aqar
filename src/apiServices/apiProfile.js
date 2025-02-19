@@ -13,3 +13,17 @@ export default async function getProfile() {
     throw error;
   }
 }
+
+export async function updateProfile(reqBody) {
+  try {
+    const res = await axiosInstance.post("user/update_profile", reqBody, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    const data = res.data;
+    return data;
+  } catch (e) {
+    console.error(e.message);
+  }
+}
