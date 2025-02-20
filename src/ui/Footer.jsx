@@ -1,9 +1,11 @@
 import { Link } from "react-router";
 import Logo from "./Header/Logo";
 import { useTranslation } from "react-i18next";
+import { useGetSettings } from "../hooks/settings/useGetSettings";
 
 export default function Footer() {
   const { t } = useTranslation();
+  const { settings, isLoading } = useGetSettings();
   return (
     <footer className="main-footer">
       <div className="container gap-3">
@@ -79,8 +81,16 @@ export default function Footer() {
             </p>
           </div>
           <div className="links col-12 col-md-6 col-lg-4 ">
-            <Link to="/terms-conditions">{t("footer.terms")}</Link>
-            <Link to="/privacy-policy">{t("footer.privacy")}</Link>
+            {!isLoading ? (
+              <>
+                <Link to={settings?.terms_link} target="_blank">
+                  {t("footer.terms")}
+                </Link>
+                <Link to={settings?.privacy_link} target="_blank">
+                  {t("footer.privacy")}
+                </Link>{" "}
+              </>
+            ) : null}
           </div>
           <div className="social-links col-12 col-md-6 col-lg-4">
             <Link to="">
