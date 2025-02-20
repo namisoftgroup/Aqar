@@ -22,6 +22,7 @@ body {
   @import "./notifications";
   @import "./chat";
   @import "./profile";
+  @import "./contact";
 
   &.en {
     direction: ltr;

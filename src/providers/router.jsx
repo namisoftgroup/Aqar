@@ -12,7 +12,6 @@ import ForRent from "../routes/ForRent";
 import ForRentDetails from "../routes/ForRentDetails";
 import Home from "../routes/Home";
 import Notifications from "../routes/Notifications";
-import PreVeiwPage from "../routes/PreViewPage";
 import Profile from "../routes/Profile";
 import Wallet from "../routes/Wallet";
 import DataLoader from "../ui/DataLoader";
@@ -39,20 +38,8 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "about-us",
-        element: <PreVeiwPage pageType={"about"} />,
-      },
-      {
-        path: "terms",
-        element: <PreVeiwPage pageType={"terms"} />,
-      },
-      {
         path: "contact-us",
         element: <Contact />,
-      },
-      {
-        path: "privacy",
-        element: <PreVeiwPage pageType={"privacy"} />,
       },
 
       {

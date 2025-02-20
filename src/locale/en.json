@@ -201,6 +201,23 @@
     "pageNotFound": "Page not found",
     "goHome": "Go to homepage"
   },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Feel free to reach out for any inquiries or questions.",
+    "contactInfoTitle": "Contact Information",
+    "contactInfoDescription": "Say something to start a live chat!",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "name": "Name",
+    "subject": "Subject",
+    "message": "Message",
+    "submit": "Submit",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn"
+  },
   "cancel": "Cancel",
   "adults": "Adults"
 }

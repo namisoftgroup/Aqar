@@ -3,9 +3,12 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
 import useAuth from "../hooks/helper/useAuth";
+import { useGetSettings } from "../hooks/settings/useGetSettings";
 
 export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
   const lang = useSelector((state) => state.language.lang);
+  const { settings, isLoading } = useGetSettings();
+
   const { t } = useTranslation();
   const sideMenuRef = useRef(null);
   const { isAuthed } = useAuth();
@@ -25,6 +28,7 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  if (isLoading) return <></>;
   return (
     <>
       <div
@@ -112,19 +116,19 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
               </Link>
             </li>
             <li>
-              <Link to="/about-us">
+              <Link to={settings.about_link} target="_blank">
                 <i className="fa-light fa-messages-question"></i>
                 <span>{t("header.about")}</span>
               </Link>
             </li>
             <li>
-              <Link to="/privacy">
+              <Link to={settings.privacy_link} target="_blank">
                 <i className=" fa-light fa-shield"></i>
                 <span>{t("header.privacy")} </span>
               </Link>
             </li>
             <li>
-              <Link to="/terms">
+              <Link to={settings.terms_link} target="_blank">
                 <i className="fa-sharp fa-light fa-memo-circle-info"></i>
                 <span>{t("header.terms")}</span>
               </Link>

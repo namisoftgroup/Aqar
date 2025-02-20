@@ -202,6 +202,23 @@
     "pageNotFound": "هذه الصفحة غير موجودة",
     "goHome": "الذهاب للرئيسية"
   },
+  "contact": {
+    "title": "اتصل بنا",
+    "description": "لا تتردد في التواصل معنا لأي استفسارات أو أسئلة.",
+    "contactInfoTitle": "معلومات الاتصال",
+    "contactInfoDescription": "قل شيئًا لبدء محادثة مباشرة!",
+    "phone": "الهاتف",
+    "email": "البريد الإلكتروني",
+    "location": "الموقع",
+    "name": "الاسم",
+    "subject": "الموضوع",
+    "message": "الرسالة",
+    "submit": "إرسال",
+    "facebook": "فيسبوك",
+    "twitter": "تويتر",
+    "instagram": "إنستغرام",
+    "linkedin": "لينكدإن"
+  },
   "cancel": "الغاء",
   "confirm": "تأكيد"
 }
