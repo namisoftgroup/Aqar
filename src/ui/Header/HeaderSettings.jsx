@@ -1,7 +1,7 @@
 import { Link } from "react-router";
-import LanguageDropDown from "./languageDropdown";
-import UserDropDown from "./UserDropDown";
+import LanguageDropDown from "./LanguageDropdown";
 import useAuth from "../../hooks/helper/useAuth";
+import UserDropDown from "./UserDropDown";
 
 export default function HeaderSettings() {
   const { isAuthed } = useAuth();
