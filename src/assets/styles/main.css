@@ -463,6 +463,7 @@ input[type=checkbox] {
 }
 .header .header-settings .user-btn .user-img-wrapper img {
   height: 28px;
+  width: 28px;
 }
 .header .header-settings .user-btn:hover, .header .header-settings .user-btn.show {
   color: var(--main);
