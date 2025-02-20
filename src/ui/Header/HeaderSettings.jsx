@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import LanguageDropDown from "./LanguageDropdown";
+import LanguageDropDown from "./LanguageDropDown";
 import useAuth from "../../hooks/helper/useAuth";
 import UserDropDown from "./UserDropDown";
 
