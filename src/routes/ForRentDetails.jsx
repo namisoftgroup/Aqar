@@ -8,10 +8,10 @@ import DataLoader from "../ui/DataLoader";
 import Features from "../ui/PropertiesForRent/Features";
 import Gallary from "../ui/PropertiesForRent/Gallary";
 import MapSection from "../ui/PropertiesForRent/MapSection";
-import Owner from "../ui/PropertiesForRent/owner";
 import PropertyInfo from "../ui/PropertiesForRent/PropertyInfo";
 import Rates from "../ui/PropertiesForRent/Rates";
 import SimilarAds from "../ui/PropertiesForRent/SimilarAds";
+import Owner from "../ui/PropertiesForRent/Owner";
 export default function ForRentDetails() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
