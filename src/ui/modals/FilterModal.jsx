@@ -57,7 +57,7 @@ export default function FilterModal({ showModal, setShowModal }) {
         <form onSubmit={handleSumit}>
           <div className="filter-field">
             <label className="label" htmlFor="search">
-              اين وجهتك؟
+              {t("filter.search")}{" "}
             </label>
             <input
               value={formData.search}
@@ -70,11 +70,11 @@ export default function FilterModal({ showModal, setShowModal }) {
             />
           </div>
           <div className="filter-field">
-            <label className="label"> كم عدد الليالي ؟</label>
+            <label className="label"> {t("filter.nightsNumber")} </label>
             <FilterCalender />
           </div>
           <div className="filter-field">
-            <label className="label"> كم عدد الضيوف ؟</label>
+            <label className="label">{t("filter.guestNumber")} </label>
             <FilterGuests />
           </div>
           {/* <div className="filter-field">

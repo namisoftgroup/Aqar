@@ -63,8 +63,9 @@
   },
   "home": {
     "searchForYourDreamHome": "Welcome to the world of smart bookings.",
-    "searchForYourDreamHomeDesc": "Aqar is the perfect solution for booking hotels, serviced apartments, and offices with ease. Enjoy a seamless experience tailored to your needs and the best prices.",
+    "searchForYourDreamHomeDesc": "Noot is the perfect solution for booking hotels, serviced apartments, and offices with ease. Enjoy a seamless experience tailored to your needs and the best prices.",
     "forRentUnits": "Premium units for rent",
+    "forRentUnitsdes": "Find the perfect rental unit with ease.",
     "viewAll": "View all",
     "findDreamplace": "Find your dream place to live with over 10K+ listed properties.",
     "newWayHome": "The new way to discover your next home.",
@@ -86,7 +87,7 @@
     "search": "Search",
     "filter": "Filter",
     "deleteAll": "Delete All",
-    "Area": "Area"
+    "area": "Area"
   },
   "forRent": {
     "viewOnMap": "View on Map",
@@ -189,7 +190,11 @@
     "babbies": "Babbies",
     "babbiesAge": "less than 2 years",
     "pets": "Pets",
-    "petsDes": "Will you be bringing pets?"
+    "petsDes": "Will you be bringing pets?",
+    "search": "Search",
+    "nightsNumber": "How many nights?",
+    "guestNumber": "How many guests?",
+    "night": "Night"
   },
   "rate": {
     "rate": "Rate",
@@ -200,6 +205,23 @@
   "error": {
     "pageNotFound": "Page not found",
     "goHome": "Go to homepage"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Feel free to reach out for any inquiries or questions.",
+    "contactInfoTitle": "Contact Information",
+    "contactInfoDescription": "Say something to start a live chat!",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "name": "Name",
+    "subject": "Subject",
+    "message": "Message",
+    "submit": "Submit",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn"
   },
   "cancel": "Cancel",
   "adults": "Adults"

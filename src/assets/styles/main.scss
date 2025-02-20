@@ -1,5 +1,6 @@
 @import "./config";
 @import "./fonts";
+@import "./errors";
 @import "./header";
 @import "./footer";
 @import "./forms";
@@ -22,6 +23,7 @@ body {
   @import "./notifications";
   @import "./chat";
   @import "./profile";
+  @import "./contact";
 
   &.en {
     direction: ltr;

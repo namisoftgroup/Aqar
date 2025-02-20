@@ -1,10 +1,9 @@
 import { Dropdown } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router";
+import useAuth from "../../hooks/helper/useAuth";
 import { openAuthModal } from "../../redux/slices/authModalSlice";
 import AuthModal from "../Authentication/AuthModal";
-import useAuth from "../../hooks/helper/useAuth";
 
 import { useLogout } from "../../hooks/auth/useLogout";
 
@@ -43,18 +42,12 @@ export default function UserDropDown() {
               >
                 {t("header.login")}
               </Dropdown.Item>
-              <Dropdown.Item
-                as="button"
-                onClick={() => dispatch(openAuthModal())}
-              >
-                {t("header.register")}
-              </Dropdown.Item>{" "}
             </>
           )}
           <span className="line" />
-          <Dropdown.Item as={Link} to="/help">
+          {/* <Dropdown.Item as={Link} to="/help">
             {t("header.help")}
-          </Dropdown.Item>
+          </Dropdown.Item> */}
         </Dropdown.Menu>
       </Dropdown>
       <AuthModal />

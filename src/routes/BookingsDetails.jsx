@@ -5,9 +5,9 @@ import useGetBookingDetails from "../hooks/bookings/useGetBookingDetails";
 import AddRate from "../ui/AddRate";
 import DataLoader from "../ui/DataLoader";
 import ProgressBar from "../ui/ProgressBar";
-import Gallary from "../ui/propertiesForRent/Gallary";
-import MapSection from "../ui/propertiesForRent/MapSection";
-import Owner from "../ui/propertiesForRent/owner";
+import Gallary from "../ui/PropertiesForRent/Gallary";
+import MapSection from "../ui/PropertiesForRent/MapSection";
+import Owner from "../ui/PropertiesForRent/owner";
 import {
   BOOKING_STATUS_AR,
   BOOKING_STATUS_EN,

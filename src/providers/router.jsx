@@ -12,12 +12,12 @@ import ForRent from "../routes/ForRent";
 import ForRentDetails from "../routes/ForRentDetails";
 import Home from "../routes/Home";
 import Notifications from "../routes/Notifications";
-import PreVeiwPage from "../routes/PreViewPage";
 import Profile from "../routes/Profile";
 import Wallet from "../routes/Wallet";
 import DataLoader from "../ui/DataLoader";
-import ErrorPage from "../ui/ErrorPage";
 import ProtectionProvider from "./ProtectionProvider";
+import NotFound from "../ui/NotFound";
+import ErrorPage from "../ui/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -39,20 +39,8 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "about-us",
-        element: <PreVeiwPage pageType={"about"} />,
-      },
-      {
-        path: "terms",
-        element: <PreVeiwPage pageType={"terms"} />,
-      },
-      {
         path: "contact-us",
         element: <Contact />,
-      },
-      {
-        path: "privacy",
-        element: <PreVeiwPage pageType={"privacy"} />,
       },
 
       {
@@ -107,6 +95,10 @@ export const router = createBrowserRouter([
             element: <Notifications />,
           },
         ],
+      },
+      {
+        path: "*",
+        element: <NotFound />, // Replace with your custom 404 component
       },
     ],
   },
