@@ -14,7 +14,7 @@ export default function Footer() {
             <h5>{t("footer.support")}</h5>
             <ul>
               <li>
-                <Link>{t("footer.contactUs")}</Link>
+                <Link to={"/contact-us"}>{t("footer.contactUs")}</Link>
               </li>
               <li>
                 <Link>{t("footer.help")}</Link>
@@ -48,16 +48,13 @@ export default function Footer() {
             <h5>{t("footer.quickLinks")}</h5>
             <ul>
               <li>
-                <Link>{t("footer.home")}</Link>
+                <Link to={"home"}>{t("footer.home")}</Link>
               </li>
               <li>
-                <Link>{t("footer.about")}</Link>
+                <Link to={settings?.about_link}>{t("footer.about")}</Link>
               </li>
               <li>
-                <Link>{t("footer.listing")}</Link>
-              </li>
-              <li>
-                <Link>{t("footer.login")}</Link>
+                <Link to={"/for-rent"}>{t("footer.listing")}</Link>
               </li>
             </ul>
           </div>
@@ -81,7 +78,7 @@ export default function Footer() {
             </p>
           </div>
           <div className="links col-12 col-md-6 col-lg-4 ">
-            {!isLoading ? (
+            {!isLoading && (
               <>
                 <Link to={settings?.terms_link} target="_blank">
                   {t("footer.terms")}
@@ -90,7 +87,7 @@ export default function Footer() {
                   {t("footer.privacy")}
                 </Link>{" "}
               </>
-            ) : null}
+            )}
           </div>
           <div className="social-links col-12 col-md-6 col-lg-4">
             <Link to="">

@@ -1,24 +1,18 @@
-import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
+import { useRouteError } from "react-router";
 
 function ErrorPage() {
+  const error = useRouteError();
   const { t } = useTranslation();
+  console.log(error);
+
   return (
-    <section className="cart-section container">
-      <div className="row h-100">
-        <div className="col-12 p-2 h-100">
-          <div className="error-section">
-            <img src="/images/error-404.svg" alt="error image" />
-            <h2>404</h2>
-            <h2>{t("error.pageNotFound")}</h2>
-            <Link to="/">
-              <i className="fa-solid fa-home"></i>
-              <span>{t("error.goHome")}</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div className="error-container">
+      <h1>Something went wrong!</h1>
+      <p>{error.status}</p>
+      <p>{error.message}</p>
+      <button>Go To Home</button>
+    </div>
   );
 }
 

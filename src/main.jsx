@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App.jsx";
 import { store } from "./redux/store.js";
+import InterceptorProvider from "./providers/InterceptorProvider.jsx";
 import "./utils/i18n.js";
 
 // Font Awesome styles
@@ -12,10 +13,10 @@ import "./assets/styles/all.min.css";
 
 // bootstrap Styles
 import "bootstrap/dist/css/bootstrap.min.css";
+import "aos/dist/aos.css";
 import "swiper/css";
 // Custom styles
 import "./assets/styles/main.css";
-import InterceptorProvider from "./providers/InterceptorProvider.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {

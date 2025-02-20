@@ -15,8 +15,9 @@ import Notifications from "../routes/Notifications";
 import Profile from "../routes/Profile";
 import Wallet from "../routes/Wallet";
 import DataLoader from "../ui/DataLoader";
-import ErrorPage from "../ui/ErrorPage";
 import ProtectionProvider from "./ProtectionProvider";
+import NotFound from "../ui/NotFound";
+import ErrorPage from "../ui/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ export const router = createBrowserRouter([
             element: <Notifications />,
           },
         ],
+      },
+      {
+        path: "*",
+        element: <NotFound />, // Replace with your custom 404 component
       },
     ],
   },

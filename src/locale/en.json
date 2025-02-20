@@ -87,7 +87,7 @@
     "search": "Search",
     "filter": "Filter",
     "deleteAll": "Delete All",
-    "Area": "Area"
+    "area": "Area"
   },
   "forRent": {
     "viewOnMap": "View on Map",
@@ -190,7 +190,11 @@
     "babbies": "Babbies",
     "babbiesAge": "less than 2 years",
     "pets": "Pets",
-    "petsDes": "Will you be bringing pets?"
+    "petsDes": "Will you be bringing pets?",
+    "search": "Search",
+    "nightsNumber": "How many nights?",
+    "guestNumber": "How many guests?",
+    "night": "Night"
   },
   "rate": {
     "rate": "Rate",

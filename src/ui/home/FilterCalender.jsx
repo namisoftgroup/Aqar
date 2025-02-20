@@ -7,9 +7,11 @@ import {
   formatDate,
   formatDateRange,
 } from "../../utils/helper";
+import { useTranslation } from "react-i18next";
 export default function FilterCalender() {
   const formData = useSelector((state) => state.filter);
   const lang = useSelector((state) => state.language.lang);
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [nights, setNights] = useState(0);
   const [dateRange, setDateRange] = useState({ from: "", to: "" });
@@ -40,7 +42,9 @@ export default function FilterCalender() {
 
   return (
     <form className="calender-container">
-      <h4>{nights} ليله</h4>
+      <h4>
+        {nights} {t("filter.night")}{" "}
+      </h4>
       <p>{dateRange.from}</p>
       <Calendar
         range
