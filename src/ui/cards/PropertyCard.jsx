@@ -3,6 +3,8 @@ import { useAddToFavorites } from "../../hooks/favorites/useAddToFavorites";
 import { PER_AR, PER_EN } from "../../utils/constants";
 import { useSelector } from "react-redux";
 import { useDeleteFromFavorites } from "../../hooks/favorites/useDeleteFromFavorites";
+import { useEffect } from "react";
+import Aos from "aos";
 
 export default function PropertyCard({ ad }) {
   const { addToFavorites, isPending } = useAddToFavorites();
@@ -15,9 +17,15 @@ export default function PropertyCard({ ad }) {
   function handleDeleteFromFavorites() {
     deleteFromFavorites(ad.id);
   }
-
+  useEffect(() => {
+    Aos.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
   return (
-    <div className="properties">
+    <div className="properties" data-aos="fade-up">
       <div className="image_card">
         <img src={ad.image} />
         <div className="fav-btn">

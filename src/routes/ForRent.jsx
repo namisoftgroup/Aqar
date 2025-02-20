@@ -1,25 +1,18 @@
-import { useEffect, useState } from "react";
-import PropertyCard from "../ui/cards/PropertyCard";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import MapSection from "../ui/PropertiesForRent/MapSection";
-import FilterBox from "../ui/home/FilterBox";
 import { useGetAds } from "../hooks/ads/useGetAds";
+import CustomPagination from "../ui/CustomPagination";
 import DataLoader from "../ui/DataLoader";
 import EmptyData from "../ui/EmptyData";
-import CustomPagination from "../ui/CustomPagination";
-import Aos from "aos";
+import MapSection from "../ui/PropertiesForRent/MapSection";
+import PropertyCard from "../ui/cards/PropertyCard";
+import FilterBox from "../ui/home/FilterBox";
 
 export default function ForRent() {
   const [viewMap, setViewMap] = useState(false);
   const { t } = useTranslation();
   const { ads, isLoading } = useGetAds();
-  useEffect(() => {
-    Aos.init({
-      duration: 800,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
+
   return (
     <>
       <FilterBox />
@@ -41,7 +34,6 @@ export default function ForRent() {
                   <div
                     key={index}
                     className="col-12 col-md-6 col-lg-4 col-xxl-3"
-                    data-aos="fade-up"
                   >
                     <PropertyCard ad={ad} />
                   </div>
