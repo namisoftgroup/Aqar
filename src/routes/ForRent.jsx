@@ -4,9 +4,9 @@ import { useGetAds } from "../hooks/ads/useGetAds";
 import CustomPagination from "../ui/CustomPagination";
 import DataLoader from "../ui/DataLoader";
 import EmptyData from "../ui/EmptyData";
-import MapSection from "../ui/PropertiesForRent/MapSection";
 import PropertyCard from "../ui/cards/PropertyCard";
 import FilterBox from "../ui/home/FilterBox";
+import MapSection from "../ui/PropertiesForRent/MapSection";
 
 export default function ForRent() {
   const [viewMap, setViewMap] = useState(false);
