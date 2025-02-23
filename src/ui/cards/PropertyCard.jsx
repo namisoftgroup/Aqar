@@ -6,7 +6,7 @@ import { useDeleteFromFavorites } from "../../hooks/favorites/useDeleteFromFavor
 import { useEffect } from "react";
 import Aos from "aos";
 
-export default function PropertyCard({ ad }) {
+export default function PropertyCard({ ad, className }) {
   const { addToFavorites } = useAddToFavorites();
   const { deleteFromFavorites } = useDeleteFromFavorites();
 
@@ -29,7 +29,7 @@ export default function PropertyCard({ ad }) {
   }, []);
 
   return (
-    <div className="properties" data-aos="fade-up">
+    <div className={`properties ${className}`} data-aos="fade-up">
       <div className="image_card">
         <img src={ad.image} />
       </div>
@@ -66,15 +66,15 @@ export default function PropertyCard({ ad }) {
       </Link>
 
       <div className="fav-btn">
-          {ad.is_favorite ? (
-            <i
-              onClick={handleDeleteFromFavorites}
-              className="fa-solid fa-heart"
-            ></i>
-          ) : (
-            <i onClick={handleAddToFavorites} className="fa-light fa-heart"></i>
-          )}
-        </div>
+        {ad.is_favorite ? (
+          <i
+            onClick={handleDeleteFromFavorites}
+            className="fa-solid fa-heart"
+          ></i>
+        ) : (
+          <i onClick={handleAddToFavorites} className="fa-light fa-heart"></i>
+        )}
+      </div>
     </div>
   );
 }

@@ -6,6 +6,9 @@
   gap: 16px;
   padding: 12px;
   position: relative;
+  &.bg_gray {
+    background: var(--input-bg);
+  }
   .fav-btn {
     @include clearInput;
     background-color: transparent;

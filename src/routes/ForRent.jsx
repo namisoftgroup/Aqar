@@ -15,7 +15,6 @@ export default function ForRent() {
 
   return (
     <>
-      <FilterBox />
       {viewMap ? (
         <MapSection
           properties={ads?.data?.map((ad) => ({
@@ -26,25 +25,27 @@ export default function ForRent() {
       ) : isLoading ? (
         <DataLoader />
       ) : (
-        <section className="container py-5">
-          <div className="row g-3">
-            {ads.data && ads.data.length > 0 ? (
-              <>
-                {ads.data.map((ad, index) => (
-                  <div
-                    key={index}
-                    className="col-12 col-md-6 col-lg-4 col-xxl-3"
-                  >
-                    <PropertyCard ad={ad} />
-                  </div>
-                ))}
-                {ads && ads?.total > 10 && (
-                  <CustomPagination count={ads?.total} pageSize={10} />
-                )}
-              </>
-            ) : (
-              <EmptyData text={t("forRent.noDatafound")} />
-            )}
+        <section className="">
+          <div className="container">
+            <div className="row">
+              <div className="col-12 p-2">
+                <FilterBox />
+              </div>
+              {ads.data && ads.data.length > 0 ? (
+                <>
+                  {ads.data.map((ad, index) => (
+                    <div key={index} className="col-12 col-md-6 col-lg-4 p-2">
+                      <PropertyCard ad={ad} className="bg_gray" />
+                    </div>
+                  ))}
+                  {ads && ads?.total > 10 && (
+                    <CustomPagination count={ads?.total} pageSize={10} />
+                  )}
+                </>
+              ) : (
+                <EmptyData text={t("forRent.noDatafound")} />
+              )}
+            </div>
           </div>
         </section>
       )}
