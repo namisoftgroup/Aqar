@@ -8,32 +8,33 @@ import EmptyData from "../EmptyData";
 export default function RentSection() {
   const { t } = useTranslation();
   const { ads, isLoading } = useGetAds();
-  
+
   if (isLoading) {
     return <DataLoader />;
   }
   return (
     <section className="rent-section">
-      <section className="section-header ">
-        <div className="">
-          <h2>{t("home.forRentUnits")}</h2>
-          <p>{t("home.forRentUnitsdes")}</p>
+      <div className="container">
+        <div className="section-header ">
+          <div>
+            <h2>{t("home.forRentUnits")}</h2>
+            <p>{t("home.forRentUnitsdes")}</p>
+          </div>
+          <Link to={"for-rent"}>{t("home.viewAll")}</Link>
         </div>
-        <Link to={"for-rent"} className="">
-          {t("home.viewAll")}{" "}
-        </Link>
-      </section>
-      <section className="row">
-        {ads.data && ads.data.length > 0 ? (
-          ads.data.map((ad) => (
-            <div key={ad.id} className="col-xxl-3 col-lg-4 col-md-6 col-12 p-2">
-              <PropertyCard ad={ad} />
-            </div>
-          ))
-        ) : (
-          <EmptyData text={t("forRent.noDatafound")} />
-        )}
-      </section>
+
+        <div className="row">
+          {ads.data && ads.data.length > 0 ? (
+            ads.data.map((ad) => (
+              <div key={ad.id} className="col-lg-4 col-md-6 col-12 p-2">
+                <PropertyCard ad={ad} />
+              </div>
+            ))
+          ) : (
+            <EmptyData text={t("forRent.noDatafound")} />
+          )}
+        </div>
+      </div>
     </section>
   );
 }

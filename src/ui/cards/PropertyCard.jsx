@@ -7,16 +7,19 @@ import { useEffect } from "react";
 import Aos from "aos";
 
 export default function PropertyCard({ ad }) {
-  const { addToFavorites, isPending } = useAddToFavorites();
-  const { deleteFromFavorites, isPending: isDeleteing } =
-    useDeleteFromFavorites();
+  const { addToFavorites } = useAddToFavorites();
+  const { deleteFromFavorites } = useDeleteFromFavorites();
+
   const lang = useSelector((state) => state.language.lang);
+
   function handleAddToFavorites() {
     addToFavorites(ad.id);
   }
+
   function handleDeleteFromFavorites() {
     deleteFromFavorites(ad.id);
   }
+
   useEffect(() => {
     Aos.init({
       duration: 800,
@@ -24,21 +27,13 @@ export default function PropertyCard({ ad }) {
       once: true,
     });
   }, []);
+
   return (
     <div className="properties" data-aos="fade-up">
       <div className="image_card">
         <img src={ad.image} />
-        <div className="fav-btn">
-          {ad.is_favorite ? (
-            <i
-              onClick={handleDeleteFromFavorites}
-              className="fa-solid fa-heart"
-            ></i>
-          ) : (
-            <i onClick={handleAddToFavorites} className="fa-light fa-heart"></i>
-          )}
-        </div>
-      </div>{" "}
+      </div>
+
       <Link to={`/for-rent/${ad.id}`}>
         <div className="card_info">
           <h2> {ad.title}</h2>
@@ -63,13 +58,23 @@ export default function PropertyCard({ ad }) {
                 3 <i className="fa-sharp fa-light fa-bath"></i>
               </span>
             </div>
-
             <p>
               <span> {ad.address} </span>
             </p>
           </section>
         </div>
       </Link>
+
+      <div className="fav-btn">
+          {ad.is_favorite ? (
+            <i
+              onClick={handleDeleteFromFavorites}
+              className="fa-solid fa-heart"
+            ></i>
+          ) : (
+            <i onClick={handleAddToFavorites} className="fa-light fa-heart"></i>
+          )}
+        </div>
     </div>
   );
 }

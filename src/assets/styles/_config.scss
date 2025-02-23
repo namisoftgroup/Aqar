@@ -46,16 +46,96 @@
   --main-hover: #2d5b4f;
   --blue: #2196f3;
   --btn-bg: #f7f7f7;
-  --border: #dcdcdc;
   --white: #fff;
-  --grey: #585858;
+  --border: #dcdcdc;
+  --gray: #585858;
   --text-light: #939292;
   --main-transition: all 300ms ease-in-out;
   --input-stroke: #f2f2f2;
   --input-hint: #aaaaaa;
   --text: #000;
   --black: #000;
+  --input-bg: #fafafa;
   --menu-bg: #d9d9d9;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #989898;
+  border-radius: 30px;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  border: 0 !important;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
+  margin-top: 14px !important;
+  background: var(--white) !important;
+  border-radius: 8px;
+  padding: 8px;
+  span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--input-stroke);
+    margin: 8px 0;
+  }
+  a {
+    text-align: start;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: var(--main);
+    display: flex;
+    margin-bottom: 2px;
+    align-items: center;
+    gap: 8px;
+    &:active {
+      background: var(--white);
+    }
+    i {
+      width: 18px;
+    }
+  }
+}
+.modal-header {
+  border-bottom: 0;
+  .btn-close {
+    padding: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    margin-inline-end: 0 !important;
+    margin-inline-start: auto !important;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    position: relative;
+    opacity: 1;
+    &::before {
+      @include centerAbsolute();
+      font-family: "Font Awesome 6 Pro";
+      content: "\f00d";
+      font-size: 14px;
+      color: var(--main);
+    }
+    &:hover {
+      background: var(--btn-bg) !important;
+    }
+  }
+  h6 {
+    color: var(--main);
+    margin-bottom: 0;
+  }
 }
 
 button,
@@ -81,6 +161,7 @@ button {
   transition: var(--transition);
   color: #000;
 }
+
 input[type="checkbox"] {
   accent-color: var(--main);
 }
@@ -288,4 +369,113 @@ input[type="checkbox"] {
   }
 }
 
+.rmdp-calendar {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 8px;
+  background: var(--white);
+}
 
+.rmdp-wrapper {
+  background: var(--white) !important;
+}
+
+.rmdp-day {
+  width: 48px !important;
+  height: 48px !important;
+  font-size: 16px !important;
+  color: var(--black) !important;
+  transition: var(--transition);
+  span:hover {
+    background-color: var(--btn-bg) !important;
+    color: var(--black) !important;
+  }
+  &.rmdp-today span {
+    background-color: var(--btn-bg) !important;
+    color: var(--black) !important;
+  }
+  &.rmdp-disabled {
+    color: var(--gray) !important;
+    cursor: not-allowed !important;
+    span {
+      text-decoration: line-through !important;
+      cursor: not-allowed !important;
+      &:hover {
+        background-color: transparent !important;
+        color: var(--gray) !important;
+      }
+    }
+  }
+}
+
+.rmdp-arrow-container {
+  width: 24px !important;
+  height: 24px !important;
+  @include centerFlex();
+  position: relative;
+  i {
+    display: none;
+  }
+  &::before {
+    font-family: "Font Awesome 6 Pro";
+    content: "\f104";
+    font-size: 14px;
+    color: var(--black);
+    @include centerAbsolute();
+  }
+  &.rmdp-right::before {
+    content: "\f105";
+  }
+  &:hover {
+    background: var(--btn-bg) !important;
+    box-shadow: none !important;
+  }
+  &.disabled {
+    cursor: not-allowed !important;
+    &::before {
+      color: var(--gray) !important;
+    }
+    &:hover {
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+.rmdp-range {
+  background: var(--main) !important;
+  box-shadow: none !important;
+  color: var(--white) !important;
+  &.rmdp-today span {
+    background: var(--main) !important;
+    color: var(--white) !important;
+  }
+}
+
+.rmdp-week:first-child {
+  margin-bottom: 16px;
+  .rmdp-week-day {
+    color: var(--black) !important;
+  }
+}
+
+.rmdp-header-values {
+  color: var(--main) !important;
+}
+
+.rmdp-shadow {
+  box-shadow: none !important;
+}
+
+.calender_wrapper {
+  min-height: 384px;
+}
+
+.rmdp-week-day {
+  width: 48px !important;
+}
+
+.row {
+  margin: 0;
+}

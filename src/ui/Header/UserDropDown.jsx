@@ -1,11 +1,10 @@
 import { Dropdown } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import useAuth from "../../hooks/helper/useAuth";
-import { openAuthModal } from "../../redux/slices/authModalSlice";
-import AuthModal from "../Authentication/AuthModal";
-
 import { useLogout } from "../../hooks/auth/useLogout";
+import { openAuthModal } from "../../redux/slices/authModalSlice";
+import useAuth from "../../hooks/helper/useAuth";
+import AuthModal from "../Authentication/AuthModal";
 
 export default function UserDropDown() {
   const { t } = useTranslation();
@@ -44,10 +43,6 @@ export default function UserDropDown() {
               </Dropdown.Item>
             </>
           )}
-          <span className="line" />
-          {/* <Dropdown.Item as={Link} to="/help">
-            {t("header.help")}
-          </Dropdown.Item> */}
         </Dropdown.Menu>
       </Dropdown>
       <AuthModal />

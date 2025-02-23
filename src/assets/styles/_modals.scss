@@ -11,8 +11,8 @@
 
 .filter-modal {
   .modal-filter-body {
-    padding: 1rem;
     max-height: 70vh;
+    padding: 0;
     overflow-y: auto;
     scrollbar-width: none;
   }
@@ -44,21 +44,23 @@
     }
   }
   .filter-field {
-    padding: 1rem;
-    border-bottom: 1px solid var(--border);
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--input-stroke);
     display: flex;
     align-items: start;
     gap: 0.5rem;
     flex-direction: column;
+    &:first-child {
+      padding: 0 1.25rem 1.25rem;
+    }
     &:last-child {
       border: none;
     }
     .label {
-      font-size: 22px;
-      margin-bottom: 0.5rem;
+      font-size: 16px;
     }
     .search-field {
-      padding: 0.5rem;
+      padding: 0.75rem;
       border: 1px solid var(--border);
       outline: none;
       font-size: 14px;
@@ -67,7 +69,7 @@
       box-shadow: none;
       transition: var(--main-transition);
       width: 100%;
-      background-image: url(/icons/search-black.png);
+      background-image: url(/icons/search.svg);
       background-repeat: no-repeat;
       background-position: right 1rem center;
       &.en {
@@ -85,9 +87,10 @@
       gap: 12px;
       flex-wrap: wrap;
       padding: 1rem;
-      border: 1px solid var(--border);
+      border: 1px solid var(--input-stroke);
       border-radius: 8px;
       width: 100%;
+
       .checkbox-field {
         div {
           padding: 8px 28px;
@@ -108,14 +111,15 @@
           }
         }
       }
+
       .counter-field {
         width: 100%;
-        margin-bottom: 8px;
         @include space-between();
         h6 {
           font-size: 14px;
-          color: var(--main);
+          color: var(--black);
           span {
+            font-size: 14px;
             display: block;
           }
         }
@@ -127,7 +131,7 @@
           justify-content: end;
           .pets-label {
             font-size: 14px;
-            color: var(--main);
+            color: var(--black);
             margin: 0;
           }
           .pets-input {
@@ -176,91 +180,24 @@
   flex-direction: column;
   width: 100%;
   padding: 1rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--input-stroke);
   border-radius: 8px;
 
-  // Custom Calendar Styling
-  .custom-calendar {
-    border-radius: 0 !important;
-    box-shadow: none;
-    background-color: white;
-    padding: 10px;
-    z-index: 0 !important;
-
-    // Selected Date Style
-    .rmdp-day.rmdp-selected span {
-      background-color: var(--main) !important;
-      color: white !important;
-      border-radius: 50%;
-      transition: var(--main-transition) !important;
-    }
-
-    .rmdp-day.rmdp-today span {
-      background-color: white !important;
-      color: black !important;
-      transition: var(--main-transition) !important;
-    }
-
-    // Middle Dates in Range
-    .rmdp-range {
-      background-color: var(--main) !important;
-      box-shadow: none;
-      transition: var(--main-transition) !important;
-    }
-
-    // Hover Effect
-    .rmdp-day:not(.rmdp-disabled):hover span {
-      background-color: var(--main) !important;
-      color: white !important;
-      border-radius: 50%;
-      transition: var(--main-transition) !important;
-    }
-
-    // Header Style
-    .rmdp-header {
-      background-color: white;
-      padding: 8px;
-      font-weight: bold;
-      color: var(--grey) !important;
-      transition: var(--main-transition) !important;
-
-      .rmdp-header-values {
-        font-weight: bold;
-        color: var(--grey) !important;
-        transition: var(--main-transition) !important;
-      }
-    }
-
-    // Customize Navigation Buttons
-    .rmdp-arrow-container {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
+  .days_count {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--input-stroke);
+    padding-bottom: 8px;
+    p {
+      font-size: 14px;
+      color: var(--gray);
       margin: 0;
-      transition: var(--main-transition) !important;
-
-      i {
-        margin: 0;
-        border-color: var(--main);
-        transition: var(--main-transition) !important;
-      }
-
-      &:hover {
-        background-color: var(--main) !important;
-        border-radius: 50%;
-      }
-
-      &:hover i {
-        border-color: var(--white) !important;
-      }
     }
-
-    // Weekdays Styling
-    .rmdp-week {
-      .rmdp-week-day {
-        color: var(--main);
-        transition: var(--main-transition) !important;
-      }
+    h4 {
+      color: var(--main);
     }
   }
 }

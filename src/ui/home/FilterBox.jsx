@@ -65,6 +65,7 @@ export default function FilterBox() {
           onChange={handleAreaChange}
           loading={isAreaLoading}
         />
+
         <SelectField
           value={formData.category_id}
           id="area"
@@ -75,6 +76,7 @@ export default function FilterBox() {
         />
 
         <SubmitButton className="p-3" img="/icons/search.svg" />
+        
         <button
           className="filter-btn"
           onClick={(e) => {

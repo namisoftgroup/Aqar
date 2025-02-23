@@ -1,10 +1,26 @@
 .properties {
-  background: #dff5f1;
+  background: #ffffff;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
-  gap: 8px;
-  padding: 8px;
+  gap: 16px;
+  padding: 12px;
+  position: relative;
+  .fav-btn {
+    @include clearInput;
+    background-color: transparent;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    transform: translate(-50%, 50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    i {
+      font-size: 20px;
+      color: var(--main);
+    }
+  }
   .image_card {
     background-color: transparent;
     position: relative;
@@ -15,21 +31,6 @@
       object-fit: cover;
       aspect-ratio: 1/1;
       border-radius: 8px;
-    }
-    .fav-btn {
-      @include clearInput;
-      background-color: transparent;
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: translate(-50%, 50%);
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-      i {
-        font-size: 20px;
-        color: var(--main);
-      }
     }
   }
   h2 {
@@ -45,11 +46,11 @@
     .info {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
       .flat-details {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 14px;
         font-size: 14px;
         color: var(--dark);
         span {
@@ -88,14 +89,14 @@
         margin: 0;
       }
       p {
-        color: var(--grey);
+        color: var(--gray);
         margin: 0;
       }
     }
   }
   p {
     font-size: 14px;
-    color: var(--grey);
+    color: var(--gray);
     margin: 0;
     margin-top: 1rem;
   }

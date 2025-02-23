@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Calendar } from "react-multi-date-picker";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../redux/slices/filterSlice";
 import {
@@ -7,19 +8,22 @@ import {
   formatDate,
   formatDateRange,
 } from "../../utils/helper";
-import { useTranslation } from "react-i18next";
 export default function FilterCalender() {
-  const formData = useSelector((state) => state.filter);
-  const lang = useSelector((state) => state.language.lang);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
+  const formData = useSelector((state) => state.filter);
+  const lang = useSelector((state) => state.language.lang);
+
   const [nights, setNights] = useState(0);
   const [dateRange, setDateRange] = useState({ from: "", to: "" });
+
   const storedDates =
     formData.from_date && formData.to_date
       ? [new Date(formData.from_date), new Date(formData.to_date)]
       : [];
   const [value, setValue] = useState(storedDates);
+
   useEffect(() => {
     if (value.length === 2) {
       const fromDate = formatDate(value[0]);
@@ -42,13 +46,16 @@ export default function FilterCalender() {
 
   return (
     <form className="calender-container">
-      <h4>
-        {nights} {t("filter.night")}{" "}
-      </h4>
-      <p>{dateRange.from}</p>
+      <div className="days_count">
+        <h4>
+          {nights} {t("filter.night")}{" "}
+        </h4>
+        <p>{dateRange.from}</p>
+      </div>
+
       <Calendar
         range
-        numberOfMonths={1}
+        numberOfMonths={2}
         format="YYYY/MM/DD"
         className="custom-calendar"
         value={value}

@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import Logo from "./Header/Logo";
 import { useTranslation } from "react-i18next";
 import { useGetSettings } from "../hooks/settings/useGetSettings";
 
@@ -71,7 +70,9 @@ export default function Footer() {
         </div>
         <div className="row g-3 border-top">
           <div className="col-12 col-md-6 col-lg-4 ">
-            <Logo />
+            <Link href="/" className="logo">
+              <img src="/images/logo.svg" alt="Aqar's logo" />
+            </Link>
             <p className="copy-right">
               © {new Date().getFullYear()} {t("footer.aqar")}{" "}
               {t("footer.copyright")}
