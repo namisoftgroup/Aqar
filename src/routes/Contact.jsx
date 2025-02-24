@@ -1,171 +1,128 @@
-// import { Link } from "react-router";
-// import InputField from "../ui/form/InputField";
-// import SubmitButton from "../ui/form/SubmitButton";
-// import TextareaField from "../ui/form/TextareaField";
-// import { useTranslation } from "react-i18next";
-
-// export default function Contact() {
-//   const { t } = useTranslation();
-//   return (
-//     <section className="container">
-//       <div className="contact">
-//         <div className="contact-header">
-//           <h2>Contact Us</h2>
-//           <p>Feel free to reach out for any inquiries or questions.</p>
-//         </div>
-//         <div className="contact-wrapper">
-//           <div className="row">
-//             {" "}
-//             <div className="col-lg-6">
-//               <div className="contact-info-wrapper">
-//                 <div>
-//                   <h3>Contact Information</h3>
-//                   <p>Say something to start a live chat!</p>
-//                 </div>
-//                 <div className="contact-info">
-//                   <p>
-//                     <i className="fa-solid fa-phone"></i>
-//                     <span> +1 123 456 7890</span>
-//                   </p>
-//                   <p>
-//                     <i className="fa-solid fa-envelope"></i>
-//                     <span> exapmle@gmail.com</span>
-//                   </p>
-//                   <p>
-//                     <i className="fa-solid fa-location-dot"></i>
-//                     <span> +1 123 456 7890</span>
-//                   </p>
-//                 </div>
-//                 <div className="social-media-links">
-//                   <Link>
-//                     <i className="fa-brands fa-facebook"></i>
-//                   </Link>
-//                   <Link>
-//                     <i className="fa-brands fa-twitter"></i>
-//                   </Link>
-//                   <Link>
-//                     <i className="fa-brands fa-instagram"></i>
-//                   </Link>
-//                   <Link>
-//                     <i className="fa-brands fa-linkedin"></i>
-//                   </Link>
-//                 </div>
-//               </div>
-//             </div>
-//             <div className="col-lg-6 ">
-//               <form className="contact-form">
-//                 <InputField
-//                   label={"Name"}
-//                   type="text"
-//                   placeholder="Enter Your Name"
-//                 />
-//                 <InputField
-//                   label={"Email"}
-//                   type="email"
-//                   placeholder="Enter Your Email"
-//                 />
-//                 <InputField
-//                   label={"Subject"}
-//                   type="text"
-//                   placeholder="Subject Title"
-//                 />
-//                 <TextareaField
-//                   label={"Message"}
-//                   placeholder="Your Message"
-//                   rows="5"
-//                 ></TextareaField>
-//                 <SubmitButton text={"submit"} />
-//               </form>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
+import { Breadcrumb } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router";
+import { useSelector } from "react-redux";
 import InputField from "../ui/form/InputField";
-import SubmitButton from "../ui/form/SubmitButton";
 import TextareaField from "../ui/form/TextareaField";
+import MapSection from "../ui/PropertiesForRent/MapSection";
 
 export default function Contact() {
   const { t } = useTranslation();
-
+  const lang = useSelector((state) => state.language.lang);
   return (
-    <section className="container">
+    <section>
       <div className="contact">
-        <div className="contact-header">
-          <h2>{t("contact.title")}</h2>
-          <p>{t("contact.description")}</p>
+        <div className={`  ${lang === "ar" ? "ar" : " "}    contact-header `}>
+          <div className="container z-1">
+            <div className="contat-title">
+              <Breadcrumb>
+                <Breadcrumb.Item href="/">{t("contact.home")}</Breadcrumb.Item>
+                <Breadcrumb.Item
+                  className={`${lang === "ar" ? "ar" : " "}`}
+                  active
+                >
+                  {t("contact.title")}
+                </Breadcrumb.Item>
+              </Breadcrumb>
+              <h2>{t("contact.title")}</h2>
+            </div>
+          </div>
         </div>
-        <div className="contact-wrapper">
-          <div className="row g-3">
-            <div className="col-md-6">
-              <div className="contact-info-wrapper">
-                <div>
-                  <h3>{t("contact.contactInfoTitle")}</h3>
+
+        <div className="contact-section">
+          <div className="container">
+            <div className="row g-4">
+              <div className="col-lg-6">
+                <div className="contact-info-content">
+                  <h2>{t("contact.contactInfoTitle")}</h2>
                   <p>{t("contact.contactInfoDescription")}</p>
+                  <ul className="contact-items">
+                    <li>
+                      <i className="fa-solid fa-phone"></i>
+                      <p>
+                        <span>{t("contact.phone")} :</span>
+                        <span> +1 123 456 7890</span>
+                      </p>
+                    </li>
+                    <li>
+                      <i className="fa-solid fa-location-dot"></i>
+                      <p>
+                        <span>{t("contact.location")} :</span>
+                        <span>Jeddah, Saudi Arabia 00000, KSA</span>
+                      </p>
+                    </li>
+                    <li>
+                      <i className="fa-solid fa-envelope"></i>
+                      <p>
+                        <span>{t("contact.email")} :</span>
+                        <span>noot@gmail.com</span>
+                      </p>
+                    </li>
+                  </ul>
                 </div>
-                <div className="contact-info">
-                  <p>
-                    <i className="fa-solid fa-phone"></i>
-                    <span> {t("contact.phone")}: +1 123 456 7890</span>
-                  </p>
-                  <p>
-                    <i className="fa-solid fa-envelope"></i>
-                    <span> {t("contact.email")}: example@gmail.com</span>
-                  </p>
-                  <p>
-                    <i className="fa-solid fa-location-dot"></i>
-                    <span>
-                      {" "}
-                      {t("contact.location")}: 123 Main St, City, Country
-                    </span>
-                  </p>
-                </div>
-                <div className="social-media-links">
-                  <Link>
-                    <i className="fa-brands fa-facebook"></i>
-                  </Link>
-                  <Link>
-                    <i className="fa-brands fa-twitter"></i>
-                  </Link>
-                  <Link>
-                    <i className="fa-brands fa-instagram"></i>
-                  </Link>
-                  <Link>
-                    <i className="fa-brands fa-linkedin"></i>
-                  </Link>
+              </div>
+              <div className="col-lg-6">
+                <div className="contact-content">
+                  <h2>{t("contact.sendMessage")} </h2>
+                  <p>{t("contact.messageDescription")}</p>
+                  <form className="contact-form">
+                    <div className="row g-4">
+                      <div className="col-lg-6">
+                        <InputField
+                          label={t("contact.email")}
+                          placeholder={t("contact.emailPlaceholder")}
+                        />
+                      </div>
+                      <div className="col-lg-6">
+                        <InputField
+                          label={t("contact.name")}
+                          placeholder={t("contact.namePlaceholder")}
+                        />
+                      </div>
+                      <div className="col-12">
+                        <InputField
+                          label={t("contact.phone")}
+                          type="number"
+                          placeholder={t("contact.phonePlaceholder")}
+                        />
+                      </div>
+                      <div className="col-12">
+                        <TextareaField
+                          label={t("contact.message")}
+                          placeholder={t("contact.messagePlaceholder")}
+                        />
+                      </div>
+                      <div className="col-12">
+                        <button
+                          className={`contact-btn ${
+                            lang === "ar" ? "ar" : " "
+                          }`}
+                        >
+                          <span>{t("contact.submit")}</span>
+                          <i
+                            className={`fa-solid  ${
+                              lang === "ar"
+                                ? "fa-arrow-left-long"
+                                : "fa-arrow-right-long"
+                            }`}
+                          ></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
-              <form className="contact-form">
-                <InputField
-                  label={t("contact.name")}
-                  type="text"
-                  placeholder={t("contact.name")}
-                />
-                <InputField
-                  label={t("contact.email")}
-                  type="email"
-                  placeholder={t("contact.email")}
-                />
-                <InputField
-                  label={t("contact.subject")}
-                  type="text"
-                  placeholder={t("contact.subject")}
-                />
-                <TextareaField
-                  label={t("contact.message")}
-                  placeholder={t("contact.message")}
-                  rows="5"
-                ></TextareaField>
-                <SubmitButton text={t("contact.submit")} />
-              </form>
-            </div>
           </div>
+        </div>
+        <div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13735.308237673138!2d30.976159350000003!3d30.61064085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1740395176854!5m2!1sen!2seg"
+            width="100%"
+            height="400"
+            allowfullscreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
     </section>
