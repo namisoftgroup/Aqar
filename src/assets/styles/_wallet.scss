@@ -1,16 +1,21 @@
 .wallet {
+  padding: 60px 0;
   .wallet-header {
     font-size: 32px;
     margin-bottom: 8px;
   }
   .balance-card {
     padding: 1rem;
+
     border: 1px solid var(--border);
     border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 1rem;
     flex-direction: column;
+    img {
+      height: 60px;
+    }
     .balance {
       display: flex;
       align-items: center;
@@ -31,6 +36,7 @@
     h3 {
       font-size: 22px;
       margin-bottom: 16px;
+      text-align: center;
     }
     .transactions-container {
       width: 100%;

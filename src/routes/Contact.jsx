@@ -2,18 +2,22 @@ import { useTranslation } from "react-i18next";
 import AnimatedButton from "../ui/AnimatedButton";
 import InputField from "../ui/form/InputField";
 import TextareaField from "../ui/form/TextareaField";
+
 import SectionHeader from "../ui/SectionHeader";
+
 
 export default function Contact() {
   const { t } = useTranslation();
   return (
     <section>
       <div className="contact">
+
         <SectionHeader link={t("contact.title")} />
+
         <div className="contact-section">
           <div className="container">
-            <div className="row g-4">
-              <div className="col-lg-6">
+            <div className="row">
+              <div className="col-lg-6 p-2">
                 <div className="contact-info-content">
                   <h2>{t("contact.contactInfoTitle")}</h2>
                   <p>{t("contact.contactInfoDescription")}</p>
@@ -42,10 +46,8 @@ export default function Contact() {
                   </ul>
                 </div>
               </div>
-              <div className="col-lg-6">
+              <div className="col-lg-6 p-2">
                 <div className="contact-content">
-                  <h2>{t("contact.sendMessage")} </h2>
-                  <p>{t("contact.messageDescription")}</p>
                   <form className="contact-form">
                     <div className="row g-4">
                       <div className="col-lg-6">
@@ -83,7 +85,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <div>
+        <div style={{ marginBottom: "-12px" }}>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13735.308237673138!2d30.976159350000003!3d30.61064085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1740395176854!5m2!1sen!2seg"
             width="100%"

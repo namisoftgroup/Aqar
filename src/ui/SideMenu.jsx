@@ -27,7 +27,9 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   if (isLoading) return <></>;
   return (
     <>
@@ -42,9 +44,7 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
             <img src={user.image} />
             <div className="user-info">
               <h1>{user?.name}</h1>
-              <Link to="/profile" onClick={() => setOpenMenu(false)}>
-                {t("header.showProfile")}{" "}
-              </Link>
+              <span>{user?.phone}</span>
             </div>
           </div>
         )}

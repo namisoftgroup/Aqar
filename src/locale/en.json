@@ -159,7 +159,8 @@
     "deposit": "Deposit",
     "withdraw": "Withdraw",
     "charge": "Charge",
-    "enterTheAmount": "Enter the amount"
+    "enterTheAmount": "Enter the amount",
+    "noOperations": "You don't have previous transactions"
   },
   "notifications": {
     "notifications": "Notifications"
@@ -242,5 +243,6 @@
   "cancel": "Cancel",
   "adults": "Adults",
   "sar": "SAR",
-  "thereIsNoBookingsYet": "You have no reservations yet."
+  "thereIsNoBookingsYet": "You have no reservations yet.",
+  "editProfile": "Edit Profile"
 }

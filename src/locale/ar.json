@@ -158,7 +158,8 @@
     "deposit": "إيداع",
     "withdraw": "سحب",
     "charge": "شحن",
-    "enterTheAmount": "ادخل المبلغ"
+    "enterTheAmount": "ادخل المبلغ",
+    "noOperations": "لا يوجد لديك عمليات سابقه."
   },
   "notifications": {
     "notifications": "الاشعارات"
@@ -241,5 +242,6 @@
   "cancel": "الغاء",
   "confirm": "تأكيد",
   "sar": "ريال",
-  "thereIsNoBookingsYet": "لا يوجد لديك حجوزات حتى الأن"
+  "thereIsNoBookingsYet": "لا يوجد لديك حجوزات حتى الأن",
+  "editProfile":"تعديل الملف الشخصي"
 }

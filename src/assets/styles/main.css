@@ -2370,6 +2370,9 @@ body .form .stars .star-rating-service input {
           appearance: none;
   display: none;
 }
+body .wallet {
+  padding: 60px 0;
+}
 body .wallet .wallet-header {
   font-size: 32px;
   margin-bottom: 8px;
@@ -2382,6 +2385,9 @@ body .wallet .balance-card {
   align-items: center;
   gap: 1rem;
   flex-direction: column;
+}
+body .wallet .balance-card img {
+  height: 60px;
 }
 body .wallet .balance-card .balance {
   display: flex;
@@ -2400,6 +2406,7 @@ body .wallet .balance-card .balance p span {
 body .wallet .transactions-table h3 {
   font-size: 22px;
   margin-bottom: 16px;
+  text-align: center;
 }
 body .wallet .transactions-table .transactions-container {
   width: 100%;
@@ -2961,24 +2968,23 @@ body .delete-account-modal-body .delete-account-modal-footer a {
   color: var(--main);
 }
 body .contact .contact-section {
-  padding: 120px 0;
+  padding: 80px 0;
 }
 body .contact .contact-section .contact-info-content h2 {
-  font-size: 48px;
-  font-weight: 700;
+  font-size: 36px;
   color: var(--text);
   margin-bottom: 20px;
 }
 body .contact .contact-section .contact-info-content p {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--text-light);
-  margin-bottom: 20px;
-  line-height: 30px;
+  margin-bottom: 32px;
+  line-height: 1.8;
 }
 body .contact .contact-section .contact-info-content .contact-items {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 body .contact .contact-section .contact-info-content .contact-items li {
   display: flex;
@@ -2993,8 +2999,8 @@ body .contact .contact-section .contact-info-content .contact-items li i {
   height: 68px;
   line-height: 1.5;
   text-align: center;
-  border-radius: 4px;
-  background-color: #efeefa;
+  border-radius: 8px;
+  background-color: #fafafa;
   color: var(--main);
   font-size: 22px;
 }
@@ -3010,11 +3016,12 @@ body .contact .contact-section .contact-info-content .contact-items li p span:fi
   font-weight: 500;
 }
 body .contact .contact-section .contact-info-content .contact-items li p span:last-child {
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.5;
   color: var(--text);
 }
+
 body .contact .contact-section .contact-content {
   background-color: #efeefa;
   border-radius: 10px;
@@ -3036,11 +3043,13 @@ body .about .why-us {
   padding: 60px 0px;
 }
 body .about .why-us .why-title {
+
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
   justify-content: center;
+
   margin-bottom: 40px;
 }
 body .about .why-us .why-title h1 {
@@ -3171,9 +3180,63 @@ body .about .why-us .about2-wrapper .about-area p {
     transform: translateY(0);
   }
 }
+
 body .bounce {
   display: inline-block;
   animation: smoothBounce 5s ease-in-out infinite;
+
+body .page_header {
+  background-image: url(/images/breadcrumb-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position: center;
+  height: 240px;
+  display: flex;
+  align-items: center;
+}
+body .page_header.ar::before {
+  background: linear-gradient(452deg, rgba(0, 0, 0, 0) 38.52%, rgba(0, 0, 0, 0.82) 81.13%);
+}
+body .page_header::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: linear-gradient(266deg, rgba(0, 0, 0, 0) 38.52%, rgba(0, 0, 0, 0.82) 81.13%);
+}
+body .page_header .contat-title {
+  z-index: 2;
+}
+body .page_header .contat-title .breadcrumb .breadcrumb-item {
+  color: white;
+}
+body .page_header .contat-title .breadcrumb .breadcrumb-item::before {
+  color: white;
+  padding: 0 8px;
+}
+body .page_header .contat-title .breadcrumb .breadcrumb-item.ar::before {
+  float: right;
+}
+body .page_header .contat-title .breadcrumb .breadcrumb-item a {
+  color: var(--main);
+  font-size: 24px;
+  font-weight: 700;
+}
+body .page_header .contat-title .breadcrumb .breadcrumb-item.active {
+  color: rgb(177, 172, 172);
+  font-size: 24px;
+  font-weight: 500;
+}
+body .page_header .contat-title h2 {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+
 }
 body.en {
   direction: ltr;

@@ -23,7 +23,7 @@ export default function ChargeModal({ showModal, setShowModal }) {
       <Modal.Body>
         <form onSubmit={handleSubmit}>
           <InputField
-            placeholder="00 ر.س "
+            placeholder={`00 ${t("sar")}`}
             type="number"
             label={t("wallet.enterTheAmount")}
           />

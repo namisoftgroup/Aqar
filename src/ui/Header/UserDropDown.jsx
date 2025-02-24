@@ -5,6 +5,7 @@ import { useLogout } from "../../hooks/auth/useLogout";
 import { openAuthModal } from "../../redux/slices/authModalSlice";
 import useAuth from "../../hooks/helper/useAuth";
 import AuthModal from "../Authentication/AuthModal";
+import { Link } from "react-router";
 
 export default function UserDropDown() {
   const { t } = useTranslation();
@@ -27,12 +28,18 @@ export default function UserDropDown() {
         </Dropdown.Toggle>
         <Dropdown.Menu>
           {isAuthed ? (
-            <Dropdown.Item as="button" disabled={isLoading} onClick={logout}>
-              {isLoading && (
-                <i className="fa-duotone fa-regular fa-circle-notch fa-spin"></i>
-              )}
-              {t("header.logout")}
-            </Dropdown.Item>
+            <>
+              <Dropdown.Item as={Link} to="/edit-profile">
+                {t("editProfile")}
+              </Dropdown.Item>
+
+              <Dropdown.Item as="button" disabled={isLoading} onClick={logout}>
+                {isLoading && (
+                  <i className="fa-duotone fa-regular fa-circle-notch fa-spin"></i>
+                )}
+                {t("header.logout")}
+              </Dropdown.Item>
+            </>
           ) : (
             <>
               <Dropdown.Item
