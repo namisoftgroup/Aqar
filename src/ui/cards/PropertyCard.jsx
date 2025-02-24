@@ -32,7 +32,7 @@ export default function PropertyCard({ ad, className }) {
   }, []);
 
   return (
-    <div className={`properties ${className}`} data-aos="fade-up">
+    <div className={`properties ${className}`}>
       <div className="image_card">
         <img src={ad.image} />
       </div>

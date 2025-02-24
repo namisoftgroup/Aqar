@@ -1,12 +1,10 @@
 import i18next from "i18next";
 import { Dropdown } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { setLanguage } from "../../redux/slices/languageSlice";
 
 export default function LanguageDropDown() {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
 
   const handleLanguageChange = (selectedLanguage) => {
     dispatch(setLanguage(selectedLanguage));
@@ -25,10 +23,10 @@ export default function LanguageDropDown() {
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item onClick={() => handleLanguageChange("en")}>
-          {t("header.english")}
+          English
         </Dropdown.Item>
         <Dropdown.Item onClick={() => handleLanguageChange("ar")}>
-          {t("header.arabic")}
+          عربى
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

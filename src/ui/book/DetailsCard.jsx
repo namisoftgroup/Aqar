@@ -17,7 +17,7 @@ export default function DetailsCard({ adDetails }) {
   }, [nights, adDetails.price, adDetails.clean_price]);
   return (
     <div className="details-card">
-      <PropertyCard ad={adDetails} />
+      <PropertyCard ad={adDetails} className="bg_gray" />
       <div className="price-details">
         <h4>{t("book.priceDetails")}</h4>
         <ul>

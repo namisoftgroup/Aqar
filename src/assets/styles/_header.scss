@@ -152,7 +152,7 @@
 
 .side-menu {
   position: fixed;
-  top: 74.8px;
+  top: 72.8px;
   right: -100%;
   min-width: 300px;
   background-color: var(--white);
@@ -160,7 +160,7 @@
   flex-direction: column;
   gap: 2rem;
   padding: 1rem;
-  height: calc(100vh - 74.8px);
+  height: calc(100vh - 72.8px);
   overflow-y: auto;
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
@@ -256,10 +256,10 @@
 
 .overlay {
   position: fixed;
-  top: 74.8px;
+  top: 72.8px;
   left: 0;
   width: 100%;
-  height: calc(100% - 74.8px);
+  height: calc(100% - 72.8px);
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 0;
   display: none;

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap");
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -715,7 +716,7 @@ input[type=checkbox] {
 
 .side-menu {
   position: fixed;
-  top: 74.8px;
+  top: 72.8px;
   right: -100%;
   min-width: 300px;
   background-color: var(--white);
@@ -723,7 +724,7 @@ input[type=checkbox] {
   flex-direction: column;
   gap: 2rem;
   padding: 1rem;
-  height: calc(100vh - 74.8px);
+  height: calc(100vh - 72.8px);
   overflow-y: auto;
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
@@ -816,10 +817,10 @@ input[type=checkbox] {
 
 .overlay {
   position: fixed;
-  top: 74.8px;
+  top: 72.8px;
   left: 0;
   width: 100%;
-  height: calc(100% - 74.8px);
+  height: calc(100% - 72.8px);
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 0;
   display: none;
@@ -1227,7 +1228,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .properties .fav-btn i {
   font-size: 20px;
-  color: var(--main);
+  color: #ff0000;
 }
 .properties .image_card {
   background-color: transparent;
@@ -1358,10 +1359,10 @@ input[type=number]::-webkit-outer-spin-button {
 body {
   direction: rtl;
   background-color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Zain", sans-serif;
 }
 body main {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 72.8px);
 }
 body .hero-section {
   padding: 100px 0;
@@ -1791,6 +1792,7 @@ body .for-rent-details .gallary {
 body .for-rent-details .gallary img {
   border-radius: 12px;
   width: 100%;
+  aspect-ratio: 3/2;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -1997,16 +1999,16 @@ body .for-rent-details .rates {
   margin-top: 4rem;
 }
 body .book-page {
-  margin: 4rem 0;
+  padding: 40px 0;
 }
 body .book-page .book-header {
-  padding: 2rem 0;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 body .book-page .book-header h2 {
-  font-size: 28px;
+  font-size: 20px;
   margin: 0;
 }
 body .book-page .book-header button {
@@ -2028,7 +2030,7 @@ body .book-page .details-card .price-details {
   border-bottom: 1px solid var(--border);
 }
 body .book-page .details-card .price-details h4 {
-  font-size: 22px;
+  font-size: 18px;
   margin-bottom: 1rem;
 }
 body .book-page .details-card .price-details ul {
@@ -2045,12 +2047,13 @@ body .book-page .details-card .price-details ul li {
 body .book-page .details-card .price-details ul li span:first-child {
   font-weight: bold;
   color: var(--main);
+  font-size: 14px;
 }
 body .book-page .details-card .price-details ul li span:last-child {
   color: var(--gray);
 }
 body .book-page .details-card .total {
-  padding: 1rem 0;
+  padding: 1rem 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2062,7 +2065,7 @@ body .book-page .details-card .part {
 }
 body .book-page .your-trip {
   border-bottom: 1px solid var(--border);
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 body .book-page .your-trip ul {
   display: flex;
@@ -2078,18 +2081,17 @@ body .book-page .your-trip ul li {
 body .book-page .your-trip ul li .trip-data span {
   display: block;
   font-size: 14px;
-  color: var(--gray);
+  color: var(--black);
+  font-weight: 600;
 }
 body .book-page .your-trip ul li .trip-data span:first-child {
-  font-weight: bold;
-  font-size: 22px;
+  font-size: 18px;
   margin-bottom: 10px;
 }
 body .book-page .your-trip ul li button {
   color: var(--main);
 }
 body .book-page .book-btn {
-  margin-top: 2rem;
   padding: 1rem 2rem;
   background-color: var(--main);
   color: var(--white);
@@ -2102,11 +2104,13 @@ body .book-page .book-btn:hover {
   background-color: var(--main-hover);
 }
 body .book-page .chooseHowToPay {
-  border-bottom: 1px solid var(--border);
-  padding: 2rem 0;
+  padding: 1rem 0;
+}
+body .book-page .chooseHowToPay h4 {
+  font-size: 18px;
 }
 body .book-page .chooseHowToPay .radio-group {
-  padding: 1rem;
+  padding: 1rem 0 0.5rem;
   display: flex;
   gap: 1rem;
   flex-direction: column;
@@ -2123,7 +2127,7 @@ body .book-page .chooseHowToPay .radio-group .radio-label input {
 body .book-page .chooseHowToPay .radio-group .radio-label .custom-radio {
   width: 18px;
   height: 18px;
-  border: 2px solid #007bff;
+  border: 2px solid var(--main);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2917,7 +2921,7 @@ body .contact .contact-wrapper .contact-info-wrapper .social-media-links a:hover
 }
 body.en {
   direction: ltr;
-  font-family: "Outfit", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 body.en .form-field input,
 body.en .form-field select,

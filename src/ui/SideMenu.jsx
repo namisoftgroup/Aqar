@@ -100,12 +100,6 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
                     <span>{t("header.account")}</span>
                   </Link>
                 </li>
-                <li>
-                  <Link to="/notifications" className="d-flex  d-sm-none">
-                    <i className="fa-light fa-bell"></i>
-                    <span>{t("header.notifications")}</span>
-                  </Link>
-                </li>{" "}
               </>
             )}
 
