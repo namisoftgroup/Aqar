@@ -18,6 +18,8 @@ export function useGetAds(refetchPage) {
   const children_number = searchParams.get("children_number");
   const baby_number = searchParams.get("baby_number");
   const with_pits = searchParams.get("with_pits");
+  const price_from = searchParams.get("price_from");
+  const price_to = searchParams.get("price_to");
   const reqBody = {
     page,
     search,
@@ -30,6 +32,8 @@ export function useGetAds(refetchPage) {
     children_number,
     baby_number,
     with_pits,
+    price_from,
+    price_to,
   };
   const { data: ads, isLoading } = useQuery({
     queryKey: ["ads", reqBody],

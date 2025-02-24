@@ -6,6 +6,10 @@ import { setFilter } from "../../redux/slices/filterSlice";
 import { handleApplyFilters } from "../../utils/helper";
 import FilterCalender from "../home/FilterCalender";
 import FilterGuests from "../home/FilterGuests";
+import RangeSlider from "../RangeSlider";
+import useGetPriceAdRange from "../../hooks/ads/useGetPriceAdRange";
+import DataLoader from "../DataLoader";
+import { useEffect } from "react";
 
 export default function FilterModal({ showModal, setShowModal }) {
   const { t } = useTranslation();
@@ -13,12 +17,21 @@ export default function FilterModal({ showModal, setShowModal }) {
   const formData = useSelector((state) => state.filter);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { ranges, isLoading } = useGetPriceAdRange();
   function handleSearch(e) {
     dispatch(setFilter({ search: e.target.value }));
   }
 
   const [, setSearchParms] = useSearchParams();
+
+  function handleSliderChange(value) {
+    dispatch(setFilter({ price_from: value[0], price_to: value[1] }));
+  }
+  useEffect(() => {
+    dispatch(
+      setFilter({ price_from: ranges?.min_price, price_to: ranges?.max_price })
+    );
+  }, [ranges, dispatch]);
 
   function handleSumit(e) {
     e.preventDefault();
@@ -41,6 +54,8 @@ export default function FilterModal({ showModal, setShowModal }) {
         area_id: "",
         from_date: "",
         to_date: "",
+        price_from: ranges.min_price,
+        price_to: ranges.max_price,
       })
     );
     setSearchParms("");
@@ -72,6 +87,22 @@ export default function FilterModal({ showModal, setShowModal }) {
               placeholder=""
             />
           </div>
+          <div className="filter-field flex-row">
+            {isLoading ? (
+              <DataLoader />
+            ) : (
+              <RangeSlider
+                min={ranges.min_price}
+                max={ranges.max_price}
+                steps={5}
+                value={[formData.price_from, formData.price_to]}
+                minType={t("sar")}
+                maxType={t("sar")}
+                handleSlide={(value) => handleSliderChange(value)}
+              />
+            )}
+          </div>
+
           <div className="filter-field">
             <label className="label"> {t("filter.nightsNumber")} </label>
             <FilterCalender />

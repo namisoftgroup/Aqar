@@ -149,3 +149,45 @@
     }
   }
 }
+
+.download-app {
+  padding: 120px 0;
+  .download-app-content {
+    .section-title {
+      h1 {
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 16px;
+        color: var(--text-light);
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+    }
+    .apps-items {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 25px;
+      @media (max-width: 786px) {
+        justify-content: center;
+      }
+      a {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+    }
+    @media (max-width: 786px) {
+      text-align: center;
+    }
+  }
+  .app-images {
+    img {
+      width: 100%;
+    }
+  }
+}

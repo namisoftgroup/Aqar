@@ -12,6 +12,8 @@ const initialState = {
   area_id: "",
   from_date: "",
   to_date: "",
+  price_from: "",
+  price_to: "",
 };
 
 const filterSlice = createSlice({
