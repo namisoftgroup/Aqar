@@ -4,11 +4,14 @@ import { PER_AR, PER_EN } from "../../utils/constants";
 import { useSelector } from "react-redux";
 import { useDeleteFromFavorites } from "../../hooks/favorites/useDeleteFromFavorites";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Aos from "aos";
 
 export default function PropertyCard({ ad, className }) {
   const { addToFavorites } = useAddToFavorites();
   const { deleteFromFavorites } = useDeleteFromFavorites();
+
+  const { t } = useTranslation();
 
   const lang = useSelector((state) => state.language.lang);
 
@@ -40,7 +43,7 @@ export default function PropertyCard({ ad, className }) {
           <section className="info">
             <p>
               <span>
-                {ad.price} ريال /{" "}
+                {ad.price} {t("sar")} /{" "}
                 {lang === "ar" ? PER_AR[ad.per] : PER_EN[ad.per]}
               </span>
             </p>

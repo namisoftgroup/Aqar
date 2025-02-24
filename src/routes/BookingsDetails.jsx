@@ -51,7 +51,7 @@ export default function BookingsDetails() {
             <div className="order-prop-details">
               <h3>{bookingDetails.ad.title}</h3>
               <p>
-                {bookingDetails.ad.price} ريال /{" "}
+                {bookingDetails.ad.price} {t("sar")} /{" "}
                 {lang === "ar"
                   ? PER_AR[bookingDetails.ad.per]
                   : PER_EN[bookingDetails.ad.per]}
@@ -146,7 +146,8 @@ export default function BookingsDetails() {
                 <div>
                   {bookingDetails.ad.payments.map((payment) => (
                     <p key={payment.id}>
-                      <span>{payment.price}</span> ريال {payment.description}
+                      <span>{payment.price}</span> {t("sar")}{" "}
+                      {payment.description}
                     </p>
                   ))}
                 </div>
@@ -164,7 +165,7 @@ export default function BookingsDetails() {
               )}
 
               <p>
-                {bookingDetails.ad.price} ريال /{" "}
+                {bookingDetails.ad.price} {t("sar")} /{" "}
                 {lang === "ar"
                   ? PER_AR[bookingDetails.ad.per]
                   : PER_EN[bookingDetails.ad.per]}
@@ -172,7 +173,9 @@ export default function BookingsDetails() {
             </div>
             <div>
               <p>{t("forRent.cleanPrice")} </p>
-              <p>{bookingDetails.ad.clean_price} ريال</p>
+              <p>
+                {bookingDetails.ad.clean_price} {t("sar")}
+              </p>
             </div>
             <div>
               <p>{t("forRent.totalPrice")}</p>

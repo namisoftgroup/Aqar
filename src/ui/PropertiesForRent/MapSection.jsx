@@ -9,7 +9,7 @@ import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import PropertyCard from "../cards/PropertyCard";
 
-export default function MapSection({ data }) {
+export default function MapSection() {
   const { t } = useTranslation();
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,

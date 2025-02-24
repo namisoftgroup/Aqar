@@ -50,10 +50,11 @@
     "emailPlaceholder": "Enter Your Email"
   },
   "auth": {
-    "wellcome": "Wellcome Back !",
+    "welcome": "Welcome back!",
+    "welcomeDesc": "We're delighted to see you again! Not is your smart and secure platform for easy property booking.",
     "phoneNumber": "Phone Number",
     "enter": "Enter",
-    "confirmOtp": "send the confirmation code to check  phone number",
+    "confirmOtp": "We have sent a code to verify your phone number",
     "resendCode": "Resend Code",
     "confirm": "Confirm",
     "next": "Next",
@@ -92,7 +93,7 @@
   "forRent": {
     "viewOnMap": "View on Map",
     "list": "View List",
-    "desc": "Description",
+    "desc": "About this place",
     "chat": "Chat",
     "features": "Features",
     "price": "Price",
@@ -224,5 +225,6 @@
     "linkedin": "LinkedIn"
   },
   "cancel": "Cancel",
-  "adults": "Adults"
+  "adults": "Adults",
+  "sar": "SAR"
 }

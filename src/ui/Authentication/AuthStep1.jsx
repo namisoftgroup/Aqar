@@ -33,7 +33,8 @@ export default function AuthStep1({ formData, setFormData, setOtp }) {
 
   return (
     <>
-      <h1>{t("auth.wellcome")}</h1>
+      <h4>{t("auth.welcome")}</h4>
+      <p>{t("auth.welcomeDesc")}</p>
       <form onSubmit={handleSubmit} className="form">
         <InputField
           required

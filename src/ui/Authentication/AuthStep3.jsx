@@ -43,7 +43,6 @@ export default function AuthStep3() {
       if (res.data.code === 200) {
         dispatch(setUser(res.data.data));
         toast.success("Profile updated successfully");
-        
       } else {
         toast.error(res.data.message);
       }
@@ -57,18 +56,7 @@ export default function AuthStep3() {
 
   return (
     <section className=" d-flex justify-content-between flex-column  ">
-      <button
-        className={`back-button  ${lang === "en" ? "en" : ""} `}
-        onClick={() => dispatch(setStep(currentStep - 1))}
-      >
-        <i
-          className={`fa-solid ${
-            lang === "en" ? "fa-chevron-left" : "fa-chevron-right"
-          }  `}
-        ></i>
-      </button>
       <section className="auth-step flex-grow-1">
-        <h1>{t("auth.completeYourdata")}</h1>
         <form onSubmit={handleSubmit} className="form">
           <label htmlFor="image" className="image-uplaod">
             <img ref={imgView} src={user.image} alt="your avatar" />
@@ -95,7 +83,19 @@ export default function AuthStep3() {
             placeholder={t("auth.email")}
           />
 
-          <SubmitButton text={t("auth.next")} loading={loading} />
+          <div className="d-flex gap-3 w-100">
+            <button
+              className="back-button"
+              onClick={() => dispatch(setStep(currentStep - 1))}
+            >
+              <i
+                className={`fa-solid ${
+                  lang === "en" ? "fa-chevron-left" : "fa-chevron-right"
+                }  `}
+              ></i>
+            </button>
+            <SubmitButton text={t("auth.next")} loading={loading} />
+          </div>
         </form>
       </section>
     </section>

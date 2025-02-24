@@ -76,7 +76,7 @@ export default function FilterBox() {
         />
 
         <SubmitButton className="p-3" img="/icons/search.svg" />
-        
+
         <button
           className="filter-btn"
           onClick={(e) => {

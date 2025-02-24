@@ -22,21 +22,11 @@ export default function AuthStep2({ otp, setOtp, formData }) {
 
   return (
     <section className=" d-flex justify-content-between flex-column  ">
-      <button
-        className={`back-button  ${lang === "en" ? "en" : ""} `}
-        onClick={() => dispatch(setStep(currentStep - 1))}
-      >
-        <i
-          className={`fa-solid ${
-            lang === "en" ? "fa-chevron-left" : "fa-chevron-right"
-          }  `}
-        ></i>
-      </button>
       <section className="auth-step flex-grow-1">
-        <h1>
-          <span>{t("auth.confirmOtp")}</span>
+        <p>
+          {t("auth.confirmOtp")}
           <span> {formData?.phone}</span>
-        </h1>
+        </p>
         <form onSubmit={handleSubmit} className="form">
           <OtpContainer
             type="number"
@@ -45,7 +35,19 @@ export default function AuthStep2({ otp, setOtp, formData }) {
             setFormData={setOtp}
           />
           <ResendCode />
-          <SubmitButton text={t("auth.confirm")} loading={isPending} />
+          <div className="d-flex gap-3 w-100">
+            <button
+              className="back-button"
+              onClick={() => dispatch(setStep(currentStep - 1))}
+            >
+              <i
+                className={`fa-solid ${
+                  lang === "en" ? "fa-chevron-left" : "fa-chevron-right"
+                }  `}
+              ></i>
+            </button>
+            <SubmitButton text={t("auth.confirm")} loading={isPending} />
+          </div>
         </form>
       </section>
     </section>

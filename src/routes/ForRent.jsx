@@ -49,6 +49,7 @@ export default function ForRent() {
           </div>
         </section>
       )}
+      
       <button className="view-map" onClick={() => setViewMap((view) => !view)}>
         <div className="icon">
           <img

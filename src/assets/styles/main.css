@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -443,6 +444,10 @@ input[type=checkbox] {
   margin: 0;
 }
 
+.modal-body {
+  padding-top: 0;
+}
+
 @font-face {
   font-family: "DIN Next LT W23";
   src: url("../webfonts/din-next-lt-w23-ultra-light.ttf") format("truetype");
@@ -570,7 +575,7 @@ input[type=checkbox] {
   gap: 1rem;
 }
 .logo img {
-  height: 42px;
+  height: 32px;
 }
 .logo .logo-text {
   font-size: 0.875rem;
@@ -592,7 +597,7 @@ input[type=checkbox] {
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 999;
   border-bottom: 1px solid var(--border);
 }
 .header .nav-links {
@@ -618,6 +623,11 @@ input[type=checkbox] {
 }
 .header .nav-links li a.active {
   color: var(--main);
+}
+@media screen and (max-width: 768px) {
+  .header .nav-links {
+    display: none;
+  }
 }
 .header .header-settings {
   display: flex;
@@ -806,10 +816,10 @@ input[type=checkbox] {
 
 .overlay {
   position: fixed;
-  top: 100px;
+  top: 74.8px;
   left: 0;
   width: 100%;
-  height: calc(100% - 100px);
+  height: calc(100% - 74.8px);
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 0;
   display: none;
@@ -918,7 +928,7 @@ input[type=checkbox] {
 .main-footer .social-links {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-start;
+  justify-content: flex-end;
   gap: 10px;
 }
 .main-footer .social-links a {
@@ -1067,7 +1077,7 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 0 !important;
   flex: 1;
   width: inherit;
-  height: 80px !important;
+  height: 54px !important;
   text-align: center;
   border-bottom: 1px solid var(--main);
   font-size: 28px !important;
@@ -1112,14 +1122,21 @@ input[type=number]::-webkit-outer-spin-button {
   justify-content: center;
   gap: 1rem;
 }
-.auth-step h1 {
-  font-size: 28px;
+.auth-step h4 {
+  font-size: 24px;
+  margin-bottom: 0;
   text-align: center;
 }
-.auth-step h1 span {
-  display: block;
+.auth-step p {
+  font-size: 14px;
+  color: var(--gray);
+  text-align: center;
+}
+.auth-step p span {
+  color: var(--main);
 }
 .auth-step .form {
+  margin: 0 !important;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1138,7 +1155,6 @@ input[type=number]::-webkit-outer-spin-button {
   position: relative;
   padding: 10px;
   border: 1px solid var(--border);
-  overflow: hidden;
   cursor: pointer;
 }
 .auth-step .form .image-uplaod input {
@@ -1148,24 +1164,40 @@ input[type=number]::-webkit-outer-spin-button {
   max-width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 50%;
 }
 .auth-step .form .image-uplaod i {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
-  width: 25px;
-  height: 25px;
+  bottom: -4px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  font-size: 13px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--blue);
+  background-color: var(--main);
   color: var(--white);
 }
 
 .back-button {
-  align-self: self-start;
-  margin: 0 1rem;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  height: 100%;
+  padding: 0 24px;
+  border: 1px solid var(--black);
+  color: var(--black);
+  border-radius: 12px;
+}
+
+.auth_img {
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 200px;
+  margin-bottom: 24px;
 }
 
 .properties {
@@ -1326,7 +1358,7 @@ input[type=number]::-webkit-outer-spin-button {
 body {
   direction: rtl;
   background-color: var(--white);
-  font-family: "DIN Next LT W23", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 body main {
   min-height: calc(100vh - 100px);
@@ -1353,6 +1385,9 @@ body .hero-section p {
   line-height: 1.6;
   text-align: center;
   color: #fff;
+}
+body .hero-section .search-box {
+  padding: 16px;
 }
 body .search-box {
   width: 100%;
@@ -1417,7 +1452,7 @@ body .why-us-section .why-us-intro {
   height: 100%;
   padding: 2rem 3rem;
   border-radius: 16px;
-  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.3725490196), rgba(0, 0, 0, 0.0745098039)), url(/images/property_slide.png);
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.5058823529), rgba(0, 0, 0, 0.5058823529)), url(/images/property_slide.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1428,6 +1463,7 @@ body .why-us-section .why-us-intro {
 }
 body .why-us-section .why-us-intro h2 {
   font-size: 28px;
+  color: #fff;
 }
 @media (max-width: 576px) {
   body .why-us-section .why-us-intro h2 {
@@ -1436,6 +1472,7 @@ body .why-us-section .why-us-intro h2 {
 }
 body .why-us-section .why-us-intro p {
   font-size: 16px;
+  color: #fff;
   line-height: 1.6;
 }
 body .why-us-section .why-us-intro a {
@@ -1467,6 +1504,9 @@ body .why-us-section .why-us-features .feature-content {
 }
 body .why-us-section .why-us-features .feature-content .feature-title {
   font-size: 18px;
+}
+body .why-us-section .why-us-features .feature-content img {
+  height: 42px;
 }
 body .why-us-section .why-us-features .feature-content .feature-description {
   font-size: 16px;
@@ -1741,35 +1781,35 @@ body .for-rent-details {
 body .for-rent-details h4 {
   margin-bottom: 1rem;
   font-weight: 600;
+  color: var(--main);
   font-size: 18px;
 }
 body .for-rent-details .gallary {
   width: 100%;
   border-radius: 12px;
-  margin-bottom: 4rem;
 }
 body .for-rent-details .gallary img {
   border-radius: 12px;
   width: 100%;
-}
-body .for-rent-details .gallary .carousel-indicators {
-  bottom: -60px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 body .for-rent-details .gallary .carousel-indicators button {
-  background-color: var(--whaite);
-  border: 6px solid var(--main);
-  height: 8px;
-  width: 8px;
-  border-radius: 50%;
+  background-color: var(--white);
+  height: 4px;
+  width: 32px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 body .for-rent-details .user {
   display: flex;
+  margin-bottom: 16px;
+  width: 100%;
   padding: 1rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   gap: 12px;
   flex-direction: column;
-  max-width: 320px;
   justify-content: space-between;
 }
 body .for-rent-details .user .info {
@@ -1802,6 +1842,11 @@ body .for-rent-details .description p {
   line-height: 1.5;
   color: var(--black);
 }
+body .for-rent-details .prop-features {
+  padding: 24px 0;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+}
 body .for-rent-details .prop-features .features-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1824,18 +1869,25 @@ body .for-rent-details .prop-data {
   padding: 1rem;
   border-radius: 12px;
   border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 body .for-rent-details .prop-data h3 {
   font-size: 18px;
+  color: var(--main);
+  margin-bottom: 12px;
 }
 body .for-rent-details .prop-data .prop-data-header {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
 }
 body .for-rent-details .prop-data .prop-data-header .prop-data-header-info p {
   font-size: 14px;
   margin-bottom: 6px;
+  color: var(--gray);
 }
 body .for-rent-details .prop-data .prop-data-header .prop-data-header-info p p:first-of-type {
   color: var(--main);
@@ -1885,18 +1937,22 @@ body .for-rent-details .prop-data .rent-payment {
   border-bottom: 1px solid var(--border);
 }
 body .for-rent-details .prop-data .rent-payment p {
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 body .for-rent-details .prop-data .rent-payment p span {
   color: var(--main);
 }
 body .for-rent-details .prop-data .price {
   padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   border-bottom: 1px solid var(--border);
 }
 body .for-rent-details .prop-data .price p {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
+  margin-bottom: 0;
 }
 body .for-rent-details .prop-data .price div {
   display: flex;
@@ -1913,14 +1969,14 @@ body .for-rent-details .prop-data a {
   border-radius: 8px;
   color: var(--white);
   background-color: var(--main);
-  font-size: 22px;
+  font-size: 16px;
   transition: var(--main-transition);
 }
 body .for-rent-details .prop-data a:hover {
   background-color: var(--main-hover);
 }
 body .for-rent-details .map-container {
-  margin-top: 1rem;
+  margin-top: 4rem;
 }
 body .for-rent-details .map-container .map_section_view {
   height: auto;
@@ -1938,7 +1994,7 @@ body .for-rent-details .map-container p {
   color: var(--gray);
 }
 body .for-rent-details .rates {
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 body .book-page {
   margin: 4rem 0;
@@ -2281,7 +2337,7 @@ body .main-btn {
   border-radius: 12px;
 }
 body .notifications-container .notifications-title {
-  font-size: 32px;
+  font-size: 22px;
   font-weight: bold;
   margin-bottom: 22px;
 }

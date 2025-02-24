@@ -16,12 +16,12 @@ export default function AuthModal() {
     name: "",
     email: "",
   });
+
   const [otp, setOtp] = useState({
     hashed_code: "",
     code: "",
     phone: "",
   });
- 
 
   const renderStep = () => {
     switch (currentStep) {
@@ -45,7 +45,6 @@ export default function AuthModal() {
   return (
     <Modal
       centered
-      size="xl"
       show={show}
       backdrop="static"
       onHide={() => {
@@ -53,22 +52,24 @@ export default function AuthModal() {
         dispatch(resetModal());
       }}
     >
-      <Modal.Header className="border-0" closeButton></Modal.Header>
+      <Modal.Header className="border-0" closeButton />
       <Modal.Body>
         <section className="row">
-          <div className="col-lg-6 d-none d-lg-flex w-full">
-            <img
-              className="w-100"
-              src={`${
-                currentStep == "1"
-                  ? "/images/loginImage.svg"
-                  : currentStep == "2"
-                  ? "/images/SentMessage.svg"
-                  : "/images/loginImage.svg"
-              }`}
-            />
+          <div className="col-12 d-none d-lg-flex w-full justify-content-center">
+            {(currentStep == "1" || currentStep == "2") && (
+              <img
+                className="auth_img"
+                src={`${
+                  currentStep == "1"
+                    ? "/images/loginImage.svg"
+                    : currentStep == "2"
+                    ? "/images/SentMessage.svg"
+                    : null
+                }`}
+              />
+            )}
           </div>
-          <section className="col-lg-6 auth-step">{renderStep()}</section>
+          <div className="col-12 auth-step">{renderStep()}</div>
         </section>
       </Modal.Body>
     </Modal>

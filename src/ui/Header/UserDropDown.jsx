@@ -10,8 +10,8 @@ export default function UserDropDown() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { isAuthed } = useAuth();
-  const user = useSelector((state) => state.user.user);
   const { logout, isLoading } = useLogout();
+  const { user } = useSelector((state) => state.user);
 
   return (
     <>
@@ -23,7 +23,7 @@ export default function UserDropDown() {
               alt="user_alt"
             />
           </div>
-          {t("header.myAccount")}
+          {user?.name ? user?.name : t("header.myAccount")}
         </Dropdown.Toggle>
         <Dropdown.Menu>
           {isAuthed ? (
