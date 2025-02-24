@@ -2252,6 +2252,9 @@ body .form .stars .star-rating-service input {
           appearance: none;
   display: none;
 }
+body .wallet {
+  padding: 60px 0;
+}
 body .wallet .wallet-header {
   font-size: 32px;
   margin-bottom: 8px;
@@ -2264,6 +2267,9 @@ body .wallet .balance-card {
   align-items: center;
   gap: 1rem;
   flex-direction: column;
+}
+body .wallet .balance-card img {
+  height: 60px;
 }
 body .wallet .balance-card .balance {
   display: flex;
@@ -2282,6 +2288,7 @@ body .wallet .balance-card .balance p span {
 body .wallet .transactions-table h3 {
   font-size: 22px;
   margin-bottom: 16px;
+  text-align: center;
 }
 body .wallet .transactions-table .transactions-container {
   width: 100%;

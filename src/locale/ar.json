@@ -158,7 +158,8 @@
     "deposit": "إيداع",
     "withdraw": "سحب",
     "charge": "شحن",
-    "enterTheAmount": "ادخل المبلغ"
+    "enterTheAmount": "ادخل المبلغ",
+    "noOperations": "لا يوجد لديك عمليات سابقه."
   },
   "notifications": {
     "notifications": "الاشعارات"

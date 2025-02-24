@@ -159,7 +159,8 @@
     "deposit": "Deposit",
     "withdraw": "Withdraw",
     "charge": "Charge",
-    "enterTheAmount": "Enter the amount"
+    "enterTheAmount": "Enter the amount",
+    "noOperations": "You don't have previous transactions"
   },
   "notifications": {
     "notifications": "Notifications"
