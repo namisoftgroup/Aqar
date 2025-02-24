@@ -78,7 +78,24 @@
 .dropdown-toggle::after {
   display: none;
 }
+.rc-slider-mark {
+  @include space-between();
+  height: 24px;
+  margin: 0;
+  span {
+    font-size: 14px;
+    transform: none !important;
+    position: relative;
+    text-wrap: nowrap;
+    color: var(--main);
+    right: unset !important;
+    left: unset !important;
+  }
+}
 
+.rc-slider {
+  margin: 12px 8px 32px;
+}
 .dropdown-menu {
   border: 0 !important;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
@@ -561,13 +578,12 @@ input[type="checkbox"] {
 
 .animated-btn {
   display: flex;
-  gap: 1.5rem;
+  gap: 8px;
   align-items: center;
   justify-content: center;
   background-color: var(--main);
   color: var(--white);
-  font-size: 20px;
-
+  font-size: 16px;
   padding: 9px 15px 9px 30px;
   transition: all 0.4s ease-in-out;
   text-transform: capitalize;
@@ -609,8 +625,8 @@ input[type="checkbox"] {
     color: var(--text);
     background-color: var(--white);
     z-index: 4;
-    width: 48px;
-    height: 48px;
+    width: 35px;
+    height: 35px;
     @include centerFlex;
     border-radius: 50%;
   }

@@ -237,11 +237,38 @@
     "aboutNootDescription": "Noot is a leading online platform for renting and selling homes, apartments, and offices. Our mission is to create a seamless, convenient, and trustworthy experience for renters and homeowners alike.",
     "ourStory": "Our Story",
     "ourStoryDescription": "Founded in 2015, Noot has grown from a small startup to a thriving, global community of homeowners and renters. Our team of experienced professionals and dedicated supporters have helped us create a platform that empowers people to find and rent homes that meet their needs and expectations.",
-    "ourTeam": "Our Team"
+    "ourTeam": "Our Team",
+    "aboutNootA": "عن وكالة نوت",
+    "whyChooseUs": "لماذا تختارنا؟",
+    "ourPromise": "وعدنا: الجودة والراحة والتأجير الآمن",
+    "findPerfectHome": "اعثر على منزلك المثالي بثقة من خلال شبكتنا الموثوقة من القوائم المعتمدة والحجز السلس والدعم المخصص.",
+    "aboutImageAlt": "صورة صفحة حول",
+    "secondImageAlt": "صورة قسم حول",
+    "circleShapeAlt": "شكل دائري زخرفي",
+    "locationsWorldwide": "مواقع حول العالم",
+    "agencyTitle": "عن وكالة نوت",
+    "journeyTitle": "رحلتنا: مغامرات لا تُنسى حول العالم",
+    "savingsDescription": "خدمتنا للتأجير تساعدك في العثور على المنزل المثالي بأفضل سعر، بدون رسوم مخفية أو متاعب.",
+    "supportIconAlt": "أيقونة الدعم",
+    "supportTitle": "مساعدة على مدار الساعة لتجربة تأجير سلسة",
+    "supportDescription": "فريقنا متاح على مدار الساعة لمساعدتك في أي استفسارات أو مخاوف تتعلق بالتأجير.",
+    "dealsIconAlt": "أيقونة العروض",
+    "dealsTitle": "عروض حصرية على العقارات المؤجرة",
+    "dealsDescription": "احصل على أفضل العروض على العقارات المؤجرة، مما يضمن الراحة والتكلفة المناسبة.",
+    "ourPartnersTitle": "شركاؤنا في التأجير",
+    "ourPartnersDescription": "تعاون مع خبراء التأجير الموثوق بهم للعثور على منزلك المثالي بسهولة وثقة.",
+    "blogTitle": "أحدث الأخبار والتحديثات",
+    "blogDescription": "ابقَ على اطلاع على أحدث الاتجاهات والنصائح والتحديثات في سوق التأجير."
+  },
+  "mobileApp": {
+    "title": "تحميل تطبيق الهاتف المحمول",
+    "subtitle": "نحن متاحون على المتجر، قم بتنزيل تطبيقاتنا المحمولة",
+    "description": "نقدم لك قائمة منسقة بعناية من المنازل المؤجرة التي تضمن لك تجربة سكنية مريحة. يوفر تطبيقنا حلولًا متكاملة للبحث والحجز بسهولة.",
+    "tagline": "تطبيق التأجير الشامل الخاص بك"
   },
   "cancel": "الغاء",
   "confirm": "تأكيد",
   "sar": "ريال",
   "thereIsNoBookingsYet": "لا يوجد لديك حجوزات حتى الأن",
-  "editProfile":"تعديل الملف الشخصي"
+  "editProfile": "تعديل الملف الشخصي"
 }
