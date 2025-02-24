@@ -4,44 +4,97 @@ const DataLoader = ({ minHeight = "548px" }) => {
       className="tableLoader loader--style8"
       style={{ minHeight: minHeight }}
     >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-        <circle
-          fill="none"
-          strokeOpacity="1"
-          stroke="#0088A1"
-          strokeWidth=".5"
-          cx="100"
-          cy="100"
-          r="0"
-        >
+      <svg
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        width="24px"
+        height="30px"
+        viewBox="0 0 24 30"
+        style={{ enableBackground: "new 0 0 50 50" }}
+        xmlSpace="preserve"
+      >
+        <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
           <animate
-            attributeName="r"
-            calcMode="spline"
-            dur="0.9"
-            values="1;20"
-            keyTimes="0;1"
-            keySplines="0 .2 .5 1"
+            attributeName="opacity"
+            attributeType="XML"
+            values="0.2; 1; .2"
+            begin="0s"
+            dur="0.6s"
             repeatCount="indefinite"
-          ></animate>
+          />
           <animate
-            attributeName="stroke-width"
-            calcMode="spline"
-            dur="0.9"
-            values="0;10"
-            keyTimes="0;1"
-            keySplines="0 .2 .5 1"
+            attributeName="height"
+            attributeType="XML"
+            values="10; 20; 10"
+            begin="0s"
+            dur="0.6s"
             repeatCount="indefinite"
-          ></animate>
+          />
           <animate
-            attributeName="stroke-opacity"
-            calcMode="spline"
-            dur="0.9"
-            values="1;0"
-            keyTimes="0;1"
-            keySplines="0 .2 .5 1"
+            attributeName="y"
+            attributeType="XML"
+            values="10; 5; 10"
+            begin="0s"
+            dur="0.6s"
             repeatCount="indefinite"
-          ></animate>
-        </circle>
+          />
+        </rect>
+        <rect x="8" y="10" width="4" height="10" fill="#333" opacity="0.2">
+          <animate
+            attributeName="opacity"
+            attributeType="XML"
+            values="0.2; 1; .2"
+            begin="0.15s"
+            dur="0.6s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="height"
+            attributeType="XML"
+            values="10; 20; 10"
+            begin="0.15s"
+            dur="0.6s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="y"
+            attributeType="XML"
+            values="10; 5; 10"
+            begin="0.15s"
+            dur="0.6s"
+            repeatCount="indefinite"
+          />
+        </rect>
+        <rect x="16" y="10" width="4" height="10" fill="#333" opacity="0.2">
+          <animate
+            attributeName="opacity"
+            attributeType="XML"
+            values="0.2; 1; .2"
+            begin="0.3s"
+            dur="0.6s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="height"
+            attributeType="XML"
+            values="10; 20; 10"
+            begin="0.3s"
+            dur="0.6s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="y"
+            attributeType="XML"
+            values="10; 5; 10"
+            begin="0.3s"
+            dur="0.6s"
+            repeatCount="indefinite"
+          />
+        </rect>
       </svg>
     </div>
   );

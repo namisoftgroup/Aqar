@@ -14,7 +14,7 @@ export default function MyBookingCard({ booking }) {
       <img src={booking?.ad.image} alt="Booking" className="card-img-top" />
       <div className="card-body">
         <h4 className="card-title ">{booking.title}</h4>
-        <p className="card-text">{booking.price} ريال / سنوي</p>
+        <p className="card-text">{booking.price} {t("sar")} / سنوي</p>
         <p className="text-muted">
           {t("book.date")} {formateDateDetails(booking.from, locale)} -
           {formateDateDetails(booking.to, locale)}

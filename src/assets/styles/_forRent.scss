@@ -69,36 +69,38 @@
   h4 {
     margin-bottom: 1rem;
     font-weight: 600;
+    color: var(--main);
     font-size: 18px;
   }
   .gallary {
     width: 100%;
     border-radius: 12px;
-    margin-bottom: 4rem;
     img {
       border-radius: 12px;
       width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
     }
     .carousel-indicators {
-      bottom: -60px;
       button {
-        background-color: var(--whaite);
-        border: 6px solid var(--main);
-        height: 8px;
-        width: 8px;
-        border-radius: 50%;
+        background-color: var(--white);
+        height: 4px;
+        width: 32px;
+        border-radius: 8px;
+        overflow: hidden;
       }
     }
   }
 
   .user {
     display: flex;
+    margin-bottom: 16px;
+    width: 100%;
     padding: 1rem;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 12px;
     gap: 12px;
     flex-direction: column;
-    max-width: 320px;
     justify-content: space-between;
     .info {
       display: flex;
@@ -132,6 +134,9 @@
   }
 
   .prop-features {
+    padding: 24px 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
     .features-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -156,18 +161,24 @@
     padding: 1rem;
     border-radius: 12px;
     border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     h3 {
       font-size: 18px;
+      color: var(--main);
+      margin-bottom: 12px;
     }
     .prop-data-header {
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
       .prop-data-header-info {
         p {
           font-size: 14px;
           margin-bottom: 6px;
-          // color: var(--gray);
+          color: var(--gray);
           p:first-of-type {
             color: var(--main);
           }
@@ -218,7 +229,7 @@
       padding: 1rem 0;
       border-bottom: 1px solid var(--border);
       p {
-        margin-bottom: 8px;
+        margin-bottom: 0;
         span {
           color: var(--main);
         }
@@ -226,10 +237,14 @@
     }
     .price {
       padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       border-bottom: 1px solid var(--border);
       p {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 500;
+        margin-bottom: 0;
       }
       div {
         display: flex;
@@ -247,7 +262,7 @@
       border-radius: 8px;
       color: var(--white);
       background-color: var(--main);
-      font-size: 22px;
+      font-size: 16px;
       transition: var(--main-transition);
       &:hover {
         background-color: var(--main-hover);
@@ -255,7 +270,7 @@
     }
   }
   .map-container {
-    margin-top: 1rem;
+    margin-top: 4rem;
     .map_section_view {
       height: auto;
       .map {
@@ -274,6 +289,6 @@
     }
   }
   .rates {
-    margin-top: 2rem;
+    margin-top: 4rem;
   }
 }

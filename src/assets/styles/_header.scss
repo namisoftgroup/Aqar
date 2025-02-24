@@ -6,7 +6,7 @@
   gap: 1rem;
 
   img {
-    height: 42px;
+    height: 32px;
   }
 
   .logo-text {
@@ -29,7 +29,7 @@
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 999;
   border-bottom: 1px solid var(--border);
   .nav-links {
     display: flex;
@@ -53,6 +53,9 @@
           color: var(--main);
         }
       }
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
     }
   }
 
@@ -149,7 +152,7 @@
 
 .side-menu {
   position: fixed;
-  top: 74.8px;
+  top: 72.8px;
   right: -100%;
   min-width: 300px;
   background-color: var(--white);
@@ -157,7 +160,7 @@
   flex-direction: column;
   gap: 2rem;
   padding: 1rem;
-  height: calc(100vh - 74.8px);
+  height: calc(100vh - 72.8px);
   overflow-y: auto;
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
@@ -191,8 +194,10 @@
     }
     .user-info {
       flex: 1;
+      gap: 8px;
       h1 {
-        font-size: 1.5rem;
+        font-size: 1rem;
+        margin-bottom: 4px;
         font-weight: 600;
       }
       a {
@@ -250,12 +255,13 @@
     }
   }
 }
+
 .overlay {
   position: fixed;
-  top: 100px;
+  top: 72.8px;
   left: 0;
   width: 100%;
-  height: calc(100% - 100px);
+  height: calc(100% - 72.8px);
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 0;
   display: none;

@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="row g-3 border-top">
-          <div className="col-12 col-md-6 col-lg-4 ">
+          <div className="col-12 col-md-6 col-lg-4 d-flex gap-4">
             <Link href="/" className="logo">
               <img src="/images/logo.svg" alt="Aqar's logo" />
             </Link>

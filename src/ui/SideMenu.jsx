@@ -100,12 +100,6 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
                     <span>{t("header.account")}</span>
                   </Link>
                 </li>
-                <li>
-                  <Link to="/notifications" className="d-flex  d-sm-none">
-                    <i className="fa-light fa-bell"></i>
-                    <span>{t("header.notifications")}</span>
-                  </Link>
-                </li>{" "}
               </>
             )}
 
@@ -131,12 +125,6 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
               <Link to={settings.terms_link} target="_blank">
                 <i className="fa-sharp fa-light fa-memo-circle-info"></i>
                 <span>{t("header.terms")}</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/rate-app">
-                <i className="fa-light fa-envelope"></i>
-                <span>{t("header.rateApp")}</span>
               </Link>
             </li>
           </ul>

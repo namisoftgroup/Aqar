@@ -98,7 +98,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <NotFound />, // Replace with your custom 404 component
+        element: <NotFound />,
       },
     ],
   },

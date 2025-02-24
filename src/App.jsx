@@ -27,7 +27,7 @@ function App() {
             padding: "1rem",
           },
         }}
-        position="top-center"
+        position="bottom-right"
         richColors
       />
       <RouterProvider router={router} />

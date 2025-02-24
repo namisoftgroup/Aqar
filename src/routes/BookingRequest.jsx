@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { formatDate } from "../utils/helper";
 import { useNavigate, useParams } from "react-router";
-import useGetAdDetails from "../hooks/ads/useGetAdDetails";
 import { useBookingAd } from "../hooks/bookings/useBookingAd";
+import useGetAdDetails from "../hooks/ads/useGetAdDetails";
 import ChooseHowToPay from "../ui/book/ChooseHowToPay";
 import DetailsCard from "../ui/book/DetailsCard";
 import DataLoader from "../ui/DataLoader";
 import DateModal from "../ui/modals/DateModal";
 import GuestNumberModal from "../ui/modals/GuestNumberModal";
-import { formatDate } from "../utils/helper";
+
 export default function BookingRequest() {
   const [showDateModal, setShowDateModal] = useState(false);
   const [showGuestModal, setShowGuestModal] = useState(false);
@@ -52,30 +53,32 @@ export default function BookingRequest() {
     <>
       <section className="book-page">
         <div className="container">
-          <div className="book-header">
-            <button onClick={() => navigate(-1)}>
-              {lang === "ar" ? (
-                <i className="fas fa-chevron-right"></i>
-              ) : (
-                <i className="fas fa-chevron-left"></i>
-              )}
-            </button>
-            <h2>{t("book.confirm")}</h2>
-          </div>
           <div className="row">
-            <div className="col-lg-5">
+            <div className="col-12 p-2">
+              <div className="book-header">
+                <button onClick={() => navigate(-1)}>
+                  {lang === "ar" ? (
+                    <i className="fas fa-chevron-right"></i>
+                  ) : (
+                    <i className="fas fa-chevron-left"></i>
+                  )}
+                </button>
+                <h2>{t("book.confirm")}</h2>
+              </div>
+            </div>
+            <div className="col-lg-5 col-12 p-2">
               <DetailsCard selected={selected} adDetails={adDetails} />
             </div>
-            <div className="col-lg-7">
+
+            <div className="col-lg-7 col-12 p-2">
               <div className="your-trip mt-3 mt-lg-0">
                 <h4>{t("book.yourTrip")}</h4>
                 <ul>
                   <li>
                     <div className="trip-data">
-                      <span>التواريخ</span>
+                      <span>{t("dates")}</span>
                       {booking.from && booking.to && (
                         <span>
-                          {" "}
                           {formatDate(booking.from)} - {formatDate(booking.to)}
                         </span>
                       )}
@@ -86,7 +89,7 @@ export default function BookingRequest() {
                   </li>
                   <li>
                     <div className="trip-data">
-                      <span>الضيوف</span>
+                      <span>{t("guests")}</span>
                       {totalNumber > 0 && <span>{totalNumber} ضيوف </span>}
                     </div>
                     <button onClick={() => setShowGuestModal(true)}>
@@ -100,22 +103,24 @@ export default function BookingRequest() {
                 setSelected={setSelected}
                 adDetails={adDetails}
               />
+              <button className="book-btn" onClick={handelBooking}>
+                {isBookingLoading && (
+                  <i className="fa-duotone fa-regular fa-circle-notch fa-spin"></i>
+                )}
+                {t("forRent.book")}
+              </button>
             </div>
           </div>
-          <button className="book-btn" onClick={handelBooking}>
-            {isBookingLoading && (
-              <i className="fa-duotone fa-regular fa-circle-notch fa-spin"></i>
-            )}
-            {t("forRent.book")}
-          </button>
         </div>
       </section>
+
       <DateModal
         showModal={showDateModal}
         setShowModal={setShowDateModal}
         bookingData={bookingData}
         setBookingData={setBookingData}
       />
+
       <GuestNumberModal
         showModal={showGuestModal}
         setShowModal={setShowGuestModal}

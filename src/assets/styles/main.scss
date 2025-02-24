@@ -10,9 +10,9 @@
 body {
   direction: rtl;
   background-color: var(--white);
-  font-family: "DIN Next LT W23", sans-serif;
+  font-family: "Zain", sans-serif;
   main {
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 72.8px);
   }
 
   @import "./home";
@@ -27,7 +27,7 @@ body {
 
   &.en {
     direction: ltr;
-    font-family: "Outfit", sans-serif;
+    font-family: "Poppins", sans-serif;
     .form-field {
       input,
       select,

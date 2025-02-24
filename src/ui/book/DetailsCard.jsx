@@ -17,13 +17,13 @@ export default function DetailsCard({ adDetails }) {
   }, [nights, adDetails.price, adDetails.clean_price]);
   return (
     <div className="details-card">
-      <PropertyCard ad={adDetails} />
+      <PropertyCard ad={adDetails} className="bg_gray" />
       <div className="price-details">
         <h4>{t("book.priceDetails")}</h4>
         <ul>
           <li>
             <span>
-              {adDetails.price} ريال /{" "}
+              {adDetails.price} {t("sar")} /{" "}
               {lang === "ar" ? PER_AR[adDetails.per] : PER_EN[adDetails.per]}{" "}
               {nights > 0 && (
                 <>
@@ -33,19 +33,24 @@ export default function DetailsCard({ adDetails }) {
               )}
             </span>
             <span>
-              {nights > 0 ? nights * adDetails.price : adDetails.price} ريال
+              {nights > 0 ? nights * adDetails.price : adDetails.price}{" "}
+              {t("sar")}
             </span>
           </li>
           <li>
             <span>{t("forRent.cleanPrice")} </span>
-            <span>{adDetails.clean_price} ريال</span>
+            <span>
+              {adDetails.clean_price} {t("sar")}
+            </span>
           </li>
         </ul>
       </div>
 
       <div className="total">
         <h4>{t("book.totalPrice")}</h4>
-        <span>{total} ريال</span>
+        <span>
+          {total} {t("sar")}
+        </span>
       </div>
     </div>
   );

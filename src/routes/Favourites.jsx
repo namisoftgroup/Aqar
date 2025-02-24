@@ -14,8 +14,8 @@ export default function Favourites() {
     <section className="container my-5">
       <div className="row g-3">
         {favorites.map((favourite) => (
-          <div key={favourite.id} className="col-md-6 col-lg-4 col-xxl-3">
-            <PropertyCard ad={favourite} />
+          <div key={favourite.id} className="col-md-6 col-lg-4">
+            <PropertyCard ad={favourite} className="bg_gray" />
           </div>
         ))}
       </div>

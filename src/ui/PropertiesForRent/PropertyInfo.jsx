@@ -22,7 +22,7 @@ export default function PropertyInfo({ adDetails, nights }) {
         <div className="prop-data-header-info">
           <h3>{adDetails.title}</h3>
           <p>
-            {adDetails.price} ريال /{" "}
+            {adDetails.price} {t("sar")} /{" "}
             {lang === "ar" ? PER_AR[adDetails.per] : PER_EN[adDetails.per]}
           </p>
           <p> {adDetails.address} </p>
@@ -50,7 +50,7 @@ export default function PropertyInfo({ adDetails, nights }) {
           <div>
             {adDetails.payments.map((payment) => (
               <p key={payment.id}>
-                <span>{payment.price}</span> ريال {payment.description}
+                <span>{payment.price}</span> {t("sar")} {payment.description}
               </p>
             ))}
           </div>
@@ -68,13 +68,15 @@ export default function PropertyInfo({ adDetails, nights }) {
           )}
 
           <p>
-            {adDetails.price} ريال /{" "}
+            {adDetails.price} {t("sar")} /{" "}
             {lang === "ar" ? PER_AR[adDetails.per] : PER_EN[adDetails.per]}
           </p>
         </div>
         <div>
           <p>{t("forRent.cleanPrice")} </p>
-          <p>{adDetails.clean_price} ريال</p>
+          <p>
+            {adDetails.clean_price} {t("sar")}
+          </p>
         </div>
         <div>
           <p>{t("forRent.totalPrice")}</p>
