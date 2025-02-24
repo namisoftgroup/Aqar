@@ -167,6 +167,16 @@ input[type=checkbox] {
   height: 14px;
 }
 
+.noData {
+  color: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+  min-height: 400px;
+}
+
 .status-bar {
   padding: 8px !important;
 }

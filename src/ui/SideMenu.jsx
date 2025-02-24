@@ -127,12 +127,6 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
                 <span>{t("header.terms")}</span>
               </Link>
             </li>
-            <li>
-              <Link to="/rate-app">
-                <i className="fa-light fa-envelope"></i>
-                <span>{t("header.rateApp")}</span>
-              </Link>
-            </li>
           </ul>
         </div>
       </div>

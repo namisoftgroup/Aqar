@@ -226,5 +226,6 @@
   },
   "cancel": "Cancel",
   "adults": "Adults",
-  "sar": "SAR"
+  "sar": "SAR",
+  "thereIsNoBookingsYet": "You have no reservations yet."
 }
