@@ -769,9 +769,11 @@ input[type=checkbox] {
 }
 .side-menu .user .user-info {
   flex: 1;
+  gap: 8px;
 }
 .side-menu .user .user-info h1 {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 4px;
   font-weight: 600;
 }
 .side-menu .user .user-info a {
@@ -1390,7 +1392,7 @@ body .hero-section h1 {
   margin-bottom: 16px;
 }
 body .hero-section p {
-  width: min(100%, 500px);
+  width: min(100%, 700px);
   margin: 0 auto;
   font-size: 16px;
   line-height: 1.6;
