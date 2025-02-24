@@ -1,33 +1,15 @@
-import { Breadcrumb } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import AnimatedButton from "../ui/AnimatedButton";
 import InputField from "../ui/form/InputField";
 import TextareaField from "../ui/form/TextareaField";
-import MapSection from "../ui/PropertiesForRent/MapSection";
+import SectionHeader from "../ui/SectionHeader";
 
 export default function Contact() {
   const { t } = useTranslation();
-  const lang = useSelector((state) => state.language.lang);
   return (
     <section>
       <div className="contact">
-        <div className={`  ${lang === "ar" ? "ar" : " "}    contact-header `}>
-          <div className="container z-1">
-            <div className="contat-title">
-              <Breadcrumb>
-                <Breadcrumb.Item href="/">{t("contact.home")}</Breadcrumb.Item>
-                <Breadcrumb.Item
-                  className={`${lang === "ar" ? "ar" : " "}`}
-                  active
-                >
-                  {t("contact.title")}
-                </Breadcrumb.Item>
-              </Breadcrumb>
-              <h2>{t("contact.title")}</h2>
-            </div>
-          </div>
-        </div>
-
+        <SectionHeader link={t("contact.title")} />
         <div className="contact-section">
           <div className="container">
             <div className="row g-4">
@@ -92,20 +74,7 @@ export default function Contact() {
                         />
                       </div>
                       <div className="col-12">
-                        <button
-                          className={`contact-btn ${
-                            lang === "ar" ? "ar" : " "
-                          }`}
-                        >
-                          <span>{t("contact.submit")}</span>
-                          <i
-                            className={`fa-solid  ${
-                              lang === "ar"
-                                ? "fa-arrow-left-long"
-                                : "fa-arrow-right-long"
-                            }`}
-                          ></i>
-                        </button>
+                        <AnimatedButton text={t("contact.submit")} />
                       </div>
                     </div>
                   </form>

@@ -40,9 +40,7 @@ export default function Header() {
             <NavLink to="/for-rent">{t("header.dailyRent")}</NavLink>
           </li>
           <li>
-            <NavLink to={settings?.about_link} target="_blank">
-              {t("header.about")}
-            </NavLink>
+            <NavLink to="/about-us">{t("header.about")}</NavLink>
           </li>
           <li>
             <NavLink to="/contact-us">{t("header.contact")}</NavLink>

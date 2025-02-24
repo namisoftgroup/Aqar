@@ -18,6 +18,7 @@ import DataLoader from "../ui/DataLoader";
 import ProtectionProvider from "./ProtectionProvider";
 import NotFound from "../ui/NotFound";
 import ErrorPage from "../ui/ErrorPage";
+import About from "../routes/About";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "contact-us",
         element: <Contact />,
+      },
+      {
+        path: "about-us",
+        element: <About />,
       },
 
       {

@@ -232,6 +232,13 @@
     "linkedin": "LinkedIn",
     "home": "Home"
   },
+  "about": {
+    "aboutNoot": "About us",
+    "aboutNootDescription": "Noot is a leading online platform for renting and selling homes, apartments, and offices. Our mission is to create a seamless, convenient, and trustworthy experience for renters and homeowners alike.",
+    "ourStory": "Our Story",
+    "ourStoryDescription": "Founded in 2015, Noot has grown from a small startup to a thriving, global community of homeowners and renters. Our team of experienced professionals and dedicated supporters have helped us create a platform that empowers people to find and rent homes that meet their needs and expectations.",
+    "ourTeam": "Our Team"
+  },
   "cancel": "Cancel",
   "adults": "Adults",
   "sar": "SAR",
