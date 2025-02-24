@@ -12,10 +12,6 @@
   .fav-btn {
     @include clearInput;
     background-color: transparent;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    transform: translate(-50%, 50%);
     width: 20px;
     height: 20px;
     cursor: pointer;
