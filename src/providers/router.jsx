@@ -12,7 +12,6 @@ import ForRent from "../routes/ForRent";
 import ForRentDetails from "../routes/ForRentDetails";
 import Home from "../routes/Home";
 import Notifications from "../routes/Notifications";
-import Profile from "../routes/Profile";
 import Wallet from "../routes/Wallet";
 import DataLoader from "../ui/DataLoader";
 import ProtectionProvider from "./ProtectionProvider";
@@ -73,10 +72,6 @@ export const router = createBrowserRouter([
           {
             path: "favourites",
             element: <Favourites />,
-          },
-          {
-            path: "profile",
-            element: <Profile />,
           },
           {
             path: "wallet",

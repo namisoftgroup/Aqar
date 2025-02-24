@@ -235,5 +235,6 @@
   "cancel": "Cancel",
   "adults": "Adults",
   "sar": "SAR",
-  "thereIsNoBookingsYet": "You have no reservations yet."
+  "thereIsNoBookingsYet": "You have no reservations yet.",
+  "editProfile": "Edit Profile"
 }

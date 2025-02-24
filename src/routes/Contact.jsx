@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <section>
       <div className="contact">
-        <div className={`  ${lang === "ar" ? "ar" : " "}    contact-header `}>
+        <div className={`  ${lang === "ar" ? "ar" : " "} page_header`}>
           <div className="container z-1">
             <div className="contat-title">
               <Breadcrumb>

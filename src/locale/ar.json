@@ -234,5 +234,6 @@
   "cancel": "الغاء",
   "confirm": "تأكيد",
   "sar": "ريال",
-  "thereIsNoBookingsYet": "لا يوجد لديك حجوزات حتى الأن"
+  "thereIsNoBookingsYet": "لا يوجد لديك حجوزات حتى الأن",
+  "editProfile":"تعديل الملف الشخصي"
 }
