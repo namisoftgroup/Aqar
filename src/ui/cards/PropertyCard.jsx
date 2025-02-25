@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Aos from "aos";
 
-export default function PropertyCard({ ad, className }) {
+export default function PropertyCard({ ad, className, hideFav = false }) {
   const { addToFavorites } = useAddToFavorites();
   const { deleteFromFavorites } = useDeleteFromFavorites();
 
@@ -67,17 +67,18 @@ export default function PropertyCard({ ad, className }) {
           </section>
         </div>
       </Link>
-
-      <div className="fav-btn">
-        {ad.is_favorite ? (
-          <i
-            onClick={handleDeleteFromFavorites}
-            className="fa-solid fa-heart"
-          ></i>
-        ) : (
-          <i onClick={handleAddToFavorites} className="fa-light fa-heart"></i>
-        )}
-      </div>
+      {!hideFav && (
+        <div className="fav-btn">
+          {ad.is_favorite ? (
+            <i
+              onClick={handleDeleteFromFavorites}
+              className="fa-solid fa-heart"
+            ></i>
+          ) : (
+            <i onClick={handleAddToFavorites} className="fa-light fa-heart"></i>
+          )}
+        </div>
+      )}
     </div>
   );
 }

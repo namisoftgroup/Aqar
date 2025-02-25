@@ -1,16 +1,17 @@
 import {
   GoogleMap,
-  InfoWindow,
-  Marker,
-  OverlayView,
   useLoadScript,
+  Marker,
+  InfoWindow,
+  OverlayView,
 } from "@react-google-maps/api";
-import { useCallback, useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import PropertyCard from "../cards/PropertyCard";
+import PropertyCard from "./../cards/PropertyCard";
 
-export default function MapSection() {
+export default function MapSection({ setViewMap }) {
   const { t } = useTranslation();
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
@@ -22,8 +23,6 @@ export default function MapSection() {
   const [userLocation, setUserLocation] = useState(null);
   const [activeMarker, setActiveMarker] = useState(null);
 
-  const handleZoomIn = () => setZoom((prev) => Math.min(prev + 1, 21));
-  const handleZoomOut = () => setZoom((prev) => Math.max(prev - 1, 0));
   const properties = [
     { position: { lat: 21.285407, lng: 39.237551 }, price: "100" },
     { position: { lat: 21.4245, lng: 39.8262 }, price: "200" },
@@ -38,6 +37,10 @@ export default function MapSection() {
     { position: { lat: 21.2138, lng: 39.1822 }, price: "90" },
     { position: { lat: 21.413, lng: 39.182 }, price: "180" },
   ];
+
+  const handleZoomIn = () => setZoom((prev) => Math.min(prev + 1, 21));
+  const handleZoomOut = () => setZoom((prev) => Math.max(prev - 1, 0));
+
   const handleDetectLocation = useCallback(() => {
     if (!isLoaded) {
       alert("Google Maps API is not loaded yet.");
@@ -90,7 +93,7 @@ export default function MapSection() {
                 />
               )}
 
-              {properties?.map((property, index) => (
+              {properties.map((property, index) => (
                 <OverlayView
                   key={index}
                   position={property.position}
@@ -139,6 +142,13 @@ export default function MapSection() {
           </div>
         )}
       </div>
+
+      <button className="view_map" onClick={() => setViewMap(false)}>
+        <div className="icon">
+          <img src="/icons/listing.svg" alt="map" />
+        </div>
+        {t("viewListing")}
+      </button>
     </section>
   );
 }
