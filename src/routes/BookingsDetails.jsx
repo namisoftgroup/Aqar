@@ -15,6 +15,7 @@ import {
   PER_EN,
 } from "../utils/constants";
 import { calculateNights, formateDateDetails } from "../utils/helper";
+import MapView from "../ui/MapView";
 
 export default function BookingsDetails() {
   const { t } = useTranslation();
@@ -71,7 +72,7 @@ export default function BookingsDetails() {
             </div>
           </div>
           <div className="col-md-5">
-            <Owner owner={bookingDetails.ad.user} />
+            <Owner ad={bookingDetails.ad} />
           </div>
         </div>
 
@@ -95,49 +96,6 @@ export default function BookingsDetails() {
               </span>
             </div>
           </div>
-
-          {/* <h3>{t("forRent.villaDetails")}</h3>
-          <ul>
-            <li>
-              <span>
-                <i className=" fa-solid fa-wifi"></i> التغطيه
-              </span>
-              <span> 1</span>
-            </li>
-            <li>
-              <span>
-                <img src="/icons/fluent_space.png" />
-                المساحه
-              </span>
-              <span>wifi,5G</span>
-            </li>
-            <li>
-              <span>
-                <i className="fa-thin fa-fire-extinguisher"></i> سعر المتر
-              </span>
-              <span>1,000 رال </span>
-            </li>
-            <li>
-              {" "}
-              <span>
-                <i className="fa-thin fa-bed-front"></i> عدد الصلات
-              </span>
-              <span>2</span>
-            </li>
-            <li>
-              <span>
-                <i className="fa-thin fa-bath"></i>عدد دوره المياة
-              </span>
-              <span>3</span>
-            </li>
-            <li>
-              {" "}
-              <span>
-                <i className="fa-thin fa-bed-front"></i>عدد الغرف
-              </span>
-              <span>5</span>
-            </li>
-          </ul> */}
 
           {bookingDetails.ad.payments &&
             bookingDetails.ad.payments.length > 0 && (
@@ -187,17 +145,7 @@ export default function BookingsDetails() {
         <div className="map-container">
           <h4>{t("forRent.location")}</h4>
           <p>{bookingDetails.ad.address}</p>
-          <MapSection
-            properties={[
-              {
-                position: {
-                  lat: bookingDetails.ad.lat,
-                  lng: bookingDetails.ad.lang,
-                },
-                price: bookingDetails.ad.price,
-              },
-            ]}
-          />
+          <MapView lat={bookingDetails.ad.lat} lng={bookingDetails.ad.lng} />
         </div>
         {bookingDetails.rated && bookingDetails.status === "complete" && (
           <AddRate booking={bookingDetails} />

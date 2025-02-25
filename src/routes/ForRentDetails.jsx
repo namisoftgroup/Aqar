@@ -2,16 +2,16 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Calendar } from "react-multi-date-picker";
 import { useDispatch, useSelector } from "react-redux";
-import { setDates } from "../redux/slices/bookingSlice";
 import useGetAdDetails from "../hooks/ads/useGetAdDetails";
+import { setDates } from "../redux/slices/bookingSlice";
 import DataLoader from "../ui/DataLoader";
+import MapView from "../ui/MapView";
 import Features from "../ui/PropertiesForRent/Features";
 import Gallary from "../ui/PropertiesForRent/Gallary";
-import MapSection from "../ui/PropertiesForRent/MapSection";
+import Owner from "../ui/PropertiesForRent/Owner";
 import PropertyInfo from "../ui/PropertiesForRent/PropertyInfo";
 import Rates from "../ui/PropertiesForRent/Rates";
 import SimilarAds from "../ui/PropertiesForRent/SimilarAds";
-import Owner from "../ui/PropertiesForRent/Owner";
 
 export default function ForRentDetails() {
   const { t } = useTranslation();
@@ -45,16 +45,13 @@ export default function ForRentDetails() {
             <Gallary images={adDetails.images} />
           </div>
           <div className="col-lg-4 col-12 p-2">
-            <Owner owner={adDetails?.user} />
+            <Owner ad={adDetails} />
             <PropertyInfo adDetails={adDetails} nights={booking.nights} />
           </div>
         </div>
-      
 
         <div className="row g-3">
           <div className="col-lg-8">
-            
-
             <div className="description">
               <h4>{t("forRent.desc")}</h4>
               <p>{adDetails.description}</p>
@@ -84,14 +81,7 @@ export default function ForRentDetails() {
         <div className="map-container">
           <h4>{t("forRent.location")}</h4>
           <p>{adDetails.address} </p>
-          <MapSection
-            properties={[
-              {
-                position: { lat: adDetails.lat, lng: adDetails.lang },
-                price: adDetails.price,
-              },
-            ]}
-          />
+          <MapView lng={adDetails.lng} lat={adDetails.lat} />
         </div>
 
         {adDetails.rates && adDetails.rates.length > 0 && (

@@ -33,11 +33,10 @@ export default function PropertyCard({ ad, className, hideFav = false }) {
 
   return (
     <div className={`properties ${className}`}>
-      <div className="image_card">
-        <img src={ad.image} />
-      </div>
-
-      <Link to={`/for-rent/${ad.id}`}>
+      <Link className="card-link" to={`/for-rent/${ad.id}`}>
+        <div className="image_card">
+          <img src={ad.image} />
+        </div>
         <div className="card_info">
           <h2> {ad.title}</h2>
           <section className="info">

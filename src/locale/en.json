@@ -168,7 +168,8 @@
   "chat": {
     "chat": "Chat",
     "writeHere": "Write Here",
-    "send": "Send"
+    "send": "Send",
+    "messages": "Message"
   },
   "ads": {
     "city": "Choose City",
@@ -267,9 +268,39 @@
     "description": "We offer carefully curated rental properties that capture the true essence of comfortable living. Our rental app saves you more than traditional methods by providing an all-in-one solution for finding and booking homes.",
     "tagline": "Your all-in-one rental app"
   },
+  "blogDetails": {
+    "pageTitle": "Blog Details",
+    "author": "Author",
+    "comments": "Comments",
+    "comment": "Comment",
+    "writeComment": "Write a comment",
+    "name": "Name",
+    "email": "Email",
+    "send": "Send",
+    "publishedOn": "Published on",
+    "popularFeeds": "Popular Feeds",
+    "selectChat": "Select a chat to start",
+    "noChatSelected": "No chat selected",
+    "postComment": "Post Comment",
+    "reply": "Reply",
+    "readMore": "Read More",
+    "search": "Search",
+    "relatedPosts": "Related Posts",
+    "next": "Next",
+    "previous": "Previous",
+    "by": "By",
+    "backToHome": "Back to Home",
+    "loading": "Loading...",
+    "errorMessage": "Something went wrong. Please try again.",
+    "noResultsFound": "No results found.",
+    "successMessage": "Your comment has been posted successfully."
+  },
   "cancel": "Cancel",
   "adults": "Adults",
   "sar": "SAR",
   "thereIsNoBookingsYet": "You have no reservations yet.",
-  "editProfile": "Edit Profile"
+  "editProfile": "Edit Profile",
+  "readMore": "Read more",
+  "noChatSelected": "No Chat Selected",
+  "startConversation": "Start a conversation and connect with ease!"
 }
