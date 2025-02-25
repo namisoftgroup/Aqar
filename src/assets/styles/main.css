@@ -537,7 +537,7 @@ input[type=checkbox] {
   background-color: var(--main);
   color: var(--white);
   font-size: 16px;
-  padding: 9px 15px 9px 30px;
+  padding: 8px 8px 8px 32px;
   transition: all 0.4s ease-in-out;
   text-transform: capitalize;
   position: relative;
@@ -547,7 +547,7 @@ input[type=checkbox] {
   line-height: 1;
 }
 .animated-btn.ar {
-  padding: 9px 30px 9px 15px;
+  padding: 8px 32px 8px 8px;
 }
 .animated-btn:hover::before {
   opacity: 1;
@@ -3080,7 +3080,7 @@ body .delete-account-modal-body .delete-account-modal-footer a {
   color: var(--main);
 }
 body .contact .contact-section {
-  padding: 80px 0;
+  padding: 60px 0;
 }
 body .contact .contact-section .contact-info-content h2 {
   font-size: 36px;
@@ -3132,11 +3132,6 @@ body .contact .contact-section .contact-info-content .contact-items li p span:la
   font-weight: 600;
   line-height: 1.5;
   color: var(--text);
-}
-body .contact .contact-section .contact-content {
-  background-color: #efeefa;
-  border-radius: 10px;
-  padding: 35px;
 }
 body .contact .contact-section .contact-content h2 {
   font-size: 32px;

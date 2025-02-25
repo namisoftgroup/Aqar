@@ -584,7 +584,7 @@ input[type="checkbox"] {
   background-color: var(--main);
   color: var(--white);
   font-size: 16px;
-  padding: 9px 15px 9px 30px;
+  padding: 8px 8px 8px 32px;
   transition: all 0.4s ease-in-out;
   text-transform: capitalize;
   position: relative;
@@ -593,7 +593,7 @@ input[type="checkbox"] {
   border-radius: 72px;
   line-height: 1;
   &.ar {
-    padding: 9px 30px 9px 15px;
+    padding: 8px 32px 8px 8px;
   }
 
   &:hover::before {
