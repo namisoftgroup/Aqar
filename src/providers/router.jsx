@@ -18,6 +18,9 @@ import ProtectionProvider from "./ProtectionProvider";
 import NotFound from "../ui/NotFound";
 import ErrorPage from "../ui/ErrorPage";
 import About from "../routes/About";
+import Terms from "../routes/Terms";
+import PrivacyPolicy from "../routes/PrivacyPolicy";
+import BlogsDetails from "../routes/BlogsDetails";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +49,14 @@ export const router = createBrowserRouter([
         path: "about-us",
         element: <About />,
       },
+      {
+        path: "terms",
+        element: <Terms />,
+      },
+      {
+        path: "privacy-policy",
+        element: <PrivacyPolicy />,
+      },
 
       {
         path: "",
@@ -73,6 +84,10 @@ export const router = createBrowserRouter([
           {
             path: "/booking/:id",
             element: <BookingRequest />,
+          },
+          {
+            path: "/blogs/:id",
+            element: <BlogsDetails />,
           },
           {
             path: "favourites",

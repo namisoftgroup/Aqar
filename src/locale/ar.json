@@ -167,7 +167,8 @@
   "chat": {
     "chat": "الرسائل",
     "writeHere": "اكتب هنا",
-    "send": "Send"
+    "send": "Send",
+    "messages": "Message"
   },
   "ads": {
     "city": "اختر المدينه",
@@ -266,9 +267,39 @@
     "description": "نقدم لك قائمة منسقة بعناية من المنازل المؤجرة التي تضمن لك تجربة سكنية مريحة. يوفر تطبيقنا حلولًا متكاملة للبحث والحجز بسهولة.",
     "tagline": "تطبيق التأجير الشامل الخاص بك"
   },
+  "blogDetails": {
+    "pageTitle": "تفاصيل المدونة",
+    "author": "المؤلف",
+    "comments": "التعليقات",
+    "comment": "تعليق",
+    "writeComment": "اكتب تعليقًا",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "send": "إرسال",
+    "publishedOn": "نُشر في",
+    "popularFeeds": "المشاركات الشائعة",
+    "selectChat": "حدد محادثة للبدء",
+    "noChatSelected": "لم يتم تحديد محادثة",
+    "postComment": "إضافة تعليق",
+    "reply": "رد",
+    "readMore": "اقرأ المزيد",
+    "search": "بحث",
+    "relatedPosts": "مقالات ذات صلة",
+    "next": "التالي",
+    "previous": "السابق",
+    "by": "بواسطة",
+    "backToHome": "العودة إلى الصفحة الرئيسية",
+    "loading": "جاري التحميل...",
+    "errorMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "noResultsFound": "لم يتم العثور على نتائج.",
+    "successMessage": "تم نشر تعليقك بنجاح."
+  },
   "cancel": "الغاء",
   "confirm": "تأكيد",
   "sar": "ريال",
   "thereIsNoBookingsYet": "لا يوجد لديك حجوزات حتى الأن",
-  "editProfile": "تعديل الملف الشخصي"
+  "editProfile": "تعديل الملف الشخصي",
+  "readMore": "اقرأ المزيد",
+  "noChatSelected": "لم يتم تحديد محادثة",
+  "startConversation": "ابدأ محادثة وتواصل بسهولة!"
 }

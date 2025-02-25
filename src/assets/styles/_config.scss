@@ -523,7 +523,7 @@ input[type="checkbox"] {
   &.ar::before {
     background: linear-gradient(
       452deg,
-      rgba(0, 0, 0, 0) 38.52%,
+      rgba(0, 0, 0, 0.5) 38.52%,
       rgba(0, 0, 0, 0.82) 81.13%
     );
   }
@@ -538,7 +538,7 @@ input[type="checkbox"] {
     content: "";
     background: linear-gradient(
       266deg,
-      rgba(0, 0, 0, 0) 38.52%,
+      rgba(0, 0, 0, 0.5) 38.52%,
       rgba(0, 0, 0, 0.82) 81.13%
     );
   }

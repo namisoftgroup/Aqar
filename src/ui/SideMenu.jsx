@@ -95,7 +95,7 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
                   </Link>
                 </li>
                 <li>
-                  <Link>
+                  <Link to="/edit-profile">
                     <i className="fa-light fa-gear"></i>
                     <span>{t("header.account")}</span>
                   </Link>
@@ -110,19 +110,19 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
               </Link>
             </li>
             <li>
-              <Link to={settings.about_link} target="_blank">
+              <Link to="/about-us">
                 <i className="fa-light fa-messages-question"></i>
                 <span>{t("header.about")}</span>
               </Link>
             </li>
             <li>
-              <Link to={settings.privacy_link} target="_blank">
+              <Link to="/privacy-policy">
                 <i className=" fa-light fa-shield"></i>
                 <span>{t("header.privacy")} </span>
               </Link>
             </li>
             <li>
-              <Link to={settings.terms_link} target="_blank">
+              <Link to="/terms">
                 <i className="fa-sharp fa-light fa-memo-circle-info"></i>
                 <span>{t("header.terms")}</span>
               </Link>

@@ -18,36 +18,42 @@ export default function Footer() {
               <li>
                 <Link>{t("footer.help")}</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link>{t("footer.cancelOrder")}</Link>
               </li>
               <li>
                 <Link>{t("footer.faqs")}</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="col-12 col-md-6 col-lg-3 footer-links">
             <h5>{t("footer.mainSections")}</h5>
             <ul>
               <li>
+                <Link to={"/"}>{t("footer.home")}</Link>
+              </li>
+              <li>
+                <Link to={"/for-rent"}>{t("footer.listing")}</Link>
+              </li>
+              <li>
+                <Link to={"/about-us"}>{t("footer.about")}</Link>
+              </li>
+              <li>
                 <Link>{t("footer.contactUs")}</Link>
               </li>
-              <li>
-                <Link>{t("footer.help")}</Link>
-              </li>
-              <li>
+              {/* <li>
                 <Link>{t("footer.cancelOrder")}</Link>
               </li>
               <li>
                 <Link>{t("footer.faqs")}</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="col-12 col-md-6 col-lg-3 footer-links">
             <h5>{t("footer.quickLinks")}</h5>
             <ul>
               <li>
-                <Link to={"home"}>{t("footer.home")}</Link>
+                <Link to={"/"}>{t("footer.home")}</Link>
               </li>
               <li>
                 <Link to={settings?.about_link}>{t("footer.about")}</Link>
@@ -81,12 +87,8 @@ export default function Footer() {
           <div className="links col-12 col-md-6 col-lg-4 ">
             {!isLoading && (
               <>
-                <Link to={settings?.terms_link} target="_blank">
-                  {t("footer.terms")}
-                </Link>
-                <Link to={settings?.privacy_link} target="_blank">
-                  {t("footer.privacy")}
-                </Link>{" "}
+                <Link to="/terms">{t("footer.terms")}</Link>
+                <Link to="/privacy-policy">{t("footer.privacy")}</Link>{" "}
               </>
             )}
           </div>

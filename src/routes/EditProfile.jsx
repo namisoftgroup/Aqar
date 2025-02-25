@@ -1,10 +1,10 @@
-import { Breadcrumb } from "react-bootstrap";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useUpdateProfile } from "../hooks/profile/useUpdateProfile";
 import InputField from "../ui/form/InputField";
 import SubmitButton from "../ui/form/SubmitButton";
+import SectionHeader from "../ui/SectionHeader";
 
 export default function EditProfile() {
   const [formData, setFormData] = useState({});
@@ -54,22 +54,7 @@ export default function EditProfile() {
 
   return (
     <section className="edit_profile">
-      <div className={`${lang === "ar" ? "ar" : " "} page_header `}>
-        <div className="container z-1">
-          <div className="contat-title">
-            <Breadcrumb>
-              <Breadcrumb.Item href="/">{t("contact.home")}</Breadcrumb.Item>
-              <Breadcrumb.Item
-                className={`${lang === "ar" ? "ar" : " "}`}
-                active
-              >
-                {t("editProfile")}
-              </Breadcrumb.Item>
-            </Breadcrumb>
-            <h2>{t("editProfile")}</h2>
-          </div>
-        </div>
-      </div>
+      <SectionHeader link={t("editProfile")} />
 
       <div className="container mt-3">
         <div className="auth-step w-50 mx-auto">
