@@ -1715,9 +1715,6 @@ body .why-us-section .why-us-features .feature-content .feature-description {
   font-size: 16px;
   color: var(--gray);
 }
-body .download-app {
-  padding: 120px 0;
-}
 body .download-app .download-app-content .section-title h1 {
   font-size: 32px;
   font-weight: 600;
@@ -1751,8 +1748,13 @@ body .download-app .download-app-content .apps-items a {
     text-align: center;
   }
 }
+body .download-app .app-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 body .download-app .app-images img {
-  width: 100%;
+  width: 80%;
 }
 body .modal .modal-header.ar .btn-close {
   margin-right: auto;
@@ -3333,4 +3335,8 @@ body.en .form-field input,
 body.en .form-field select,
 body.en .form-field textarea {
   direction: ltr;
+}
+body.en .properties .fav-btn {
+  right: initial;
+  left: 8px;
 }/*# sourceMappingURL=main.css.map */

@@ -16,7 +16,7 @@ export default function DownloadApp() {
     <section className="download-app">
       <div className="container">
         <div className="row g-4">
-          <div className="col-lg-6">
+          <div className="col-lg-6 d-flex align-items-center">
             <div className="download-app-content">
               <div className="section-title">
                 <h1>{t("mobileApp.title")}</h1>
