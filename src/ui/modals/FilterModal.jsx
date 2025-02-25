@@ -54,7 +54,7 @@ export default function FilterModal({ showModal, setShowModal }) {
         area_id: "",
         from_date: "",
         to_date: "",
-        price_from: ranges.min_price,
+        price_from: ranges?.min_price,
         price_to: ranges.max_price,
       })
     );

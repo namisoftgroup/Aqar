@@ -8,23 +8,7 @@ export default function ForRent() {
 
   return (
     <>
-      {/* {viewMap ? (
-        <MapSection
-          properties={ads?.data?.map((ad) => ({
-            position: { lat: ad?.lat, lng: ad?.lng },
-            price: ad.price,
-            id: ad.id,
-          }))}
-          ads={ads}
-          setViewMap={setViewMap}
-        />
-      ) : isLoading ? (
-        <DataLoader />
-      ) : (
-        
-      )} */}
-
-      <div className="container">
+      <div className="container pt-2 pb-2">
         <FilterBox />
       </div>
 

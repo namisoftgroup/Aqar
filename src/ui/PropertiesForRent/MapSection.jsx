@@ -5,38 +5,40 @@ import {
   InfoWindow,
   OverlayView,
 } from "@react-google-maps/api";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import PropertyCard from "./../cards/PropertyCard";
+import { useGetAds } from "../../hooks/ads/useGetAds";
 
 export default function MapSection({ setViewMap }) {
   const { t } = useTranslation();
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: "AIzaSyCE46OXa1TZgWdjl5gGvV-Vap-ONwdQN1s",
   });
 
   const defaultPosition = { lat: 21.285407, lng: 39.237551 };
+  const { ads, isLoading } = useGetAds();
 
   const [map, setMap] = useState(null);
-  const [zoom, setZoom] = useState(8);
+  const [zoom, setZoom] = useState(4);
+  const [properties, setProperties] = useState([]);
   const [userLocation, setUserLocation] = useState(null);
   const [activeMarker, setActiveMarker] = useState(null);
 
-  const properties = [
-    { position: { lat: 21.285407, lng: 39.237551 }, price: "100" },
-    { position: { lat: 21.4245, lng: 39.8262 }, price: "200" },
-    { position: { lat: 21.4224, lng: 39.8256 }, price: "150" },
-    { position: { lat: 21.3891, lng: 39.8579 }, price: "300" },
-    { position: { lat: 21.3178, lng: 39.2192 }, price: "120" },
-    { position: { lat: 21.5128, lng: 39.2194 }, price: "250" },
-    { position: { lat: 21.5438, lng: 39.1722 }, price: "170" },
-    { position: { lat: 21.2938, lng: 39.1922 }, price: "80" },
-    { position: { lat: 21.4138, lng: 39.0922 }, price: "110" },
-    { position: { lat: 21.4638, lng: 39.0822 }, price: "140" },
-    { position: { lat: 21.2138, lng: 39.1822 }, price: "90" },
-    { position: { lat: 21.413, lng: 39.182 }, price: "180" },
-  ];
+  useEffect(() => {
+    console.log(ads?.data);
+
+    if (ads?.data?.length > 0) {
+      setProperties(
+        ads?.data?.map((ad) => ({
+          position: { lat: ad?.lat, lng: ad?.lng },
+          price: ad?.price,
+          id: ad?.id,
+        }))
+      );
+    }
+  }, [ads?.data, ads.length]);
 
   const handleZoomIn = () => setZoom((prev) => Math.min(prev + 1, 21));
   const handleZoomOut = () => setZoom((prev) => Math.max(prev - 1, 0));
@@ -93,15 +95,15 @@ export default function MapSection({ setViewMap }) {
                 />
               )}
 
-              {properties.map((property, index) => (
+              {properties?.map((property) => (
                 <OverlayView
-                  key={index}
-                  position={property.position}
+                  key={property?.id}
+                  position={property?.position}
                   mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                 >
                   <div
                     className="custom-marker"
-                    onClick={() => setActiveMarker(index)}
+                    onClick={() => setActiveMarker(property?.id)}
                     style={{
                       position: "absolute",
                       transform: "translate(-50%, -100%)",
@@ -112,14 +114,21 @@ export default function MapSection({ setViewMap }) {
                     </div>
                   </div>
                 </OverlayView>
+                // <Marker key={property.id} position={property.position} />
               ))}
 
               {activeMarker !== null && (
                 <InfoWindow
-                  position={properties[activeMarker].position}
+                  position={
+                    properties?.filter((ad) => ad?.id === activeMarker)[0]
+                      ?.position
+                  }
                   onCloseClick={() => setActiveMarker(null)}
                 >
-                  <PropertyCard />
+                  <PropertyCard
+                    ad={ads?.data?.filter((ad) => ad?.id === activeMarker)[0]}
+                    hideFav={true}
+                  />
                 </InfoWindow>
               )}
             </GoogleMap>
