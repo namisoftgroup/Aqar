@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useRouteError } from "react-router";
+import { Link, useRouteError } from "react-router";
 
 function ErrorPage() {
   const error = useRouteError();
@@ -11,7 +11,7 @@ function ErrorPage() {
       <h1>Something went wrong!</h1>
       <p>{error.status}</p>
       <p>{error.message}</p>
-      <button>Go To Home</button>
+      <Link to={"/"}>Go To Home</Link>
     </div>
   );
 }

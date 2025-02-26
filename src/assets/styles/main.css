@@ -2285,6 +2285,7 @@ body .gm-style-iw-d {
 body .custom-marker {
   cursor: pointer;
   text-align: center;
+  z-index: 11111;
 }
 body .marker-price {
   background-color: #fff;

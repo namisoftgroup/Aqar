@@ -36,7 +36,7 @@ export default function ListingSection({ setViewMap }) {
         <div className="icon">
           <img src="/icons/map.svg" alt="map" />
         </div>
-        {t("viewOnMap")}
+        {t("forRent.viewOnMap")}
       </button>
     </section>
   );

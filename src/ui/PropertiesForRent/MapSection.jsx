@@ -3,6 +3,7 @@ import {
   useLoadScript,
   Marker,
   InfoWindow,
+  OverlayViewF,
   OverlayView,
 } from "@react-google-maps/api";
 import { useState, useCallback, useEffect } from "react";
@@ -38,7 +39,7 @@ export default function MapSection({ setViewMap }) {
         }))
       );
     }
-  }, [ads?.data, ads.length]);
+  }, [ads?.data]);
 
   const handleZoomIn = () => setZoom((prev) => Math.min(prev + 1, 21));
   const handleZoomOut = () => setZoom((prev) => Math.max(prev - 1, 0));
@@ -96,7 +97,7 @@ export default function MapSection({ setViewMap }) {
               )}
 
               {properties?.map((property) => (
-                <OverlayView
+                <OverlayViewF
                   key={property?.id}
                   position={property?.position}
                   mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
@@ -113,8 +114,7 @@ export default function MapSection({ setViewMap }) {
                       {property.price} {t("sar")}
                     </div>
                   </div>
-                </OverlayView>
-                // <Marker key={property.id} position={property.position} />
+                </OverlayViewF>
               ))}
 
               {activeMarker !== null && (
@@ -156,7 +156,7 @@ export default function MapSection({ setViewMap }) {
         <div className="icon">
           <img src="/icons/listing.svg" alt="map" />
         </div>
-        {t("viewListing")}
+        {t("forRent.viewListing")}
       </button>
     </section>
   );
