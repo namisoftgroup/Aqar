@@ -91,7 +91,7 @@
   },
   "forRent": {
     "viewOnMap": "عرض الخريطه",
-    "list": "عرض القائمه",
+    "viewListing": "عرض القائمه",
     "desc": "الوصف",
     "chat": "تحدث",
     "features": "المميزات",
