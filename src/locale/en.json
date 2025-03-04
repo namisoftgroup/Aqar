@@ -302,5 +302,6 @@
   "editProfile": "Edit Profile",
   "readMore": "Read more",
   "noChatSelected": "No Chat Selected",
-  "startConversation": "Start a conversation and connect with ease!"
+  "startConversation": "Start a conversation and connect with ease!",
+  "loading": "Loading..."
 }

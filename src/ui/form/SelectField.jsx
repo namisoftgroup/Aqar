@@ -1,4 +1,5 @@
 import { Form } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 export default function SelectField({
   label,
@@ -8,6 +9,7 @@ export default function SelectField({
   loading,
   ...props
 }) {
+  const { t } = useTranslation();
   return (
     <div className="form-field">
       {label && (
@@ -15,19 +17,21 @@ export default function SelectField({
           {label} {hint && <span>({hint})</span>}
         </label>
       )}
-      <Form.Select {...props}>
-        {hiddenOption && (
-          <option value={hiddenOption.value}>{hiddenOption.label}</option>
-        )}
-        {!loading ? (
-          options?.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.name}
-            </option>
-          ))
+      <Form.Select {...props} disabled={loading}>
+        {loading ? (
+          <option value="" disabled>
+            <p>{t("loading")}</p>
+          </option>
         ) : (
-          <i className="fa-solid fa-spinner fa-spin"></i>
+          hiddenOption && (
+            <option value={hiddenOption.value}>{hiddenOption.label}</option>
+          )
         )}
+        {options?.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.name}
+          </option>
+        ))}
       </Form.Select>
     </div>
   );

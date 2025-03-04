@@ -16,8 +16,8 @@ export default function FilterBox() {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [targetCity, setTargetCity] = useState();
-  const { cities } = useGetCities();
-  const { categories } = useGetCategories();
+  const { cities, isLoading } = useGetCities();
+  const { categories, isLoading: isCategoriesLoading } = useGetCategories();
   const { areas, isLoading: isAreaLoading } = useGetAreas(
     targetCity,
     Boolean(targetCity)
@@ -34,6 +34,7 @@ export default function FilterBox() {
     const { name, value } = e.target;
     dispatch(setFilter({ [name]: value }));
   }
+
   function handleCategoryChange(e) {
     dispatch(setFilter({ category_id: e.target.value }));
   }
@@ -54,6 +55,7 @@ export default function FilterBox() {
           hiddenOption={{ value: "", label: t("home.city") }}
           onChange={handleCityChange}
           options={cities}
+          loading={isLoading}
         />
 
         <SelectField
@@ -73,6 +75,7 @@ export default function FilterBox() {
           hiddenOption={{ value: "", label: t("home.propertyType") }}
           options={categories}
           onChange={handleCategoryChange}
+          loading={isCategoriesLoading}
         />
 
         <SubmitButton className="p-3" img="/icons/search.svg" />
