@@ -301,5 +301,6 @@
   "editProfile": "تعديل الملف الشخصي",
   "readMore": "اقرأ المزيد",
   "noChatSelected": "لم يتم تحديد محادثة",
-  "startConversation": "ابدأ محادثة وتواصل بسهولة!"
+  "startConversation": "ابدأ محادثة وتواصل بسهولة!",
+  "loading": "جاري التحميل..."
 }
