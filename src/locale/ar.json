@@ -138,7 +138,8 @@
     "guestsNumber": "عدد الضيوف",
     "wallet": "المحفظه",
     "online": "اونلاين",
-    "date": "تاريخ :"
+    "date": "تاريخ :",
+    "pickDateMessage": "اختر تاريخ"
   },
   "profile": {
     "myProfile": "ملفي لشخصي",
@@ -302,5 +303,8 @@
   "readMore": "اقرأ المزيد",
   "noChatSelected": "لم يتم تحديد محادثة",
   "startConversation": "ابدأ محادثة وتواصل بسهولة!",
-  "loading": "جاري التحميل..."
+  "loading": "جاري التحميل...",
+  "adDetails": "تفاصيل الاعلان",
+  "dates": "التواريخ",
+  "guests": "الضيوف"
 }

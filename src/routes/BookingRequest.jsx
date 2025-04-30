@@ -21,7 +21,6 @@ export default function BookingRequest() {
   const [selected, setSelected] = useState("wallet");
   const { adDetails, isLoading } = useGetAdDetails();
   const booking = useSelector((state) => state.booking);
-  console.log(formatDate(booking.from));
 
   const [bookingData, setBookingData] = useState({
     adults: 0,
@@ -42,7 +41,7 @@ export default function BookingRequest() {
   };
   const totalNumber =
     bookingData.adults + bookingData.children + bookingData.baby;
-  const { bookingAd, isLoading: isBookingLoading } = useBookingAd();
+  const { bookingAd, isPending: isBookingLoading } = useBookingAd();
 
   function handelBooking() {
     bookingAd(data);

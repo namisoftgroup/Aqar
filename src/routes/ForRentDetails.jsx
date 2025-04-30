@@ -12,12 +12,17 @@ import Owner from "../ui/PropertiesForRent/Owner";
 import PropertyInfo from "../ui/PropertiesForRent/PropertyInfo";
 import Rates from "../ui/PropertiesForRent/Rates";
 import SimilarAds from "../ui/PropertiesForRent/SimilarAds";
+import { useDeleteFromFavorites } from "../hooks/favorites/useDeleteFromFavorites";
+import { useAddToFavorites } from "../hooks/favorites/useAddToFavorites";
+import { useNavigate } from "react-router";
 
 export default function ForRentDetails() {
   const { t } = useTranslation();
   const booking = useSelector((state) => state.booking);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const { deleteFromFavorites } = useDeleteFromFavorites();
+  const { addToFavorites } = useAddToFavorites();
   const { adDetails, isLoading } = useGetAdDetails();
 
   const storedDates =
@@ -42,6 +47,30 @@ export default function ForRentDetails() {
       <section className="container">
         <div className="row">
           <div className="col-lg-8 col-12 p-2">
+            <div className="details-header-section">
+              <div className="title-wrapper">
+                <button onClick={() => navigate(-1)}>
+                  <i className="fa-solid fa-chevron-right"></i>
+                </button>
+                <h3>{t("adDetails")} </h3>
+              </div>
+              <div className="header-icons">
+                <div
+                  className="fav-btn"
+                  onClick={() => {
+                    adDetails.is_favorite
+                      ? deleteFromFavorites()
+                      : addToFavorites();
+                  }}
+                >
+                  {adDetails.is_favorite ? (
+                    <i className="fa-solid fa-heart"></i>
+                  ) : (
+                    <i className="fa-light fa-heart"></i>
+                  )}
+                </div>
+              </div>
+            </div>
             <Gallary images={adDetails.images} />
           </div>
           <div className="col-lg-4 col-12 p-2">
@@ -55,12 +84,35 @@ export default function ForRentDetails() {
             <div className="description">
               <h4>{t("forRent.desc")}</h4>
               <p>{adDetails.description}</p>
+            </div>{" "}
+            <div className="details-card">
+              {adDetails.filters &&
+                adDetails.features.length > 0 &&
+                adDetails.filters.map((item) => (
+                  <div className="detail-item" key={item.id}>
+                    <div className="d-flex gap-1">
+                      <img
+                        src={
+                          item.filter.icon
+                            ? item.filter.icon
+                            : "/icons/check.png"
+                        }
+                        alt={item.filter.name}
+                        className="icon"
+                      />
+                      <span>{item.filter.name}</span>
+                    </div>
+                    <span>
+                      {item.value === "yes" || item.value === "true"
+                        ? "متوفر"
+                        : item.value}
+                    </span>
+                  </div>
+                ))}
             </div>
-
             {adDetails.features && adDetails.features.length > 0 && (
               <Features features={adDetails.features} />
             )}
-
             <div className="mt-3">
               <h4>{t("forRent.chooseData")}</h4>
               <div className="calender-container">

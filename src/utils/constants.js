@@ -1,10 +1,12 @@
 export const BOOKING_STATUS_EN = {
+  pending: "Pending",
   inReview: "In Review",
   confirmed: "Confirmed",
   cancelled: "Cancelled",
   accepted: "Completed",
 };
 export const BOOKING_STATUS_AR = {
+  pending: "انتظار",
   inReview: "في المراجعه",
   confirmed: "تم الحجز",
   cancelled: "ملغي",

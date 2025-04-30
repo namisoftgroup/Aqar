@@ -10,6 +10,12 @@ export default function Footer() {
       <div className="container gap-3">
         <div className="row g-3 py-5">
           <div className="col-12 col-md-6 col-lg-3 footer-links">
+            <Link href="/" className="logo">
+              <img src="/images/logo.svg" alt="Aqar's logo" />
+            </Link>
+            <p>{t("mobileApp.description")}</p>
+          </div>
+          <div className="col-12 col-md-6 col-lg-3 footer-links">
             <h5>{t("footer.support")}</h5>
             <ul>
               <li>
@@ -63,7 +69,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="news-letter col-12 col-md-6 col-lg-3">
+          {/* <div className="news-letter col-12 col-md-6 col-lg-3">
             <h5>{t("footer.subscripe")}</h5>
             <form className="newsletter-form">
               <input type="email" placeholder={t("form.emailPlaceholder")} />
@@ -72,7 +78,7 @@ export default function Footer() {
               </button>
             </form>
             <p>{t("footer.newsletterDesc")}</p>
-          </div>
+          </div> */}
         </div>
         <div className="row g-3 border-top">
           <div className="col-12 col-md-6 col-lg-4 d-flex gap-4">
@@ -93,16 +99,32 @@ export default function Footer() {
             )}
           </div>
           <div className="social-links col-12 col-md-6 col-lg-4">
-            <Link to="">
+            <Link
+              to={settings?.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-facebook-f"></i>
             </Link>
-            <Link to="">
+            <Link
+              to={settings?.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-twitter"></i>
             </Link>
-            <Link to="">
+            <Link
+              to={settings?.insta}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-instagram"></i>
             </Link>
-            <Link to="">
+            <Link
+              to={settings?.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-youtube"></i>
             </Link>
           </div>

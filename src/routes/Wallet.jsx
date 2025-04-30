@@ -40,11 +40,10 @@ export default function Wallet() {
             <div className="col-lg-8 col-12 p-2">
               <div className="transactions-table">
                 <h3>{t("wallet.previousTransactions")}</h3>
-                {walletOperations && walletOperations.lenght > 0 ? (
+                {walletOperations && walletOperations.length > 0 ? (
                   <TransactionsTable walletOperations={walletOperations} />
                 ) : (
                   <div className="noData">{t("wallet.noOperations")}</div>
-         
                 )}
               </div>
             </div>

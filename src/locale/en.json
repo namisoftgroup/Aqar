@@ -139,7 +139,8 @@
     "guestsNumber": "Guests Number",
     "wallet": "Wallet",
     "online": "online",
-    "date": "Date:"
+    "date": "Date:",
+    "pickDateMessage": "Choose Date"
   },
   "profile": {
     "myProfile": "My Profile",
@@ -303,5 +304,8 @@
   "readMore": "Read more",
   "noChatSelected": "No Chat Selected",
   "startConversation": "Start a conversation and connect with ease!",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "adDetails": "Ad Details",
+  "dates": "Dates",
+  "guests": "Guests"
 }

@@ -8,8 +8,8 @@ import { formateDateDetails } from "../../utils/helper";
 export default function PropertyInfo({ adDetails, nights }) {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.language.lang);
+  const user = useSelector((state) => state.user.user);
   const [total, seTotal] = useState();
-
   useMemo(() => {
     seTotal(
       (nights === 0 ? 1 : nights) * adDetails.price + adDetails.clean_price
@@ -21,26 +21,26 @@ export default function PropertyInfo({ adDetails, nights }) {
       <div className="prop-data-header">
         <div className="prop-data-header-info">
           <h3>{adDetails.title}</h3>
+          <div className="d-flex gap-2">
+            <p className="d-flex gap-2 align-items-center">
+              <i className="fa-thin fa-eye"></i>
+              <span>{adDetails.views_count}</span>
+            </p>
+            <p className="d-flex gap-2 align-items-center">
+              <i className="fa-thin fa-calendar"></i>
+              <span>
+                {formateDateDetails(
+                  adDetails.created_at,
+                  lang === "ar" ? "ar-EG" : "en-US"
+                )}
+              </span>
+            </p>
+          </div>
           <p>
             {adDetails.price} {t("sar")} /{" "}
             {lang === "ar" ? PER_AR[adDetails.per] : PER_EN[adDetails.per]}
           </p>
           <p> {adDetails.address} </p>
-        </div>
-        <div className="d-flex gap-2">
-          <p className="d-flex gap-2 align-items-center">
-            <i className="fa-thin fa-eye"></i>
-            <span>{adDetails.views_count}</span>
-          </p>
-          <p className="d-flex gap-2 align-items-center">
-            <i className="fa-thin fa-calendar"></i>
-            <span>
-              {formateDateDetails(
-                adDetails.created_at,
-                lang === "ar" ? "ar-EG" : "en-US"
-              )}
-            </span>
-          </p>
         </div>
       </div>
 
@@ -64,7 +64,10 @@ export default function PropertyInfo({ adDetails, nights }) {
               {nights} {t("forRent.nights")}{" "}
             </p>
           ) : (
-            <p>سعر الليله </p>
+            <p>
+              سعر{" "}
+              {lang === "ar" ? PER_AR[adDetails.per] : PER_EN[adDetails.per]}{" "}
+            </p>
           )}
 
           <p>
@@ -83,9 +86,11 @@ export default function PropertyInfo({ adDetails, nights }) {
           <p>{total}</p>
         </div>
       </div>
-      <Link to={`/booking/${adDetails.id}`}>
-        <i className="fa-solid fa-calendar"></i> {t("forRent.book")}
-      </Link>
+      {user.id !== adDetails.user_id && (
+        <Link to={`/booking/${adDetails.id}`}>
+          <i className="fa-solid fa-calendar"></i> {t("forRent.book")}
+        </Link>
+      )}
     </section>
   );
 }

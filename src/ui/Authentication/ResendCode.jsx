@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 export default function ResendCode() {
   const { t } = useTranslation();
   const [timer, setTimer] = useState(59);
-  const [resendDisabled, setResendDisabled] = useState(false);
+  const [resendDisabled, setResendDisabled] = useState(true);
 
   useEffect(() => {
     if (timer > 0) {

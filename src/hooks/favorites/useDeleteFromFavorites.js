@@ -9,7 +9,13 @@ export function useDeleteFromFavorites() {
     onSuccess: (data) => {
       if (data.code === 200) {
         toast.success(data.message);
-        querClient.invalidateQueries(["ads","", "favorites", "bookings"]); 
+        querClient.invalidateQueries([
+          "ads",
+          "",
+          "favorites",
+          "bookings",
+          "adDetails",
+        ]);
       } else if (data.code === 422) {
         toast.error(data.message);
       }

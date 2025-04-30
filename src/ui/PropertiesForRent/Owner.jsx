@@ -1,10 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function Owner({ ad }) {
-  console.log(ad);
-
   const { t } = useTranslation();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
@@ -24,9 +22,11 @@ export default function Owner({ ad }) {
           <img className="user-img" src={ad.user.image} alt="User" />
           <h5>{ad.user.name}</h5>
         </div>
-        <button onClick={handleCreateRoom}>
-          <i className="fa-light fa-comment"></i> {t("forRent.chat")}
-        </button>
+        {user.id !== ad.user_id && (
+          <button onClick={handleCreateRoom}>
+            <i className="fa-light fa-comment"></i> {t("forRent.chat")}
+          </button>
+        )}
       </div>
     </div>
   );

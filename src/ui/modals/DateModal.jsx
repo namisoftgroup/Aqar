@@ -64,7 +64,7 @@ export default function DateModal({ showModal, setShowModal }) {
     >
       <Modal.Header closeButton className={`${lang === "ar" ? "ar" : ""}`}>
         <Modal.Title>
-          <label className="label">{t("book.nightsTitle")}</label>
+          <label className="label">{t("filter.nightsNumber")}</label>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

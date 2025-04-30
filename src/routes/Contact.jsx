@@ -5,13 +5,11 @@ import TextareaField from "../ui/form/TextareaField";
 
 import SectionHeader from "../ui/SectionHeader";
 
-
 export default function Contact() {
   const { t } = useTranslation();
   return (
     <section>
       <div className="contact">
-
         <SectionHeader link={t("contact.title")} />
 
         <div className="contact-section">
@@ -85,7 +83,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <div style={{ marginBottom: "-12px" }}>
+        {/* <div style={{ marginBottom: "-12px" }}>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13735.308237673138!2d30.976159350000003!3d30.61064085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1740395176854!5m2!1sen!2seg"
             width="100%"
@@ -94,7 +92,7 @@ export default function Contact() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
-        </div>
+        </div> */}
       </div>
     </section>
   );
