@@ -144,8 +144,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      {/* <OurParteners /> */}
-      {/* <BlogsSection /> */}
+   
     </section>
   );
 }

@@ -59,8 +59,8 @@ export default function ForRentDetails() {
                   className="fav-btn"
                   onClick={() => {
                     adDetails.is_favorite
-                      ? deleteFromFavorites()
-                      : addToFavorites();
+                      ? deleteFromFavorites(adDetails.id)
+                      : addToFavorites(adDetails.id);
                   }}
                 >
                   {adDetails.is_favorite ? (

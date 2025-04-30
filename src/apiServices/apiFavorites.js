@@ -22,7 +22,9 @@ export async function addFavourite(id) {
 }
 export async function deleteFavourite(id) {
   try {
-    const res = await axiosInstance.post("user/delete_from_favorite", { id });
+    const res = await axiosInstance.post("user/delete_from_favorite", {
+      ad_id: id,
+    });
     const data = res.data;
     return data;
   } catch (e) {
