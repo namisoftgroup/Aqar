@@ -4,9 +4,42 @@ import InputField from "../ui/form/InputField";
 import TextareaField from "../ui/form/TextareaField";
 
 import SectionHeader from "../ui/SectionHeader";
+import { useSendContact } from "../hooks/useSendContact";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function Contact() {
   const { t } = useTranslation();
+  const { sendContact, isPending } = useSendContact();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    sendContact(formData, {
+      onSuccess: () => {
+        toast.success("Contact message sent successfully.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      },
+      onError: (error) => {
+        toast.error("Error sending contact message:", error.message);
+      },
+    });
+  };
   return (
     <section>
       <div className="contact">
@@ -46,35 +79,55 @@ export default function Contact() {
               </div>
               <div className="col-lg-6 p-2">
                 <div className="contact-content">
-                  <form className="contact-form">
+                  <form className="contact-form" onSubmit={handleSubmit}>
                     <div className="row g-4">
                       <div className="col-lg-6">
                         <InputField
                           label={t("contact.email")}
                           placeholder={t("contact.emailPlaceholder")}
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
                         />
                       </div>
                       <div className="col-lg-6">
                         <InputField
                           label={t("contact.name")}
+                          name="name"
                           placeholder={t("contact.namePlaceholder")}
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
                         />
                       </div>
                       <div className="col-12">
                         <InputField
                           label={t("contact.phone")}
                           type="number"
+                          name="phone"
                           placeholder={t("contact.phonePlaceholder")}
+                          value={formData.phone}
+                          onChange={handleChange}
+                          required
                         />
                       </div>
                       <div className="col-12">
                         <TextareaField
                           label={t("contact.message")}
+                          name="message"
                           placeholder={t("contact.messagePlaceholder")}
+                          value={formData.message}
+                          onChange={handleChange}
+                          required
                         />
                       </div>
                       <div className="col-12">
-                        <AnimatedButton text={t("contact.submit")} />
+                        <AnimatedButton
+                          loading={isPending}
+                          text={t("contact.submit")}
+                        />
                       </div>
                     </div>
                   </form>
@@ -83,16 +136,6 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        {/* <div style={{ marginBottom: "-12px" }}>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13735.308237673138!2d30.976159350000003!3d30.61064085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1740395176854!5m2!1sen!2seg"
-            width="100%"
-            height="400"
-            allowfullscreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div> */}
       </div>
     </section>
   );
