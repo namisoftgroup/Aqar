@@ -45,46 +45,40 @@ export default function Chats() {
           <span> {t("header.chat")} </span>
         </button>
         <div className="row">
-          {chats?.length > 0 ? (
-            <>
-              <div className="col-lg-4 col-12 p-2">
-                <ChatSideBar
-                  chats={chats}
-                  setTargetChat={setTargetChat}
-                  targetChat={targetChat}
-                  showChatsMenu={showChatsMenu}
-                  setShowChatsMenu={setShowChatsMenu}
-                />
-              </div>
-              <div className="col-lg-8 col-12 p-2">
-                {targetChat ? (
-                  <>
-                    {isChatLoading ? (
-                      <div className="lottie_player_holder">
-                        <Lottie
-                          options={defaultOptions}
-                          height={250}
-                          width={250}
-                        />
-                      </div>
-                    ) : (
-                      <ChatRoom chat={chatDetails} />
-                    )}
-                  </>
-                ) : (
-                  <div className="chat-replce">
-                    <img src="images/comment.jpg" alt="No chat selected" />
-                    <h5>{t("noChatSelected")}</h5>
-                    <p>{t("startConversation")}</p>
-                  </div>
-                )}
-              </div>
-            </>
-          ) : (
-            <div className="lottie_player_holder">
-              <Lottie options={defaultOptions} height={250} width={250} />
+          <>
+            <div className="col-lg-4 col-12 p-2">
+              <ChatSideBar
+                chats={chats}
+                setTargetChat={setTargetChat}
+                targetChat={targetChat}
+                showChatsMenu={showChatsMenu}
+                setShowChatsMenu={setShowChatsMenu}
+              />
             </div>
-          )}
+            <div className="col-lg-8 col-12 p-2">
+              {targetChat ? (
+                <>
+                  {isChatLoading ? (
+                    <div className="lottie_player_holder">
+                      <Lottie
+                        options={defaultOptions}
+                        height={250}
+                        width={250}
+                      />
+                    </div>
+                  ) : (
+                    <ChatRoom chat={chatDetails} chats={chats} />
+                  )}
+                </>
+              ) : (
+                <div className="chat-replce">
+                  <img src="images/comment.jpg" alt="No chat selected" />
+                  <h5>{t("noChatSelected")}</h5>
+                  <p>{t("startConversation")}</p>
+                </div>
+              )}
+            </div>
+          </>
         </div>
       </div>
     </section>

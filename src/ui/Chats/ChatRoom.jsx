@@ -1,92 +1,98 @@
-import { useRef, useState, useEffect } from "react";
-import { Link } from "react-router";
+import { useQueryClient } from "@tanstack/react-query";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { formatMessageTime } from "../../utils/helper";
+import { Link, useNavigate } from "react-router";
 import { createMessage } from "../../apiServices/apiChats";
+import { formatMessageTime } from "../../utils/helper";
 
-const ChatRoom = ({ chat }) => {
+const ChatRoom = ({ chat, chats }) => {
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([]);
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [recordingTime, setRecordingTime] = useState(0);
+  const [fileName, setFileName] = useState("");
+  const [message, setMessage] = useState({
+    from_id: null,
+    chat_id: null,
+    message: "",
+    type: "",
+  });
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { user } = useSelector((state) => state.user);
   const formRef = useRef(null);
   const chatContainerRef = useRef(null);
   const recordingIntervalRef = useRef(null);
   const socketRef = useRef(null);
-  const { t } = useTranslation();
-  const { user } = useSelector((state) => state.user);
-  const [fileName, setFileName] = useState("");
+  const queryClient = useQueryClient();
 
-  const [message, setMessage] = useState({
-    from_id: user?.id,
-    chat_id: chat?.id,
-    message: "",
-    type: "",
-  });
+  const channel = chat?.id ? `chat_${chat.id}` : null;
 
-  const channel = chat?.id ? `chat_${chat?.id}` : null;
-
-  // WebSocket initialization
   useEffect(() => {
-    const initializeWebSocket = () => {
-      if (socketRef.current) {
-        socketRef.current.close();
-      }
+    if (!chat?.id) return;
 
-      socketRef.current = new WebSocket(
-        "wss://api.noot.com.sa/app/f4vqjzd4e4bs0ikazefo?protocol=7&client=js&version=8.4.0&flash=false"
+    const socket = new WebSocket(
+      "wss://api.noot.com.sa/app/f4vqjzd4e4bs0ikazefo?protocol=7&client=js&version=8.4.0&flash=false"
+    );
+
+    socketRef.current = socket;
+
+    socket.onopen = () => {
+      console.log("WebSocket connected");
+      socket.send(
+        JSON.stringify({
+          event: "pusher:subscribe",
+          data: { channel },
+        })
       );
-
-      socketRef.current.onopen = () => {
-        console.log("WebSocket connection established");
-
-        if (chat?.id) {
-          socketRef.current.send(
-            JSON.stringify({
-              event: "pusher:subscribe",
-              data: { channel: channel },
-            })
-          );
-        }
-      };
-
-      socketRef.current.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-
-        const messageData = JSON.parse(data.data);
-
-        if (messageData?.message?.chat_id) {
-          setMessages((prevMessages) => [...prevMessages, messageData.message]);
-        }
-      };
-
-      socketRef.current.onerror = (error) => {
-        console.error("WebSocket Error:", error);
-      };
-
-      socketRef.current.onclose = () => {
-        console.log("WebSocket connection closed");
-      };
     };
 
-    initializeWebSocket();
+    socket.onmessage = (event) => {
+      try {
+        const payload = JSON.parse(event.data);
+
+        if (payload.event === "new_message") {
+          const messageData = JSON.parse(payload.data);
+          if (messageData?.message?.chat_id) {
+            setMessages((prev) => [...prev, messageData.message]);
+          }
+        }
+      } catch (err) {
+        console.error("WebSocket message parsing error:", err);
+      }
+    };
+
+    socket.onerror = (err) => {
+      console.error("WebSocket error:", err);
+    };
+
+    socket.onclose = (event) => {
+      console.warn("WebSocket closed:", event);
+    };
 
     return () => {
-      if (socketRef.current) {
-        socketRef.current.close();
+      if (
+        socket.readyState === WebSocket.OPEN ||
+        socket.readyState === WebSocket.CONNECTING
+      ) {
+        socket.close();
       }
     };
-  }, [channel, chat?.id]);
+  }, [chat?.id, channel]);
 
   useEffect(() => {
     if (chat) {
-      setMessages(chat?.messages.slice() || []);
+      setMessages(chat?.messages?.slice() || []);
+      setMessage((prev) => ({
+        ...prev,
+        from_id: user?.id,
+        chat_id: chat?.id,
+      }));
     }
-  }, [chat]);
+  }, [chat, user?.id]);
 
-  // Scroll to the bottom of the chat container when messages change
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop =
@@ -94,7 +100,6 @@ const ChatRoom = ({ chat }) => {
     }
   }, [messages]);
 
-  // Clear recording interval on component unmount
   useEffect(() => {
     return () => {
       if (recordingIntervalRef.current) {
@@ -103,48 +108,33 @@ const ChatRoom = ({ chat }) => {
     };
   }, []);
 
-  // Send message
   const handleSendMessage = async (e) => {
     e.preventDefault();
+    if (message?.type === "") return;
+
     setLoading(true);
-
-    if (message?.type === "") {
-      return;
-    }
-
     formRef.current.reset();
 
-    setMessage({
-      from_id: user?.id,
-      chat_id: chat?.id,
-      message: "",
-      type: "",
-    });
-
     try {
-      if (
-        socketRef.current &&
-        socketRef.current.readyState === WebSocket.OPEN
-      ) {
-        socketRef.current.send(
-          JSON.stringify({
-            event: "pusher:subscribe",
-            data: { channel: channel },
-          })
-        );
-      } else {
-        console.log("WebSocket is not open");
+      const data = await createMessage(message);
+
+      if (data.code === 200 && chats === 0) {
+        queryClient.invalidateQueries({ queryKey: ["chats"] });
       }
-      await createMessage(message);
     } catch (error) {
       console.error("Error sending message:", error);
     } finally {
+      setMessage({
+        from_id: user?.id,
+        chat_id: chat?.id,
+        message: "",
+        type: "",
+      });
       setRecordingTime(0);
       setLoading(false);
     }
   };
 
-  // Start recording
   const startRecording = async () => {
     setIsRecording(true);
     setRecordingTime(0);
@@ -162,19 +152,18 @@ const ChatRoom = ({ chat }) => {
         }
       };
 
-      mediaRecorderInstance.onstop = async () => {
+      mediaRecorderInstance.onstop = () => {
         const audioBlob = new Blob(audioChunks, { type: "audio/m4a" });
 
-        setMessage((prevMessage) => ({
-          ...prevMessage,
+        setMessage((prev) => ({
+          ...prev,
           message: audioBlob,
           type: "audio",
         }));
 
-        mediaRecorderInstance.stream.getTracks().forEach((track) => {
-          track.stop();
-        });
-
+        mediaRecorderInstance.stream
+          .getTracks()
+          .forEach((track) => track.stop());
         setIsRecording(false);
         clearInterval(recordingIntervalRef.current);
       };
@@ -183,12 +172,11 @@ const ChatRoom = ({ chat }) => {
       setMediaRecorder(mediaRecorderInstance);
       startRecordingTimer();
     } catch (err) {
-      console.error("Error accessing microphone:", err);
+      console.error("Microphone access error:", err);
       setIsRecording(false);
     }
   };
 
-  // Stop recording
   const stopRecording = () => {
     if (mediaRecorder && mediaRecorder.state !== "inactive") {
       mediaRecorder.stop();
@@ -196,21 +184,18 @@ const ChatRoom = ({ chat }) => {
     clearInterval(recordingIntervalRef.current);
   };
 
-  // Start recording timer
   const startRecordingTimer = () => {
     recordingIntervalRef.current = setInterval(() => {
-      setRecordingTime((prevTime) => prevTime + 1);
+      setRecordingTime((prev) => prev + 1);
     }, 1000);
   };
 
-  // Format recording time
   const formatRecordingTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
   };
 
-  // Extract file name from URL
   const extractTextAfterMessages = (url) => {
     const regex = /_messages\.(.*)/;
     const match = url.match(regex);
@@ -220,7 +205,10 @@ const ChatRoom = ({ chat }) => {
   return (
     <div className="chat-container">
       <div className="chat-head">
-        <div className="user">
+        <div
+          className="user"
+          onClick={() => navigate(`/ads/${chat?.owner_id}`)}
+        >
           <img
             src={
               chat?.user
@@ -350,19 +338,16 @@ const ChatRoom = ({ chat }) => {
                   });
                 }}
                 type="file"
-                name="userImage"
-                id="img-upload"
               />
             </label>
+
             {isRecording ? (
               <label className="files-input" onClick={stopRecording}>
                 <i className="fa-solid fa-microphone-slash"></i>
-                <input type="" />
               </label>
             ) : (
               <label className="files-input" onClick={startRecording}>
                 <i className="fa-solid fa-microphone"></i>
-                <input type="" />
               </label>
             )}
             {recordingTime > 0 && (
@@ -370,7 +355,7 @@ const ChatRoom = ({ chat }) => {
             )}
           </div>
 
-          <button type="submit" disabled={message.type === "" && loading}>
+          <button type="submit" disabled={message.type === "" || loading}>
             <i className="fa-regular fa-paper-plane-top"></i>
           </button>
         </form>

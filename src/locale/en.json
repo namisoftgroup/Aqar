@@ -113,7 +113,7 @@
     "priceDetails": " Price Details",
     "totalPrice": "Total Price",
     "confirm": "Confirm & Payment",
-    "yourTrip": "Your trip",
+    "BookingRequestSummary": "Your booking request summary",
     "edit": "Edit",
     "payment": "Payment",
     "cardNumber": "Card Number",
@@ -140,7 +140,8 @@
     "wallet": "Wallet",
     "online": "online",
     "date": "Date:",
-    "pickDateMessage": "Choose Date"
+    "pickDateMessage": "Choose Date",
+    "nights": "nights"
   },
   "profile": {
     "myProfile": "My Profile",
@@ -312,5 +313,6 @@
   "guests": "Guests",
   "appPercentage": "App Percentage",
   "noDatesSelected": "No dates Selected",
-  "noGuestsSelected": "Specify the number of guests"
+  "noGuestsSelected": "Specify the number of guests",
+  "guestCountTitle": "Hom many guests?"
 }

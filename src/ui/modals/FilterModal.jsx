@@ -92,8 +92,8 @@ export default function FilterModal({ showModal, setShowModal }) {
               <DataLoader />
             ) : (
               <RangeSlider
-                min={ranges.min_price}
-                max={ranges.max_price}
+                min={ranges?.min_price}
+                max={ranges?.max_price}
                 steps={5}
                 value={[formData.price_from, formData.price_to]}
                 minType={t("sar")}

@@ -21,6 +21,7 @@ import About from "../routes/About";
 import Terms from "../routes/Terms";
 import PrivacyPolicy from "../routes/PrivacyPolicy";
 import BlogsDetails from "../routes/BlogsDetails";
+import UserAds from "../routes/UserAds";
 
 export const router = createBrowserRouter([
   {
@@ -108,6 +109,10 @@ export const router = createBrowserRouter([
           {
             path: "notifications",
             element: <Notifications />,
+          },
+          {
+            path: "ads/:userId",
+            element: <UserAds />,
           },
         ],
       },

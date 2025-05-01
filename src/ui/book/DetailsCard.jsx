@@ -12,15 +12,15 @@ export default function DetailsCard({ adDetails, duration }) {
   const [total, seTotal] = useState();
   const { settings } = useGetSettings();
   useMemo(() => {
-    if (adDetails.per === "day") {
+    if (adDetails?.per === "day") {
       seTotal(
-        (nights === 0 ? 1 : nights) * adDetails.price +
+        (nights === 0 ? 1 : nights) * adDetails?.price +
           adDetails.clean_price +
           adDetails.price * (Number(settings.app_percentage) / 100)
       );
     } else {
       seTotal(
-        duration * adDetails.price +
+        duration * adDetails?.price +
           adDetails.clean_price +
           adDetails.price * (Number(settings.app_percentage) / 100)
       );
@@ -28,7 +28,7 @@ export default function DetailsCard({ adDetails, duration }) {
   }, [
     duration,
     nights,
-    adDetails.price,
+    adDetails?.price,
     adDetails.clean_price,
     adDetails.per,
     settings.app_percentage,
@@ -58,12 +58,14 @@ export default function DetailsCard({ adDetails, duration }) {
               {t("sar")}
             </span>
           </li>
-          <li>
-            <span>{t("forRent.cleanPrice")} </span>
-            <span>
-              {adDetails.clean_price} {t("sar")}
-            </span>
-          </li>
+          {adDetails.clean_price > 0 && (
+            <li>
+              <span>{t("forRent.cleanPrice")} </span>
+              <span>
+                {adDetails.clean_price} {t("sar")}
+              </span>
+            </li>
+          )}
           <li>
             <span>{t("appPercentage")} </span>
             <span>

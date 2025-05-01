@@ -25,6 +25,7 @@ const bookingSlice = createSlice({
     clearBooking: (state) => {
       state.from = null;
       state.to = null;
+      state.date = null;
       state.nights = 0;
     },
   },

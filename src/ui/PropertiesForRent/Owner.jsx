@@ -15,10 +15,14 @@ export default function Owner({ ad }) {
     navigate(`/chat`);
   };
   return (
-    <div className="user">
+    <div className="user__styles">
       <h4>{t("forRent.userInfo")}</h4>
       <div className="d-flex justify-content-between align-items-center">
-        <div className="info">
+        <div
+          role="button"
+          className="info "
+          onClick={() => navigate(`/ads/${ad?.user?.id}`)}
+        >
           <img className="user-img" src={ad.user.image} alt="User" />
           <h5>{ad.user.name}</h5>
         </div>

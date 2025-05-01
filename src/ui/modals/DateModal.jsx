@@ -20,7 +20,6 @@ export default function DateModal({ showModal, setShowModal, per }) {
   console.log("per:", per);
   console.log("booking:", booking);
 
-  // Determine the initial stored dates based on `per`
   let storedDates;
   if (per === "day") {
     storedDates =
@@ -95,7 +94,6 @@ export default function DateModal({ showModal, setShowModal, per }) {
       // Handle single date selection for "month"
       const fromDate = new Date(value);
       const toDate = new Date(fromDate.getTime() + 30 * 24 * 60 * 60 * 1000);
-      console.log(toDate);
 
       dispatch(
         setDates({

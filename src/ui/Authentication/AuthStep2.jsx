@@ -34,7 +34,7 @@ export default function AuthStep2({ otp, setOtp, formData }) {
             formData={otp}
             setFormData={setOtp}
           />
-          <ResendCode />
+          <ResendCode setOtp={setOtp} formData={formData} />
           <div className="d-flex gap-3 w-100">
             <button
               className="back-button"

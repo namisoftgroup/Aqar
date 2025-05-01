@@ -112,7 +112,7 @@
     "priceDetails": "تفاصيل السعر",
     "totalPrice": "اجمالي السعر ",
     "confirm": "تأكيد و دفع",
-    "yourTrip": "رحلتك",
+    "BookingRequestSummary": "ملخص تفاصيل طلب الحجز",
     "edit": "تعديل",
     "payment": "الدفع ب",
     "cardNumber": "رقم الكارت ",
@@ -139,7 +139,8 @@
     "wallet": "المحفظه",
     "online": "اونلاين",
     "date": "تاريخ :",
-    "pickDateMessage": "اختر تاريخ"
+    "pickDateMessage": "اختر تاريخ",
+    "nights": "ليالي"
   },
   "profile": {
     "myProfile": "ملفي لشخصي",
@@ -311,5 +312,6 @@
   "guests": "الضيوف",
   "appPercentage": "نسبه التطبيق",
   "noDatesSelected": "لم يتم اختيار تاريخ ",
-  "noGuestsSelected": "حدد عدد الضيوف"
+  "noGuestsSelected": "حدد عدد الضيوف",
+  "guestCountTitle": "كم عدد الضيوف؟"
 }

@@ -57,7 +57,7 @@ export default function PropertyCard({ ad, className, hideFav = false }) {
                 className="fav-btn"
                 style={{ zIndex: 2 }}
                 onClick={(event) => {
-                  event.stopPropagation(); // Prevent navigation
+                  event.stopPropagation();
                   ad.is_favorite
                     ? handleDeleteFromFavorites()
                     : handleAddToFavorites();
@@ -80,18 +80,22 @@ export default function PropertyCard({ ad, className, hideFav = false }) {
               </span>
             </p>
             <div className="flat-details">
-              <span>
-                100 <i className="fa-sharp fa-light fa-bath"></i>
-              </span>
-              <span>
-                5 <i className="fa-thin fa-bed-front"></i>
-              </span>
-              <span>
-                3 <i className="fa-regular fa-couch"></i>
-              </span>
-              <span>
-                3 <i className="fa-sharp fa-light fa-bath"></i>
-              </span>
+              {ad.filters &&
+                ad.filters.length > 0 &&
+                ad.filters
+                  .filter(
+                    (item) => item.value !== "yes" && item.value !== "true"
+                  )
+                  .map((item) => (
+                    <span key={item.id}>
+                      <img
+                        src={item.filter.icon}
+                        className="detail-item__icon"
+                        alt=""
+                      />
+                      {item.value}
+                    </span>
+                  ))}
             </div>
             <p>
               <span> {ad.address} </span>
