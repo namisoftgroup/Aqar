@@ -2543,6 +2543,31 @@ body .book-page .billing-address input {
   border-radius: 5px;
   border: 1px solid var(--border);
 }
+body .duration-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+body .duration-controls .btn-minus,
+body .duration-controls .btn-plus {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+body .duration-controls .btn-minus:hover,
+body .duration-controls .btn-plus:hover {
+  background-color: #e0e0e0;
+}
+body .date-range {
+  margin-bottom: 10px;
+}
 body .order-prop-details {
   width: 100%;
 }

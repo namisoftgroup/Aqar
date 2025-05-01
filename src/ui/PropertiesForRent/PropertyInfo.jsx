@@ -4,17 +4,21 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router";
 import { PER_AR, PER_EN } from "../../utils/constants";
 import { formateDateDetails } from "../../utils/helper";
+import { useGetSettings } from "../../hooks/settings/useGetSettings";
 
-export default function PropertyInfo({ adDetails, nights }) {
+export default function PropertyInfo({ adDetails }) {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.language.lang);
   const user = useSelector((state) => state.user.user);
   const [total, seTotal] = useState();
+  const { settings } = useGetSettings();
   useMemo(() => {
     seTotal(
-      (nights === 0 ? 1 : nights) * adDetails.price + adDetails.clean_price
+      adDetails.price +
+        adDetails.clean_price +
+        adDetails.price * (settings.app_percentage / 100)
     );
-  }, [nights, adDetails.price, adDetails.clean_price]);
+  }, [adDetails.price, adDetails.clean_price, settings.app_percentage]);
 
   return (
     <section className="prop-data">
@@ -59,28 +63,32 @@ export default function PropertyInfo({ adDetails, nights }) {
       <div className="price">
         <h3>{t("forRent.price")}</h3>
         <div>
-          {nights > 0 ? (
-            <p>
-              {nights} {t("forRent.nights")}{" "}
-            </p>
-          ) : (
-            <p>
-              سعر{" "}
-              {lang === "ar" ? PER_AR[adDetails.per] : PER_EN[adDetails.per]}{" "}
-            </p>
-          )}
+          <p>
+            سعر {lang === "ar" ? PER_AR[adDetails.per] : PER_EN[adDetails.per]}{" "}
+          </p>
 
           <p>
             {adDetails.price} {t("sar")} /{" "}
             {lang === "ar" ? PER_AR[adDetails.per] : PER_EN[adDetails.per]}
           </p>
         </div>
-        <div>
-          <p>{t("forRent.cleanPrice")} </p>
-          <p>
-            {adDetails.clean_price} {t("sar")}
-          </p>
-        </div>
+        {(adDetails.clean_price || adDetails.clean_price > 0) && (
+          <div>
+            <p>{t("forRent.cleanPrice")} </p>
+            <p>
+              {adDetails.clean_price} {t("sar")}
+            </p>
+          </div>
+        )}
+        {(settings.app_percentage || settings.app_percentage > 0) && (
+          <div>
+            <p>{t("appPercentage")} </p>
+            <p>
+              {adDetails.price * (Number(settings.app_percentage) / 100)}{" "}
+              {t("sar")}
+            </p>
+          </div>
+        )}
         <div>
           <p>{t("forRent.totalPrice")}</p>
           <p>{total}</p>

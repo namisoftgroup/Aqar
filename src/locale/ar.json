@@ -160,7 +160,9 @@
     "withdraw": "سحب",
     "charge": "شحن",
     "enterTheAmount": "ادخل المبلغ",
-    "noOperations": "لا يوجد لديك عمليات سابقه."
+    "noOperations": "لا يوجد لديك عمليات سابقه.",
+    "date": "التاريخ",
+    "price": "السعر"
   },
   "notifications": {
     "notifications": "الاشعارات"
@@ -306,5 +308,8 @@
   "loading": "جاري التحميل...",
   "adDetails": "تفاصيل الاعلان",
   "dates": "التواريخ",
-  "guests": "الضيوف"
+  "guests": "الضيوف",
+  "appPercentage": "نسبه التطبيق",
+  "noDatesSelected": "لم يتم اختيار تاريخ ",
+  "noGuestsSelected": "حدد عدد الضيوف"
 }

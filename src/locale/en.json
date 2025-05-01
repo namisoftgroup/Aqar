@@ -161,7 +161,9 @@
     "withdraw": "Withdraw",
     "charge": "Charge",
     "enterTheAmount": "Enter the amount",
-    "noOperations": "You don't have previous transactions"
+    "noOperations": "You don't have previous transactions",
+    "date": "Date",
+    "price": "price"
   },
   "notifications": {
     "notifications": "Notifications"
@@ -307,5 +309,8 @@
   "loading": "Loading...",
   "adDetails": "Ad Details",
   "dates": "Dates",
-  "guests": "Guests"
+  "guests": "Guests",
+  "appPercentage": "App Percentage",
+  "noDatesSelected": "No dates Selected",
+  "noGuestsSelected": "Specify the number of guests"
 }

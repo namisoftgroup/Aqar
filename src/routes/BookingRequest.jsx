@@ -14,6 +14,7 @@ import GuestNumberModal from "../ui/modals/GuestNumberModal";
 export default function BookingRequest() {
   const [showDateModal, setShowDateModal] = useState(false);
   const [showGuestModal, setShowGuestModal] = useState(false);
+  const [duration, setDuration] = useState(1);
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { id } = useParams();
@@ -21,6 +22,7 @@ export default function BookingRequest() {
   const [selected, setSelected] = useState("wallet");
   const { adDetails, isLoading } = useGetAdDetails();
   const booking = useSelector((state) => state.booking);
+  console.log(adDetails);
 
   const [bookingData, setBookingData] = useState({
     adults: 0,
@@ -47,6 +49,33 @@ export default function BookingRequest() {
     bookingAd(data);
   }
 
+  const handleAdd = () => {
+    if (adDetails.per === "month") {
+      setDuration((prev) => Math.min(prev + 1, 12));
+    } else if (adDetails.per === "year") {
+      setDuration((prev) => Math.min(prev + 1, 2));
+    }
+  };
+
+  const handleSubtract = () => {
+    setDuration((prev) => Math.max(prev - 1, 1));
+  };
+
+  const calculateEndDate = () => {
+    const date = booking.to;
+    if (adDetails?.per === "month") {
+      return new Date(
+        new Date(date).setMonth(new Date(date).getMonth() + duration)
+      );
+    } else if (adDetails?.per === "year") {
+      return new Date(
+        new Date(date).setFullYear(new Date(date).getFullYear() + duration)
+      );
+    }
+    return date;
+  };
+  const endDate = calculateEndDate();
+
   if (isLoading) return <DataLoader />;
   return (
     <>
@@ -66,7 +95,11 @@ export default function BookingRequest() {
               </div>
             </div>
             <div className="col-lg-5 col-12 p-2">
-              <DetailsCard selected={selected} adDetails={adDetails} />
+              <DetailsCard
+                selected={selected}
+                adDetails={adDetails}
+                duration={duration}
+              />
             </div>
 
             <div className="col-lg-7 col-12 p-2">
@@ -76,12 +109,55 @@ export default function BookingRequest() {
                   <li>
                     <div className="trip-data">
                       <span>{t("dates")}</span>
-                      {booking.from && booking.to && (
-                        <span>
-                          {formatDate(booking.from)} - {formatDate(booking.to)}
-                        </span>
+                      {(booking.from && booking.to) || booking.date ? (
+                        <>
+                          <span>
+                            {adDetails?.per === "day" &&
+                            booking.from &&
+                            booking.to
+                              ? `${formatDate(booking.from)} - ${formatDate(
+                                  booking.to
+                                )}`
+                              : adDetails?.per === "month" && booking.date
+                              ? `${formatDate(booking.date)} - ${
+                                  endDate
+                                    ? formatDate(endDate)
+                                    : formatDate(booking.to)
+                                }`
+                              : adDetails?.per === "year" && booking.date
+                              ? `${formatDate(booking.date)} - ${
+                                  endDate
+                                    ? formatDate(endDate)
+                                    : formatDate(booking.to)
+                                }`
+                              : ""}
+                          </span>
+                          {(adDetails?.per === "month" ||
+                            adDetails?.per === "year") && (
+                            <li>
+                              <div className="duration-controls">
+                                <button
+                                  onClick={handleSubtract}
+                                  className="btn-minus"
+                                >
+                                  -
+                                </button>
+                                <span>{duration}</span>
+                                <button
+                                  onClick={handleAdd}
+                                  className="btn-plus"
+                                >
+                                  +
+                                </button>
+                              </div>
+                            </li>
+                          )}
+                        </>
+                      ) : (
+                        <span>{t("noDatesSelected")}</span>
                       )}
                     </div>
+
                     <button onClick={() => setShowDateModal(true)}>
                       {t("book.edit")}
                     </button>
@@ -89,7 +165,11 @@ export default function BookingRequest() {
                   <li>
                     <div className="trip-data">
                       <span>{t("guests")}</span>
-                      {totalNumber > 0 && <span>{totalNumber} ضيوف </span>}
+                      {totalNumber > 0 ? (
+                        <span>{totalNumber} ضيوف </span>
+                      ) : (
+                        <span>{t("noGuestsSelected")}</span>
+                      )}
                     </div>
                     <button onClick={() => setShowGuestModal(true)}>
                       {t("book.edit")}
@@ -102,12 +182,16 @@ export default function BookingRequest() {
                 setSelected={setSelected}
                 adDetails={adDetails}
               />
-              <button className="book-btn" onClick={handelBooking}>
-                {isBookingLoading && (
-                  <i className="fa-duotone fa-regular fa-circle-notch fa-spin"></i>
-                )}
-                {t("forRent.book")}
-              </button>
+              {totalNumber && booking.to && booking.from && booking.date ? (
+                <button className="book-btn" onClick={handelBooking}>
+                  {isBookingLoading && (
+                    <i className="fa-duotone fa-regular fa-circle-notch fa-spin"></i>
+                  )}
+                  {t("forRent.book")}
+                </button>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>
@@ -118,6 +202,7 @@ export default function BookingRequest() {
         setShowModal={setShowDateModal}
         bookingData={bookingData}
         setBookingData={setBookingData}
+        per={adDetails.per}
       />
 
       <GuestNumberModal

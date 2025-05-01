@@ -113,7 +113,7 @@ export default function ForRentDetails() {
             {adDetails.features && adDetails.features.length > 0 && (
               <Features features={adDetails.features} />
             )}
-            <div className="mt-3">
+            {/* <div className="mt-3">
               <h4>{t("forRent.chooseData")}</h4>
               <div className="calender-container">
                 <Calendar
@@ -126,7 +126,7 @@ export default function ForRentDetails() {
                   minDate={new Date()}
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

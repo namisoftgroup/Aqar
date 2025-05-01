@@ -4,6 +4,7 @@ import { calculateNights } from "../../utils/helper";
 const initialState = {
   from: null,
   to: null,
+  date: null,
   nights: 0,
 };
 
@@ -17,6 +18,10 @@ const bookingSlice = createSlice({
       state.to = to;
       state.nights = from && to ? calculateNights(from, to) : 0;
     },
+    setDate: (state, action) => {
+      const { date } = action.payload;
+      state.date = date;
+    },
     clearBooking: (state) => {
       state.from = null;
       state.to = null;
@@ -25,5 +30,5 @@ const bookingSlice = createSlice({
   },
 });
 
-export const { setDates, clearBooking } = bookingSlice.actions;
+export const { setDates, clearBooking, setDate } = bookingSlice.actions;
 export default bookingSlice.reducer;

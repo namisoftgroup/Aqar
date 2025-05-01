@@ -165,9 +165,6 @@ export default function GuestNumberModal({
                     />
                   </div>
                 </label>
-                {/* <button onClick={() => handleIncrease("with_pits")}>
-              <i className="fa-regular fa-plus"></i>
-            </button> */}
               </div>
             </div>
           </div>
