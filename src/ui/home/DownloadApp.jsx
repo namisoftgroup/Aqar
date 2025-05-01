@@ -25,10 +25,10 @@ export default function DownloadApp() {
               </div>
               <h6>{t("mobileApp.tagline")}</h6>
               <div className="apps-items">
-                <Link>
+                <Link to="https://apps.apple.com/eg/app/id6744273000">
                   <img src="/images/apple-store.png" />
                 </Link>
-                <Link>
+                <Link to="https://play.google.com/store/apps/details?id=com.app.noot">
                   <img src="/images/play-store.jpg" />
                 </Link>
               </div>

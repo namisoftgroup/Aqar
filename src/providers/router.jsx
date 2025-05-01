@@ -4,7 +4,7 @@ import RootLayout from "../layout/RootLayout";
 import BookingRequest from "../routes/BookingRequest";
 import Bookings from "../routes/Bookings";
 import BookingsDetails from "../routes/BookingsDetails";
-import Chat from "../routes/Chats";
+import Chats from "../routes/Chats";
 import Contact from "../routes/Contact";
 import EditProfile from "../routes/EditProfile";
 import Favourites from "../routes/Favourites";
@@ -21,6 +21,7 @@ import About from "../routes/About";
 import Terms from "../routes/Terms";
 import PrivacyPolicy from "../routes/PrivacyPolicy";
 import BlogsDetails from "../routes/BlogsDetails";
+import UserAds from "../routes/UserAds";
 
 export const router = createBrowserRouter([
   {
@@ -99,7 +100,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "chat",
-            element: <Chat />,
+            element: <Chats />,
           },
           {
             path: "edit-profile",
@@ -108,6 +109,10 @@ export const router = createBrowserRouter([
           {
             path: "notifications",
             element: <Notifications />,
+          },
+          {
+            path: "ads/:userId",
+            element: <UserAds />,
           },
         ],
       },

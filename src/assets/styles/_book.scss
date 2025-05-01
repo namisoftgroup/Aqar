@@ -188,13 +188,41 @@
   }
 }
 
+.duration-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+
+  .btn-minus,
+  .btn-plus {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+}
+
+.date-range {
+  margin-bottom: 10px;
+}
+
 .order-prop-details {
   width: 100%;
-  h3 {
+  .order-prop-details__title {
     font-size: 22px;
     margin-bottom: 1rem;
   }
-  p {
+  .order-prop-details__price {
     margin-bottom: 8px;
     &:first-of-type {
       color: var(--main);

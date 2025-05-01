@@ -5,6 +5,6 @@ export function useSendOtp() {
   const { mutate: sendOtp, isPending } = useMutation({
     mutationFn: ({ phone }) => sendOtpCode({ phone }),
   });
-  console.log("isLoading from useSendOtp:", isPending); // Debugging
+
   return { sendOtp, isPending };
 }

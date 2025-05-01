@@ -40,19 +40,23 @@ function getDaySuffix(day) {
 
 export function formatDateRange(startDate, endDate, locale) {
   const start = new Date(startDate);
-  const end = new Date(endDate);
-
   const startDay = start.getDate();
-  const endDay = end.getDate();
-
   const startSuffix = getDaySuffix(startDay);
-  const endSuffix = getDaySuffix(endDay);
-
   const startFormatted = `${start.toLocaleDateString(locale, {
     weekday: "long",
   })}, ${startDay}${startSuffix} ${start.toLocaleDateString(locale, {
     month: "long",
   })}`;
+
+  if (!endDate) {
+    return startFormatted;
+  }
+  const end = new Date(endDate);
+
+  const endDay = end.getDate();
+
+  const endSuffix = getDaySuffix(endDay);
+
   const endFormatted = `${end.toLocaleDateString(locale, {
     weekday: "long",
   })}, ${endDay}${endSuffix} ${end.toLocaleDateString(locale, {

@@ -9,24 +9,19 @@ export default function Rates({ adRates }) {
     <section className="rates">
       <h4>{t("forRent.rates")}</h4>
       <Swiper
-        spaceBetween={12}
-        slidesPerView={4}
+        spaceBetween={10}
+        slidesPerView={3}
         loop={true}
         modules={[Autoplay]}
         breakpoints={{
           0: {
             slidesPerView: 1,
-            spaceBetween: 10,
           },
           768: {
             slidesPerView: 2,
-            spaceBetween: 20,
           },
           1024: {
             slidesPerView: 3,
-          },
-          1200: {
-            slidesPerView: 4,
           },
         }}
       >

@@ -1,5 +1,3 @@
-import BlogsSection from "../ui/about/BlogsSection";
-import OurParteners from "../ui/about/OurParteners";
 import DownloadApp from "../ui/home/DownloadApp";
 import HeroSection from "../ui/home/HeroSection";
 import RentSection from "../ui/home/RentSection";
@@ -11,8 +9,8 @@ export default function Home() {
       <HeroSection />
       <RentSection />
       <WhyUs />
-      <OurParteners />
-      <BlogsSection />
+      {/* <OurParteners />
+      <BlogsSection /> */}
       <DownloadApp />
     </>
   );

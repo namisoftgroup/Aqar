@@ -43,7 +43,15 @@
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
 :root {
   --main: #468077;
   --main-hover: #2d5b4f;
@@ -242,7 +250,7 @@ input[type="checkbox"] {
   &.confirmed {
     color: #09a629;
   }
-  &.completed {
+  &.accepted {
     color: #000000;
   }
 }
@@ -444,13 +452,15 @@ input[type="checkbox"] {
   height: 24px !important;
   @include centerFlex();
   position: relative;
+  background: rgba(0, 0, 0, 0.151);
+  transition: var(--main-transition);
   i {
     display: none;
   }
   &::before {
     font-family: "Font Awesome 6 Pro";
     content: "\f104";
-    font-size: 14px;
+    font-size: 16px;
     color: var(--black);
     @include centerAbsolute();
   }

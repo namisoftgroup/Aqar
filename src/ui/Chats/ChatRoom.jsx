@@ -1,43 +1,105 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useCreateMessage } from "../../hooks/chats/useCreateMessage";
-import MessageBubble from "./MessageBubble";
-import RecordingControls from "./RecordingControls";
+import { Link, useNavigate } from "react-router";
+import { createMessage } from "../../apiServices/apiChats";
+import { formatMessageTime } from "../../utils/helper";
 
-export default function ChatRoom({ chat }) {
-  const user = useSelector((state) => state.user.user);
+const ChatRoom = ({ chat, chats }) => {
+  const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [message, setMessage] = useState({
-    from_id: user?.id,
-    chat_id: chat?.id,
-    message: "",
-    type: "",
-  });
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [recordingTime, setRecordingTime] = useState(0);
+  const [fileName, setFileName] = useState("");
+  const [message, setMessage] = useState({
+    from_id: null,
+    chat_id: null,
+    message: "",
+    type: "",
+  });
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { user } = useSelector((state) => state.user);
   const formRef = useRef(null);
   const chatContainerRef = useRef(null);
   const recordingIntervalRef = useRef(null);
-  const { t } = useTranslation();
-  const [fileName, setFileName] = useState("");
-  const { createMessage, isPending } = useCreateMessage();
+  const socketRef = useRef(null);
+  const queryClient = useQueryClient();
+
+  const channel = chat?.id ? `chat_${chat.id}` : null;
+
+  useEffect(() => {
+    if (!chat?.id) return;
+
+    const socket = new WebSocket(
+      "wss://api.noot.com.sa/app/f4vqjzd4e4bs0ikazefo?protocol=7&client=js&version=8.4.0&flash=false"
+    );
+
+    socketRef.current = socket;
+
+    socket.onopen = () => {
+      console.log("WebSocket connected");
+      socket.send(
+        JSON.stringify({
+          event: "pusher:subscribe",
+          data: { channel },
+        })
+      );
+    };
+
+    socket.onmessage = (event) => {
+      try {
+        const payload = JSON.parse(event.data);
+
+        if (payload.event === "new_message") {
+          const messageData = JSON.parse(payload.data);
+          if (messageData?.message?.chat_id) {
+            setMessages((prev) => [...prev, messageData.message]);
+          }
+        }
+      } catch (err) {
+        console.error("WebSocket message parsing error:", err);
+      }
+    };
+
+    socket.onerror = (err) => {
+      console.error("WebSocket error:", err);
+    };
+
+    socket.onclose = (event) => {
+      console.warn("WebSocket closed:", event);
+    };
+
+    return () => {
+      if (
+        socket.readyState === WebSocket.OPEN ||
+        socket.readyState === WebSocket.CONNECTING
+      ) {
+        socket.close();
+      }
+    };
+  }, [chat?.id, channel]);
+
   useEffect(() => {
     if (chat) {
-      setMessages(chat?.messages.slice() || []);
+      setMessages(chat?.messages?.slice() || []);
+      setMessage((prev) => ({
+        ...prev,
+        from_id: user?.id,
+        chat_id: chat?.id,
+      }));
     }
-  }, [chat]);
-  // Scroll to the bottom of the chat container when messages change
+  }, [chat, user?.id]);
+
   useEffect(() => {
-    requestAnimationFrame(() => {
-      chatContainerRef.current?.scrollTo({
-        top: chatContainerRef.current.scrollHeight,
-        behavior: "smooth",
-      });
-    });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
   }, [messages]);
-  // Clear recording interval on component unmount
+
   useEffect(() => {
     return () => {
       if (recordingIntervalRef.current) {
@@ -45,115 +107,185 @@ export default function ChatRoom({ chat }) {
       }
     };
   }, []);
-  const handleSendMessage = useCallback(
-    async (e) => {
-      e.preventDefault();
-      if (!message.type || (message.type === "text" && !message.message.trim()))
-        return;
-      const newMessage = {
-        ...message,
-        message:
-          message.type === "text" ? message.message : message.message.name,
-      };
 
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { ...newMessage, created_at: new Date() },
-      ]);
-      console.log(messages);
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    if (message?.type === "") return;
 
-      const formData = new FormData();
-      formData.append("from_id", user?.id);
-      formData.append("chat_id", chat?.id);
-      formData.append("type", message.type);
-      formData.append("message", message.message);
-      createMessage(formData, {
-        onSettled: () => {
-          formRef.current.reset();
-          setMessage({
-            from_id: user?.id,
-            chat_id: chat?.id,
-            message: "",
-            type: "",
-          });
-        },
+    setLoading(true);
+    formRef.current.reset();
+
+    try {
+      const data = await createMessage(message);
+
+      if (data.code === 200 && chats === 0) {
+        queryClient.invalidateQueries({ queryKey: ["chats"] });
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+    } finally {
+      setMessage({
+        from_id: user?.id,
+        chat_id: chat?.id,
+        message: "",
+        type: "",
       });
       setRecordingTime(0);
-    },
-    [message, user?.id, chat?.id]
-  );
-  // Start recording
+      setLoading(false);
+    }
+  };
+
   const startRecording = async () => {
     setIsRecording(true);
     setRecordingTime(0);
     const audioChunks = [];
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const mediaRecorderInstance = new MediaRecorder(stream, {
         mimeType: "audio/webm",
       });
+
       mediaRecorderInstance.ondataavailable = (event) => {
         if (event.data.size > 0) {
           audioChunks.push(event.data);
         }
       };
-      mediaRecorderInstance.onstop = async () => {
+
+      mediaRecorderInstance.onstop = () => {
         const audioBlob = new Blob(audioChunks, { type: "audio/m4a" });
 
-        setMessage((prevMessage) => ({
-          ...prevMessage,
+        setMessage((prev) => ({
+          ...prev,
           message: audioBlob,
           type: "audio",
         }));
 
-        mediaRecorderInstance.stream.getTracks().forEach((track) => {
-          track.stop();
-        });
+        mediaRecorderInstance.stream
+          .getTracks()
+          .forEach((track) => track.stop());
         setIsRecording(false);
         clearInterval(recordingIntervalRef.current);
       };
+
       mediaRecorderInstance.start();
       setMediaRecorder(mediaRecorderInstance);
       startRecordingTimer();
     } catch (err) {
-      console.error("Error accessing microphone:", err);
+      console.error("Microphone access error:", err);
       setIsRecording(false);
     }
   };
-  // Stop recording
+
   const stopRecording = () => {
     if (mediaRecorder && mediaRecorder.state !== "inactive") {
       mediaRecorder.stop();
     }
     clearInterval(recordingIntervalRef.current);
   };
-  // Start recording timer
+
   const startRecordingTimer = () => {
     recordingIntervalRef.current = setInterval(() => {
-      setRecordingTime((prevTime) => prevTime + 1);
+      setRecordingTime((prev) => prev + 1);
     }, 1000);
   };
+
+  const formatRecordingTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+  };
+
+  const extractTextAfterMessages = (url) => {
+    const regex = /_messages\.(.*)/;
+    const match = url.match(regex);
+    return match ? match[1] : fileName;
+  };
+
   return (
-    <>
-      <div className="chat-window">
-        <div className="chat-header">
-          <div className="chat-user">
-            <img className="user-initial" src={chat.owner.image} />
-            <div>
-              <div className="chat-user-name">{chat.owner.name}</div>
-              <div className="chat-location">
-                {chat?.ad?.title}, {chat?.ad?.address}
-              </div>
-            </div>
-          </div>
+    <div className="chat-container">
+      <div className="chat-head">
+        <div
+          className="user"
+          onClick={() => navigate(`/ads/${chat?.owner_id}`)}
+        >
+          <img
+            src={
+              chat?.user
+                ? user?.id === chat?.user?.id
+                  ? chat?.owner?.image
+                  : chat?.user?.image || "/images/avatar.jpg"
+                : "/images/deleted-account.jpg"
+            }
+            alt="user"
+          />
+          <h6 className="name">
+            {chat?.user
+              ? user?.id === chat?.user?.id
+                ? chat?.owner?.name
+                : chat?.user?.name
+              : t("chat.deletedAccount")}
+          </h6>
         </div>
       </div>
-      <div className="chat-body scrollbar-styles" ref={chatContainerRef}>
-        {messages.map((message, index) => (
-          <MessageBubble key={index} message={message} fileName={fileName} />
+
+      {chat?.ad && (
+        <Link to={`/for-rent/${chat?.ad?.id}`} className="adItem">
+          <img src={chat?.ad?.image || "/images/bann.webp"} alt="" />
+          <p>{chat?.ad?.title}</p>
+        </Link>
+      )}
+
+      <div className="inner-container" ref={chatContainerRef}>
+        {messages.map((message) => (
+          <div
+            className={`message ${
+              message?.from_id === user?.id
+                ? "sent-message"
+                : "received-message"
+            }`}
+            key={message?.id}
+          >
+            <div className="d-flex flex-column">
+              <div className="message-content">
+                {message?.type === "text" && <p>{message?.message}</p>}
+                {message?.type === "audio" && (
+                  <audio controls src={message?.message} />
+                )}
+                {message?.type === "image" && (
+                  <img
+                    style={{
+                      aspectRatio: 1 / 1,
+                      width: "300px",
+                      objectFit: "contain",
+                    }}
+                    src={message?.message}
+                    alt=""
+                  />
+                )}
+                {message?.type === "file" && (
+                  <Link to={message?.message} target="_blank">
+                    <div className="doc_message">
+                      <p>{extractTextAfterMessages(message?.message)}</p>
+                      <div className="icon">
+                        <i className="fa-regular fa-file"></i>
+                      </div>
+                    </div>
+                  </Link>
+                )}
+              </div>
+              <span
+                dir="ltr"
+                className={message?.from_id === user?.id ? "sen" : "rec"}
+              >
+                {formatMessageTime(message?.created_at)}
+              </span>
+            </div>
+          </div>
         ))}
       </div>
-      <div className="chat-footer">
+
+      <div className="chat-send">
         <form onSubmit={handleSendMessage} ref={formRef}>
           <div className="input-field">
             {message?.type === "text" || message?.type === "" ? (
@@ -168,7 +300,6 @@ export default function ChatRoom({ chat }) {
                     type: "text",
                   })
                 }
-                disabled={isPending || isRecording}
               />
             ) : (
               <div className="file_place">
@@ -189,6 +320,7 @@ export default function ChatRoom({ chat }) {
                 )}
               </div>
             )}
+
             <label className="files-input">
               <i className="fa-regular fa-paperclip"></i>
               <input
@@ -206,22 +338,30 @@ export default function ChatRoom({ chat }) {
                   });
                 }}
                 type="file"
-                name="userImage"
-                id="img-upload"
               />
             </label>
-            <RecordingControls
-              isRecording={isRecording}
-              startRecording={startRecording}
-              stopRecording={stopRecording}
-              recordingTime={recordingTime}
-            />
+
+            {isRecording ? (
+              <label className="files-input" onClick={stopRecording}>
+                <i className="fa-solid fa-microphone-slash"></i>
+              </label>
+            ) : (
+              <label className="files-input" onClick={startRecording}>
+                <i className="fa-solid fa-microphone"></i>
+              </label>
+            )}
+            {recordingTime > 0 && (
+              <span>{formatRecordingTime(recordingTime)}</span>
+            )}
           </div>
-          <button type="submit" disabled={message.type === "" && isPending}>
+
+          <button type="submit" disabled={message.type === "" || loading}>
             <i className="fa-regular fa-paper-plane-top"></i>
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
-}
+};
+
+export default ChatRoom;

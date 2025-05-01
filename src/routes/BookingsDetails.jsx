@@ -6,7 +6,6 @@ import AddRate from "../ui/AddRate";
 import DataLoader from "../ui/DataLoader";
 import ProgressBar from "../ui/ProgressBar";
 import Gallary from "../ui/PropertiesForRent/Gallary";
-import MapSection from "../ui/PropertiesForRent/MapSection";
 import Owner from "../ui/PropertiesForRent/Owner";
 import {
   BOOKING_STATUS_AR,
@@ -16,6 +15,7 @@ import {
 } from "../utils/constants";
 import { calculateNights, formateDateDetails } from "../utils/helper";
 import MapView from "../ui/MapView";
+import Features from "../ui/PropertiesForRent/Features";
 
 export default function BookingsDetails() {
   const { t } = useTranslation();
@@ -46,23 +46,32 @@ export default function BookingsDetails() {
   return (
     <section className="for-rent-details">
       <section className="container">
-        <Gallary images={bookingDetails.ad.images} />
-        <div className="row g-3">
+        {/* Gallery Section */}
+        <div className="bookings-details__gallery">
+          <Gallary images={bookingDetails.ad.images} />
+        </div>
+
+        {/* Main Details Section */}
+        <div className="row g-3 bookings-details__main">
           <div className="col-md-7">
             <div className="order-prop-details">
-              <h3>{bookingDetails.ad.title}</h3>
-              <p>
+              <h3 className="order-prop-details__title">
+                {bookingDetails.ad.title}
+              </h3>
+              <p className="order-prop-details__price">
                 {bookingDetails.ad.price} {t("sar")} /{" "}
                 {lang === "ar"
                   ? PER_AR[bookingDetails.ad.per]
                   : PER_EN[bookingDetails.ad.per]}
               </p>
-              <p>{bookingDetails.ad.address}</p>
+              <p className="order-prop-details__price">
+                {bookingDetails.ad.address}
+              </p>
               <ProgressBar status={bookingDetails.status} />
               <div className="order-status">
-                <span>{t("book.bookingStatus")} </span>
+                <span>{t("book.bookingStatus")}</span>
                 <span
-                  className={`booking-status-label  ${bookingDetails.status}`}
+                  className={`booking-status-label ${bookingDetails.status}`}
                 >
                   {lang === "ar"
                     ? BOOKING_STATUS_AR[bookingDetails.status]
@@ -71,25 +80,57 @@ export default function BookingsDetails() {
               </div>
             </div>
           </div>
-          <div className="col-md-5">
+          <div className="col-md-5 ">
             <Owner ad={bookingDetails.ad} />
           </div>
         </div>
 
-        <section className="prop-data border-0">
+        {/* Property Data Section */}
+        <section className=" border-0 prop-data">
+          <div className="details-card">
+            <h4 className="your-trip__title">{t("book.yourTrip")}</h4>
+            {bookingDetails.ad.filters &&
+              bookingDetails.ad.filters.length > 0 &&
+              bookingDetails.ad.filters.map((item) => (
+                <div className="detail-item" key={item.id}>
+                  <div className="detail-item__content d-flex gap-1">
+                    <img
+                      src={
+                        item.filter.icon ? item.filter.icon : "/icons/check.png"
+                      }
+                      alt={item.filter.name}
+                      className="detail-item__icon"
+                    />
+                    <span className="detail-item__name">
+                      {item.filter.name}
+                    </span>
+                  </div>
+                  <span className="detail-item__value">
+                    {item.value === "yes" || item.value === "true"
+                      ? "متوفر"
+                      : item.value}
+                  </span>
+                </div>
+              ))}
+          </div>
+          {bookingDetails.ad.features &&
+            bookingDetails.ad.features.length > 0 && (
+              <Features features={bookingDetails.ad.features} />
+            )}
+
+          {/* Trip Details */}
           <div className="your-trip">
-            <h3>{t("book.yourTrip")}</h3>
+            <h4 className="your-trip__title">{t("book.yourTrip")}</h4>
             <div className="date">
-              <span>{t("book.dates")}</span>
-              <span>
-                {formateDateDetails(bookingDetails.from, locale)} -
+              <span className="your-trip__label">{t("book.dates")}</span>
+              <span className="your-trip__value">
+                {formateDateDetails(bookingDetails.from, locale)} -{" "}
                 {formateDateDetails(bookingDetails.to, locale)}
               </span>
             </div>
-            <div className="date">
-              <span>{t("book.guestsNumber")}</span>
-              <span>
-                {" "}
+            <div className="guest">
+              <span className="your-trip__label">{t("book.guestsNumber")}</span>
+              <span className="your-trip__value">
                 {bookingDetails.adults +
                   bookingDetails.children +
                   bookingDetails.baby}
@@ -97,58 +138,69 @@ export default function BookingsDetails() {
             </div>
           </div>
 
+          {/* Rent Payments */}
           {bookingDetails.ad.payments &&
             bookingDetails.ad.payments.length > 0 && (
               <div className="rent-payment">
-                <h3>{t("forRent.rentPayments")}</h3>
-                <div>
+                <h3 className="rent-payment__title">
+                  {t("forRent.rentPayments")}
+                </h3>
+                <div className="rent-payment__list">
                   {bookingDetails.ad.payments.map((payment) => (
-                    <p key={payment.id}>
-                      <span>{payment.price}</span> {t("sar")}{" "}
-                      {payment.description}
+                    <p className="rent-payment__item" key={payment.id}>
+                      <span className="rent-payment__price">
+                        {payment.price}
+                      </span>{" "}
+                      {t("sar")} {payment.description}
                     </p>
                   ))}
                 </div>
               </div>
             )}
+
+          {/* Price Details */}
           <div className="price">
-            <h3>{t("forRent.price")}</h3>
-            <div>
+            <h3 className="price__title">{t("forRent.price")}</h3>
+            <div className="price__details">
               {nights > 0 ? (
-                <p>
-                  {nights} {t("forRent.nights")}{" "}
+                <p className="price__nights">
+                  {nights} {t("forRent.nights")}
                 </p>
               ) : (
-                <p>سعر الليله </p>
+                <p className="price__night-label">سعر الليله</p>
               )}
-
-              <p>
+              <p className="price__amount">
                 {bookingDetails.ad.price} {t("sar")} /{" "}
                 {lang === "ar"
                   ? PER_AR[bookingDetails.ad.per]
                   : PER_EN[bookingDetails.ad.per]}
               </p>
             </div>
-            <div>
-              <p>{t("forRent.cleanPrice")} </p>
-              <p>
+            <div className="price__cleaning">
+              <p className="price__label">{t("forRent.cleanPrice")}</p>
+              <p className="price__amount">
                 {bookingDetails.ad.clean_price} {t("sar")}
               </p>
             </div>
-            <div>
-              <p>{t("forRent.totalPrice")}</p>
-              <p>{total}</p>
+            <div className="price__total">
+              <p className="price__label">{t("forRent.totalPrice")}</p>
+              <p className="price__amount">{total}</p>
             </div>
           </div>
         </section>
 
+        {/* Map Section */}
         <div className="map-container">
-          <h4>{t("forRent.location")}</h4>
-          <p>{bookingDetails.ad.address}</p>
+          <h4 className="map-container__title">{t("forRent.location")}</h4>
+          <p className="map-container__address">{bookingDetails.ad.address}</p>
           <MapView lat={bookingDetails.ad.lat} lng={bookingDetails.ad.lng} />
         </div>
+
+        {/* Add Rate Section */}
         {bookingDetails.rated && bookingDetails.status === "complete" && (
-          <AddRate booking={bookingDetails} />
+          <div className="add-rate">
+            <AddRate booking={bookingDetails} />
+          </div>
         )}
       </section>
     </section>

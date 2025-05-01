@@ -3,18 +3,36 @@ import PropertyCard from "../cards/PropertyCard";
 import { useTranslation } from "react-i18next";
 import { PER_AR, PER_EN } from "../../utils/constants";
 import { useMemo, useState } from "react";
+import { useGetSettings } from "../../hooks/settings/useGetSettings";
 
-export default function DetailsCard({ adDetails }) {
+export default function DetailsCard({ adDetails, duration }) {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.language.lang);
   const nights = useSelector((state) => state.booking.nights);
   const [total, seTotal] = useState();
-
+  const { settings } = useGetSettings();
   useMemo(() => {
-    seTotal(
-      (nights === 0 ? 1 : nights) * adDetails.price + adDetails.clean_price
-    );
-  }, [nights, adDetails.price, adDetails.clean_price]);
+    if (adDetails?.per === "day") {
+      seTotal(
+        (nights === 0 ? 1 : nights) * adDetails?.price +
+          adDetails.clean_price +
+          adDetails.price * (Number(settings.app_percentage) / 100)
+      );
+    } else {
+      seTotal(
+        duration * adDetails?.price +
+          adDetails.clean_price +
+          adDetails.price * (Number(settings.app_percentage) / 100)
+      );
+    }
+  }, [
+    duration,
+    nights,
+    adDetails?.price,
+    adDetails.clean_price,
+    adDetails.per,
+    settings.app_percentage,
+  ]);
   return (
     <div className="details-card">
       <PropertyCard ad={adDetails} className="bg_gray" />
@@ -25,22 +43,34 @@ export default function DetailsCard({ adDetails }) {
             <span>
               {adDetails.price} {t("sar")} /{" "}
               {lang === "ar" ? PER_AR[adDetails.per] : PER_EN[adDetails.per]}{" "}
-              {nights > 0 && (
+              {adDetails?.per === "day" && nights > 0 ? (
                 <>
-                  {" "}
                   &#10005; {nights} {t("forRent.nights")}{" "}
                 </>
+              ) : (
+                <>&#10005; {duration}</>
               )}
             </span>
             <span>
-              {nights > 0 ? nights * adDetails.price : adDetails.price}{" "}
+              {adDetails.per === "day" && nights > 0
+                ? nights * adDetails.price
+                : duration * adDetails.price}
               {t("sar")}
             </span>
           </li>
+          {adDetails.clean_price > 0 && (
+            <li>
+              <span>{t("forRent.cleanPrice")} </span>
+              <span>
+                {adDetails.clean_price} {t("sar")}
+              </span>
+            </li>
+          )}
           <li>
-            <span>{t("forRent.cleanPrice")} </span>
+            <span>{t("appPercentage")} </span>
             <span>
-              {adDetails.clean_price} {t("sar")}
+              {adDetails.price * (Number(settings.app_percentage) / 100)}{" "}
+              {t("sar")}
             </span>
           </li>
         </ul>

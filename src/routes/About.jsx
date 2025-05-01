@@ -1,9 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import AboutSectionHeader from "../ui/about/AboutSectionHeader";
-import BlogsSection from "../ui/about/BlogsSection";
 import SectionHeader from "../ui/SectionHeader";
-import OurParteners from "../ui/about/OurParteners";
 
 const features = [
   {
@@ -146,8 +144,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      <OurParteners />
-      <BlogsSection />
+   
     </section>
   );
 }

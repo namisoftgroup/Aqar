@@ -3,7 +3,7 @@ import { bookingAd as apiBookingAd } from "../../apiServices/apiBooking";
 import { toast } from "sonner";
 
 export function useBookingAd() {
-  const { mutate: bookingAd, isLoading } = useMutation({
+  const { mutate: bookingAd, isPending } = useMutation({
     mutationFn: (reqBody) => apiBookingAd(reqBody),
 
     onSuccess: (data) => {
@@ -16,5 +16,5 @@ export function useBookingAd() {
     },
   });
 
-  return { bookingAd, isLoading };
+  return { bookingAd, isPending };
 }

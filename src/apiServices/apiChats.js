@@ -13,7 +13,10 @@ export async function getChats() {
 
 export async function getChatDetails(reqBody) {
   try {
-    const res = await axiosInstance.post("user/get_chat_details", reqBody);
+    const res = await axiosInstance.post("user/get_chat_details", {
+      ...reqBody,
+      orderBy: "asc",
+    });
     const data = res.data.data;
     return data;
   } catch (e) {

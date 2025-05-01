@@ -15,7 +15,7 @@ export default function MapSection({ setViewMap }) {
   const { t } = useTranslation();
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCE46OXa1TZgWdjl5gGvV-Vap-ONwdQN1s",
+    // googleMapsApiKey: "AIzaSyCE46OXa1TZgWdjl5gGvV-Vap-ONwdQN1s",
   });
 
   const defaultPosition = { lat: 21.285407, lng: 39.237551 };

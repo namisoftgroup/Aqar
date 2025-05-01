@@ -33,12 +33,45 @@ export default function PropertyCard({ ad, className, hideFav = false }) {
 
   return (
     <div className={`properties ${className}`}>
-      <Link className="card-link" to={`/for-rent/${ad.id}`}>
+      <div className="card-link">
+        <Link
+          to={`/for-rent/${ad.id}`}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 1,
+          }}
+        ></Link>
         <div className="image_card">
           <img src={ad.image} />
         </div>
         <div className="card_info">
-          <h2> {ad.title}</h2>
+          <div className="d-flex gap-3 justify-content-between">
+            {" "}
+            <h2> {ad.title}</h2>
+            {!hideFav && (
+              <div
+                className="fav-btn"
+                style={{ zIndex: 2 }}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  ad.is_favorite
+                    ? handleDeleteFromFavorites()
+                    : handleAddToFavorites();
+                }}
+              >
+                {ad.is_favorite ? (
+                  <i className="fa-solid fa-heart"></i>
+                ) : (
+                  <i className="fa-light fa-heart"></i>
+                )}
+              </div>
+            )}
+          </div>
+
           <section className="info">
             <p>
               <span>
@@ -47,37 +80,29 @@ export default function PropertyCard({ ad, className, hideFav = false }) {
               </span>
             </p>
             <div className="flat-details">
-              <span>
-                100 <i className="fa-sharp fa-light fa-bath"></i>
-              </span>
-              <span>
-                5 <i className="fa-thin fa-bed-front"></i>
-              </span>
-              <span>
-                3 <i className="fa-regular fa-couch"></i>
-              </span>
-              <span>
-                3 <i className="fa-sharp fa-light fa-bath"></i>
-              </span>
+              {ad.filters &&
+                ad.filters.length > 0 &&
+                ad.filters
+                  .filter(
+                    (item) => item.value !== "yes" && item.value !== "true"
+                  )
+                  .map((item) => (
+                    <span key={item.id}>
+                      <img
+                        src={item.filter.icon}
+                        className="detail-item__icon"
+                        alt=""
+                      />
+                      {item.value}
+                    </span>
+                  ))}
             </div>
             <p>
               <span> {ad.address} </span>
             </p>
           </section>
         </div>
-      </Link>
-      {!hideFav && (
-        <div className="fav-btn">
-          {ad.is_favorite ? (
-            <i
-              onClick={handleDeleteFromFavorites}
-              className="fa-solid fa-heart"
-            ></i>
-          ) : (
-            <i onClick={handleAddToFavorites} className="fa-light fa-heart"></i>
-          )}
-        </div>
-      )}
+      </div>
     </div>
   );
 }

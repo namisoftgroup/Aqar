@@ -113,7 +113,7 @@
     "priceDetails": " Price Details",
     "totalPrice": "Total Price",
     "confirm": "Confirm & Payment",
-    "yourTrip": "Your trip",
+    "BookingRequestSummary": "Your booking request summary",
     "edit": "Edit",
     "payment": "Payment",
     "cardNumber": "Card Number",
@@ -139,7 +139,9 @@
     "guestsNumber": "Guests Number",
     "wallet": "Wallet",
     "online": "online",
-    "date": "Date:"
+    "date": "Date:",
+    "pickDateMessage": "Choose Date",
+    "nights": "nights"
   },
   "profile": {
     "myProfile": "My Profile",
@@ -160,7 +162,9 @@
     "withdraw": "Withdraw",
     "charge": "Charge",
     "enterTheAmount": "Enter the amount",
-    "noOperations": "You don't have previous transactions"
+    "noOperations": "You don't have previous transactions",
+    "date": "Date",
+    "price": "price"
   },
   "notifications": {
     "notifications": "Notifications"
@@ -303,5 +307,12 @@
   "readMore": "Read more",
   "noChatSelected": "No Chat Selected",
   "startConversation": "Start a conversation and connect with ease!",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "adDetails": "Ad Details",
+  "dates": "Dates",
+  "guests": "Guests",
+  "appPercentage": "App Percentage",
+  "noDatesSelected": "No dates Selected",
+  "noGuestsSelected": "Specify the number of guests",
+  "guestCountTitle": "Hom many guests?"
 }

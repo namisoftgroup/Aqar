@@ -2,35 +2,25 @@
   background: #ffffff;
   border-radius: 8px;
   display: flex;
+  height: 100%;
   gap: 16px;
   padding: 12px;
   position: relative;
   &.bg_gray {
     background: var(--input-bg);
   }
-  .fav-btn {
-    @include clearInput;
-    background-color: transparent;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    position: absolute;
-    top: 8px;
-    left: 12px;
-    i {
-      font-size: 20px;
-      color: #ff0000;
-    }
-  }
+
   h2 {
     font-size: 16px;
     line-height: 20px;
     font-weight: 600;
     color: var(--main);
+    flex-grow: 1;
   }
   .card-link {
     display: flex;
     gap: 12px;
+    width: 100%;
 
     .image_card {
       background-color: transparent;
@@ -48,6 +38,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      flex: 1;
       .info {
         display: flex;
         flex-direction: column;
@@ -76,6 +67,18 @@
   }
 }
 
+.fav-btn {
+  @include clearInput;
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  i {
+    font-size: 20px;
+    color: #ff0000;
+  }
+}
+
 .guest-rates-card {
   padding: 1rem;
   border: 1px solid var(--border);
@@ -83,28 +86,27 @@
   height: 100%;
   .guest-info {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 18px;
     font-size: 14px;
-    .guest-data {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      h4 {
-        font-weight: 600;
-        margin: 0;
-      }
-      p {
-        color: var(--gray);
-        margin: 0;
-      }
+    h4 {
+      font-weight: 600;
+      margin: 0;
+      font-size: 16px;
     }
-  }
-  p {
-    font-size: 14px;
-    color: var(--gray);
-    margin: 0;
-    margin-top: 1rem;
+    p {
+      margin: 0;
+    }
+    .comment {
+      color: var(--gray);
+      margin: 0;
+      font-size: 16px;
+    }
+    .guest-data {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
   }
 }
 
