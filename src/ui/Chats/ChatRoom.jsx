@@ -1,42 +1,99 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useCreateMessage } from "../../hooks/chats/useCreateMessage";
-import MessageBubble from "./MessageBubble";
-import RecordingControls from "./RecordingControls";
+import { formatMessageTime } from "../../utils/helper";
+import { createMessage } from "../../apiServices/apiChats";
 
-export default function ChatRoom({ chat }) {
-  const user = useSelector((state) => state.user.user);
+const ChatRoom = ({ chat }) => {
+  const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [message, setMessage] = useState({
-    from_id: user?.id,
-    chat_id: chat?.id,
-    message: "",
-    type: "",
-  });
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [recordingTime, setRecordingTime] = useState(0);
   const formRef = useRef(null);
   const chatContainerRef = useRef(null);
   const recordingIntervalRef = useRef(null);
+  const socketRef = useRef(null);
   const { t } = useTranslation();
+  const { user } = useSelector((state) => state.user);
   const [fileName, setFileName] = useState("");
-  const { createMessage, isPending } = useCreateMessage();
+
+  const [message, setMessage] = useState({
+    from_id: user?.id,
+    chat_id: chat?.id,
+    message: "",
+    type: "",
+  });
+
+  const channel = chat?.id ? `chat_${chat?.id}` : null;
+
+  // WebSocket initialization
+  useEffect(() => {
+    const initializeWebSocket = () => {
+      if (socketRef.current) {
+        socketRef.current.close();
+      }
+
+      socketRef.current = new WebSocket(
+        "wss://api.noot.com.sa/app/f4vqjzd4e4bs0ikazefo?protocol=7&client=js&version=8.4.0&flash=false"
+      );
+
+      socketRef.current.onopen = () => {
+        console.log("WebSocket connection established");
+
+        if (chat?.id) {
+          socketRef.current.send(
+            JSON.stringify({
+              event: "pusher:subscribe",
+              data: { channel: channel },
+            })
+          );
+        }
+      };
+
+      socketRef.current.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+
+        const messageData = JSON.parse(data.data);
+
+        if (messageData?.message?.chat_id) {
+          setMessages((prevMessages) => [...prevMessages, messageData.message]);
+        }
+      };
+
+      socketRef.current.onerror = (error) => {
+        console.error("WebSocket Error:", error);
+      };
+
+      socketRef.current.onclose = () => {
+        console.log("WebSocket connection closed");
+      };
+    };
+
+    initializeWebSocket();
+
+    return () => {
+      if (socketRef.current) {
+        socketRef.current.close();
+      }
+    };
+  }, [channel, chat?.id]);
+
   useEffect(() => {
     if (chat) {
       setMessages(chat?.messages.slice() || []);
     }
   }, [chat]);
+
   // Scroll to the bottom of the chat container when messages change
   useEffect(() => {
-    requestAnimationFrame(() => {
-      chatContainerRef.current?.scrollTo({
-        top: chatContainerRef.current.scrollHeight,
-        behavior: "smooth",
-      });
-    });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
   }, [messages]);
+
   // Clear recording interval on component unmount
   useEffect(() => {
     return () => {
@@ -45,58 +102,66 @@ export default function ChatRoom({ chat }) {
       }
     };
   }, []);
-  const handleSendMessage = useCallback(
-    async (e) => {
-      e.preventDefault();
-      if (!message.type || (message.type === "text" && !message.message.trim()))
-        return;
-      const newMessage = {
-        ...message,
-        message:
-          message.type === "text" ? message.message : message.message.name,
-      };
 
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { ...newMessage, created_at: new Date() },
-      ]);
-      console.log(messages);
+  // Send message
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-      const formData = new FormData();
-      formData.append("from_id", user?.id);
-      formData.append("chat_id", chat?.id);
-      formData.append("type", message.type);
-      formData.append("message", message.message);
-      createMessage(formData, {
-        onSettled: () => {
-          formRef.current.reset();
-          setMessage({
-            from_id: user?.id,
-            chat_id: chat?.id,
-            message: "",
-            type: "",
-          });
-        },
-      });
+    if (message?.type === "") {
+      return;
+    }
+
+    formRef.current.reset();
+
+    setMessage({
+      from_id: user?.id,
+      chat_id: chat?.id,
+      message: "",
+      type: "",
+    });
+
+    try {
+      if (
+        socketRef.current &&
+        socketRef.current.readyState === WebSocket.OPEN
+      ) {
+        socketRef.current.send(
+          JSON.stringify({
+            event: "pusher:subscribe",
+            data: { channel: channel },
+          })
+        );
+      } else {
+        console.log("WebSocket is not open");
+      }
+      await createMessage(message);
+    } catch (error) {
+      console.error("Error sending message:", error);
+    } finally {
       setRecordingTime(0);
-    },
-    [message, user?.id, chat?.id]
-  );
+      setLoading(false);
+    }
+  };
+
   // Start recording
   const startRecording = async () => {
     setIsRecording(true);
     setRecordingTime(0);
     const audioChunks = [];
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const mediaRecorderInstance = new MediaRecorder(stream, {
         mimeType: "audio/webm",
       });
+
       mediaRecorderInstance.ondataavailable = (event) => {
         if (event.data.size > 0) {
           audioChunks.push(event.data);
         }
       };
+
       mediaRecorderInstance.onstop = async () => {
         const audioBlob = new Blob(audioChunks, { type: "audio/m4a" });
 
@@ -109,9 +174,11 @@ export default function ChatRoom({ chat }) {
         mediaRecorderInstance.stream.getTracks().forEach((track) => {
           track.stop();
         });
+
         setIsRecording(false);
         clearInterval(recordingIntervalRef.current);
       };
+
       mediaRecorderInstance.start();
       setMediaRecorder(mediaRecorderInstance);
       startRecordingTimer();
@@ -120,6 +187,7 @@ export default function ChatRoom({ chat }) {
       setIsRecording(false);
     }
   };
+
   // Stop recording
   const stopRecording = () => {
     if (mediaRecorder && mediaRecorder.state !== "inactive") {
@@ -127,33 +195,109 @@ export default function ChatRoom({ chat }) {
     }
     clearInterval(recordingIntervalRef.current);
   };
+
   // Start recording timer
   const startRecordingTimer = () => {
     recordingIntervalRef.current = setInterval(() => {
       setRecordingTime((prevTime) => prevTime + 1);
     }, 1000);
   };
+
+  // Format recording time
+  const formatRecordingTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+  };
+
+  // Extract file name from URL
+  const extractTextAfterMessages = (url) => {
+    const regex = /_messages\.(.*)/;
+    const match = url.match(regex);
+    return match ? match[1] : fileName;
+  };
+
   return (
-    <>
-      <div className="chat-window">
-        <div className="chat-header">
-          <div className="chat-user">
-            <img className="user-initial" src={chat.owner.image} />
-            <div>
-              <div className="chat-user-name">{chat.owner.name}</div>
-              <div className="chat-location">
-                {chat?.ad?.title}, {chat?.ad?.address}
-              </div>
-            </div>
-          </div>
+    <div className="chat-container">
+      <div className="chat-head">
+        <div className="user">
+          <img
+            src={
+              chat?.user
+                ? user?.id === chat?.user?.id
+                  ? chat?.owner?.image
+                  : chat?.user?.image || "/images/avatar.jpg"
+                : "/images/deleted-account.jpg"
+            }
+            alt="user"
+          />
+          <h6 className="name">
+            {chat?.user
+              ? user?.id === chat?.user?.id
+                ? chat?.owner?.name
+                : chat?.user?.name
+              : t("chat.deletedAccount")}
+          </h6>
         </div>
       </div>
-      <div className="chat-body scrollbar-styles" ref={chatContainerRef}>
-        {messages.map((message, index) => (
-          <MessageBubble key={index} message={message} fileName={fileName} />
+
+      {chat?.ad && (
+        <Link to={`/for-rent/${chat?.ad?.id}`} className="adItem">
+          <img src={chat?.ad?.image || "/images/bann.webp"} alt="" />
+          <p>{chat?.ad?.title}</p>
+        </Link>
+      )}
+
+      <div className="inner-container" ref={chatContainerRef}>
+        {messages.map((message) => (
+          <div
+            className={`message ${
+              message?.from_id === user?.id
+                ? "sent-message"
+                : "received-message"
+            }`}
+            key={message?.id}
+          >
+            <div className="d-flex flex-column">
+              <div className="message-content">
+                {message?.type === "text" && <p>{message?.message}</p>}
+                {message?.type === "audio" && (
+                  <audio controls src={message?.message} />
+                )}
+                {message?.type === "image" && (
+                  <img
+                    style={{
+                      aspectRatio: 1 / 1,
+                      width: "300px",
+                      objectFit: "contain",
+                    }}
+                    src={message?.message}
+                    alt=""
+                  />
+                )}
+                {message?.type === "file" && (
+                  <Link to={message?.message} target="_blank">
+                    <div className="doc_message">
+                      <p>{extractTextAfterMessages(message?.message)}</p>
+                      <div className="icon">
+                        <i className="fa-regular fa-file"></i>
+                      </div>
+                    </div>
+                  </Link>
+                )}
+              </div>
+              <span
+                dir="ltr"
+                className={message?.from_id === user?.id ? "sen" : "rec"}
+              >
+                {formatMessageTime(message?.created_at)}
+              </span>
+            </div>
+          </div>
         ))}
       </div>
-      <div className="chat-footer">
+
+      <div className="chat-send">
         <form onSubmit={handleSendMessage} ref={formRef}>
           <div className="input-field">
             {message?.type === "text" || message?.type === "" ? (
@@ -168,7 +312,6 @@ export default function ChatRoom({ chat }) {
                     type: "text",
                   })
                 }
-                disabled={isPending || isRecording}
               />
             ) : (
               <div className="file_place">
@@ -189,6 +332,7 @@ export default function ChatRoom({ chat }) {
                 )}
               </div>
             )}
+
             <label className="files-input">
               <i className="fa-regular fa-paperclip"></i>
               <input
@@ -210,18 +354,29 @@ export default function ChatRoom({ chat }) {
                 id="img-upload"
               />
             </label>
-            <RecordingControls
-              isRecording={isRecording}
-              startRecording={startRecording}
-              stopRecording={stopRecording}
-              recordingTime={recordingTime}
-            />
+            {isRecording ? (
+              <label className="files-input" onClick={stopRecording}>
+                <i className="fa-solid fa-microphone-slash"></i>
+                <input type="" />
+              </label>
+            ) : (
+              <label className="files-input" onClick={startRecording}>
+                <i className="fa-solid fa-microphone"></i>
+                <input type="" />
+              </label>
+            )}
+            {recordingTime > 0 && (
+              <span>{formatRecordingTime(recordingTime)}</span>
+            )}
           </div>
-          <button type="submit" disabled={message.type === "" && isPending}>
+
+          <button type="submit" disabled={message.type === "" && loading}>
             <i className="fa-regular fa-paper-plane-top"></i>
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
-}
+};
+
+export default ChatRoom;

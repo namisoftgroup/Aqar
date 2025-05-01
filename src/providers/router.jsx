@@ -4,7 +4,7 @@ import RootLayout from "../layout/RootLayout";
 import BookingRequest from "../routes/BookingRequest";
 import Bookings from "../routes/Bookings";
 import BookingsDetails from "../routes/BookingsDetails";
-import Chat from "../routes/Chats";
+import Chats from "../routes/Chats";
 import Contact from "../routes/Contact";
 import EditProfile from "../routes/EditProfile";
 import Favourites from "../routes/Favourites";
@@ -99,7 +99,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "chat",
-            element: <Chat />,
+            element: <Chats />,
           },
           {
             path: "edit-profile",
