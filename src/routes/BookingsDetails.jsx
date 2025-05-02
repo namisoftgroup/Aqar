@@ -88,7 +88,7 @@ export default function BookingsDetails() {
         {/* Property Data Section */}
         <section className=" border-0 prop-data">
           <div className="details-card">
-            <h4 className="your-trip__title">{t("book.yourTrip")}</h4>
+            {/* <h4 className="your-trip__title">{t("book.yourTrip")}</h4> */}
             {bookingDetails.ad.filters &&
               bookingDetails.ad.filters.length > 0 &&
               bookingDetails.ad.filters.map((item) => (
@@ -120,7 +120,7 @@ export default function BookingsDetails() {
 
           {/* Trip Details */}
           <div className="your-trip">
-            <h4 className="your-trip__title">{t("book.yourTrip")}</h4>
+            <h4 className="your-trip__title">{t("bookingDetails")}</h4>
             <div className="date">
               <span className="your-trip__label">{t("book.dates")}</span>
               <span className="your-trip__value">
@@ -167,7 +167,7 @@ export default function BookingsDetails() {
                   {nights} {t("forRent.nights")}
                 </p>
               ) : (
-                <p className="price__night-label">سعر الليله</p>
+                <p className="price__night-label">{t("forRent.price")}</p>
               )}
               <p className="price__amount">
                 {bookingDetails.ad.price} {t("sar")} /{" "}

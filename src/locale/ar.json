@@ -318,5 +318,10 @@
   "appPercentage": "نسبه التطبيق",
   "noDatesSelected": "لم يتم اختيار تاريخ ",
   "noGuestsSelected": "حدد عدد الضيوف",
-  "guestCountTitle": "كم عدد الضيوف؟"
+  "guestCountTitle": "كم عدد الضيوف؟",
+  "nightPrice": "سعر الليله",
+  "bookingDetails": "تفاصيل الطلب",
+  "youDontHaveEnoughBallance": "ليس لديك رصيد كافي لدفع مبلغ: ",
+  "yourBalance": "رصيد محفظتك:",
+  "chargeAmount": "قيمه الشحن:"
 }

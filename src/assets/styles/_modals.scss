@@ -203,6 +203,26 @@
 }
 
 .charge-modal {
+  .charge-info {
+    margin-top: 4px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    .charge-data {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        &:first-child {
+          font-weight: 600;
+          color: var(--main);
+        }
+      }
+    }
+  }
   form {
     display: flex;
     align-items: center;

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useGetAdDetails from "../hooks/ads/useGetAdDetails";
 import { useBookingAd } from "../hooks/bookings/useBookingAd";
 import BookingHeader from "../ui/book/BookingHeader";
@@ -13,6 +13,8 @@ import ChargeModal from "../ui/modals/ChargeModal";
 import DateModal from "../ui/modals/DateModal";
 import GuestNumberModal from "../ui/modals/GuestNumberModal";
 import { formatDate } from "../utils/helper";
+import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function BookingRequest() {
   const [showDateModal, setShowDateModal] = useState(false);
@@ -25,7 +27,8 @@ export default function BookingRequest() {
   const user = useSelector((state) => state.user.user);
   const { t } = useTranslation();
   const { id } = useParams();
-
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const [selected, setSelected] = useState("wallet");
   const { adDetails, isLoading } = useGetAdDetails();
   const booking = useSelector((state) => state.booking);
@@ -64,7 +67,18 @@ export default function BookingRequest() {
     if (user.wallet < total) {
       setShowChargeModal(true);
     } else {
-      bookingAd(data);
+      bookingAd({
+        data,
+        onSuccess: (data) => {
+          if (data.code === 200) {
+            toast.success("Booking successful!");
+            navigate(`bookings/${data?.data?.id}`);
+            queryClient.invalidateQueries(["ads"]);
+          } else if (data.code === 500) {
+            toast.error(data.message);
+          }
+        },
+      });
     }
   }
 
@@ -135,6 +149,8 @@ export default function BookingRequest() {
       <ChargeModal
         setShowModal={setShowChargeModal}
         showModal={ShowChargeModal}
+        booking={true}
+        total={total}
       />
     </>
   );
