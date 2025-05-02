@@ -22,7 +22,7 @@ export default function Wallet() {
             <div className="col-lg-4 col-12 p-2">
               <div className="balance-card">
                 <div className="balance">
-                  <img src="/icons/balance.svg" alt="balance-background" />
+                  <img src="/images/balance.svg" alt="balance-background" />
                   <p>
                     {user.wallet}
                     <span>{t("sar")}</span>

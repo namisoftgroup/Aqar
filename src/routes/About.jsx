@@ -6,37 +6,37 @@ import SectionHeader from "../ui/SectionHeader";
 const features = [
   {
     id: 1,
-    icon: "/icons/saftey.svg",
+    icon: "/images/saftey.svg",
     title: "home.instantBooking",
     description: "home.instantBookingDesc",
   },
   {
     id: 2,
-    icon: "/icons/payment.svg",
+    icon: "/images/payment.svg",
     title: "home.securePayment",
     description: "home.securePaymentDesc",
   },
   {
     id: 3,
-    icon: "/icons/support.svg",
+    icon: "/images/support.svg",
     title: "home.customerService",
     description: "home.customerServiceDesc",
   },
   {
     id: 4,
-    icon: "/icons/reviews.svg",
+    icon: "/images/reviews.svg",
     title: "home.trustedReviews",
     description: "home.trustedReviewsDesc",
   },
   {
     id: 5,
-    icon: "/icons/smartSearch.svg",
+    icon: "/images/smartSearch.svg",
     title: "home.smartSearch",
     description: "home.smartSearchDesc",
   },
   {
     id: 6,
-    icon: "/icons/session360.svg",
+    icon: "/images/session360.svg",
     title: "home.photosVideos",
     description: "home.photosVideosDesc",
   },
@@ -119,7 +119,7 @@ export default function About() {
               <div className="about-area">
                 <div className="icon">
                   <img
-                    src="/icons/support.svg"
+                    src="/images/support.svg"
                     alt={t("about.supportIconAlt")}
                   />
                 </div>
@@ -131,7 +131,7 @@ export default function About() {
               <div className="about-area">
                 <div className="icon">
                   <img
-                    src="/icons/offer-icon.svg"
+                    src="/images/offer-icon.svg"
                     alt={t("about.dealsIconAlt")}
                   />
                 </div>

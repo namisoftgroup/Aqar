@@ -93,7 +93,7 @@ export default function ForRentDetails() {
                         src={
                           item.filter.icon
                             ? item.filter.icon
-                            : "/icons/check.png"
+                            : "/images/check.png"
                         }
                         alt={item.filter.name}
                         className="icon"

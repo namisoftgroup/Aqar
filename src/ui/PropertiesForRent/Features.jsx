@@ -8,7 +8,7 @@ export default function Features({ features }) {
       <ul className="features-list">
         {features.map((feature) => (
           <li key={feature.id}>
-            <img src="/icons/check.png" /> <span>{feature.title}</span>
+            <img src="/images/check.png" /> <span>{feature.title}</span>
           </li>
         ))}
       </ul>

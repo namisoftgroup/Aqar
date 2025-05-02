@@ -140,7 +140,7 @@ export default function MapSection({ setViewMap }) {
 
       <button className="view_map" onClick={() => setViewMap(false)}>
         <div className="icon">
-          <img src="/icons/listing.svg" alt="map" />
+          <img src="/images/listing.svg" alt="map" />
         </div>
         {t("forRent.viewListing")}
       </button>
@@ -302,7 +302,7 @@ export default function MapSection({ setViewMap }) {
 
 //       <button className="view_map" onClick={() => setViewMap(false)}>
 //         <div className="icon">
-//           <img src="/icons/listing.svg" alt="map" />
+//           <img src="/images/listing.svg" alt="map" />
 //         </div>
 //         {t("forRent.viewListing")}
 //       </button>
@@ -473,7 +473,7 @@ export default function MapSection({ setViewMap }) {
 
 // //       <button className="view_map" onClick={() => setViewMap(false)}>
 // //         <div className="icon">
-// //           <img src="/icons/listing.svg" alt="map" />
+// //           <img src="/images/listing.svg" alt="map" />
 // //         </div>
 // //         {t("forRent.viewListing")}
 // //       </button>
@@ -609,7 +609,7 @@ export default function MapSection({ setViewMap }) {
 
 //       <button className="view_map" onClick={() => setViewMap(false)}>
 //         <div className="icon">
-//           <img src="/icons/listing.svg" alt="map" />
+//           <img src="/images/listing.svg" alt="map" />
 //         </div>
 //         {t("forRent.viewListing")}
 //       </button>
