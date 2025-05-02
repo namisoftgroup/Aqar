@@ -52,29 +52,29 @@ export default function Contact() {
                 <div className="contact-info-content">
                   <h2>{t("contact.contactInfoTitle")}</h2>
                   <p>{t("contact.contactInfoDescription")}</p>
-                  <ul className="contact-items">
-                    <li>
-                      <i className="fa-solid fa-phone"></i>
-                      <p>
-                        <span>{t("contact.phone")} :</span>
-                        <span> +1 123 456 7890</span>
-                      </p>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-location-dot"></i>
-                      <p>
-                        <span>{t("contact.location")} :</span>
-                        <span>Jeddah, Saudi Arabia 00000, KSA</span>
-                      </p>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-envelope"></i>
-                      <p>
-                        <span>{t("contact.email")} :</span>
-                        <span>noot@gmail.com</span>
-                      </p>
-                    </li>
-                  </ul>
+                  {/*<ul className="contact-items">*/}
+                  {/*  <li>*/}
+                  {/*    <i className="fa-solid fa-phone"></i>*/}
+                  {/*    <p>*/}
+                  {/*      <span>{t("contact.phone")} :</span>*/}
+                  {/*      <span> +1 123 456 7890</span>*/}
+                  {/*    </p>*/}
+                  {/*  </li>*/}
+                  {/*  <li>*/}
+                  {/*    <i className="fa-solid fa-location-dot"></i>*/}
+                  {/*    <p>*/}
+                  {/*      <span>{t("contact.location")} :</span>*/}
+                  {/*      <span>Jeddah, Saudi Arabia 00000, KSA</span>*/}
+                  {/*    </p>*/}
+                  {/*  </li>*/}
+                  {/*  <li>*/}
+                  {/*    <i className="fa-solid fa-envelope"></i>*/}
+                  {/*    <p>*/}
+                  {/*      <span>{t("contact.email")} :</span>*/}
+                  {/*      <span>noot@gmail.com</span>*/}
+                  {/*    </p>*/}
+                  {/*  </li>*/}
+                  {/*</ul>*/}
                 </div>
               </div>
               <div className="col-lg-6 p-2">
