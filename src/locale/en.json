@@ -60,7 +60,8 @@
     "next": "Next",
     "email": "Email",
     "name": "Name",
-    "completeYourdata": "Complete Your Data"
+    "completeYourdata": "Complete Your Data",
+    "sendingCode": "Sending Code..."
   },
   "home": {
     "searchForYourDreamHome": "Welcome to the world of smart bookings.",
@@ -159,12 +160,15 @@
     "transaction": "Transaction",
     "previousTransactions": "Previous transactions",
     "deposit": "Deposit",
-    "withdraw": "Withdraw",
-    "charge": "Charge",
     "enterTheAmount": "Enter the amount",
     "noOperations": "You don't have previous transactions",
     "date": "Date",
-    "price": "price"
+    "price": "price",
+    "buy": "Purchase",
+    "charge": "Charge",
+    "refund": "Refund",
+    "withdraw": "Withdrawal",
+    "unknown": "Unknown"
   },
   "notifications": {
     "notifications": "Notifications"

@@ -83,6 +83,10 @@ p {
   margin: 12px 8px 32px;
 }
 
+.map-controls .control-btn {
+  z-index: 995;
+}
+
 .dropdown-menu {
   border: 0 !important;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
@@ -2343,6 +2347,8 @@ body .marker-price {
   white-space: nowrap;
   font-weight: 600;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.204);
+  width: -moz-fit-content;
+  width: fit-content;
 }
 body .details-card {
   border-radius: 12px;

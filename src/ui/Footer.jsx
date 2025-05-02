@@ -125,7 +125,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fab fa-youtube"></i>
+              <i className="fab fa-linkedin"></i>
             </Link>
           </div>
         </div>

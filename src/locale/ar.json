@@ -59,7 +59,8 @@
     "next": "التالي",
     "email": "البريد الالكتروني",
     "name": "الاسم",
-    "completeYourdata": "استكمل بياناتك"
+    "completeYourdata": "استكمل بياناتك",
+    "sendingCode": "جارٍ إرسال الرمز..."
   },
   "home": {
     "searchForYourDreamHome": "مرحبًا بك في عالم الحجوزات الذكية",
@@ -158,12 +159,16 @@
     "transaction": "العمليه",
     "previousTransactions": "المعاملات السابقه",
     "deposit": "إيداع",
-    "withdraw": "سحب",
-    "charge": "شحن",
+
     "enterTheAmount": "ادخل المبلغ",
     "noOperations": "لا يوجد لديك عمليات سابقه.",
     "date": "التاريخ",
-    "price": "السعر"
+    "price": "السعر",
+    "buy": "شراء",
+    "charge": "شحن",
+    "refund": "استرداد",
+    "withdraw": "سحب",
+    "unknown": "غير معروف"
   },
   "notifications": {
     "notifications": "الاشعارات"

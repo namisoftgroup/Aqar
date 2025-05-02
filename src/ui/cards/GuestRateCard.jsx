@@ -1,11 +1,12 @@
 import { useSelector } from "react-redux";
 import { formateDateDetails } from "../../utils/helper";
 import StarsRate from "../StarsRate";
+import { Link } from "react-router";
 
 export default function GuestRateCard({ rate }) {
   const lang = useSelector((state) => state.language.lang);
   return (
-    <section className="guest-rates-card">
+    <Link to={`/ads/${rate.user_id}`} className="guest-rates-card d-block">
       <div className="guest-info">
         <div className="d-flex justify-content-between">
           {" "}
@@ -28,6 +29,6 @@ export default function GuestRateCard({ rate }) {
         </div>
       </div>
       <p> </p>
-    </section>
+    </Link>
   );
 }

@@ -13,10 +13,18 @@ export default function GuestNumberModal({
   const { t } = useTranslation();
   const lang = useSelector((state) => state.language.lang);
 
-  const [tempData, setTempData] = useState({ ...bookingData });
+  const [tempData, setTempData] = useState({
+    ...bookingData,
+    adults: bookingData.adults > 0 ? bookingData.adults : 1,
+  });
 
   useEffect(() => {
-    if (showModal) setTempData({ ...bookingData });
+    if (showModal) {
+      setTempData({
+        ...bookingData,
+        adults: bookingData.adults > 0 ? bookingData.adults : 1,
+      });
+    }
   }, [showModal, bookingData]);
 
   const maxValues = {
@@ -37,7 +45,10 @@ export default function GuestNumberModal({
   const handleDecrease = (field) => {
     setTempData((prev) => ({
       ...prev,
-      [field]: prev[field] > 0 ? prev[field] - 1 : 0,
+      [field]:
+        field === "adults"
+          ? Math.max(1, prev[field] - 1)
+          : Math.max(0, prev[field] - 1),
     }));
   };
 
@@ -56,7 +67,7 @@ export default function GuestNumberModal({
   const handleCancel = () => {
     setShowModal(false);
     setBookingData({
-      adults: 0,
+      adults: 1,
       children: 0,
       baby: 0,
       with_pits: 0,
@@ -108,7 +119,7 @@ export default function GuestNumberModal({
               <label className="pets-label" htmlFor="with_pets">
                 {t("filter.pets")}
               </label>
-              <div className="pets-input d-flex  align-items-center gap-2">
+              <div className="pets-input d-flex align-items-center gap-2">
                 <span>{t("filter.petsDes")}</span>
                 <input
                   type="checkbox"

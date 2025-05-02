@@ -12,7 +12,7 @@ export default function BookingSummary({
   duration,
   setDuration,
 }) {
-  const dispatch = useDispatch(); // Initialize dispatch
+  const dispatch = useDispatch(); 
   const booking = useSelector((state) => state.booking);
   const { t } = useTranslation();
   const [endDate, setEndDate] = useState(null);

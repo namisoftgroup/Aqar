@@ -19,6 +19,7 @@ export async function getAdDetails(id) {
     return data;
   } catch (error) {
     console.error("Error fetching ads:", error);
+    throw new Error(error);
   }
 }
 export async function getAdRates(id) {

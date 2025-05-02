@@ -4,21 +4,16 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router";
 import { PER_AR, PER_EN } from "../../utils/constants";
 import { formateDateDetails } from "../../utils/helper";
-import { useGetSettings } from "../../hooks/settings/useGetSettings";
 
 export default function PropertyInfo({ adDetails }) {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.language.lang);
   const user = useSelector((state) => state.user.user);
   const [total, seTotal] = useState();
-  const { settings } = useGetSettings();
+
   useMemo(() => {
-    seTotal(
-      adDetails.price +
-        adDetails.clean_price +
-        adDetails.price * (settings.app_percentage / 100)
-    );
-  }, [adDetails.price, adDetails.clean_price, settings.app_percentage]);
+    seTotal(adDetails.price + adDetails.clean_price);
+  }, [adDetails.price, adDetails.clean_price]);
 
   return (
     <section className="prop-data">
@@ -80,15 +75,7 @@ export default function PropertyInfo({ adDetails }) {
             </p>
           </div>
         )}
-        {(settings.app_percentage || settings.app_percentage > 0) && (
-          <div>
-            <p>{t("appPercentage")} </p>
-            <p>
-              {adDetails.price * (Number(settings.app_percentage) / 100)}{" "}
-              {t("sar")}
-            </p>
-          </div>
-        )}
+
         <div>
           <p>{t("forRent.totalPrice")}</p>
           <p>{total}</p>

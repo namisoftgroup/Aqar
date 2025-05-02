@@ -1,29 +1,21 @@
-import { useSelector } from "react-redux";
-import PropertyCard from "../cards/PropertyCard";
-import { useTranslation } from "react-i18next";
-import { PER_AR, PER_EN } from "../../utils/constants";
 import { useMemo, useState } from "react";
-import { useGetSettings } from "../../hooks/settings/useGetSettings";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { PER_AR, PER_EN } from "../../utils/constants";
+import PropertyCard from "../cards/PropertyCard";
 
-export default function DetailsCard({ adDetails, duration }) {
+export default function DetailsCard({ adDetails, duration, total, seTotal }) {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.language.lang);
   const nights = useSelector((state) => state.booking.nights);
-  const [total, seTotal] = useState();
-  const { settings } = useGetSettings();
+ 
   useMemo(() => {
     if (adDetails?.per === "day") {
       seTotal(
-        (nights === 0 ? 1 : nights) * adDetails?.price +
-          adDetails.clean_price +
-          adDetails.price * (Number(settings.app_percentage) / 100)
+        (nights === 0 ? 1 : nights) * adDetails?.price + adDetails.clean_price
       );
     } else {
-      seTotal(
-        duration * adDetails?.price +
-          adDetails.clean_price +
-          adDetails.price * (Number(settings.app_percentage) / 100)
-      );
+      seTotal(duration * adDetails?.price + adDetails.clean_price);
     }
   }, [
     duration,
@@ -31,7 +23,6 @@ export default function DetailsCard({ adDetails, duration }) {
     adDetails?.price,
     adDetails.clean_price,
     adDetails.per,
-    settings.app_percentage,
   ]);
   return (
     <div className="details-card">
@@ -66,13 +57,6 @@ export default function DetailsCard({ adDetails, duration }) {
               </span>
             </li>
           )}
-          <li>
-            <span>{t("appPercentage")} </span>
-            <span>
-              {adDetails.price * (Number(settings.app_percentage) / 100)}{" "}
-              {t("sar")}
-            </span>
-          </li>
         </ul>
       </div>
 

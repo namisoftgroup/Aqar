@@ -1,8 +1,7 @@
 import { useMemo, useState } from "react";
-import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import useGetAdDetails from "../hooks/ads/useGetAdDetails";
 import { useBookingAd } from "../hooks/bookings/useBookingAd";
 import BookingHeader from "../ui/book/BookingHeader";
@@ -10,6 +9,7 @@ import BookingSummary from "../ui/book/BookingSummary";
 import ChooseHowToPay from "../ui/book/ChooseHowToPay";
 import DetailsCard from "../ui/book/DetailsCard";
 import DataLoader from "../ui/DataLoader";
+import ChargeModal from "../ui/modals/ChargeModal";
 import DateModal from "../ui/modals/DateModal";
 import GuestNumberModal from "../ui/modals/GuestNumberModal";
 import { formatDate } from "../utils/helper";
@@ -17,18 +17,18 @@ import { formatDate } from "../utils/helper";
 export default function BookingRequest() {
   const [showDateModal, setShowDateModal] = useState(false);
   const [showGuestModal, setShowGuestModal] = useState(false);
+  const [ShowChargeModal, setShowChargeModal] = useState(false);
   const [duration, setDuration] = useState(1);
   const [priceReq, setPriceReq] = useState();
+  const [total, seTotal] = useState();
   const nights = useSelector((state) => state.booking.nights);
+  const user = useSelector((state) => state.user.user);
   const { t } = useTranslation();
   const { id } = useParams();
 
   const [selected, setSelected] = useState("wallet");
   const { adDetails, isLoading } = useGetAdDetails();
   const booking = useSelector((state) => state.booking);
-  console.log(adDetails);
-  const [cookies] = useCookies(["token"]);
-  const token = cookies?.token;
 
   useMemo(() => {
     if (adDetails?.per === "day") {
@@ -38,11 +38,13 @@ export default function BookingRequest() {
     }
   }, [duration, nights, adDetails?.price, adDetails?.per]);
   const [bookingData, setBookingData] = useState({
-    adults: 0,
+    adults: 1,
     children: 0,
     baby: 0,
     with_pits: 0,
   });
+  const totalGuests =
+    bookingData.adults + bookingData.children + bookingData.baby;
 
   const data = {
     ad_id: id,
@@ -59,8 +61,15 @@ export default function BookingRequest() {
   const { bookingAd, isPending: isBookingLoading } = useBookingAd();
 
   function handelBooking() {
-    bookingAd(data);
+    if (user.wallet < total) {
+      setShowChargeModal(true);
+    } else {
+      bookingAd(data);
+    }
   }
+
+  const hasDates = booking.to || booking.from || booking.date;
+  const canBook = hasDates && totalGuests > 0;
 
   if (isLoading) return <DataLoader />;
   return (
@@ -76,6 +85,8 @@ export default function BookingRequest() {
                 selected={selected}
                 adDetails={adDetails}
                 duration={duration}
+                total={total}
+                seTotal={seTotal}
               />
             </div>
             <div className="col-lg-7 col-12 p-2">
@@ -92,29 +103,13 @@ export default function BookingRequest() {
                 setSelected={setSelected}
                 adDetails={adDetails}
               />
-              {booking.to || booking.from || booking.date ? (
-                selected === "online" ? (
-                  <Link
-                    className="book-btn d-block text-center"
-                    to={
-                      priceReq === 0 || priceReq === ""
-                        ? ""
-                        : `https://api.noot.com.sa/payment/${priceReq}?Authorization=${token}&Redirect_url=${window.location.href}`
-                    }
-                  >
-                    {" "}
-                    {t("forRent.book")}
-                  </Link>
-                ) : (
-                  <button className="book-btn" onClick={handelBooking}>
-                    {isBookingLoading && (
-                      <i className="fa-duotone fa-regular fa-circle-notch fa-spin"></i>
-                    )}
-                    {t("forRent.book")}
-                  </button>
-                )
-              ) : (
-                <></>
+              {canBook && (
+                <button className="book-btn" onClick={handelBooking}>
+                  {isBookingLoading && (
+                    <i className="fa-duotone fa-regular fa-circle-notch fa-spin"></i>
+                  )}
+                  {t("forRent.book")}
+                </button>
               )}
             </div>
           </div>
@@ -135,6 +130,11 @@ export default function BookingRequest() {
         adDetails={adDetails}
         setBookingData={setBookingData}
         bookingData={bookingData}
+      />
+
+      <ChargeModal
+        setShowModal={setShowChargeModal}
+        showModal={ShowChargeModal}
       />
     </>
   );

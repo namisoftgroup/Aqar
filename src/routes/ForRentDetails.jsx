@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Calendar } from "react-multi-date-picker";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router";
 import useGetAdDetails from "../hooks/ads/useGetAdDetails";
-import { setDates } from "../redux/slices/bookingSlice";
+import { useAddToFavorites } from "../hooks/favorites/useAddToFavorites";
+import { useDeleteFromFavorites } from "../hooks/favorites/useDeleteFromFavorites";
 import DataLoader from "../ui/DataLoader";
 import MapView from "../ui/MapView";
 import Features from "../ui/PropertiesForRent/Features";
@@ -12,33 +12,32 @@ import Owner from "../ui/PropertiesForRent/Owner";
 import PropertyInfo from "../ui/PropertiesForRent/PropertyInfo";
 import Rates from "../ui/PropertiesForRent/Rates";
 import SimilarAds from "../ui/PropertiesForRent/SimilarAds";
-import { useDeleteFromFavorites } from "../hooks/favorites/useDeleteFromFavorites";
-import { useAddToFavorites } from "../hooks/favorites/useAddToFavorites";
-import { useNavigate } from "react-router";
+import useGetAdRates from "../hooks/ads/useGetAdRates";
 
 export default function ForRentDetails() {
   const { t } = useTranslation();
   const booking = useSelector((state) => state.booking);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  // const { id } = useParams();
   const navigate = useNavigate();
   const { deleteFromFavorites } = useDeleteFromFavorites();
   const { addToFavorites } = useAddToFavorites();
   const { adDetails, isLoading } = useGetAdDetails();
+  // const { adRates, isLoading: isRatesLoading } = useGetAdRates(id);
+  // const storedDates =
+  //   booking.from && booking.to
+  //     ? [new Date(booking.from), new Date(booking.to)]
+  //     : [];
 
-  const storedDates =
-    booking.from && booking.to
-      ? [new Date(booking.from), new Date(booking.to)]
-      : [];
+  // const [selectedDates, setSelectedDates] = useState(storedDates);
 
-  const [selectedDates, setSelectedDates] = useState(storedDates);
-
-  function handleChange(dates) {
-    const serializedDates = dates.map((date) => new Date(date).toISOString());
-    setSelectedDates(dates);
-    if (dates.length === 2) {
-      dispatch(setDates({ from: serializedDates[0], to: serializedDates[1] }));
-    }
-  }
+  // function handleChange(dates) {
+  //   const serializedDates = dates.map((date) => new Date(date).toISOString());
+  //   setSelectedDates(dates);
+  //   if (dates.length === 2) {
+  //     dispatch(setDates({ from: serializedDates[0], to: serializedDates[1] }));
+  //   }
+  // }
 
   if (isLoading) return <DataLoader />;
 
@@ -78,7 +77,6 @@ export default function ForRentDetails() {
             <PropertyInfo adDetails={adDetails} nights={booking.nights} />
           </div>
         </div>
-
         <div className="row g-3">
           <div className="col-lg-8">
             <div className="description">
@@ -113,33 +111,16 @@ export default function ForRentDetails() {
             {adDetails.features && adDetails.features.length > 0 && (
               <Features features={adDetails.features} />
             )}
-            {/* <div className="mt-3">
-              <h4>{t("forRent.chooseData")}</h4>
-              <div className="calender-container">
-                <Calendar
-                  range
-                  numberOfMonths={2}
-                  format="YYYY/MM/DD"
-                  className="custom-calendar"
-                  value={selectedDates}
-                  onChange={handleChange}
-                  minDate={new Date()}
-                />
-              </div>
-            </div> */}
           </div>
         </div>
-
         <div className="map-container">
           <h4>{t("forRent.location")}</h4>
           <p>{adDetails.address} </p>
           <MapView lng={adDetails.lng} lat={adDetails.lat} />
         </div>
-
         {adDetails.rates && adDetails.rates.length > 0 && (
           <Rates adRates={adDetails.rates} />
         )}
-
         {adDetails.similar_ads && adDetails.similar_ads.length > 0 && (
           <SimilarAds similarAds={adDetails.similar_ads} />
         )}

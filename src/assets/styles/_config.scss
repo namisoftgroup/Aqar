@@ -104,6 +104,13 @@ p {
 .rc-slider {
   margin: 12px 8px 32px;
 }
+
+.map-controls {
+  .control-btn {
+    z-index: 995;
+  }
+}
+
 .dropdown-menu {
   border: 0 !important;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);

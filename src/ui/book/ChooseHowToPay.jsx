@@ -19,7 +19,7 @@ export default function ChooseHowToPay({ selected, setSelected }) {
           {t("book.wallet")}
         </label>
 
-        <label className="radio-label">
+        {/* <label className="radio-label">
           <input
             type="radio"
             name="radio"
@@ -29,7 +29,7 @@ export default function ChooseHowToPay({ selected, setSelected }) {
           />
           <span className="custom-radio"></span>
           {t("book.online")} <br />
-        </label>
+        </label> */}
       </form>
     </section>
   );
