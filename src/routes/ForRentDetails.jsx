@@ -24,23 +24,6 @@ export default function ForRentDetails() {
   const { addToFavorites } = useAddToFavorites();
   const { adDetails, isLoading } = useGetAdDetails();
   const { adRates, isLoading: isRatesLoading } = useGetAdRates(id);
-  console.log(adRates);
-
-  // const storedDates =
-  //   booking.from && booking.to
-  //     ? [new Date(booking.from), new Date(booking.to)]
-  //     : [];
-
-  // const [selectedDates, setSelectedDates] = useState(storedDates);
-
-  // function handleChange(dates) {
-  //   const serializedDates = dates.map((date) => new Date(date).toISOString());
-  //   setSelectedDates(dates);
-  //   if (dates.length === 2) {
-  //     dispatch(setDates({ from: serializedDates[0], to: serializedDates[1] }));
-  //   }
-  // }
-
   if (isLoading || isRatesLoading) return <DataLoader />;
 
   return (

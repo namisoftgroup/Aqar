@@ -6,7 +6,7 @@ import CustomPagination from "../CustomPagination";
 
 export default function Rates({ adRates }) {
   const { t } = useTranslation();
-  console.log(adRates);
+
 
   return (
     <section className="mt-5">

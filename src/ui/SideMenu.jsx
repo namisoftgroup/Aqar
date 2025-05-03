@@ -3,11 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
 import useAuth from "../hooks/helper/useAuth";
-import { useGetSettings } from "../hooks/settings/useGetSettings";
 
 export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
   const lang = useSelector((state) => state.language.lang);
-  const { settings, isLoading } = useGetSettings();
 
   const { t } = useTranslation();
   const sideMenuRef = useRef(null);
@@ -30,7 +28,6 @@ export default function SideMenu({ toggleRef, openMenu, setOpenMenu }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (isLoading) return <></>;
   return (
     <>
       <div

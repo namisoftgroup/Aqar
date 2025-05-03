@@ -11,7 +11,6 @@ export default function EditProfile() {
   const { t } = useTranslation();
   const imgView = useRef(null);
   const user = useSelector((state) => state.user.user);
-  const { lang } = useSelector((state) => state.language);
   const { editProfile, isPending } = useUpdateProfile();
   useEffect(() => {
     if (user) {

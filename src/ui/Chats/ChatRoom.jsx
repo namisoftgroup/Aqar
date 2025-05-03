@@ -40,7 +40,6 @@ const ChatRoom = ({ chat, chats }) => {
     socketRef.current = socket;
 
     socket.onopen = () => {
-      console.log("WebSocket connected");
       socket.send(
         JSON.stringify({
           event: "pusher:subscribe",

@@ -6,7 +6,6 @@ export async function getWalltOperation() {
     const data = res.data.data;
     return data;
   } catch (e) {
-    console.log(e.message);
-    throw new Error("Error fetching wallet operations");
+    throw new Error(`Error fetching wallet operations: ${e.message}`);
   }
 }

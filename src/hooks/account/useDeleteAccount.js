@@ -1,7 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
-import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
@@ -12,10 +11,9 @@ export default function useDeleteAccount() {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+
   const [, , deleteCookie] = useCookies();
-  const [cookies] = useCookies(["token"]);
-  const token = cookies?.token;
+
   const queryClient = useQueryClient();
 
   const deleteAccount = async () => {
