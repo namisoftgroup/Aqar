@@ -318,5 +318,10 @@
   "appPercentage": "App Percentage",
   "noDatesSelected": "No dates Selected",
   "noGuestsSelected": "Specify the number of guests",
-  "guestCountTitle": "Hom many guests?"
+  "guestCountTitle": "Hom many guests?",
+  "nightPrice": "Night price",
+  "bookingDetails": "Booking details",
+  "youDontHaveEnoughBallance": "You don't have enough balance to pay the amount:",
+  "yourBalance": "Your current balance:",
+  "chargeAmount": "Charge Amount:"
 }

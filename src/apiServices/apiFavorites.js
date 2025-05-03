@@ -6,20 +6,25 @@ export async function getFavorites() {
     const data = res.data.data;
     return data;
   } catch (e) {
-    console.log(e.message);
-    throw new Error("Error fetching favorites");
+    throw new Error(
+      e.response?.data?.message || "Error fetching favorites. Please try again."
+    );
   }
 }
+
 export async function addFavourite(id) {
   try {
     const res = await axiosInstance.post("user/add_to_favorite", { id });
     const data = res.data;
     return data;
   } catch (e) {
-    console.log(e.message);
-    throw new Error("Error adding to favorites");
+    throw new Error(
+      e.response?.data?.message ||
+        "Error adding to favorites. Please try again."
+    );
   }
 }
+
 export async function deleteFavourite(id) {
   try {
     const res = await axiosInstance.post("user/delete_from_favorite", {
@@ -28,7 +33,9 @@ export async function deleteFavourite(id) {
     const data = res.data;
     return data;
   } catch (e) {
-    console.log(e.message);
-    throw new Error("Error deleting from favorites");
+    throw new Error(
+      e.response?.data?.message ||
+        "Error deleting from favorites. Please try again."
+    );
   }
 }

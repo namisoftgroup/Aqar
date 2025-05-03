@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { PER_AR, PER_EN } from "../../utils/constants";
@@ -8,7 +8,7 @@ export default function DetailsCard({ adDetails, duration, total, seTotal }) {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.language.lang);
   const nights = useSelector((state) => state.booking.nights);
- 
+
   useMemo(() => {
     if (adDetails?.per === "day") {
       seTotal(
@@ -23,6 +23,7 @@ export default function DetailsCard({ adDetails, duration, total, seTotal }) {
     adDetails?.price,
     adDetails.clean_price,
     adDetails.per,
+    seTotal,
   ]);
   return (
     <div className="details-card">

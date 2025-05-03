@@ -1,18 +1,16 @@
 import { useRef, useState } from "react";
-import { Link, NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
-import { useGetSettings } from "../hooks/settings/useGetSettings";
-import SideMenu from "./SideMenu";
-import UserDropDown from "./Header/UserDropDown";
-import LanguageDropDown from "./Header/LanguageDropDown";
+import { Link, NavLink } from "react-router";
 import useAuth from "../hooks/helper/useAuth";
+import LanguageDropDown from "./Header/LanguageDropDown";
+import UserDropDown from "./Header/UserDropDown";
+import SideMenu from "./SideMenu";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const menuToggleButton = useRef(null);
   const { t } = useTranslation();
   const { isAuthed } = useAuth();
-  const { settings } = useGetSettings();
 
   return (
     <header className="header">

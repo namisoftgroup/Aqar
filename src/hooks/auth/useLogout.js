@@ -27,7 +27,9 @@ export function useLogout() {
       navigate("/", { replace: true });
     },
     onError: (error) => {
-      console.log("ERROR: " + error);
+      const errorMessage =
+        error.response?.data?.message || "Failed to log out. Please try again.";
+      toast.error(errorMessage);
     },
   });
 

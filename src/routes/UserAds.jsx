@@ -1,11 +1,11 @@
-import { Link, useParams } from "react-router";
-import { useGetAds } from "../hooks/ads/useGetAds";
-import DataLoader from "../ui/DataLoader";
-import SectionHeader from "../ui/SectionHeader";
-import PropertyCard from "../ui/cards/PropertyCard";
-import EmptyData from "../ui/EmptyData";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router";
+import { useGetAds } from "../hooks/ads/useGetAds";
+import PropertyCard from "../ui/cards/PropertyCard";
+import DataLoader from "../ui/DataLoader";
+import EmptyData from "../ui/EmptyData";
 import Owner from "../ui/PropertiesForRent/Owner";
+import SectionHeader from "../ui/SectionHeader";
 
 const UserAds = () => {
   const { ads, isLoading } = useGetAds();

@@ -1,6 +1,6 @@
 import axiosInstance from "../utils/axios";
 
-export async function sendOtpCode({phone}) {
+export async function sendOtpCode({ phone }) {
   try {
     const res = await axiosInstance.post("user/send_otp_code", {
       phone,
@@ -8,7 +8,7 @@ export async function sendOtpCode({phone}) {
     const data = res.data;
     return data;
   } catch (e) {
-    console.log(e.response?.data?.message || "Error sending OTP code");
+    throw new Error(e.response?.data?.message || "Error sending OTP code");
   }
 }
 export async function checkCode(reqBody) {
@@ -17,7 +17,7 @@ export async function checkCode(reqBody) {
     const data = res.data;
     return data;
   } catch (e) {
-    console.log(e.response?.data?.message || "Error checking code");
+    throw new Error(e.response?.data?.message || "Error checking code");
   }
 }
 
