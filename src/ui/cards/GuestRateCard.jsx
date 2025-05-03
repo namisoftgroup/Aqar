@@ -9,7 +9,7 @@ export default function GuestRateCard({ rate }) {
     <Link to={`/ads/${rate.user_id}`} className="guest-rates-card d-block">
       <div className="guest-info">
         <div className="d-flex justify-content-between">
-          {" "}
+         
           <p className="rate">
             {formateDateDetails(
               rate.created_at,
@@ -20,8 +20,11 @@ export default function GuestRateCard({ rate }) {
         </div>
         <p className="comment">{rate.comment}</p>
         <div className="guest-data">
-          <div className="image-wrapper">
-            <img src="/images/avatar.png" alt="User" />
+          <div className="user-image-wrapper">
+            <img
+              src={rate?.user?.image ? rate?.user?.image : "/images/avatar.png"}
+              alt={rate?.user?.name}
+            />
           </div>
           <div className="text">
             <h4> {rate.user.name} </h4>
