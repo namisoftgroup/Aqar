@@ -2,32 +2,32 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 const features = [
   {
-    icon: "/icons/saftey.svg",
+    icon: "/images/saftey.svg",
     title: "home.instantBooking",
     description: "home.instantBookingDesc",
   },
   {
-    icon: "/icons/payment.svg",
+    icon: "/images/payment.svg",
     title: "home.securePayment",
     description: "home.securePaymentDesc",
   },
   {
-    icon: "/icons/support.svg",
+    icon: "/images/support.svg",
     title: "home.customerService",
     description: "home.customerServiceDesc",
   },
   {
-    icon: "/icons/reviews.svg",
+    icon: "/images/reviews.svg",
     title: "home.trustedReviews",
     description: "home.trustedReviewsDesc",
   },
   {
-    icon: "/icons/smartSearch.svg",
+    icon: "/images/smartSearch.svg",
     title: "home.smartSearch",
     description: "home.smartSearchDesc",
   },
   {
-    icon: "/icons/session360.svg",
+    icon: "/images/session360.svg",
     title: "home.photosVideos",
     description: "home.photosVideosDesc",
   },

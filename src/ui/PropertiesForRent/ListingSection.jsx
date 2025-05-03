@@ -34,7 +34,7 @@ export default function ListingSection({ setViewMap }) {
 
       <button className="view_map" onClick={() => setViewMap(true)}>
         <div className="icon">
-          <img src="/icons/map.svg" alt="map" />
+          <img src="/images/map.svg" alt="map" />
         </div>
         {t("forRent.viewOnMap")}
       </button>

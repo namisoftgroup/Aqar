@@ -20,7 +20,7 @@ export default function UserDropDown() {
         <Dropdown.Toggle className="user-btn">
           <div className="user-img-wrapper">
             <img
-              src={user?.image ? user.image : "/icons/user.svg"}
+              src={user?.image ? user.image : "/images/user.svg"}
               alt="user_alt"
             />
           </div>

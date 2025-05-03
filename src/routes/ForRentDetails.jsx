@@ -18,12 +18,14 @@ export default function ForRentDetails() {
   const { t } = useTranslation();
   const booking = useSelector((state) => state.booking);
   // const dispatch = useDispatch();
-  // const { id } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const { deleteFromFavorites } = useDeleteFromFavorites();
   const { addToFavorites } = useAddToFavorites();
   const { adDetails, isLoading } = useGetAdDetails();
-  // const { adRates, isLoading: isRatesLoading } = useGetAdRates(id);
+  const { adRates, isLoading: isRatesLoading } = useGetAdRates(id);
+  console.log(adRates);
+
   // const storedDates =
   //   booking.from && booking.to
   //     ? [new Date(booking.from), new Date(booking.to)]
@@ -39,7 +41,7 @@ export default function ForRentDetails() {
   //   }
   // }
 
-  if (isLoading) return <DataLoader />;
+  if (isLoading || isRatesLoading) return <DataLoader />;
 
   return (
     <section className="for-rent-details">
@@ -93,7 +95,7 @@ export default function ForRentDetails() {
                         src={
                           item.filter.icon
                             ? item.filter.icon
-                            : "/icons/check.png"
+                            : "/images/check.png"
                         }
                         alt={item.filter.name}
                         className="icon"
@@ -118,8 +120,8 @@ export default function ForRentDetails() {
           <p>{adDetails.address} </p>
           <MapView lng={adDetails.lng} lat={adDetails.lat} />
         </div>
-        {adDetails.rates && adDetails.rates.length > 0 && (
-          <Rates adRates={adDetails.rates} />
+        {adRates && adRates?.data?.length > 0 && (
+          <Rates adRates={adRates?.data} />
         )}
         {adDetails.similar_ads && adDetails.similar_ads.length > 0 && (
           <SimilarAds similarAds={adDetails.similar_ads} />

@@ -78,7 +78,7 @@ export default function FilterBox() {
           loading={isCategoriesLoading}
         />
 
-        <SubmitButton className="p-3" img="/icons/search.svg" />
+        <SubmitButton className="p-3" img="/images/search.svg" />
 
         <button
           className="filter-btn"
@@ -87,7 +87,7 @@ export default function FilterBox() {
             setShowModal(true);
           }}
         >
-          <img src="/icons/filter.svg" className="to_dark" alt="filter" />
+          <img src="/images/filter.svg" className="to_dark" alt="filter" />
         </button>
       </form>
       <FilterModal showModal={showModal} setShowModal={setShowModal} />

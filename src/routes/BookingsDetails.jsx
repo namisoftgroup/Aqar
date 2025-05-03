@@ -96,7 +96,9 @@ export default function BookingsDetails() {
                   <div className="detail-item__content d-flex gap-1">
                     <img
                       src={
-                        item.filter.icon ? item.filter.icon : "/icons/check.png"
+                        item.filter.icon
+                          ? item.filter.icon
+                          : "/images/check.png"
                       }
                       alt={item.filter.name}
                       className="detail-item__icon"

@@ -12,7 +12,7 @@ export default function StarsRate({ rate, reviewsCount }) {
             return (
               <img
                 key={Math.random()}
-                src="/icons/star-filled.svg"
+                src="/images/star-filled.svg"
                 alt="filled star"
               />
             );
@@ -20,7 +20,9 @@ export default function StarsRate({ rate, reviewsCount }) {
         {Array(5 - Math.round(rate))
           .fill(0)
           .map(() => {
-            return <img key={Math.random()} src="/icons/star.svg" alt="star" />;
+            return (
+              <img key={Math.random()} src="/images/star.svg" alt="star" />
+            );
           })}
       </div>
       {reviewsCount && (

@@ -22,10 +22,10 @@ export async function getAdDetails(id) {
     throw new Error(error);
   }
 }
-export async function getAdRates(id) {
+export async function getAdRates(id, page) {
   try {
-    const res = await axiosInstance.post("get_ad_rates", { id });
-    const data = res.data.data;
+    const res = await axiosInstance.post("get_ad_rates", { id, page });
+    const data = res.data;
     return data;
   } catch (error) {
     console.error("Error fetching ads:", error);
