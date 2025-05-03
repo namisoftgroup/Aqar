@@ -1,6 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import GuestRateCard from "../cards/GuestRateCard";
 
 import "swiper/css/pagination";
