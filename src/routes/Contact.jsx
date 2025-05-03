@@ -52,6 +52,7 @@ export default function Contact() {
                 <div className="contact-info-content">
                   <h2>{t("contact.contactInfoTitle")}</h2>
                   <p>{t("contact.contactInfoDescription")}</p>
+
                   {/*<ul className="contact-items">*/}
                   {/*  <li>*/}
                   {/*    <i className="fa-solid fa-phone"></i>*/}
